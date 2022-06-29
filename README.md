@@ -1,3 +1,6 @@
+Ejecutar ejecutar.bat
+Primero ejecutar actualizar.bat para descargar los ficheros necesarios.
+
 # SimSwap: An Efficient Framework For High Fidelity Face Swapping
 ## Proceedings of the 28th ACM International Conference on Multimedia
 **The official repository with Pytorch**
