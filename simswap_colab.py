@@ -119,7 +119,7 @@ if len(output_path) > 0:
     opt.output_path = output_path
 
 crop_size = input("Crop Size por defecto: " + str(opt.crop_size) + "\nIntroduzca nuevo valor(512 por ejemplo) o presiona ENTER para aceptar: ") 
-if len(str(crop_size)) > 0:    
+if len(crop_size) > 0:    
     opt.crop_size = int(crop_size)
 
 
