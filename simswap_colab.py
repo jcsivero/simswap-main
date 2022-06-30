@@ -95,6 +95,7 @@ opt = TestOptions()
 opt.initialize()
 opt.parser.add_argument('-f') ## dummy arg to avoid bug
 opt = opt.parse()
+
 opt.pic_a_path = './demo_file/Iron_man.jpg' ## or replace it with image from your own google drive
 opt.video_path = './demo_file/multi_people_1080p.mp4' ## or replace it with video from your own google drive
 opt.output_path = './output/demo.mp4'
@@ -102,8 +103,29 @@ opt.temp_path = './tmp'
 opt.Arc_path = './arcface_model/arcface_checkpoint.tar'
 opt.isTrain = False
 opt.use_mask = True  ## new feature up-to-date
+opt.crop_size = 224
 
-crop_size = opt.crop_size
+pic_a_path = input("Imagen origen por defecto: " + opt.pic_a_path + "\nIntroduzca ruta con nomnbre de nueva imagen o presiona ENTER para aceptar: ") 
+if len(pic_a_path) > 0:    
+    opt.pic_a_path = pic_a_path
+
+video_path = input("Video origen por defecto: " + opt.video_path + "\nIntroduzca ruta con nombre de nuevo Video o presiona ENTER para aceptar: ") 
+if len(video_path) > 0:    
+    opt.video_path = video_path
+
+
+output_path = input("Video destino por defecto: " + opt.output_path + "\nIntroduzca ruta con nombre de nuevo video de destiono o presiona ENTER para aceptar: ") 
+if len(output_path) > 0:    
+    opt.output_path = output_path
+
+crop_size = input("Crop Size por defecto: " + str(opt.crop_size) + "\nIntroduzca nuevo valor(512 por ejemplo) o presiona ENTER para aceptar: ") 
+if len(str(crop_size)) > 0:    
+    opt.crop_size = int(crop_size)
+
+
+if len(input("Quitar marca de agua S/N")) > 0:    
+    opt.no_simswaplogo = True
+
 
 torch.nn.Module.dump_patches = True
 model = create_model(opt)
