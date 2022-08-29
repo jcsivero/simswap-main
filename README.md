@@ -1,24 +1,36 @@
-Recuerde ejecutar actualizar.cmd si acaba de descargar los ficheros desde github para obtener el resto de los ficheros necesarios.
+# Recuerde ejecutar actualizar.cmd si acaba de descargar los ficheros desde github para obtener el resto de los ficheros necesarios.
 
-Ejecutar:
+## Ejecutar:
+
 entorno.cmd  ==> para abrir entorno de ejecución. Desde este entorno se podrá después ejecutar el programa incluido el de GUI.
+
 ejecutar.cmd ==> ejecutar directamente el programa
+
 ejecutar_gpu.bat  ==> para comprobar si se dispone de GPU compatible.
-actualizar.cmd ==> para descargar los ficheros necesarios. Una vez se ha descargado la aplicación desde github, es lo primero que se debe de hacer, ya que en github, por      cuestiones de ahorro de espacio y que muchos de estos ficheros necesarios ocupan demasiado, no es posible alojarlos ahí.
+
+actualizar.cmd ==> para descargar los ficheros necesarios. Una vez se ha descargado la aplicación desde github, es lo primero que se debe de hacer, ya que en github, porcuestiones de ahorro de espacio y que muchos de estos ficheros necesarios ocupan demasiado, no es posible alojarlos ahí.
+
 instalar.cmd ==> en caso de que no funcione la aplicación, se puede intentar realizar una nueva instalación de las librerías de python y personalizar el entorno. Este comando solo se debería de ejecutar en caso de que no funcione, ya que, en teoría la instalación descargada directamente desde github funcionará sin problemas gracias a los scripts que hice.
 
-Para la versión con GUI se requerirá la instalación de VB6.
+# Para la versión con GUI se requerirá la instalación de VB6.
+## Ficheros:
 
-Ficheros:
 video explicativo GUI.txt ==> contiene enlace a video youtube con su funcionamiento e instalación. Esto será a modo de recordatorio, y aprendizaje de la aplicación puesto que ya está instalada.
+
 SimSwap512.exe ==> versión GUI de la aplicación con opción de 512 de crop.
 
 Dentro de la carpeta VB6 se encuentran los siguientes ficheros necesarios para la instalación de Visual Basic 6 necesario para la versión GUI.
+
 video explicativo vb6.txt ==> enlace a video a youtube con la manera de instalar VB6 en windows 10 64 bits.
+
 Vb 6 serial.txt==> serial para VB6 Professional.
+
 Realmente la carpeta \vb6\Microsoft Visual Basic 6.0 Professional [Spanish] (ISO) ya está preparada para ser instalada y solo haría falta dos pasos:
+
 1.- ejecutar una sola vez el setup.exe y seguir hasta que dará un error.
+
 2.- aunque haya dado error el paso anterior, ejecutar ahora el fichero acmsetup.exe y continuar. Asegurarse de seleccionar instalación personalizada(nunca la típica) y en la selección de componentes desactivar "Acceso a datos"
+
 
 Con esos pasos debería de ser suficiente para instalar VB6, pero si no funcionara, se podría ver el tutorial completo cuyo enlace se encuentra en "video explicativo vb6.txt" para realizar el total de pasos necesarios.
 
