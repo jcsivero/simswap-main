@@ -1,0 +1,4 @@
+MDAC20.cab no está disponible. Utilice MDAC_TYP.EXE en su lugar. Puede encontrar este archivo en el SDK de MDAC 2.0 y en el CD de Visual Studio 98.
+
+MDAC_TYP.CAB se suministra para que lo utilice el Asistente para la instalación de VB.
+MDAC_TYP.CAB no está pensado para funcionar desde la etiqueta Codebase en una página HTML. Los usuarios que necesiten la funcionalidad de MDAC 2.0 en sus estaciones de trabajo deben ejecutar el archivo MDAC_TYP.EXE para instalar esos componentes.

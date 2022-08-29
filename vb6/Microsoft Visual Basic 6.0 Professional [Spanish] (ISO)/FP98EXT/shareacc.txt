@@ -1,0 +1,32 @@
+También puede encontrar estas instrucciones en el archivo FrontPg\esp\shareacc.txt, en el CD de FrontPage 98.
+
+CÓMO RESTRINGIR EL ACCESO A SUS SITIOS WEB DE FRONTPAGE
+
+Servidor Web ejecutándose en Windows 95
+=======================================
+
+Microsoft Personal Web Server para Windows 95 puede operar sin seguridad o con control de acceso a Nivel de usuario si su equipo es parte de un dominio de Red de Microsoft Windows. Pero si su equipo no es miembro de un dominio, lo que suele suceder en los equipos standalone no conectados a una red o LAN, entonces su servidor Web operará sin seguridad.
+
+Si su equipo es miembro de un dominio de Red de Microsoft Windows, puede activar el control de acceso para su servidor Web mediante la habilitación del control de acceso a Nivel de usuario. Siga estos pasos para configurar su equipo con control de acceso a Nivel de usuario:
+a) Desinstale FrontPage 98 mediante el icono Agregar/Eliminar programas, del Panel de control. Desinstalar FrontPage no quita el contenido que ha creado en sus sitios Web, sólo los archivos de programa de FrontPage 98.
+b) Vaya al Panel de control y abra el icono Red.
+c) En la ficha Control de acceso, elija la opción Control del acceso de los usuarios y haga clic en Aceptar.
+d) Después de reiniciar su equipo, vuelva a instalar FrontPage 98. Después de la instalación utilice el comando Permisos en el menú Herramientas, Explorador de FrontPage, para restringir el acceso a su Web de FrontPage.
+
+Servidor Web ejecutándose en Windows NT
+=======================================
+
+Las Extensiones de servidor de FrontPage para Microsoft Internet Information Server para Windows NT Server o para Servicios Web punto a punto de Microsoft para Microsoft NT Workstation se basan en el sistema de archivos NTFS para restringir el control de acceso a sus sitios Web de FrontPage. Si utiliza el sistema de archivos FAT, entonces cualquiera prodrá explorar, modificar y administrar sus sitios Web de FrontPage. Para restringir el acceso, las Extensiones de servidor de FrontPage y el contenido Web deben ser instalados en una partición de sistema de archivos NTFS.
+
+Hay dos formas de crear una partición de sistema de archivos NTFS en su equipo si no existe una partición de sistema de archivos NTFS:
+a) Crear una partición de sistema de archivos NTFS nueva. Esto requiere que el equipo disponga de espacio en disco libre y sin particiones, o que elimine o cambie el tamaño de una partición FAT existente. Este proceso es complejo y por lo tanto no es recomendado.
+b) Convertir su partición de sistema de archivos FAT actual al sistema de archivos NTFS. El proceso de conversión se realiza in-situ y no requiere quitar los datos; sin embargo, no es un proceso reversible. Una vez que el sistema de archivos esté convertido a NTFS, no podrá volver a convertirlo directamente a sistema de archivos FAT. Para activar la seguridad de sus sitios Web de FrontPage, se recomienda el proceso de conversión de FAT a NTFS, que encontrará documentado a continuación.
+
+ADVERTENCIA: convertir una partición de sistema de archivos FAT a NTDS en un equipo con arranque dual que ejecuta más de un sistema operativo hará la partición ilegible para MSDOS, Microsoft Windows 3.x o Microsoft Windows 95. Si otros sistemas operativos distintos de Windows NT están almacenados en la partición a convertir al sistema de archivos NTFS, entonces esos sistemas operativos dejarán de estar disponibles. Si su equipo es un equipo con arranque dual y desea continuar ejecutando sistemas operativos distintos de Windows NT, entonces debe crear una segunda partición de disco para el sistema de archivos NTFS, con el fin de almacenar el contenido Web y continuar usando la partición de sistema de archivos FAT para almacenar los otros sistemas operativos. No siga la instrucciones siguientes si desea crear dos particiones; en su lugar, debe utilizar la aplicación Administrador de discos de Windows NT para agregar una partición NTFS a su disco duro.
+
+Para convertir una partición de sistema de archivos FAT al sistema de archivos NTFS y restringir con ello el acceso a sus sitios Web:
+
+a) Desinstale FrontPage 98 mediante el icono Agregar/Eliminar programas del Panel de control. Desinstalar FrontPage no quita el contenido que ha creado en sus sitios Web, sólo los archivos de programa de FrontPage 98.
+b) Abra una ventana del Símbolo del sistema. Ejecute el comando "convert C: /fs:ntfs", dónde C: es la letra de la unidad que contiene la raíz de contenido de su servidor Web (normalmente C:). El proceso de conversión puede requerir que el equipo sea apagado y reiniciado.
+c) Cuando la conversión haya finalizado, reinicie el servidor Web utilizando la aplicación Administrador de servicios de Internet. Si el equipo fue reiniciado como parte del proceso de conversión del sistema de archivos, entonces el servidor Web se reiniciará automáticamente.
+d) Vuelva a instalar FrontPage 98.

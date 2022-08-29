@@ -1,0 +1,800 @@
+[Version]
+Signature = "$Windows NT$"
+
+[Strings]
+REG_UNINSTALL="Software\Microsoft\Windows\CurrentVersion\Uninstall"
+REG_INETSTP="Software\Microsoft\InetStp"
+REG_INETMGR="Software\Microsoft\InetMgr"
+REG_SVCS_INETINFO="System\CurrentControlSet\Services\InetInfo"
+REG_KEYRING="Software\Microsoft\Keyring"
+REG_APPPATHS="Software\Microsoft\Windows\CurrentVersion\App Paths"
+REG_CLSID="Software\Classes\CLSID"
+REG_SLATE_MMC="Software\Microsoft\MMC"
+SZ_SLATE_ID="{A841B6C2-7577-11d0-BB1F-00A0C922E79C}"
+
+; the following are localizable
+SDESC_IMS="SMTP Service"
+LDESC_IMS="Simple Mail Transfer Protocol (SMTP) Service"
+SDESC_IIS_SMTP="SMTP Service"
+LDESC_IIS_SMTP="SMTP service files"
+SDESC_IIS_SMTP_DOCS="SMTP documentation"
+LDESC_IIS_SMTP_DOCS="SMTP service documentation files"
+SZ_SLATE_NAME_STRING="Internet Services"
+
+[Optional Components]
+ims
+iis_smtp
+iis_smtp_docs
+
+[ims]
+Parent = iis
+OptionDesc = %SDESC_IMS%
+Tip = %LDESC_IMS%
+IconIndex = 0
+
+[iis_smtp]
+Needs = iis_www
+Parent = ims
+OptionDesc = %SDESC_IIS_SMTP%
+Tip =%LDESC_IIS_SMTP%
+IconIndex = *
+UpgReg="System\CurrentControlSet\Services\SMTPSVC"
+Modes=1,3
+
+[iis_smtp_docs]
+Needs = iis_doc_common
+Parent = ims
+OptionDesc = %SDESC_IIS_SMTP_DOCS%
+Tip =%LDESC_IIS_SMTP_DOCS%
+IconIndex = *
+UpgReg="System\CurrentControlSet\Services\SMTPSVC"
+Modes=1,3
+
+; =========================================================================
+; About iis_smtp
+;
+[iis_smtp_install]
+Copyfiles=\
+iis_ims_files_keep, \
+iis_ims_files_program, \
+iis_ims_files_system, \
+iis_smtp_files_service, \
+iis_smtp_files_system, \
+iis_smtp_files_mail_help, \
+iis_smtp_files_web, \
+iis_smtp_files_webadmin, \
+iis_smtp_files_webadmin_images, \
+iis_smtp_files_webadmin_help
+AddReg=iis_smtp_register
+
+[iis_smtp_uninstall]
+Delfiles=\
+iis_smtp_files_service, \
+iis_smtp_files_system, \
+iis_smtp_files_mail_help, \
+iis_smtp_files_web, \
+iis_smtp_files_webadmin, \
+iis_smtp_files_webadmin_images, \
+iis_smtp_files_webadmin_help
+DelReg=iis_smtp_unregister
+
+[iis_smtp_register]
+
+[iis_smtp_unregister]
+
+
+; =========================================================================
+; About iis_smtp_docs
+;
+[iis_smtp_docs_install]
+Copyfiles=\
+iis_smtp_files_mail_docs, \
+iis_smtp_files_mail_hhc
+
+[iis_smtp_docs_uninstall]
+Delfiles=\
+iis_smtp_files_mail_docs, \
+iis_smtp_files_mail_hhc
+
+
+; =========================================================================
+; The list of shared files to uninstall in the event of remove all or
+; uninstalling the last component
+;
+[iis_ims_uninstall]
+Delfiles=\
+iis_ims_files_program, \
+iis_ims_files_system
+
+; =========================================================================
+; The list of shared files to uninstall in the event of MCIS 1.0 to K2
+; upgrade
+;
+[iis_smtp_mcis10_product_upgrade]
+Delfiles=\
+iis_smtp_mcis10_system, \
+iis_smtp_mcis10_product
+
+
+; =========================================================================
+; This is a section containing all the destination directories
+;
+; 18 ===> Windows\help directory (%windir%\help)
+; 11 ===> system directory (%windir%\system on Win95, %windir%\system32 on NT)
+; 32768 ===> c:\inetpub
+[DestinationDirs]
+iis_ims_files_program=11, inetsrv
+iis_ims_files_system=11
+iis_ims_files_keep=11
+iis_smtp_files_service=11, inetsrv
+iis_smtp_files_system=11
+iis_smtp_files_mail_docs=18, mail
+iis_smtp_files_mail_help=32768, mail\Smtp\Admin\Help
+iis_smtp_files_mail_hhc=18, mail
+iis_smtp_files_web=32768, Mail\Smtp\Admin
+iis_smtp_files_webadmin=32768, Mail\Smtp\Admin
+iis_smtp_files_webadmin_images=32768, Mail\Smtp\Admin\Images
+iis_smtp_files_webadmin_help=32768, Mail\Smtp\Admin\Help
+iis_smtp_mcis10_system=11
+iis_smtp_mcis10_product=11, inetsrv
+
+; =========================================================================
+; This is a section containing all the registry to metabase operations
+;
+; The format of the parameters are as follows:
+;
+; fUpgrade fKeepOldReg hkRootKey szSubKey szValueName mdPath mdID mdAttrib mdUserType mdDataType mdDataLen mdData
+[SMTP_REG]
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	ConnectionTimeOut	LM/SmtpSvc		1013	0x1	1	1	4	0x258
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxConnections		LM/SmtpSvc		1014	0x1	1	1	4	0x77359400
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxMsgSize		LM/SmtpSvc		36891	0x1	1	1	4	0x200000
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxMsgSizeBeforeClose	LM/SmtpSvc		36892	0x1	1	1	4	0xa00000
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxOutConnections	LM/SmtpSvc		36894	0x1	1	1	4	0x77359400
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxRcpts		LM/SmtpSvc		36895	0x1	1	1	4	0x64
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxRemoteTimeOut	LM/SmtpSvc		36921	0x1	1	1	4	0x258
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxRetryAttempts	LM/SmtpSvc		36896	0x1	1	1	4	0x30
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxRetryAttempts	LM/SmtpSvc		36898	0x1	1	1	4	0x30
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxRetryMinutes		LM/SmtpSvc		36897	0x1	1	1	4	0x3c
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxRetryMinutes		LM/SmtpSvc		36899	0x1	1	1	4	0x3c
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	EnableReverseLookup	LM/SMtpSvc		36884	0x1	1	1	4	0x0
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MaxHopCount		LM/SMtpSvc		36886	0x1	1	1	4	0xf
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	ShouldDeliver		LM/SMtpSvc		36881	0x1	1	1	4	0x0
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	SmartHost		LM/SMtpSvc		36906	0x1	1	2	0	%__EMPTY%
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	SmartHostUseType	LM/SMtpSvc		36905	0x1	1	1	4	0x0
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogType			LM/SmtpSvc		4000	0x1	1	1	4	0x1
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFileDirectory	LM/SmtpSvc		4001	0x1	1	4	0	%WinDir%\System32\LogFiles
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFileTruncateSize	LM/SmtpSvc		4004	0x1	1	1	4	0x1388000
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFilePeriod		LM/SmtpSvc		4003	0x1	1	1	4	0x1
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFilePluginOrder	LM/SmtpSvc		4011	0x1	1	2	0	{FF160663-DE82-11CF-BC0A-00AA006111E0}
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	NTAuthenticationProviders	LM/SmtpSvc	6032	0x1	1	2	0	NTLM
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	Authorization		LM/SmtpSvc		6000	0x1	1	1	4	0x7
+1	1	HKLM	System\CurrentControlSet\Services\NntpSvc\Parameters	AnonUserName		LM/SmtpSvc		6020	0x1	2	2	0	IUSR_%__MACHINENAME%
+0	1	HKLM	System							None			LM/SMtpSvc		36922	0x1	1	2	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc		36923	0x1	1	2	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc		36920	0x1	100	5	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc		36871	0x1	1	1	4	0x14
+0	1	HKLM	System							None			LM/SMtpSvc		36930	0x1	1	2	0	%__MAILROOT%\SortTemp
+0	1	HKLM	System							None			LM/SMtpSvc		36931	0x1	1	1	4	1
+0	1	HKLM	System							None			LM/SMtpSvc		36973	0x1	1	1	4	1
+0	1	HKLM	System							None			LM/SMtpSvc		36970	0x1	2	3	0	18000080200000803c00008044000080010000004c00000000000000000000000100000001000000020000000200000004000000000000004c00008000000000000000000000000000000000ffffffff00000000
+;0	1	HKLM	System							None			LM/SMtpSvc		6019	0x1	2	3	0	18000080200000803c00008044000080010000004c00000000000000000000000100000001000000020000000200000004000000000000004c00008000000000000000000000000000000000ffffffff00000000
+0	1	HKLM	System							None			LM/SmtpSvc/Info		4012	0x1	1	2	0	%__SMTP_LOG_FILE_FORMATS%
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogType			LM/SmtpSvc/1		4000	0x1	1	1	4	0x1
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFileDirectory	LM/SmtpSvc/1		4001	0x1	1	4	0	%WinDir%\System32\LogFiles
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFileTruncateSize	LM/SmtpSvc/1		4004	0x1	1	1	4	0x1388000
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	LogFilePeriod		LM/SmtpSvc/1		4003	0x1	1	1	4	0x1
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	ConnectionTimeOut	LM/SmtpSvc/1		1013	0x1	1	1	4	0x258
+0	1	HKLM	System							None			LM/SMtpSvc/1		1016	0x1	2	1	4	0x4
+0	1	HKLM	System							None			LM/SMtpSvc/1		1099	0x1	2	1	4	0x0
+0	1	HKLM	System							None			LM/SMtpSvc/1		1015	0x1	1	2	0	%__SMTP_DEFAULT_SITE_NAME%
+0	1	HKLM	System							None			LM/SMtpSvc/1		1023	0x1	1	5	0	:25:
+0	1	HKLM	System							None			LM/SMtpSvc/1		2021	0x1	1	5	0	:465:
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MailPickupDir		LM/SMtpSvc/1		36880	0x1	1	2	0	%__MAILROOT%\Pickup
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MailQueueDir		LM/SMtpSvc/1		36875	0x1	1	2	0	%__MAILROOT%\Queue
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	BadMailDir		LM/SMtpSvc/1		36909	0x1	1	2	0	%__MAILROOT%\Badmail
+1	1	HKLM	System\CurrentControlSet\Services\SmtpSvc\Parameters	MailDropDir		LM/SMtpSvc/1		36882	0x1	1	2	0	%__MAILROOT%\Drop
+0	1	HKLM	System							None			LM/SMtpSvc/1		36918	0x1	1	1	4	0xc
+0	1	HKLM	System							None			LM/SMtpSvc/1		36929	0x1	1	1	4	0x1d1
+0	1	HKLM	System							None			LM/SMtpSvc/1		36914	0x1	1	1	4	0x19
+0	1	HKLM	System							None			LM/SMtpSvc/1		36925	0x1	1	1	4	0x0
+0	1	HKLM	System							None			LM/SMtpSvc/1		36922	0x1	1	2	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc/1		36923	0x1	1	2	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc/1		36912	0x1	1	2	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc/1		36920	0x1	100	5	0	%__EMPTY%
+0	1	HKLM	System							None			LM/SMtpSvc/1		36871	0x1	1	1	4	0x14
+; Web admin virtual dir
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6016	0x1	2	1	4	205
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6000	0x1	2	1	4	4
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		1099	0x1	1	1	4	0
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		3001	0x1	2	2	0	%__INETPUB%\Mail
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		2100	0x1	100	1	4	4
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		1002	0x1	1	2	0	IIsWebVirtualDir
+; Deny access for all in Web admin
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6019	0x1	2	3	0	18000080200000803c00008044000080010000004c00000000000000000000000100000001000000020000000200000004000000000000004c00008000000000000000000000000000000000ffffffff7f000001
+; ADSI keys
+0	1	HKLM	System							None			LM/SMtpSvc			1002	0x1	1	2	0	IIsSmtpService
+0	1	HKLM	System							None			LM/SMtpSvc/Info			1002	0x1	1	2	0	IIsInfo
+0	1	HKLM	System							None			LM/SMtpSvc/1			1002	0x1	1	2	0	IIsSmtpServer
+0	1	HKLM	System							None			LM/SMtpSvc/1/Sessions		1002	0x1	1	2	0	IIsSmtpSessions
+0	1	HKLM	System							None			LM/SMtpSvc/1/Root		1002	0x1	1	2	0	IIsSmtpVirtualDir
+0	1	HKLM	System							None			LM/SMtpSvc/1/Root/Mailbox	1002	0x1	1	2	0	IIsSmtpVirtualDir
+0	1	HKLM	System							None			LM/SMtpSvc/1/Alias		1002	0x1	1	2	0	IIsSmtpAlias
+0	1	HKLM	System							None			LM/SMtpSvc/1/User		1002	0x1	1	2	0	IIsSmtpUser
+0	1	HKLM	System							None			LM/SMtpSvc/1/DL			1002	0x1	1	2	0	IIsSmtpDL
+0	1	HKLM	System							None			LM/SMtpSvc/1/Domain		1002	0x1	1	2	0	IIsSmtpDomain
+
+[SMTP_REG_FRESH]
+0	1	HKLM	System							None			LM/SMtpSvc/1		36910	0x1	100	5	0	szDataDirectory%__EQUALS%%__MAILROOT%\Route
+0	1	HKLM	System							None			LM/SmtpSvc/1/Root/Mailbox	6016	0x1	2	1	4	0x3
+0	1	HKLM	System							None			LM/SmtpSvc/1/Root/Mailbox	3001	0x1	2	2	0	%__MAILROOT%\Mailbox
+
+[SMTP_REG_B2_UPGRADE]
+; Web admin virtual dir
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6016	0x1	2	1	4	205
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6000	0x1	2	1	4	4
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		1099	0x1	1	1	4	0
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		3001	0x1	2	2	0	%__INETPUB%\Mail
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		2100	0x1	100	1	4	4
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		1002	0x1	1	2	0	IIsWebVirtualDir
+; Deny access for all in Web admin
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6019	0x1	2	3	0	18000080200000803c00008044000080010000004c00000000000000000000000100000001000000020000000200000004000000000000004c00008000000000000000000000000000000000ffffffff7f000001
+; ADSI keys
+0	1	HKLM	System							None			LM/SMtpSvc			1002	0x1	1	2	0	IIsSmtpService
+0	1	HKLM	System							None			LM/SMtpSvc/Info			1002	0x1	1	2	0	IIsInfo
+0	1	HKLM	System							None			LM/SmtpSvc/Info			4012	0x1	1	2	0	%__SMTP_LOG_FILE_FORMATS%
+0	1	HKLM	System							None			LM/SMtpSvc/1			1002	0x1	1	2	0	IIsSmtpServer
+0	1	HKLM	System							None			LM/SMtpSvc/1/Sessions		1002	0x1	1	2	0	IIsSmtpSessions
+0	1	HKLM	System							None			LM/SMtpSvc/1/Root		1002	0x1	1	2	0	IIsSmtpVirtualDir
+0	1	HKLM	System							None			LM/SMtpSvc/1/Root/Mailbox	1002	0x1	1	2	0	IIsSmtpVirtualDir
+0	1	HKLM	System							None			LM/SMtpSvc/1/Alias		1002	0x1	1	2	0	IIsSmtpAlias
+0	1	HKLM	System							None			LM/SMtpSvc/1/User		1002	0x1	1	2	0	IIsSmtpUser
+0	1	HKLM	System							None			LM/SMtpSvc/1/DL			1002	0x1	1	2	0	IIsSmtpDL
+0	1	HKLM	System							None			LM/SMtpSvc/1/Domain		1002	0x1	1	2	0	IIsSmtpDomain
+
+
+[POP3_REG]
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	NTAuthenticationProviders	LM/Pop3Svc			6032	0x1	1	2	0	NTLM
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	Authorization			LM/Pop3Svc			6000	0x1	1	1	4	0x7
+0	1	HKLM	System							None				LM/Pop3Svc/Info			4012	0x1	1	2	0	%__SMTP_LOG_FILE_FORMATS%
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	LogType				LM/Pop3Svc/1			4000	0x1	1	1	4	0x1
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	LogFileDirectory		LM/Pop3Svc/1			4001	0x1	1	4	0	%WinDir%\System32\LogFiles
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	LogFileTruncateSize		LM/Pop3Svc/1			4004	0x1	1	1	4	0x1388000
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	LogFilePeriod			LM/Pop3Svc/1			4003	0x1	1	1	4	0x1
+0	1	HKLM	System							None				LM/Pop3Svc/1			1015	0x1	1	2	0	%__POP3_DEFAULT_SITE_NAME%
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	RoutingDll			LM/Pop3Svc/1			41177	0x1	1	2	0	%WinDir%\System32\inetsrv\routeldp.dll
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	ExpireMail			LM/Pop3Svc/1/Root/Mailroot	40960	0x1	1	1	4	0x0
+1	1	HKLM	System\CurrentControlSet\Services\Pop3Svc\Parameters	ExpireMsgHours			LM/Pop3Svc/1/Root/Mailroot	40961	0x1	1	1	4	0xffffffff
+; Web admin virtual dir
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6016	0x1	2	1	4	205
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		6000	0x1	2	1	4	4
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		1099	0x1	1	1	4	0
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		3001	0x1	2	2	0	%__INETPUB%\Mail
+0	1	HKLM	System							None			LM/W3Svc/1/Root/Mail		2100	0x1	100	1	4	4
+; ADSI Keys
+0	1	HKLM	System							None			LM/Pop3Svc			1002	0x1	1	2	0	IIsPop3Service
+0	1	HKLM	System							None			LM/Pop3Svc/Info			1002	0x1	1	2	0	IIsInfo
+0	1	HKLM	System							None			LM/Pop3Svc/1			1002	0x1	1	2	0	IIsPop3Server
+0	1	HKLM	System							None			LM/Pop3Svc/1/Sessions		1002	0x1	1	2	0	IIsPop3Sessions
+0	1	HKLM	System							None			LM/Pop3Svc/1/Root		1002	0x1	1	2	0	IIsPop3VirtualDir
+0	1	HKLM	System							None			LM/Pop3Svc/1/Root/Mailroot	1002	0x1	1	2	0	IIsPop3VirtualDir
+
+[POP3_REG_FRESH]
+0	1	HKLM	System							None				LM/Pop3Svc/1			41181	0x1	1	1	4	0x0
+0	1	HKLM	System							None				LM/Pop3Svc/1/RoutingSources	41174	0x1	1	5	0	szDataDirectory%__EQUALS%%__MAILROOT%\Route
+1	1	HKLM	System							None				LM/Pop3Svc/1/Root/Mailbox	6016	0x1	2	1	4	0x3
+1	1	HKLM	System							None				LM/Pop3Svc/1/Root/Mailbox	3001	0x1	2	2	0	%__MAILROOT%\Mailbox
+
+
+; =========================================================================
+; This section contains a list of all controls that have to be registered
+;
+; The format is as follows:
+; <Full path to Control (DLL/OCX)>	environment variables will be expanded
+;
+; The following environment variables will be pre-set:
+; %__SYSDIR__%		The system32 directory
+; %__INETSRV__%		The main inetsrv directory
+;
+[SMTP_REGISTER]
+%__INETSRV%\smtpadm.dll
+%__INETSRV%\smtpsnap.dll
+%__INETSRV%\seo.dll
+%__INETSRV%\seos.dll
+%__SYSDIR%\inetcomm.dll
+%__SYSDIR%\cdonts.dll
+
+
+[SMTP_UNREGISTER]
+%__INETSRV%\smtpadm.dll
+%__INETSRV%\smtpsnap.dll
+%__SYSDIR%\cdonts.dll
+
+
+; =========================================================================
+; This section contains a list of all files to remove for a MCIS 1.0 to K2
+; upgrade
+;
+[iis_smtp_mcis10_system]
+
+
+,,,0x20
+;*** BEGIN **********************************************************
+;**                                                                **
+;** Automatically generated on: Fri Jan 23 10:57:09 1998           **
+;**                                                                **
+;** Diamond Version: (32) 1.00.0540 (02/01/96)                     **
+;**                                                                **
+;*** BEGIN **********************************************************
+;LAYOUT.INF
+;Disk Layout file for Microsoft IIS Setup
+;Copyright (c) 1993-1997 Microsoft Corporation
+
+[version]
+signature="$Windows NT$"
+SetupClass=BASE
+
+
+[SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+0="Microsoft IIS CD-ROM","",0
+1="Microsoft IIS CD-ROM","ims.cab",0
+[SourceDisksFiles]
+;<file> = <cabinet number>,<subdir>,<size>
+;Note: File is not in a cabinet if cab# is 0
+
+gapi32.dll=1,,92944
+msoert.dll=1,,61072
+inetcomm.dll=1,,339216
+exstrace.dll=1,,15632
+mimefilt.dll=1,,28432
+cdonts.dll=1,,277776
+adsiisex.dll=1,,12048
+dt_ctrl.dll=1,,19728
+rwnh.dll=1,,11024
+seo.dll=1,,325392
+seos.dll=1,,28432
+jpudll.dll=1,,15120
+smtpsvc.dll=1,,459536
+smtpsnap.dll=1,,433424
+smtpadm.dll=1,,202512
+mboxapi.dll=1,,55568
+smtpkey.dll=1,,44816
+regtrace.exe=1,,41504
+smtpapi.dll=1,,20240
+smtpctrs.dll=1,,14096
+abmsg.dll=1,,8976
+smtpctrs.ini=1,,97125
+smtpctrs.h=1,,4219
+smtpcfg.hlp=1,,29331
+smtpsnap.hlp=1,,63029
+smtpsnap.cnt=1,,344
+mail.hhc=1,,22982
+mail.hhk=1,,31597
+moc01.htm=1,,2973
+moc02.htm=1,,2848
+moc02_1.htm=1,,3264
+moc02_2.htm=1,,6410
+moc02_3.htm=1,,5757
+moc04.htm=1,,3528
+moc04_1.htm=1,,1639
+moc04_10.htm=1,,1642
+moc04_11.htm=1,,2251
+moc04_14.htm=1,,1938
+moc04_15.htm=1,,1929
+moc04_16.htm=1,,3130
+moc04_17.htm=1,,3581
+moc04_18.htm=1,,3488
+moc04_19.htm=1,,2750
+moc04_2.htm=1,,4022
+moc04_20.htm=1,,2371
+moc04_21.htm=1,,2276
+moc04_22.htm=1,,2596
+moc04_23.htm=1,,3592
+moc04_24.htm=1,,3637
+moc04_25.htm=1,,2454
+moc04_26.htm=1,,1854
+moc04_27.htm=1,,3692
+moc04_28.htm=1,,2612
+moc04_29.htm=1,,2393
+moc04_3.htm=1,,1971
+moc04_30.htm=1,,2864
+moc04_31.htm=1,,2493
+moc04_32.htm=1,,2812
+moc04_33.htm=1,,2623
+moc04_34.htm=1,,2168
+moc04_35.htm=1,,1963
+moc04_36.htm=1,,2888
+moc04_37.htm=1,,2981
+moc04_38.htm=1,,2256
+moc04_39.htm=1,,4464
+moc04_4.htm=1,,1828
+moc04_40.htm=1,,2344
+moc04_41.htm=1,,2977
+moc04_42.htm=1,,2130
+moc04_43.htm=1,,3149
+moc04_44.htm=1,,4018
+moc04_45.htm=1,,1537
+moc04_46.htm=1,,1834
+moc04_47.htm=1,,1693
+moc04_48.htm=1,,3091
+moc04_49.htm=1,,1773
+moc04_5.htm=1,,2024
+moc04_50.htm=1,,2272
+moc04_51.htm=1,,2111
+moc04_52.htm=1,,2083
+moc04_53.htm=1,,2267
+moc04_54.htm=1,,4522
+moc04_55.htm=1,,1303
+moc04_56.htm=1,,2097
+moc04_57.htm=1,,3558
+moc04_58.htm=1,,2254
+moc04_6.htm=1,,1824
+moc04_7.htm=1,,1772
+moc04_8.htm=1,,2290
+moc04_9.htm=1,,1643
+moc07.htm=1,,2305
+moc07_1.htm=1,,2860
+moc07_10.htm=1,,2718
+moc07_11.htm=1,,2058
+moc07_12.htm=1,,2844
+moc07_13.htm=1,,1936
+moc07_14.htm=1,,2921
+moc07_15.htm=1,,3666
+moc07_16.htm=1,,2859
+moc07_17.htm=1,,4300
+moc07_18.htm=1,,4333
+moc07_19.htm=1,,2946
+moc07_2.htm=1,,2297
+moc07_20.htm=1,,2192
+moc07_21.htm=1,,3326
+moc07_22.htm=1,,3394
+moc07_23.htm=1,,2995
+moc07_24.htm=1,,2753
+moc07_3.htm=1,,2706
+moc07_4.htm=1,,3804
+moc07_5.htm=1,,1899
+moc07_6.htm=1,,2574
+moc07_7.htm=1,,2464
+moc07_8.htm=1,,3639
+moc07_9.htm=1,,2861
+moc08.htm=1,,2081
+moc08_1.htm=1,,4258
+moc08_10.htm=1,,1786
+moc08_11.htm=1,,1707
+moc08_12.htm=1,,1704
+moc08_13.htm=1,,1707
+moc08_14.htm=1,,1841
+moc08_15.htm=1,,1517
+moc08_2.htm=1,,1902
+moc08_3.htm=1,,2079
+moc08_4.htm=1,,3182
+moc08_5.htm=1,,2199
+moc08_6.htm=1,,1713
+moc08_7.htm=1,,1479
+moc08_8.htm=1,,2713
+moc08_9.htm=1,,1800
+moc10_1.htm=1,,1965
+moc10_2.htm=1,,3096
+moc10_3.htm=1,,2948
+moc10_4.htm=1,,3952
+mrc01.htm=1,,5641
+mrc01_1.htm=1,,1253
+mrc01_2.htm=1,,1253
+mrc01_3.htm=1,,1253
+mrc01_4.htm=1,,1265
+mrc02.htm=1,,2779
+mrc02_1.htm=1,,2805
+mrc02_2.htm=1,,4936
+mrc02_3.htm=1,,3718
+mrc02_4.htm=1,,1253
+mrc02_5.htm=1,,1253
+mrc02_6.htm=1,,1253
+mrc02_7.htm=1,,1265
+mrc03.htm=1,,3639
+mrc03_1.htm=1,,6748
+mrc03_10.htm=1,,1253
+mrc03_11.htm=1,,1254
+mrc03_2.htm=1,,3206
+mrc03_3.htm=1,,8489
+mrc03_4.htm=1,,8810
+mrc03_5.htm=1,,4148
+mrc03_6.htm=1,,5323
+mrc03_7.htm=1,,31990
+mrc03_8.htm=1,,1253
+mrc03_9.htm=1,,1253
+mrc06.htm=1,,2556
+mrc06_1.htm=1,,11681
+mrc06_2.htm=1,,1253
+mrc06_3.htm=1,,1253
+mrc06_4.htm=1,,1253
+mrc06_5.htm=1,,1265
+mrc07.htm=1,,7093
+mrc07_1.htm=1,,28003
+mrc07_2.htm=1,,1253
+mrc07_3.htm=1,,1253
+mrc07_4.htm=1,,1253
+mrc07_5.htm=1,,1265
+refwelcm.htm=1,,3207
+xmo_01.gif=1,,2930
+xmo_02.gif=1,,3372
+xmo_03.gif=1,,4703
+xmo_04.gif=1,,5210
+xmo_05.gif=1,,979
+xmo_06.gif=1,,1033
+xmo_07.gif=1,,11073
+xmo_08.gif=1,,19420
+xmo_09.gif=1,,889
+xmo_10.gif=1,,856
+xmo_11.gif=1,,896
+xmo_12.gif=1,,874
+xmo_b01.gif=1,,8350
+xmo_b02.gif=1,,8350
+global.asa=1,,286
+blank.htm=1,,58
+default.htm=1,,142
+nre.asp=1,,2400
+nyi.htm=1,,159
+smabout.asp=1,,1444
+smaccess.asp=1,,10019
+smadv.asp=1,,1089
+smadvbd.asp=1,,1632
+smadved.asp=1,,7697
+smadvhd.asp=1,,16876
+smadvls.asp=1,,7860
+smau.asp=1,,8686
+smbld.asp=1,,5799
+smchklen.htm=1,,498
+smcomm.asp=1,,7528
+smcon.asp=1,,1645
+smconn.asp=1,,3533
+smdel.asp=1,,12683
+smdistb.asp=1,,4080
+smdom.asp=1,,716
+smdomed.asp=1,,35570
+smdomhd.asp=1,,11149
+smdomls.asp=1,,1485
+smeredir.asp=1,,389
+smerrors.asp=1,,4702
+smfpop.asp=1,,829
+smgetval.htm=1,,358
+smhd.asp=1,,3033
+smisfull.htm=1,,253
+smisnum.htm=1,,361
+smlist.asp=1,,592
+smmes.asp=1,,13696
+smmnu.asp=1,,21510
+smmnums.asp=1,,2263
+smmnuns.asp=1,,2053
+smmnus.asp=1,,595
+smosec.asp=1,,12805
+smpop.asp=1,,230
+smpophd.asp=1,,225
+smredir.asp=1,,1594
+smsec.asp=1,,3397
+smser.asp=1,,16833
+smses.asp=1,,712
+smseshd.asp=1,,8168
+smsesls.asp=1,,2282
+smsetval.htm=1,,390
+smslist.asp=1,,938
+smsrv.asp=1,,4380
+smstat.asp=1,,734
+smtl.asp=1,,10954
+smtp.asp=1,,3344
+smtree.asp=1,,7995
+smvs.asp=1,,10528
+srtb.asp=1,,2060
+version.htm=1,,60
+_cnst.asp=1,,338
+resume.htm=1,,964
+sec128.htm=1,,1681
+secchan.htm=1,,1525
+sesdall.htm=1,,1115
+sesdisc.htm=1,,1151
+sesfrom.htm=1,,931
+sesnext.htm=1,,937
+sesprev.htm=1,,952
+sesrfrsh.htm=1,,1103
+sestime.htm=1,,958
+sesuser.htm=1,,978
+smadvh.htm=1,,4131
+smauh.htm=1,,4206
+smcommh.htm=1,,2292
+smdelh.htm=1,,4972
+smdomedh.htm=1,,3623
+smdomh.htm=1,,3081
+smmesh.htm=1,,4261
+smsech.htm=1,,1785
+smserh.htm=1,,3930
+smsesh.htm=1,,3870
+smsrvh.htm=1,,1411
+start.htm=1,,947
+stop.htm=1,,946
+temp.htm=1,,1060
+testfr.htm=1,,1001
+title.htm=1,,1084
+toc.htm=1,,4496
+tocframe.htm=1,,1099
+vsdesc.htm=1,,1131
+vsipaddr.htm=1,,1165
+welcome.htm=1,,2400
+dmremv.htm=1,,1055
+dmroute.htm=1,,1158
+dmtype.htm=1,,2045
+dmusessl.htm=1,,1690
+mbaddir.htm=1,,1771
+mbadto.htm=1,,1349
+mlimcon.htm=1,,1436
+mlimit.htm=1,,2318
+mmsgsize.htm=1,,1831
+mndrto.htm=1,,1325
+mreset.htm=1,,983
+msave.htm=1,,987
+msessize.htm=1,,1671
+pause.htm=1,,960
+props.htm=1,,2551
+refresh.htm=1,,1120
+dlmasq.htm=1,,1279
+dlmaxhop.htm=1,,1762
+dlmaxrt.htm=1,,1579
+dlqual.htm=1,,1710
+dlretint.htm=1,,1207
+dlrev.htm=1,,1451
+dlsmart.htm=1,,1812
+dlssl.htm=1,,1253
+dltype.htm=1,,1271
+dmadd.htm=1,,3533
+dmalias.htm=1,,1266
+dmaloc.htm=1,,1957
+dmaname.htm=1,,1570
+dmdefloc.htm=1,,1289
+dmdrop.htm=1,,1469
+dmedit.htm=1,,2785
+dmlocdom.htm=1,,1715
+dmname.htm=1,,1941
+dmremote.htm=1,,1675
+conlimit.htm=1,,1444
+connect.htm=1,,1118
+conport.htm=1,,1050
+contout.htm=1,,1242
+delete.htm=1,,993
+dlattmpt.htm=1,,1652
+auntcr.htm=1,,1307
+autls.htm=1,,1280
+auacct.htm=1,,1144
+auchacct.htm=1,,1480
+auchnt.htm=1,,1502
+auclear.htm=1,,1276
+aunoauth.htm=1,,1086
+auntacct.htm=1,,1177
+condir.htm=1,,1337
+colegal.htm=1,,2962
+mime.gif=1,,369
+mailbox.gif=1,,1018
+plusl.gif=1,,82
+popup.gif=1,,883
+radiooff.gif=1,,82
+radioon.gif=1,,84
+refr.gif=1,,880
+remv.gif=1,,881
+roll.gif=1,,899
+rte.gif=1,,300
+save.gif=1,,888
+slideron.gif=1,,148
+slidersp.gif=1,,166
+slidrend.gif=1,,176
+slidroff.gif=1,,182
+smallkey.gif=1,,126
+space.gif=1,,49
+stop.gif=1,,869
+tablcor.gif=1,,818
+tabline.gif=1,,49
+tabottom.gif=1,,49
+tabrcor.gif=1,,817
+tabrline.gif=1,,800
+tabs.gif=1,,583
+tabwdot.gif=1,,800
+tbasp.gif=1,,269
+tbasp0.gif=1,,273
+tbisapi.gif=1,,251
+tbother.gif=1,,157
+updir.gif=1,,149
+vbscript.gif=1,,1600
+vdir0.gif=1,,165
+vdir2.gif=1,,163
+vdir4.gif=1,,163
+vrsvrwiz.gif=1,,7667
+www0.gif=1,,225
+www2.gif=1,,167
+www4.gif=1,,224
+wwwprop.gif=1,,1515
+minus.gif=1,,75
+minusl.gif=1,,76
+new.gif=1,,869
+next.gif=1,,874
+off.gif=1,,205
+ok.gif=1,,897
+on.gif=1,,202
+open.gif=1,,880
+pause.gif=1,,877
+plus.gif=1,,81
+ismhd.gif=1,,3187
+key.gif=1,,224
+line.gif=1,,62
+loading.gif=1,,2609
+lock.gif=1,,139
+logo.gif=1,,1231
+gnicnew.gif=1,,869
+gnicnext.gif=1,,874
+gnicok.gif=1,,904
+gnicprev.gif=1,,877
+gnicrefr.gif=1,,880
+gnicremv.gif=1,,908
+gnicroll.gif=1,,906
+gnicsave.gif=1,,888
+gnictoc0.gif=1,,47
+gnictoc1.gif=1,,64
+gnictoc2.gif=1,,64
+gnicttl.gif=1,,837
+gnicup.gif=1,,860
+handshk.gif=1,,267
+help.gif=1,,893
+helpnote.gif=1,,130
+iisnav.gif=1,,15076
+iisttl.gif=1,,13033
+ism.gif=1,,1929
+ftpprop.gif=1,,1373
+globe.gif=1,,919
+gnback.gif=1,,9920
+gnicabou.gif=1,,229
+gniccncl.gif=1,,98
+gniccomg.gif=1,,152
+gniccoms.gif=1,,156
+gnicdis.gif=1,,170
+gnicdoc.gif=1,,879
+gnicdown.gif=1,,862
+gnicdsal.gif=1,,871
+gnicedit.gif=1,,149
+gnichelp.gif=1,,904
+gnickey.gif=1,,877
+gniclock.gif=1,,145
+gniclogo.gif=1,,1231
+about.gif=1,,914
+access.gif=1,,242
+back.gif=1,,1010
+bkclos.gif=1,,909
+bkopen.gif=1,,932
+black.gif=1,,832
+blank.gif=1,,65
+blankl.gif=1,,66
+brws.gif=1,,880
+cert.gif=1,,156
+checkoff.gif=1,,80
+checkon.gif=1,,89
+cncl.gif=1,,880
+comp.gif=1,,129
+comp0.gif=1,,158
+comp1.gif=1,,158
+comp2.gif=1,,158
+comp3.gif=1,,127
+comp4.gif=1,,131
+cont.gif=1,,882
+custrecp.gif=1,,1133
+dir0.gif=1,,165
+dir2.gif=1,,165
+dir4.gif=1,,165
+distlist.gif=1,,1117
+doc.gif=1,,879
+drct.gif=1,,159
+edit.gif=1,,879
+folder.gif=1,,152
+ftp0.gif=1,,175
+ftp2.gif=1,,173
+ftp4.gif=1,,173
+;*** END ************************************************************
+;**                                                                **
+;** Automatically generated on: Fri Jan 23 10:57:09 1998           **
+;**                                                                **
+;*** END ************************************************************
+

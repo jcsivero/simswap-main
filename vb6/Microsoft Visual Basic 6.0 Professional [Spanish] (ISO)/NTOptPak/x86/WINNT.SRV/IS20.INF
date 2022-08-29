@@ -1,0 +1,1548 @@
+[Version]
+Signature= "$Windows NT$"
+
+;
+; Installation .inf for Index Server 2.0
+;
+; History: 1/21/97    dlee      Created
+;
+; Changes from 1.1 => 2.0:
+;  +   ixsso.dll copied
+;  +   ixsso object self-registered
+;  +   IFilters self-register instead of setup code doing it
+;  +   cisvc.exe copied
+;  +   cisvc service added
+;  +   put default catalog in registry
+;  +   start cisvc at end of install
+;  +   rm old reg params
+;  +   add new reg params
+;  +   new ixsso samples
+;      new idq/htx samples
+;      search for all catalogs and put them in the registry?
+;
+
+;
+; This list of optional components is presented to the user
+; for selection
+;
+[Optional Components]
+indexsrv
+indexsrv_system
+indexsrv_language
+indexsrv_samples
+indexsrv_onlinedoc
+indexsrv_language_english_us
+indexsrv_language_english_uk
+indexsrv_language_french_french
+indexsrv_language_german_german
+indexsrv_language_italian_italian
+indexsrv_language_swedish_default
+indexsrv_language_spanish_modern
+indexsrv_language_dutch_dutch
+indexsrv_language_japanese_default
+
+[indexsrv]
+OptionDesc = %indexsrvOptionDesc%
+Tip = %indexsrvTip%
+IconIndex = 28
+ISVersionMajor = 2
+ISVersionMinor = 0
+
+[indexsrv_system]
+OptionDesc = %indexsrv_systemOptionDesc%
+Tip = %indexsrv_systemTip%
+Parent = indexsrv
+CopyFiles = ISSharedSystemFiles, ISFiles, ISAdminHTMFiles, ISAdminIDQFiles, ISSSOFiles, ISPerfFiles
+AddReg = ISReg, ISReg.Performance, indexsrv_language_neutral_reg, ISReg.ErrorFiles
+IconIndex = 28
+MyUninstall = uninstall_indexsrv_system
+DelFiles = ISOldUrlFiles, ISFilterDelFiles, ISVer1AdminHTMFiles, ISVer1AdminIDQFiles, ISVer1HelpFiles, ISOldStartMenuFiles
+AddService = cisvc, 0, indexsrv_cisvc
+Needs = iis_www
+Modes=0,1,3
+
+[indexsrv_pdffilter]
+CopyFiles = ISPDFFiles
+
+[indexsrv_cisvc]
+DisplayName = %cisvcDisplayName%
+; share-process so system logon is enforced + interactive
+ServiceType = 288
+StartType = 2
+ErrorControl = 1
+ServiceBinary = %11%\cisvc.exe
+Dependencies = RPCSS
+
+[uninstall_indexsrv_system]
+DelFiles = ISFiles, ISAdminHTMFiles, ISAdminIDQFiles, ISSSOFiles, ISPerfFiles, ISPDFFiles
+DelReg = UninstallISReg, UninstallISReg.Performance, uninstall_indexsrv_language_neutral_reg, UninstallISReg.HTMLClsids
+DelService = cisvc
+
+[indexsrv_samples]
+OptionDesc = %indexsrv_samplesOptionDesc%
+Tip = %indexsrv_samplesTip%
+Parent = indexsrv
+IconIndex = 32
+CopyFiles = ISSampleHTMFiles, ISSampleIDQFiles, ISSampleOOPFiles, ISASPSampleFiles
+DelFiles  = ISDeleteHtwFiles
+MyUninstall = uninstall_indexsrv_samples
+Needs = indexsrv_system
+Modes=0,1,3
+
+[ISDeleteHtwFiles]
+qsumrhit.htw
+qfullhit.htw
+
+[uninstall_indexsrv_samples]
+DelFiles = ISSampleHTMFiles, ISSampleIDQFiles, ISSampleOOPFiles, ISASPSampleFiles
+
+[indexsrv_onlinedoc]
+OptionDesc = %indexsrv_onlinedocOptionDesc%
+Tip = %indexsrv_onlinedocTip%
+Parent = indexsrv
+IconIndex = 49
+CopyFiles = ISWinHelpFiles, ISHelpFiles, ISHelpNonIndexedFiles
+MyUninstall = uninstall_indexsrv_onlinedoc
+Needs = indexsrv_system
+Modes=0,1,3
+
+[uninstall_indexsrv_onlinedoc]
+DelFiles = ISWinHelpFiles, ISHelpFiles, ISHelpNonIndexedFiles
+
+[indexsrv_language]
+OptionDesc = %indexsrv_languageOptionDesc%
+Tip = %indexsrv_languageTip%
+Parent = indexsrv
+IconIndex = 50
+
+[indexsrv_language_english_us]
+OptionDesc = %indexsrv_language_english_usOptionDesc%
+Tip = %indexsrv_language_english_usTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_english_us_files
+AddReg = indexsrv_language_english_us_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_english_us
+LanguageName=English_US
+
+[uninstall_indexsrv_language_english_us]
+DelFiles = indexsrv_language_english_us_files
+DelReg = uninstall_indexsrv_language_english_us_reg
+
+[indexsrv_language_english_uk]
+OptionDesc = %indexsrv_language_english_ukOptionDesc%
+Tip = %indexsrv_language_english_ukTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_english_uk_files
+AddReg = indexsrv_language_english_uk_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_english_uk
+LanguageName=English_UK
+
+[uninstall_indexsrv_language_english_uk]
+DelFiles = indexsrv_language_english_uk_files
+DelReg = uninstall_indexsrv_language_english_uk_reg
+
+[indexsrv_language_french_french]
+OptionDesc = %indexsrv_language_french_frenchOptionDesc%
+Tip = %indexsrv_language_french_frenchTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_french_french_files
+AddReg = indexsrv_language_french_french_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_french_french
+LanguageName=French_French
+
+[uninstall_indexsrv_language_french_french]
+DelFiles = indexsrv_language_french_french_files
+DelReg = uninstall_indexsrv_language_french_french_reg
+
+[indexsrv_language_german_german]
+OptionDesc = %indexsrv_language_german_germanOptionDesc%
+Tip = %indexsrv_language_german_germanTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_german_german_files
+AddReg = indexsrv_language_german_german_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_german_german
+LanguageName=German_German
+
+[uninstall_indexsrv_language_german_german]
+DelFiles = indexsrv_language_german_german_files
+DelReg = uninstall_indexsrv_language_german_german_reg
+
+[indexsrv_language_italian_italian]
+OptionDesc = %indexsrv_language_italian_italianOptionDesc%
+Tip = %indexsrv_language_italian_italianTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_italian_italian_files
+AddReg = indexsrv_language_italian_italian_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_italian_italian
+LanguageName=Italian_Italian
+
+[uninstall_indexsrv_language_italian_italian]
+DelFiles = indexsrv_language_italian_italian_files
+DelReg = uninstall_indexsrv_language_italian_italian_reg
+
+[indexsrv_language_swedish_default]
+OptionDesc = %indexsrv_language_swedish_defaultOptionDesc%
+Tip = %indexsrv_language_swedish_defaultTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_swedish_default_files
+AddReg = indexsrv_language_swedish_default_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_swedish_default
+LanguageName=Swedish_Default
+
+[uninstall_indexsrv_language_swedish_default]
+DelFiles = indexsrv_language_swedish_default_files
+DelReg = uninstall_indexsrv_language_swedish_default_reg
+
+[indexsrv_language_spanish_modern]
+OptionDesc = %indexsrv_language_spanish_modernOptionDesc%
+Tip = %indexsrv_language_spanish_modernTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_spanish_modern_files
+AddReg = indexsrv_language_spanish_modern_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_spanish_modern
+Modes=0,1,3
+LanguageName=Spanish_Modern
+
+[uninstall_indexsrv_language_spanish_modern]
+DelFiles = indexsrv_language_spanish_modern_files
+DelReg = uninstall_indexsrv_language_spanish_modern_reg
+
+[indexsrv_language_dutch_dutch]
+OptionDesc = %indexsrv_language_dutch_dutchOptionDesc%
+Tip = %indexsrv_language_dutch_dutchTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_dutch_dutch_files
+AddReg = indexsrv_language_dutch_dutch_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_dutch_dutch
+LanguageName=Dutch_Dutch
+
+[uninstall_indexsrv_language_dutch_dutch]
+DelFiles = indexsrv_language_dutch_dutch_files
+DelReg = uninstall_indexsrv_language_dutch_dutch_reg
+
+[indexsrv_language_japanese_default]
+OptionDesc = %indexsrv_language_japanese_defaultOptionDesc%
+Tip = %indexsrv_language_japanese_defaultTip%
+Parent = indexsrv_language
+IconIndex = 50
+CopyFiles = indexsrv_language_japanese_default_files
+AddReg = indexsrv_language_japanese_default_reg
+Needs = indexsrv_system
+;MyUninstall = uninstall_indexsrv_language_japanese_default
+LanguageName=Japanese_Default
+
+[uninstall_indexsrv_language_japanese_default]
+DelFiles = indexsrv_language_japanese_default_files
+DelReg = uninstall_indexsrv_language_japanese_default_reg
+
+;
+; Core system files
+;
+[ISFiles]
+idq.dll
+cidaemon.exe
+cisvc.exe
+webhits.dll
+ciadmin.dll
+ciadmin.msc
+
+;
+; Shared system & filter files, including html & office filters.
+;
+[ISSharedSystemFiles]
+query.dll
+qperf.dll
+noise.dat
+nlhtml.dll
+offfilt.dll
+msidxs.dll
+
+;
+; Perf files that only live during install
+;
+[ISPerfFiles]
+ciperfm.h
+filtperf.h
+perfci.ini
+perffilt.ini
+perfwci.h
+perfwci.ini
+
+;
+; Index Server SSO-related files
+;
+[ISSSOFiles]
+ixsso.dll
+
+;
+; Filter related files to remove.
+;
+[ISFilterDelFiles]
+lcdetect.dat
+lcdetect.dll
+
+[ISPDFFiles]
+pdffilt.dll
+
+[ISSampleHTMFiles]
+default.htm
+fastq.htm
+hilight.gif
+is2bkgnd.gif
+is2logo.gif
+is2side.gif
+is2style.css
+ie.gif
+ixqlang.htm
+ixserver.doc
+ixserver.ppt
+ixserver.xls
+ixgerman.doc
+ixtiphlp.htm
+ixtipsql.htm
+ixtrasp.asp
+navbar.htm
+nts_iis.gif
+query.htm
+rankbtn1.gif
+rankbtn2.gif
+rankbtn3.gif
+rankbtn4.gif
+rankbtn5.gif
+sqlqhit.htm
+
+[ISSampleIDQFiles]
+deferror.htx
+fastq.htx
+fastq.idq
+htxerror.htx
+idqerror.htx
+query.htx
+query.idq
+reserror.htx
+
+[ISSampleOOPFiles]
+qsumrhit.htw
+qfullhit.htw
+
+[ISAdminHTMFiles]
+admin.htm
+ie.gif
+is2admin.css
+is2foot.inc
+is2logo.gif
+is2side.gif
+navbara.htm
+nts_iis.gif
+
+[ISASPSampleFiles]
+adovbs.inc
+advquery.asp
+advsqlq.asp
+is2foot.inc
+query.asp
+sqlqhit.asp
+
+[ISAdminIDQFiles]
+merge.ida
+scan.ida
+scan.idq
+scan.htx
+state.htx
+state.ida
+unfilt.idq
+unfilt.htx
+
+[ISHelpNonIndexedFiles]
+
+[ISWinHelpFiles]
+ixhelp.hlp
+
+[ISHelpFiles]
+ix20.gif
+ixadintr.htm
+ixadmcah.htm
+ixadmccc.htm
+ixadmchk.htm
+ixadmfmg.htm
+ixadmgbl.htm
+ixadmida.htm
+ixadmin.htm
+ixadmlgq.htm
+ixadmlod.htm
+ixadmmon.htm
+ixadmrdr.htm
+ixadmrvr.htm
+ixadmsvr.htm
+ixadmuff.htm
+ixadmvrt.htm
+ixaspexp.htm
+ixasphlp.htm
+ixaspqob.htm
+ixaspuob.htm
+ixbegfrm.htm
+ixbegidq.htm
+ixbegin.htm
+ixbegtst.htm
+ixcatalg.htm
+ixcatdef.htm
+ixcatpro.htm
+ixcatrmv.htm
+ixconfig.htm
+ixdeflt.htm
+ixerrasp.htm
+ixerrcor.htm
+ixerrcpc.htm
+ixerrdat.htm
+ixerrdnc.htm
+ixerrful.htm
+ixerrhan.htm
+ixerrhit.htm
+ixerrhlp.htm
+ixerrhtm.htm
+ixerrhtx.htm
+ixerridq.htm
+ixerrlfn.htm
+ixerrlog.htm
+ixerrsyn.htm
+ixfaq.htm
+ixfilcid.htm
+ixfilcnt.htm
+ixfildll.htm
+ixfilext.htm
+ixfilpri.htm
+ixfilter.htm
+ixfilwdn.htm
+ixform2.gif
+ixgerman.doc
+ixgloss.htm
+ixhitfcn.htm
+ixhitnew.htm
+ixhitres.htm
+ixhitsmp.htm
+ixhitsyn.htm
+ixhtxerr.htm
+ixhtxexc.htm
+ixhtxfmt.htm
+ixhtxhlp.htm
+ixhtxhtp.htm
+ixhtxidq.htm
+ixhtxnav.htm
+ixhtxpgs.htm
+ixhtxrec.htm
+ixhtxsyn.htm
+ixidqhlp.htm
+ixidqhtx.gif
+ixidqnam.htm
+ixidqpar.htm
+ixidqqry.htm
+ixidqvar.htm
+ixidxftr.htm
+ixindcah.htm
+ixindcnt.htm
+ixindex.htm
+ixindfin.htm
+ixindfle.htm
+ixindmer.htm
+ixindrec.htm
+ixindtyp.htm
+ixinstal.htm
+ixintro.htm
+ixlanbrw.htm
+ixlancod.htm
+ixlangs.htm
+ixlanovr.htm
+ixlanshp.htm
+ixlicnse.htm
+ixnew.htm
+ixproces.gif
+ixqrybol.htm
+ixqryexp.htm
+ixqryfre.htm
+ixqryfrm.htm
+ixqryftr.htm
+ixqryind.htm
+ixqrylan.htm
+ixqryprn.htm
+ixqrypvq.htm
+ixqryvec.htm
+ixqrywld.htm
+ixquery.htm
+ixref.htm
+ixremmwd.htm
+ixremmws.htm
+ixremnov.htm
+ixremote.htm
+ixrgscat.htm
+ixrgslan.htm
+ixrgslog.htm
+ixrgsman.htm
+ixrgstry.htm
+ixsample.htm
+ixscan.htm
+ixschbld.htm
+ixseado.htm
+ixseary.htm
+ixsebat.htm
+ixsecadm.htm
+ixsecath.htm
+ixseccfg.htm
+ixsecdac.htm
+ixsecdir.htm
+ixsecdis.htm
+ixsecint.htm
+ixsecmp.htm
+ixsecnt.htm
+ixsecprp.htm
+ixsecrvr.htm
+ixsecsaf.htm
+ixsecure.htm
+ixsecvrt.htm
+ixsecwpc.htm
+ixseerr.htm
+ixsefre.htm
+ixsefrm.htm
+ixsehith.htm
+ixselik.htm
+ixsemat.htm
+ixsenul.htm
+ixseob.htm
+ixseovr.htm
+ixserver.doc
+ixserver.ppt
+ixserver.xls
+ixsesel.htm
+ixseset.htm
+ixsetup.htm
+ixsevw.htm
+ixsewhr.htm
+ixsysreq.htm
+ixtour.htm
+ixtraddc.htm
+ixtradm.htm
+ixtrckin.htm
+ixtrcont.htm
+ixtrcqry.htm
+ixtrcrte.htm
+ixtrdone.htm
+ixtrlang.htm
+ixtrnum.htm
+ixtroub.htm
+ixtrout.htm
+ixtrprop.htm
+ixtrqfrm.htm
+ixtrreq.htm
+ixtrsasm.htm
+ixtrsasp.htm
+ixtrsasq.htm
+ixtrsasx.htm
+ixtrsecr.htm
+ixtrshtx.htm
+ixtrsidq.htm
+ixtrsmqy.htm
+ixtrsqry.htm
+ixtrust1.gif
+ixvarcgi.htm
+ixvaridq.htm
+ixvariso.htm
+ixvarloc.htm
+ixvarpbk.htm
+ixvarrov.htm
+ixvarstr.htm
+ixvarvfi.htm
+ixwebhit.htm
+
+[ISVer1AdminHTMFiles]
+admin.htm
+bestwith.gif
+book08.jpg
+home.gif
+powrbybo.gif
+
+[ISVer1AdminIDQFiles]
+admin.htx
+admin.ida
+admin.idq
+merge.ida
+hquery.idq
+hquery.htw
+hquery.htx
+scan.ida
+scan.idq
+scan.htx
+state.htx
+state.ida
+unfilt.idq
+unfilt.htx
+
+[ISVer1HelpFiles]
+active2.gif
+active6.gif
+active6a.gif
+active7.gif
+adminhlp.htm
+backgrd.gif
+bullet.gif
+cathlp.htm
+default.htm
+errhandl.htm
+errorhlp.htm
+faq.htm
+filtrhlp.htm
+front.htm
+glossary.htm
+htxhelp.htm
+idq-vars.htm
+idqhelp.htm
+idx_logo.gif
+indexhlp.htm
+install.htm
+intro.htm
+license.htm
+next.gif
+onepix.gif
+powered.gif
+previous.gif
+qrylang.htm
+queryhlp.htm
+reghelp.htm
+scanhlp.htm
+sechelp.htm
+tipshelp.htm
+toc.gif
+up.gif
+up_end.gif
+webhits.htm
+xag_e19.gif
+
+;
+; These old start menu items are deleted if they exist
+;
+[ISOldStartMenuFiles]
+%AdminFileName%
+%SampleQueryFileName%
+%OnlineDocFileName%
+%ReadmeFileName%
+
+
+;
+; These old url files are deleted if they exist
+;
+[ISOldUrlFiles]
+%SampleQueryFileName%
+%AdminFileName%
+%OnlineDocFileName%
+%ReadmeFileName%
+
+[indexsrv_language_english_us_files]
+wbcache.enu
+noise.enu
+wbdbase.enu
+infosoft.dll
+
+[indexsrv_language_english_us_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","Locale",0x10003,1033
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","NoiseFile",2,"noise.enu"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","StemmerClass",2,"{eeed4c20-7f1b-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","WBreakerClass",2,"{59e09780-8099-101b-8df3-00000b65c3b5}"
+HKCR,"CLSID\{59e09780-8099-101b-8df3-00000b65c3b5}","",2,"English_US Word Breaker Resources"
+HKCR,"CLSID\{59e09780-8099-101b-8df3-00000b65c3b5}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{eeed4c20-7f1b-11ce-be57-00aa0051fe20}","",2,"English_US Stemmer Resources"
+HKCR,"CLSID\{eeed4c20-7f1b-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_english_us_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","WBreakerClass"
+HKCR,"CLSID\{59e09780-8099-101b-8df3-00000b65c3b5}"
+HKCR,"CLSID\{eeed4c20-7f1b-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_english_uk_files]
+wbcache.eng
+noise.eng
+wbdbase.eng
+infosoft.dll
+
+[indexsrv_language_english_uk_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","Locale",0x10003,2057
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","NoiseFile",2,"noise.eng"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","StemmerClass",2,"{d99f7670-7f1a-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","WBreakerClass",2,"{59e097e4-8099-101b-8df3-00000b65c3b5}"
+HKCR,"CLSID\{59e097e4-8099-101b-8df3-00000b65c3b5}","",2,"English_UK Word Breaker Resources"
+HKCR,"CLSID\{59e097e4-8099-101b-8df3-00000b65c3b5}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{d99f7670-7f1a-11ce-be57-00aa0051fe20}","",2,"English_UK Stemmer Resources"
+HKCR,"CLSID\{d99f7670-7f1a-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_english_uk_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","WBreakerClass"
+HKCR,"CLSID\{59e097e4-8099-101b-8df3-00000b65c3b5}"
+HKCR,"CLSID\{d99f7670-7f1a-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_french_french_files]
+wbcache.fra
+noise.fra
+wbdbase.fra
+infosoft.dll
+
+[indexsrv_language_french_french_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","Locale",0x10003,1036
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","NoiseFile",2,"noise.fra"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","StemmerClass",2,"{2a6eb050-7f1c-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","WBreakerClass",2,"{59e09848-8099-101b-8df3-00000b65c3b5}"
+HKCR,"CLSID\{59e09848-8099-101b-8df3-00000b65c3b5}","",2,"French_French Word Breaker Resources"
+HKCR,"CLSID\{59e09848-8099-101b-8df3-00000b65c3b5}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{2a6eb050-7f1c-11ce-be57-00aa0051fe20}","",2,"French_French Stemmer Resources"
+HKCR,"CLSID\{2a6eb050-7f1c-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_french_french_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","WBreakerClass"
+HKCR,"CLSID\{59e09848-8099-101b-8df3-00000b65c3b5}"
+HKCR,"CLSID\{2a6eb050-7f1c-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_german_german_files]
+wbcache.deu
+noise.deu
+wbdbase.deu
+infosoft.dll
+
+[indexsrv_language_german_german_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","Locale",0x10003,1031
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","NoiseFile",2,"noise.deu"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","StemmerClass",2,"{510a4910-7f1c-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","WBreakerClass",2,"{9b08e210-e51b-11cd-bc7f-00aa003db18e}"
+HKCR,"CLSID\{9b08e210-e51b-11cd-bc7f-00aa003db18e}","",2,"German_German Word Breaker Resources"
+HKCR,"CLSID\{9b08e210-e51b-11cd-bc7f-00aa003db18e}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{510a4910-7f1c-11ce-be57-00aa0051fe20}","",2,"German_German Stemmer Resources"
+HKCR,"CLSID\{510a4910-7f1c-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_german_german_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","WBreakerClass"
+HKCR,"CLSID\{9b08e210-e51b-11cd-bc7f-00aa003db18e}"
+HKCR,"CLSID\{510a4910-7f1c-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_italian_italian_files]
+wbcache.ita
+noise.ita
+wbdbase.ita
+infosoft.dll
+
+[indexsrv_language_italian_italian_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","Locale",0x10003,1040
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","NoiseFile",2,"noise.ita"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","StemmerClass",2,"{6d36ce10-7f1c-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","WBreakerClass",2,"{fd86b5d0-12c6-11ce-bd31-00aa004bbb1f}"
+HKCR,"CLSID\{fd86b5d0-12c6-11ce-bd31-00aa004bbb1f}","",2,"Italian_Italian Word Breaker Resources"
+HKCR,"CLSID\{fd86b5d0-12c6-11ce-bd31-00aa004bbb1f}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{6d36ce10-7f1c-11ce-be57-00aa0051fe20}","",2,"Italian_Italian Stemmer Resources"
+HKCR,"CLSID\{6d36ce10-7f1c-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_italian_italian_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","WBreakerClass"
+HKCR,"CLSID\{fd86b5d0-12c6-11ce-bd31-00aa004bbb1f}"
+HKCR,"CLSID\{6d36ce10-7f1c-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_swedish_default_files]
+wbcache.sve
+noise.sve
+wbdbase.sve
+infosoft.dll
+
+[indexsrv_language_swedish_default_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","Locale",0x10003,1053
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","NoiseFile",2,"noise.sve"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","StemmerClass",2,"{9478f640-7f1c-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","WBreakerClass",2,"{01c6b350-12c7-11ce-bd31-00aa004bbb1f}"
+HKCR,"CLSID\{01c6b350-12c7-11ce-bd31-00aa004bbb1f}","",2,"Swedish_Default Word Breaker Resources"
+HKCR,"CLSID\{01c6b350-12c7-11ce-bd31-00aa004bbb1f}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{9478f640-7f1c-11ce-be57-00aa0051fe20}","",2,"Swedish_Default Stemmer Resources"
+HKCR,"CLSID\{9478f640-7f1c-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_swedish_default_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","WBreakerClass"
+HKCR,"CLSID\{01c6b350-12c7-11ce-bd31-00aa004bbb1f}"
+HKCR,"CLSID\{9478f640-7f1c-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_spanish_modern_files]
+wbcache.esn
+noise.esn
+wbdbase.esn
+infosoft.dll
+
+[indexsrv_language_spanish_modern_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","Locale",0x10003,3082
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","NoiseFile",2,"noise.esn"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","StemmerClass",2,"{b0516ff0-7f1c-11ce-be57-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","WBreakerClass",2,"{0285b5c0-12c7-11ce-bd31-00aa004bbb1f}"
+HKCR,"CLSID\{0285b5c0-12c7-11ce-bd31-00aa004bbb1f}","",2,"Spanish_Modern Word Breaker Resources"
+HKCR,"CLSID\{0285b5c0-12c7-11ce-bd31-00aa004bbb1f}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{b0516ff0-7f1c-11ce-be57-00aa0051fe20}","",2,"Spanish_Modern Stemmer Resources"
+HKCR,"CLSID\{b0516ff0-7f1c-11ce-be57-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_spanish_modern_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","WBreakerClass"
+HKCR,"CLSID\{0285b5c0-12c7-11ce-bd31-00aa004bbb1f}"
+HKCR,"CLSID\{b0516ff0-7f1c-11ce-be57-00aa0051fe20}"
+
+[indexsrv_language_dutch_dutch_files]
+wbcache.nld
+noise.nld
+wbdbase.nld
+infosoft.dll
+
+[indexsrv_language_dutch_dutch_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","Locale",0x10003,1043
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","NoiseFile",2,"noise.nld"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","StemmerClass",2,"{860d28d0-8bf4-11ce-be59-00aa0051fe20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","WBreakerClass",2,"{66b37110-8bf2-11ce-be59-00aa0051fe20}"
+HKCR,"CLSID\{66b37110-8bf2-11ce-be59-00aa0051fe20}","",2,"Dutch_Dutch Word Breaker Resources"
+HKCR,"CLSID\{66b37110-8bf2-11ce-be59-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+HKCR,"CLSID\{860d28d0-8bf4-11ce-be59-00aa0051fe20}","",2,"Dutch_Dutch Stemmer Resources"
+HKCR,"CLSID\{860d28d0-8bf4-11ce-be59-00aa0051fe20}\InprocServer32","",2,"infosoft.dll"
+
+[uninstall_indexsrv_language_dutch_dutch_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","WBreakerClass"
+HKCR,"CLSID\{66b37110-8bf2-11ce-be59-00aa0051fe20}"
+HKCR,"CLSID\{860d28d0-8bf4-11ce-be59-00aa0051fe20}"
+
+[indexsrv_language_japanese_default_files]
+nlgwbrkr.dll
+noise.jpn
+
+[indexsrv_language_japanese_default_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","Locale",0x10003,1041
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","NoiseFile",2,"noise.jpn"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","StemmerClass",2,"{CDBEAE30-D3DB-11CF-A0EE-00AA0051FE20}"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","WBreakerClass",2,"{CD169790-D3DB-11CF-A0EE-00AA006EA5F3}"
+HKCR,"CLSID\{cd169790-d3db-11cf-a0ee-00aa006ea5f3}","",2,"Japanese_Default Word Breaker Resources"
+HKCR,"CLSID\{cd169790-d3db-11cf-a0ee-00aa006ea5f3}\InprocServer32","",2,"nlgwbrkr.dll"
+HKCR,"CLSID\{cdbeae30-d3db-11cf-a0ee-00aa0051fe20}","",2,"Japanese_Default Stemmer Resources"
+HKCR,"CLSID\{cdbeae30-d3db-11cf-a0ee-00aa0051fe20}\InprocServer32","",2,"nlgwbrkr.dll"
+
+[uninstall_indexsrv_language_japanese_default_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","WBreakerClass"
+HKCR,"CLSID\{CD169790-D3DB-11CF-A0EE-00AA006EA5F3}"
+HKCR,"CLSID\{CDBEAE30-D3DB-11CF-A0EE-00AA0051FE20}"
+
+[indexsrv_language_neutral_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","Locale",0x10003,0
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","NoiseFile",2,"noise.dat"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","StemmerClass",2,""
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","WBreakerClass",2,"{369647e0-17b0-11ce-9950-00aa004bbb1f}"
+HKCR,"CLSID\{369647e0-17b0-11ce-9950-00aa004bbb1f}","",2,"Neutral Word Breaker Resources"
+HKCR,"CLSID\{369647e0-17b0-11ce-9950-00aa004bbb1f}\InprocServer32","",2,"query.dll"
+
+[uninstall_indexsrv_language_neutral_reg]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","Locale"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","NoiseFile"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","StemmerClass"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","WBreakerClass"
+HKCR,"CLSID\{369647e0-17b0-11ce-9950-00aa004bbb1f}"
+
+;
+; Error formatting files for all languages
+;
+[ISReg.ErrorFiles]
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_US","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\English_UK","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\French_French","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\German_German","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Italian_Italian","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Swedish_Default","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Spanish_Modern","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Dutch_Dutch","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Japanese_Default","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","ISAPIDefaultErrorFile",2,"/iissamples/issamples/DefError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","ISAPIRestrictionErrorFile",2,"/iissamples/issamples/ResError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","ISAPIIDQErrorFile",2,"/iissamples/issamples/IDQError.htx"
+HKLM,"system\currentcontrolset\control\ContentIndex\language\Neutral","ISAPIHTXErrorFile",2,"/iissamples/issamples/HTXError.htx"
+
+;
+; Registry params that aren't dependent on anything
+;
+[ISReg]
+HKLM,"system\currentcontrolset\control\ContentIndex","MajorVersion",0x10001,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MinorVersion",0x10001,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","ChangeNotificationInterval",0x10003,0x0000000F
+HKLM,"system\currentcontrolset\control\ContentIndex","DaemonResponseTimeout",0x10003,0x00000005
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterContents",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterDirectories",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterFilesWithUnknownExtensions",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterDelayInterval",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterMemory",0x10003,0x00000080
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterRemainingThreshold",0x10003,0x2
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterRetries",0x10003,0x00000004
+HKLM,"system\currentcontrolset\control\ContentIndex","FilterRetryInterval",0x10003,0x0000001E
+HKLM,"system\currentcontrolset\control\ContentIndex","ForcedNetPathScanInterval",0x10003,0x00000078
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxRecordsPerGetRows",0x10003,0x0000000A
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxRecordsInResultSet",0x10003,0x00001388
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiQueryCachePurgeInterval",0x10003,0x00000005
+HKLM,"system\currentcontrolset\control\ContentIndex","MasterMergeCheckpointInterval",0x10003,0x00000100
+HKLM,"system\currentcontrolset\control\ContentIndex","MasterMergeTime",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxDefaultFilter",0x10003,0x00000100
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFilesizeFiltered",0x10003,0x00000100
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFilesizeMultiplier",0x10003,0x00000008
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxIdealIndexes",0x10003,0x00000005
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxIndexes",0x10003,0x00000032
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxMergeInterval",0x10003,0x0000000a
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxPendingDocuments",0x10003,0x00000020
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxQueueChunks",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxQueryExecutionTime",0x10003,0x00002710
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxQueryTimeslice",0x10003,0x00000032
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxShadowFreeForceMerge",0x10003,0x000001F4
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxShadowIndexSize",0x10003,0x0000000f
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWebhitsCpuTime",0x10003,0x0000001E
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordlistSize",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinDiskFreeForceMerge",0x10003,0x0000000f
+HKLM,"system\currentcontrolset\control\ContentIndex","MinMergeIdleTime",0x10003,0x0000005a
+HKLM,"system\currentcontrolset\control\ContentIndex","MinSizeMergeWordlists",0x10003,0x00000400
+HKLM,"system\currentcontrolset\control\ContentIndex","MinWordlistMemory",0x10003,0x00000005
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWebhitsCpuTime",0x10003,0x0000000A
+HKLM,"system\currentcontrolset\control\ContentIndex","ThreadClassFilter",0x10003,0x00000040
+HKLM,"system\currentcontrolset\control\ContentIndex","ThreadPriorityFilter",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","ThreadPriorityMerge",0x10003,0xfffffffe
+HKLM,"system\currentcontrolset\control\ContentIndex","GenerateCharacterization",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCharacterization",0x10003,0x00000140
+HKLM,"system\currentcontrolset\control\ContentIndex","EventLogFlags",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","CiCatalogFlags",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsIndexingW3Svc",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","IsIndexingNNTPSvc",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsIndexingIMAPSvc",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","W3SvcInstance",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","NNTPSvcInstance",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","IMAPSvcInstance",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","RequestTimeout",0x10003,0x00002710
+HKLM,"system\currentcontrolset\control\ContentIndex","WebhitsDisplayScript",0x10003,0x00000001
+HKCR,"Licenses\CEDD4F80-B43C-11cf-837C-00AA00573EDE","",0x20000,"gxwaezucfyqpwjgqbcmtsncuhwsnyhiohwxz"
+
+HKLM,"system\currentcontrolset\Services\EventLog\Application\Ci","EventMessageFile",0x20000,"%SystemRoot%\System32\query.dll"
+HKLM,"system\currentcontrolset\Services\EventLog\Application\Ci","CategoryMessageFile",0x20000,"%SystemRoot%\System32\query.dll"
+HKLM,"system\currentcontrolset\Services\EventLog\Application\Ci","TypesSupported",0x10001,0x7
+HKLM,"system\currentcontrolset\Services\EventLog\Application\Ci","CategoryCount",0x10001,0x1
+
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWebhitsCpuTime",0x10003,0x0000000A
+HKLM,"system\currentcontrolset\control\ContentIndex","CiCatalogFlags",0x10003,0x00000000
+
+[UninstallISReg]
+HKLM,"system\currentcontrolset\control\ContentIndex"
+
+[UninstallIsQPerfReg]
+HKLM,"system\currentcontrolset\Services\EventLog\Application\Ci"
+
+;
+; Workstations won't have a big query load, and Index Server should stay
+; out of the way as much as possible, so tune the numbers low.
+;
+[IndexSrv_Workstation]
+AddReg = ISReg.Workstation
+
+[ISReg.Workstation]
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleQueryThreads",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveQueryThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFreshCount",0x10003,0x00001388
+HKLM,"system\currentcontrolset\control\ContentIndex","PropertyStoreMappedCache",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiRequestQueueSize",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleRequestThreads",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveRequestThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxSimultaneousRequests",0x10003,0x00000032
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCachedPipes",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordLists",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinimizeWorkingSet",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxEntriesInQueryCache",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRestrictionNodes",0x10003,0x00001388
+
+[IndexSrv_Small]
+AddReg = ISReg.Small
+
+[ISReg.Small]
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleQueryThreads",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveQueryThreads",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFreshCount",0x10003,0x00001388
+HKLM,"system\currentcontrolset\control\ContentIndex","PropertyStoreMappedCache",0x10003,0x00000010
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiRequestQueueSize",0x10003,0x00000010
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleRequestThreads",0x10003,0x00000001
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveRequestThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxSimultaneousRequests",0x10003,0x00000064
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCachedPipes",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordLists",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinimizeWorkingSet",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxEntriesInQueryCache",0x10003,0x0000000a
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRestrictionNodes",0x10003,0x00004000
+
+[IndexSrv_Large]
+AddReg = ISReg.Large
+
+[ISReg.Large]
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleQueryThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveQueryThreads",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFreshCount",0x10003,0x00004E20
+HKLM,"system\currentcontrolset\control\ContentIndex","PropertyStoreMappedCache",0x10003,0x00000060
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiRequestQueueSize",0x10003,0x00000018
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000020
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleRequestThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveRequestThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxSimultaneousRequests",0x10003,0x00000064
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCachedPipes",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordLists",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinimizeWorkingSet",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxEntriesInQueryCache",0x10003,0x0000000a
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRestrictionNodes",0x10003,0x00004000
+
+[IndexSrv_SmallMP2]
+AddReg = ISReg.SmallMP2
+
+[ISReg.SmallMP2]
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleQueryThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveQueryThreads",0x10003,0x00000006
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFreshCount",0x10003,0x00001388
+HKLM,"system\currentcontrolset\control\ContentIndex","PropertyStoreMappedCache",0x10003,0x00000020
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiRequestQueueSize",0x10003,0x00000018
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000030
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleRequestThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveRequestThreads",0x10003,0x00000004
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxSimultaneousRequests",0x10003,0x00000064
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCachedPipes",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordLists",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinimizeWorkingSet",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxEntriesInQueryCache",0x10003,0x0000000a
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRestrictionNodes",0x10003,0x00004000
+
+[IndexSrv_LargeMP2]
+AddReg = ISReg.LargeMP2
+
+[ISReg.LargeMP2]
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleQueryThreads",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveQueryThreads",0x10003,0x00000006
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFreshCount",0x10003,0x00004E20
+HKLM,"system\currentcontrolset\control\ContentIndex","PropertyStoreMappedCache",0x10003,0x00000060
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiRequestQueueSize",0x10003,0x00000018
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000020
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleRequestThreads",0x10003,0x00000002
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveRequestThreads",0x10003,0x00000004
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxSimultaneousRequests",0x10003,0x000000c8
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCachedPipes",0x10003,0x00000004
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordLists",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinimizeWorkingSet",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxEntriesInQueryCache",0x10003,0x0000000a
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRestrictionNodes",0x10003,0x00004000
+
+[IndexSrv_LargeMPMany]
+AddReg = ISReg.LargeMPMany
+
+[ISReg.LargeMPMany]
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleQueryThreads",0x10003,0x00000004
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveQueryThreads",0x10003,0x00000009
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxFreshCount",0x10003,0x00004E20
+HKLM,"system\currentcontrolset\control\ContentIndex","PropertyStoreMappedCache",0x10003,0x00000060
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiRequestQueueSize",0x10003,0x00000020
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRunningWebhits",0x10003,0x00000040
+HKLM,"system\currentcontrolset\control\ContentIndex","MinIdleRequestThreads",0x10003,0x00000003
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxActiveRequestThreads",0x10003,0x00000006
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxSimultaneousRequests",0x10003,0x000000c8
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxCachedPipes",0x10003,0x00000006
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxWordLists",0x10003,0x00000014
+HKLM,"system\currentcontrolset\control\ContentIndex","MinimizeWorkingSet",0x10003,0x00000000
+HKLM,"system\currentcontrolset\control\ContentIndex","IsapiMaxEntriesInQueryCache",0x10003,0x0000000a
+HKLM,"system\currentcontrolset\control\ContentIndex","MaxRestrictionNodes",0x10003,0x00004000
+
+[ISReg.Performance]
+HKLM,"system\currentcontrolset\services\ContentFilter\Performance","Close",0,"DoneFILTERPerformanceData"
+HKLM,"system\currentcontrolset\services\ContentFilter\Performance","Collect",0,"CollectFILTERPerformanceData"
+HKLM,"system\currentcontrolset\services\ContentFilter\Performance","Open",0,"InitializeFILTERPerformanceData"
+HKLM,"system\currentcontrolset\services\ContentFilter\Performance","Library",0,"QPerf.dll"
+HKLM,"system\currentcontrolset\services\ContentFilter\Linkage","Bind",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ContentFilter\Linkage","Export",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ContentFilter\Linkage","Route",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ContentIndex\Performance","Close",0,"DoneCIPerformanceData"
+HKLM,"system\currentcontrolset\services\ContentIndex\Performance","Collect",0,"CollectCIPerformanceData"
+HKLM,"system\currentcontrolset\services\ContentIndex\Performance","Open",0,"InitializeCIPerformanceData"
+HKLM,"system\currentcontrolset\services\ContentIndex\Performance","Library",0,"QPerf.dll"
+HKLM,"system\currentcontrolset\services\ContentIndex\Linkage","Bind",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ContentIndex\Linkage","Export",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ContentIndex\Linkage","Route",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Performance","Close",0,"DoneCIISAPIPerformanceData"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Performance","Collect",0,"CollectCIISAPIPerformanceData"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Performance","Open",0,"InitializeCIISAPIPerformanceData"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Performance","Library",0,"QPerf.dll"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Linkage","Bind",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Linkage","Export",0,"\Dummy"
+HKLM,"system\currentcontrolset\services\ISAPISearch\Linkage","Route",0,"\Dummy"
+
+[UninstallISReg.Performance]
+HKLM,"system\currentcontrolset\services\ContentFilter"
+HKLM,"system\currentcontrolset\services\ContentIndex"
+HKLM,"system\currentcontrolset\services\ISAPISearch"
+
+[UninstallISReg.HTMLClsids]
+HKLM,"system\currentcontrolset\control\HtmlFilter","MetaTagClsid"
+HKLM,"system\currentcontrolset\control\HtmlFilter","ScriptTagClsid"
+
+;
+; The associated directories for these IDs are established in C++ code
+;
+[DestinationDirs]
+DefaultDestDir        = 80000   ; default for those not overridden below
+ISSampleHTMFiles      = 80001
+ISSampleIDQFiles      = 80002
+ISAdminHTMFiles       = 80003
+ISAdminIDQFiles       = 80004
+ISHelpFiles           = 80005
+ISOldUrlFiles         = 80006
+ISSSOFiles            = 80007
+ISASPSampleFiles      = 80008
+ISHelpNonIndexedFiles = 80009
+ISWinHelpFiles        = 80010
+ISSampleOOPFiles      = 80011
+ISDeleteHtwFiles      = 80001  ; delete files from old location
+ISVer1AdminHTMFiles   = 80012
+ISVer1AdminIDQFiles   = 80013
+ISVer1HelpFiles       = 80014
+ISOldStartMenuFiles   = 80015
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; START LOCALIZATION: Items below here must be localized
+;
+;
+; LOCALIZATION: These strings must be localized
+;
+[Strings]
+cisvcDisplayName="Índice de contenidos"
+indexsrvOptionDesc="Microsoft Index Server"
+indexsrvTip="Permite a los usuarios que acceden al sitio Web realizar búsquedas de texto completo y obtener información de su sitio."
+indexsrv_systemOptionDesc="Archivos de sistema de Index Server"
+indexsrv_systemTip="Instala archivos de sistema de Index Server"
+indexsrv_samplesOptionDesc="Archivos de ejemplo"
+indexsrv_samplesTip="Instala archivos de ejemplo"
+indexsrv_onlinedocOptionDesc="Documentación en pantalla"
+indexsrv_onlinedocTip="Instala documentación en pantalla"
+indexsrv_languageOptionDesc="Recursos de idiomas"
+indexsrv_languageTip="Instala recursos de idiomas"
+indexsrv_language_english_usOptionDesc="Idioma inglés (Estados Unidos)"
+indexsrv_language_english_usTip="Instala recursos para el idioma  inglés (Estados Unidos)"
+indexsrv_language_english_ukOptionDesc="Idioma inglés (Reino Unido)"
+indexsrv_language_english_ukTip="Instala recursos para el idioma  inglés (Reino Unido)"
+indexsrv_language_french_frenchOptionDesc="Idioma francés"
+indexsrv_language_french_frenchTip="Instala recursos para el idioma francés"
+indexsrv_language_german_germanOptionDesc="Idioma alemán"
+indexsrv_language_german_germanTip="Instala recursos para el idioma alemán)
+indexsrv_language_italian_italianOptionDesc="Idioma italiano"
+indexsrv_language_italian_italianTip="Instala recursos para el idioma italiano"
+indexsrv_language_swedish_defaultOptionDesc="Idioma sueco"
+indexsrv_language_swedish_defaultTip="Instala recursos para el idioma sueco"
+indexsrv_language_spanish_modernOptionDesc="Idioma español internacional"
+indexsrv_language_spanish_modernTip="Instala recursos para el idioma español internacional"
+indexsrv_language_dutch_dutchOptionDesc="Idioma holandés"
+indexsrv_language_dutch_dutchTip="Instala recursos para el idioma holandés"
+indexsrv_language_japanese_defaultOptionDesc="Idioma japonés"
+indexsrv_language_japanese_defaultTip="Instala recursos para el idioma japonés"
+AdminFileName="Index Server Administration.url"
+SampleQueryFileName="Index Server Sample Query Form.url"
+OnlineDocFileName="Index Server Online Documentation.url"
+ReadmeFileName="Index Server Release Notes.url"
+
+;
+; END LOCALIZATION: Items above here must be localized
+;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; for non-cab installs, comment these in and comment out
+; [SourceDisksNames] below
+
+;[SourceDisksNames.Alpha]
+;1 = %indexsrvOptionDesc%,,,\alpha
+
+;[SourceDisksNames.x86]
+;1 = %indexsrvOptionDesc%,,,\x86
+
+
+;*** BEGIN **********************************************************
+;**                                                                **
+;** Automatically generated on: Thu Feb 12 15:47:34 1998           **
+;**                                                                **
+;** Diamond Version: (32) 1.00.603.0 (08/14/97)                     **
+;**                                                                **
+;*** BEGIN **********************************************************
+;LAYOUT.INF
+;Disk Layout file for Microsoft IS Setup
+;Copyright (c) 1993-1997 Microsoft Corporation
+
+
+[SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+1="Microsoft Index Server 2.0","IS20.CAB",0
+2="Microsoft Index Server 2.0","IS20LANG.CAB",0
+[SourceDisksFiles]
+;<file> = <cabinet number>,<subdir>,<filename>,<size>,<checksum>
+;Note: File is not in a cabinet if cab# is 0
+
+ix20.gif=1,,2079,3b373077
+ixadintr.htm=1,,2356,cdec519a
+ixadmcah.htm=1,,5190,aea47c31
+ixadmccc.htm=1,,7183,cb25a6b9
+ixadmchk.htm=1,,7394,c72c73ea
+ixadmfmg.htm=1,,2925,8febf6dd
+ixadmgbl.htm=1,,3387,79abeeb8
+ixadmida.htm=1,,3804,5b52975d
+ixadmin.htm=1,,2758,e60a1475
+ixadmlgq.htm=1,,1420,b4df7a5f
+ixadmlod.htm=1,,4522,edfe9cc
+ixadmmon.htm=1,,9242,4ec3b1e6
+ixadmrdr.htm=1,,3611,f8187c4c
+ixadmrvr.htm=1,,2394,e2285fe2
+ixadmsvr.htm=1,,4650,216da064
+ixadmuff.htm=1,,2624,dab0d898
+ixadmvrt.htm=1,,2732,328c29ad
+ixaspexp.htm=1,,9084,a461528
+ixasphlp.htm=1,,3470,61cf5004
+ixaspqob.htm=1,,16153,ede4d200
+ixaspuob.htm=1,,6949,20463005
+ixbegfrm.htm=1,,3966,d9075dd1
+ixbegidq.htm=1,,2246,e97ff9dd
+ixbegin.htm=1,,2652,f472635
+ixbegtst.htm=1,,2448,4dfe33b8
+ixcatalg.htm=1,,2939,85f9fe52
+ixcatdef.htm=1,,2036,b253c60c
+ixcatpro.htm=1,,5157,4759cd60
+ixcatrmv.htm=1,,4515,742f41ac
+ixconfig.htm=1,,4192,8f9ce8d4
+ixdeflt.htm=1,,4256,d7bceb4a
+ixerrasp.htm=1,,5220,3d5a56c1
+ixerrcor.htm=1,,2006,746879f9
+ixerrcpc.htm=1,,2427,c85363bb
+ixerrdat.htm=1,,2520,25ade9f8
+ixerrdnc.htm=1,,1800,4eb1ad0b
+ixerrful.htm=1,,2233,c6e0af80
+ixerrhan.htm=1,,2723,e7e382ad
+ixerrhit.htm=1,,6259,89d1dd4c
+ixerrhlp.htm=1,,3056,71f3a5c8
+ixerrhtm.htm=1,,2472,797c95fb
+ixerrhtx.htm=1,,7351,aa292cf3
+ixerridq.htm=1,,11722,7664ec5
+ixerrlfn.htm=1,,2042,d76654e
+ixerrlog.htm=1,,20538,63d3d763
+ixerrsyn.htm=1,,7253,782b792
+ixfaq.htm=1,,15475,4a8ab6a7
+ixfilcid.htm=1,,2327,78cdb28b
+ixfilcnt.htm=1,,3420,393b0998
+ixfildll.htm=1,,17772,2bd6f2bd
+ixfilext.htm=1,,7692,639d04aa
+ixfilpri.htm=1,,3732,f5552f6c
+ixfilter.htm=1,,3446,874f547a
+ixfilwdn.htm=1,,3926,5da6dda9
+ixform2.gif=1,,4823,fddef1c7
+ixgerman.doc=1,,19456,545f796
+ixgloss.htm=1,,20912,728ef810
+ixhelp.hlp=1,,22839,6b46415a
+ixhitfcn.htm=1,,1870,398c6407
+ixhitnew.htm=1,,3349,ae288779
+ixhitres.htm=1,,2503,e42bd477
+ixhitsmp.htm=1,,3482,95695552
+ixhitsyn.htm=1,,11318,c6e25f32
+ixhtxerr.htm=1,,2764,fa655ea6
+ixhtxexc.htm=1,,3000,ff5ea00b
+ixhtxfmt.htm=1,,2522,ff1e4b5f
+ixhtxhlp.htm=1,,3711,7200661d
+ixhtxhtp.htm=1,,5141,2fc3a5a1
+ixhtxidq.htm=1,,2110,41b4040b
+ixhtxnav.htm=1,,5893,76782954
+ixhtxpgs.htm=1,,2409,f0a1ca2c
+ixhtxrec.htm=1,,2256,585e26be
+ixhtxsyn.htm=1,,12863,461b85e0
+ixidqhlp.htm=1,,3423,7ce609a2
+ixidqhtx.gif=1,,8904,822e9c4d
+ixidqnam.htm=1,,12681,e33858bd
+ixidqpar.htm=1,,7673,ecda1086
+ixidqqry.htm=1,,7599,7b4f54a2
+ixidqvar.htm=1,,2697,178d32d7
+ixidxftr.htm=1,,3057,c192beb1
+ixindcah.htm=1,,2413,5b9c88ef
+ixindcnt.htm=1,,2450,ebda13f1
+ixindex.htm=1,,2937,edcfe6dd
+ixindfin.htm=1,,3243,90d91f31
+ixindfle.htm=1,,2999,999025a2
+ixindmer.htm=1,,7700,b05d1bde
+ixindrec.htm=1,,2489,8a3fe0fa
+ixindtyp.htm=1,,5834,84d48528
+ixinstal.htm=1,,2375,63422e20
+ixintro.htm=1,,3195,94829bc5
+ixlanbrw.htm=1,,3358,c2cf6725
+ixlancod.htm=1,,3967,db2a3030
+ixlangs.htm=1,,4648,2a30133b
+ixlanovr.htm=1,,4088,f32a426f
+ixlanshp.htm=1,,2953,b6ca509d
+ixlicnse.htm=1,,12481,3fa1b2ab
+ixnew.htm=1,,4169,89f912c1
+ixproces.gif=1,,5062,3fccac28
+ixqrybol.htm=1,,7390,5d5febf8
+ixqryexp.htm=1,,3879,db912d1c
+ixqryfre.htm=1,,2642,7a208853
+ixqryfrm.htm=1,,2018,22fe36e8
+ixqryftr.htm=1,,10189,2c9c763f
+ixqryind.htm=1,,2111,f3867cca
+ixqrylan.htm=1,,5215,b0bf589b
+ixqryprn.htm=1,,16132,6115c7a
+ixqrypvq.htm=1,,15308,370e94a5
+ixqryvec.htm=1,,3203,1f7ee177
+ixqrywld.htm=1,,2603,d2586afe
+ixquery.htm=1,,3409,9c733f99
+ixref.htm=1,,2106,d2954adf
+ixremmwd.htm=1,,4207,1a53d8d5
+ixremmws.htm=1,,4333,80249291
+ixremnov.htm=1,,4918,f4a14005
+ixremote.htm=1,,1935,8858d359
+ixrgscat.htm=1,,5942,c69fc3d5
+ixrgslan.htm=1,,4305,4beeebaa
+ixrgslog.htm=1,,2930,1f854082
+ixrgsman.htm=1,,40320,44f41d84
+ixrgstry.htm=1,,2155,24544623
+ixsample.htm=1,,3025,2b5a9384
+ixscan.htm=1,,6047,9782602b
+ixschbld.htm=1,,2526,ebdb80f
+ixseado.htm=1,,16001,49b85bbc
+ixseary.htm=1,,7195,aaed5ff1
+ixsebat.htm=1,,2322,527156b0
+ixsecadm.htm=1,,2635,eaade159
+ixsecath.htm=1,,3725,e984946b
+ixseccfg.htm=1,,2589,a4d94768
+ixsecdac.htm=1,,2698,5d936c43
+ixsecdir.htm=1,,2465,f8c3911
+ixsecdis.htm=1,,2586,35accc6e
+ixsecint.htm=1,,2319,bfc4c5f9
+ixsecmp.htm=1,,10251,1cb8af6a
+ixsecnt.htm=1,,19553,e4a342a9
+ixsecprp.htm=1,,1916,5f1845bb
+ixsecrvr.htm=1,,2378,aa22bfd4
+ixsecsaf.htm=1,,1874,7059ee25
+ixsecure.htm=1,,2785,f1da61d9
+ixsecvrt.htm=1,,2108,d2b3c865
+ixsecwpc.htm=1,,2455,853ddf29
+ixseerr.htm=1,,2786,c5efc869
+ixsefre.htm=1,,3781,61082908
+ixsefrm.htm=1,,8819,ce06dc0d
+ixsehith.htm=1,,4326,977737aa
+ixselik.htm=1,,6083,c5429ec6
+ixsemat.htm=1,,6481,9f02ad09
+ixsenul.htm=1,,2169,8f3826cb
+ixseob.htm=1,,3537,6b6b9b9f
+ixseovr.htm=1,,7768,26284d95
+ixserver.doc=1,,23040,a612350d
+ixserver.ppt=1,,62464,ca001e60
+ixserver.xls=1,,86016,a3a0ee4b
+ixsesel.htm=1,,5783,597d14f1
+ixseset.htm=1,,7419,f7ae2009
+ixsetup.htm=1,,5249,ca51d89e
+ixsevw.htm=1,,8753,a61554e6
+ixsewhr.htm=1,,4096,863e28d0
+ixsysreq.htm=1,,2962,4a51eb9a
+ixtour.htm=1,,3170,b0160157
+ixtraddc.htm=1,,6334,f58f3633
+ixtradm.htm=1,,1843,35016e09
+ixtrckin.htm=1,,7548,bfd8ef1a
+ixtrcont.htm=1,,10482,43318855
+ixtrcqry.htm=1,,4511,bf5e4003
+ixtrcrte.htm=1,,3446,e526b89a
+ixtrdone.htm=1,,1711,62744a5c
+ixtrlang.htm=1,,7325,6be3692c
+ixtrnum.htm=1,,4701,8afcce45
+ixtroub.htm=1,,1867,102cb4ee
+ixtrout.htm=1,,5247,c694245b
+ixtrprop.htm=1,,6307,22997194
+ixtrqfrm.htm=1,,2601,f7dbb9f5
+ixtrreq.htm=1,,3238,401eb88a
+ixtrsasm.htm=1,,7184,4953b265
+ixtrsasp.htm=1,,3180,fdcd53bb
+ixtrsasq.htm=1,,3952,5a0a7619
+ixtrsasx.htm=1,,9076,fffbb459
+ixtrsecr.htm=1,,13389,79c4b41b
+ixtrshtx.htm=1,,3156,eb283bf
+ixtrsidq.htm=1,,4546,a193fa44
+ixtrsmqy.htm=1,,3484,147e7e1e
+ixtrsqry.htm=1,,2339,5d9de7da
+ixtrust1.gif=1,,5834,9892cd57
+ixvarcgi.htm=1,,5960,531bc758
+ixvaridq.htm=1,,2917,a7838c87
+ixvariso.htm=1,,10274,33934b2d
+ixvarloc.htm=1,,13619,51ee15a9
+ixvarpbk.htm=1,,2651,c73cb896
+ixvarrov.htm=1,,6221,3e87bd41
+ixvarstr.htm=1,,4430,6504e428
+ixvarvfi.htm=1,,10183,42774e77
+ixwebhit.htm=1,,3219,802b8a43
+ciadmin.dll=1,,91408,5f18e8df
+ciadmin.msc=1,,4608,c21e503
+cidaemon.exe=1,,7952,3186608a
+cisvc.exe=1,,7440,2fd0442d
+nlhtml.dll=1,,72416,131719c8
+idq.dll=1,,193808,c01f0567
+ixsso.dll=1,,49424,674d6ecf
+msidxs.dll=1,,140048,4b9b309e
+offfilt.dll=1,,180224,9d5188b3
+qperf.dll=1,,14608,dfdfd5af
+query.dll=1,,911632,33e974e0
+webhits.dll=1,,41744,eda83f64
+noise.dat=1,,687,9b527bb0
+ciperfm.h=1,,355,c3037991
+filtperf.h=1,,140,db737b
+perfci.ini=1,,1262,a674da9
+perffilt.ini=1,,724,bbd073df
+perfwci.h=1,,435,5919493f
+perfwci.ini=1,,1543,dbd196d1
+admin.htm=1,,273,6965693f
+ADOVBS.inc=1,,7438,1ec2bf0e
+advquery.asp=1,,18777,78a6f5a5
+AdvSQLQ.asp=1,,18578,a19c9445
+default.htm=1,,252,44acc60a
+deferror.htx=1,,677,d9e1d8a
+fastq.htm=1,,3820,a712401c
+fastq.htx=1,,4560,e6d5da9f
+fastq.idq=1,,4665,3fba3322
+hilight.gif=1,,902,e426b816
+htxerror.htx=1,,662,116bb487
+idqerror.htx=1,,659,27f2a309
+is2admin.css=1,,1683,2aece287
+is2bkgnd.gif=1,,1131,d6f1863
+is2foot.inc=1,,905,6294c1e9
+is2logo.gif=1,,14830,c3445bb6
+is2side.gif=1,,17824,cb90dcd0
+is2style.css=1,,1953,e9bcf4d7
+ie.gif=1,,8609,acf42753
+ixqlang.htm=1,,46089,c24e007e
+ixtiphlp.htm=1,,3755,b95a58a1
+ixtipsql.htm=1,,4888,b6d3ba37
+ixtrasp.asp=1,,8425,6161fb3d
+merge.ida=1,,100,af86c147
+navbar.htm=1,,1373,6fd04e9f
+navbara.htm=1,,1598,e0c382d
+nts_iis.gif=1,,10646,3873e9db
+qfullhit.htw=1,,2698,1b2194e4
+qsumrhit.htw=1,,2318,fa8308e0
+query.asp=1,,15419,db91331d
+query.htm=1,,4511,46b84fed
+query.htx=1,,11734,ced48e16
+query.idq=1,,3106,a58c253a
+rankbtn1.gif=1,,998,ad238f5c
+rankbtn2.gif=1,,1088,ac78e95c
+rankbtn3.gif=1,,1165,32d33e3e
+rankbtn4.gif=1,,1230,9fb33dcd
+rankbtn5.gif=1,,1301,38f6e1a7
+reserror.htx=1,,680,a1841a1e
+scan.htx=1,,6041,d56dd559
+scan.ida=1,,97,7eb14a02
+scan.idq=1,,2985,c1e5f75c
+SQLQHit.asp=1,,3684,78a3d408
+SQLQHit.htm=1,,6249,47549543
+state.htx=1,,4307,9435a716
+state.ida=1,,94,6afb4fbf
+unfilt.htx=1,,5987,d62b0187
+unfilt.idq=1,,1760,8476d639
+infosoft.dll=1,,201488,e3653b91
+noise.enu=1,,755,5a7ceb60
+wbcache.enu=1,,65489,94df6441
+wbdbase.enu=1,,957440,f8d545ec
+noise.deu=2,,149848,b2fcd23f
+noise.eng=2,,755,5a7ceb60
+noise.esn=2,,19684,3429122a
+noise.fra=2,,49196,888cdbe5
+noise.ita=2,,19616,49f5a1c8
+noise.jpn=2,,10724,4626b2b6
+noise.nld=2,,13256,351d32ea
+noise.sve=2,,13728,42d127ab
+wbcache.deu=2,,65489,94df6441
+wbcache.eng=2,,65489,94df6441
+wbcache.esn=2,,65489,94df6441
+wbcache.fra=2,,65489,94df6441
+wbcache.ita=2,,65489,94df6441
+wbcache.nld=2,,65489,94df6441
+wbcache.sve=2,,65489,94df6441
+wbdbase.deu=2,,1309184,51d7a88a
+wbdbase.eng=2,,957440,f8d545ec
+wbdbase.esn=2,,750080,104911d0
+wbdbase.fra=2,,786944,ebf0c0d8
+wbdbase.ita=2,,867840,65c9c2c9
+wbdbase.nld=2,,1095680,9a8e240f
+wbdbase.sve=2,,937984,bf088b1a
+nlgwbrkr.dll=2,,498960,5818d9cf
+;*** END ************************************************************
+;**                                                                **
+;** Automatically generated on: Thu Feb 12 15:47:34 1998           **
+;**                                                                **
+;*** END ************************************************************

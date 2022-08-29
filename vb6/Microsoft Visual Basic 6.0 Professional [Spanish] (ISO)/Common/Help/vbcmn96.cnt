@@ -1,0 +1,40 @@
+:Base vbcmn96.hlp>langref
+:Title Ayuda de controles comunes ActiveX
+:Index Administrador de asistentes=WIZDMNGR.HLP
+:Index Asistente para aplicaciones=APPWZRD.HLP
+:Index Asistente para clases=CLSWZRD.HLP
+:Index Asistente para controles=CTLCRWZD.HLP
+:Index Asistente para formularios de datos=DATAFORM.HLP
+:Index Asistente para instalar aplicaciones=SETUPWIZ.HLP
+:Index Asistente para objetos documentos=FRMDOCWZ.HLP
+:Index Asistente para páginas de propiedades=PROPPGWZ.HLP
+:Index Ayuda de controles comunes ActiveX=VBCMN96.HLP
+:Index Control CommonDialog=CMDLG96.HLP
+:Index Control Internet Transfer=INET.HLP
+:Index Control MSChart=MSCHRT96.HLP
+:Index Control Winsock=MSWINSCK.HLP
+:Index Controles comunes de Windows=COMCTL1.HLP
+:Index Controles comunes de Windows=COMCTL2.HLP
+:Index DAO=DAO35.HLP
+:Index DAO=JETSQL35.HLP
+:Index DBCombo/DBList=DBLIST96.hlp
+:Index DbGrid=DBGRID96.hlp
+:Index Edición empresarial de Visual Basic=ENT96.HLP
+:Index Ejemplos=SAMPLES.HLP
+:Index Extensibilidad de Visual Basic=VB5EXT.HLP
+:Index FlexGrid=MSFLXGRD.HLP
+:Index Léame=README.HLP
+:Index MAPI=MAPI96.HLP
+:Index MaskedEdit=MASKED96.hlp
+:Index MSComm=COMM96.HLP
+:Index MultiMedia/MCI=MMEDIA96.hlp
+:Index PicClip=PICCLP96.hlp
+:Index RDO=RDO96.HLP
+:Index Repository=REPVB.HLP
+:Index RichTextBox=RTFBOX96.hlp
+:Index SSTab=MSTAB96.HLP
+:Index SysInfo=SYSINFO.HLP
+:Index VB5=VB5.HLP
+:Index VBA=VBENLR3.HLP
+:Index VSS=SSUSVB.HLP
+:Link acctlspc.hlp

@@ -1,0 +1,217 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Release Notes for Microsoft NNTP Service</title>
+
+<script language="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<meta name="DESCRIPTION" content="Release Notes for Microsoft NNTP Service"></head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">
+
+<h1>Microsoft NNTP Service Release Notes</h1>
+
+<p>The following sections are included in this document:<br>
+<a href="#WelcomeNews">Welcome to Microsoft NNTP Service</a><br>	
+<a href="#NewsDocuments">Using Microsoft NNTP Service Product Documentation</a><br>	
+<a href="#HardwareSoftware">Hardware and Software Requirements</a><br>
+<a href="#installation">Installation</a><br>
+<a href="#client">Client Software</a><br>
+<a href="#KnownIssues">Known Issues</a><br>
+<a href="#CopyrightInformation">Copyright Information</a>
+</p>
+
+<h2><a name="WelcomeNews">Welcome to Microsoft NNTP Service</a></h2>
+
+<p>Welcome to this Microsoft NNTP Service release. NNTP Service makes it easy for users to engage in discussions about any given topic.
+They can read articles from others who have similar interests, post articles, and join conversation threads about particular topics.
+This release features:
+</p>
+
+<ul>
+<li>Secure Sockets Layer (SSL) support.</li>
+<li>Open, cross-platform, Internet-based NNTP client support.</li>
+<li>Secure authentication using NNTP security extensions that do not send user passwords in clear text over the network.</li>
+<li>Secure authentication that allows encrypted passwords to be   transmitted over the Internet.</li>
+<li>Local, remote, and moderator-approved article posting.</li>
+<li>Built-in support for control messages that can automatically create or delete newsgroups as well as cancel postings.</li>
+<li>Support for both private and public newsgroups.</li>
+<li>Transaction logs for offline processing to collect usage statistics, track messages and transactions, and examine usage patterns.</li>
+<li>Newsgroup searching.</li>
+<li>Support for Microsoft Index Server. For more information about Microsoft Index Server see <a href="http://www.microsoft.com/ntserver/search/" target="_top">http://www.microsoft.com/ntserver/search/</a></li>
+</ul>
+
+<h2><a name="NewsDocuments">Using Microsoft NNTP Service  Product Documentation</a></h2>
+
+<p>Context-sensitive help is available by clicking the <strong>Help</strong> button in a property sheet or in a dialog box. Additional documentation for Microsoft NNTP Service can be reached by selecting <strong>Product Documentation</strong> in the Microsoft Internet Information Server (IIS) program group.</p>
+
+<h2><a name="HardwareSoftware">Hardware and Software Requirements</a></h2>
+
+<p>This version of Microsoft Microsoft NNTP Service has the same minimum hardware requirements as Windows NT Server version 4.0 and Microsoft Internet Information Server (IIS) version 4.0. It is important that you plan thoroughly before building your news service.To install and run Microsoft NNTP Service, the following software must be installed:</p>
+
+<ul>
+<li>Microsoft Windows NT Server version 4.0</li>
+<li>Microsoft Windows NT Service Pack 3 (or later), available in the \Support\qfe directory on the installation compact disc or from <a href="http://www.microsoft.com/ntserversupport/" target="_top">http://www.microsoft.com/ntserversupport/</a></li>
+</ul>
+
+<h2><a name="installation">Installation</a></h2>
+
+<p>Microsoft Microsoft NNTP Service is installed as part of Microsoft Internet Information Server (IIS) 4.0.  After Windows NT Service Pack 3 is set up, follow the installation instructions included with IIS 4.0. As part of the installation, select the &quot;Microsoft NNTP Service&quot; check box.</p>
+
+<h2><a name="client">Client Software</a></h2>
+
+<p>You can use any NNTP-compatible client, such as the Microsoft Internet Mail and News component of Microsoft Internet Explorer version 3.02 or 4.0. To enable security, you must use a client that supports secure sockets layer (SSL) or Windows NT Challenge/Response, such as Internet Mail and News.</p>
+
+<p>You can download Microsoft Internet Explorer from 
+<a href="http://www.microsoft.com/ie">http://www.microsoft.com/ie</a>. 
+Be sure to download the Typical version of Internet Explorer, which includes Internet Mail and News. If you already have Internet Explorer but you are missing the Internet Mail and News reader, you can download it separately by following the features and components link.</p>
+
+<h2><a name="KnownIssues">Known Issues</a></h2>
+
+<h3>RPC Locator Service Must be Started</h3>
+
+<p>The Remote Procedure Call (RPC) Locator service must be started if you are using the Internet Service Manager administration program.</p>
+
+<p><strong>To start the RPC Locator service:</strong></p>
+
+<ol>
+<li>From the <strong>Start</strong> menu, choose <strong>Settings</strong> and <strong>Control Panel</strong>.<br></li>
+<li>Select the <strong>Services</strong> application.<br></li>
+<li>In the <strong>Service</strong> box, select <strong> Remote Procedure Call (RPC) Locator</strong>, and then choose <strong>Start</strong>.
+</ol>
+
+<h3>Unattended Option Pack Installation For Installing Microsoft NNTP Service </h3>
+
+<p>If you are using Microsoft Internet Information Server (IIS) on an intranet, you can copy the Unattend.txt file from the Windows NT Option Pack compact disc to a folder on the local computer and perform unattended installations from that folder. This is useful because Microsoft NNTP Service is not a default component during Setup. The Unattend.txt file is located on the compact disc in the \CPU type\inetsrv\directory, where CPU type is the processor on the computer where IIS will be installed.</p>
+<p>
+<strong>To start unattended setup</strong><br>
+
+<ol>
+<li>Copy Unattend.txt to your local drive and make any necessary changes to install the appropriate components. </li> 
+<li>Edit the [Components] section to include <i>iis_nntp = on</i> and <i>iis_nntp_docs = on</i>.
+<li>At a command prompt, change to the directory on the compact disc that contains Setup.exe and enter the following command:
+<code><strong>setup/u:</strong><em>drive</em><strong>:</strong><em>path</em><strong>\Unattend.txt</strong></code>
+<br>
+where <em>drive</em> is the drive and <em>path</em> is the full path on the local computer where Unattend.txt is located.
+For example:<br>
+<code>setup/u:c:\temp\unattend.txt </code></li>
+</ol>
+
+<h3>Using Moderated Newsgroups and SMTP</h3>
+
+<p>Postings to moderated newsgroups are sent to the moderator using SMTP with an empty Mail From: envelope line. For these messages to be received, the SMTP server must have an account set up to accommodate the requests.</p><br>
+
+<h3>NNTP Service Manager (HTML)</h3>
+<p>If NNTP Service Manager (HTML) does not start, type the following
+URL in your Web browser:<br>
+<a href="http://localhost/news/admin/default.htm">
+http://localhost/news/admin/default.htm</a></p><br>
+
+<h3>Virtual Directories Terminology</h3>
+
+<p>Windows NT Server event logs use the term &quot;virtual roots&quot; to refer to virtual directories.</p><br>
+
+<h3>Using WINS and Host Tables for Intranet Service</h3>
+
+<p>Although Domain Name System (DNS) is required to deploy Microsoft NNTP Service on the Internet, WINS or host tables can be substituted for DNS when using Microsoft NNTP Service on an intranet.</p><br>
+
+<h3>Naming Newsgroups</h3>
+
+<p>It is recommended that you use 7-bit (lower ASCII) characters for newsgroup names.</p><br>
+
+<h3>Registry Keys</h3>
+
+<p>The following preferences cannot be changed in the administration user interface. They can, however, be modified through the Windows NT Server registry.  The Microsoft NNTP Service settings are located under the following registry key:</p>
+
+<p><strong>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NNTPSvc\Parameters</strong></p>
+
+<p>Settings that are not listed below should not be modified. The following is a brief description of the settings.</p>
+
+<table border>
+<tr>
+<th>Key</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+
+<tr>
+<td>NewsCrawlerTime</td>
+<td>Frequency of expiration cycle</td>
+<td>REG_DWORD</td>
+<td>30 minutes</td>
+</tr>
+
+<tr>
+<td>RejectGenomeGroups</td>
+<td>If TRUE, reject groups with funny names</td>
+<td>REG_DWORD</td>
+<td>FALSE</td>
+</tr>
+
+<tr>
+<td>HistoryExpiration</td>
+<td>Time limit on message IDs in the history table</td>
+<td>REG_DWORD</td>
+<td>3 weeks</td>
+</tr>
+
+<tr>
+<td>HonorClientMessageIDs</td>
+<td>If TRUE, honor client message IDs on POSTs</td>
+<td>REG_DWORD</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>GenerateErrFiles</td>
+<td>If TRUE, move bad articles received into .err files</td>
+<td>REG_DWORD</td>
+<td>TRUE</td>
+</tr>
+
+<tr>
+<td>HonorApprovedHeader</td>
+<td>If TRUE, validate approved header for moderated posts</td>
+<td>REG_DWORD</td>
+<td>TRUE</td>
+</tr>
+</table>
+
+
+<h3>Web Administration Authentication</h3>
+
+<p>An authenticated connection is required to administer Microsoft NNTP Service using a Web browser.  The default authentication mechanism is Windows NT Challenge/Response.  If you use a browser that does not support Windows NT Challenge/Response, IIS server settings for the Web administration directory must be changed.</p>
+
+<hr>
+
+<h1><a name="CopyrightInformation">Copyright Information</a></h1>
+
+<p>&copy; 1997 Microsoft Corporation</p>
+<p>These materials are provided &#147;as-is,&#148; for informational purposes only.</p>
+<p>Neither Microsoft nor its suppliers makes any warranty, express or implied with respect to the content of these materials or the accuracy of any information contained herein, including, without limitation, the implied warranties of merchantability or fitness for a particular purpose. Because some states/jurisdictions do not allow exclusions of implied warranties, the above limitation may not apply to you.</p>
+<p>Neither Microsoft nor its suppliers shall have any liability for any damages whatsoever including consequential, incidental, direct, indirect, special, and lost profits. Because some states/jurisdictions do not allow exclusions of implied warranties, the above limitation may not apply to you. In any event, Microsoft&#146;s and its suppliers&#146; entire liability in any manner arising out of these materials, whether by tort, contract, or otherwise shall not exceed the suggested retail price of these materials.</p>
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1997 by Microsoft Corporation. All rights reserved.</a></em></p>
+
+</font>
+</body>
+</html>
+

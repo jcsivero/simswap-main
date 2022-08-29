@@ -1,0 +1,555 @@
+-----------------------------------------------------------
+Archivo Léame de Microsoft ActiveX Data Objects versión 2.0 
+-----------------------------------------------------------
+
+(c) 1998 Microsoft Corporation. Reservados todos los derechos 
+
+Este documento proporciona información de última hora o de otro 
+tipo complementaria a la documentación de Microsoft ADO.
+
+---------
+CONTENIDO
+---------
+
+1. DESCRIPCIÓN DEL PRODUCTO 
+   
+2. CARACTERÍSTICAS NUEVAS
+2.1 Conexión, ejecución y entrega asíncrona, y eventos
+2.2 Formación de datos 
+2.3 Persistencia
+2.4 Recordset fabricados 
+2.5 Ordenación, filtrado y búsqueda 
+2.6 Extensiones de ADO para VC++
+2.7 Compatibilidad de ADO con Visual Analyzer (Microsoft Visual 
+    Studio, sólo en la edición para empresas)
+2.8 Resolución de conflictos para los cursores del cliente
+2.9 Comportamiento de DataFactory personalizable
+
+3. NOTAS TÉCNICAS
+3.1 Mejoras en la seguridad 
+3.2 Comportamiento restrictivo 
+3.3 Personalización de la configuración de seguridad
+
+4. ERRORES, LIMITACIONES, SOLUCIONES CONOCIDAS Y NOTAS DE ÚLTIMA 
+   HORA DE LA DOCUMENTACIÓN 
+
+---------------------------
+1. DESCRIPCIÓN DEL PRODUCTO 
+---------------------------
+
+ActiveX Data Objects (ADO) es una interfaz basada en automatización 
+para obtener acceso a datos. ADO utiliza la interfaz de OLE DB para 
+tener acceso a un gran rango de orígenes de datos, incluyendo los 
+datos proporcionados mediante ODBC, pero no limitándose a ellos.
+
+Los usuarios de RDO y DAO deberían sentirse cómodos rápidamente con 
+la programación de ADO debido a que el diseño global de ADO viene de 
+nuestra experiencia en el desarrollo de estas interfaces.
+
+Microsoft Remote Data Service (RDS) es un componente de ADO que 
+proporciona conexión rápida y eficiente a datos y un marco de 
+publicación de datos para aplicaciones cuya base sea Internet 
+Explorer. Se basa en una tecnología cliente-servidor distribuida 
+que funciona sobre HTTP, HTTPS (HTTP sobre conexiones Secure Sockets), 
+y protocolos de aplicación DCOM. Mediante los controles ActiveX 
+preparados para datos, RDS proporciona una programación de acceso a 
+datos al estilo de Microsoft Visual Basic para los programadores de 
+Web que necesiten generar aplicaciones distribuidas que hagan un uso 
+intensivo de datos para utilizarlas sobre intranet corporativas y en 
+Internet.
+
+-------------------------
+2. CARACTERÍSTICAS NUEVAS
+-------------------------
+
+ADO 2.0 agrega muchas características nuevas para los programadores.
+
+2.1 Conexión, ejecución y entrega asíncrona, y eventos
+
+Tal y como lo hacía RDO 2.0, ADO ahora es compatible con operaciones 
+asíncronas. Las operaciones asíncronas le permiten anular una 
+operación extendida, o continuar el procesamiento mientras espera que 
+se complete la conexión. Los eventos le avisan cuando una operación 
+asíncrona se haya completado. La entrega asíncrona es una 
+característica específica del cursor del cliente 
+(CursorLocation = adUseClient) que devuelve la primera fila de un 
+resultado de consulta y, después, continúa recogiendo datos en 
+segundo plano mientras se tratan las filas que ya se han entregado.
+
+2.2 Formación de datos
+
+En conjunción con el proveedor MSDataShape, ADO puede mostrar datos 
+de manera jerárquica. ADO también muestra agrupación y agregación 
+sobre un recordset.
+
+2.3 Persistencia
+
+Ahora puede guardar un objeto Recordset directamente en su unidad de 
+disco local, y cargarlo más tarde (al trabajar con cursores del 
+cliente). Esto le permite conectarse al servidor, ejecutar una 
+consulta, llamar a rst.Save("miNombreArchivo"), apagar el equipo y 
+llamar más tarde a rs.Open("miNombreArchivo",,,adCmdFile) y modificar 
+los datos. 
+
+2.4 Recordset fabricados
+
+Pueden crearse objetos Recordset en ADO 2.0 sin ejecutar una consulta 
+en un origen de datos. Tan solo hay que crear un objeto Recordset 
+nuevo, agregar algunos objetos Field, llamar a rst.Open(), y se 
+tendrá un Recordset al que se pueden agregar datos, y tratarlo como 
+si el Recordset se hubiese creado desde una consulta remota.
+
+2.5 Ordenación, filtrado y búsqueda 
+
+Le permite tratar resultados en el cliente cuando se utilizan 
+cursores del cliente.
+
+2.6 Extensiones de ADO para VC++
+
+Proporciona un rendimiento mejorado para los usuarios de VC++ 
+permitiendo la utilización de tipos de datos nativos en lugar de 
+Variant en el código C++.
+
+2.7 Compatibilidad de ADO con Visual Analyzer (Microsoft Visual 
+    Studio, sólo en la edición para empresas)
+
+ADO funciona con Visual Analyzer, enviando eventos que ayudan en el 
+análisis de rendimiento.
+
+2.8 Resolución de conflictos para los cursores del cliente 
+
+Proporciona una funcionalidad mejorada para objetos Recordset 
+generados con cursores del lado del cliente en escenarios de dos 
+capas. Ahora se admiten nuevas funciones como Resync y Update con 
+resolución de conflictos en los cursores del cliente.
+
+2.9 Comportamiento de DataFactory personalizable
+
+El comportamiento remoto implícito es personalizable ahora mediante 
+la implementación del objeto controlador DataFactory. El controlador 
+DataFactory se puede utilizar para personalizar el comportamiento 
+abierto y de actualización por lotes de los objetos Recordset abiertos 
+mediante RDS. Ahora tiene la posibilidad de escribir un nuevo 
+controlador por sus propios medios o utilizar el controlador 
+predeterminado (MSDFMAP.dll) que se proporciona con RDS 2.0. El 
+comportamiento del controlador predeterminado se puede dirigir 
+mediante la edición del archivo INI predeterminado que utiliza: 
+MSDFMAP.INI.
+
+------------------
+3. NOTAS TÉCNICAS
+------------------
+
+3.1 Mejoras en la seguridad 
+
+Esta revisión incluye mejoras en la seguridad para los objetos ADO 
+y RDS de forma que algunas de las operaciones se restringen cuando 
+Internet Explorer se ejecuta en un modo "seguro".
+
+3.1.1. Zonas
+Se pueden establecer configuraciones de seguridad diferentes para 
+"zonas" distintas en Internet Explorer 4.0 para personalizar el 
+comportamiento de los objetos ADO/RDS en esas zonas. Hay cuatro zonas 
+definidas en Internet Explorer 4.0:
+*  Zona de Internet
+*  Zona intranet local
+*  Zona de sitios restringidos
+*  Zona de sitios en los que se confía
+
+3.1.2. Niveles de seguridad 
+Para cada una de estas zonas, se puede especificar el nivel de 
+seguridad que se utiliza. Los siguientes niveles están disponibles 
+para cada zona:
+*  Alto
+*  Medio
+*  Bajo
+*  Personalizar
+
+Al igual que otros controles ActiveX, para que los objetos ADO/RDS 
+funcionen del todo en Internet Explorer 4.0, el nivel de seguridad 
+debe establecerse como "Medio" o "Alto". Los valores personalizados 
+se utilizan para configurar objetos ADO/RDS que se comportan de un 
+modo seguro o no seguro.
+
+3.2 Comportamiento restrictivo
+
+De manera predeterminada, cualquier operación no segura sobre objetos 
+ADO/RDS en Internet Explorer 4.0 dará lugar a una pregunta al usuario 
+cuando se tenga acceso a páginas de una "zona local segura" una "zona 
+de sitios en los que se confía", y una "zona de Internet." Las 
+operaciones no seguras sobre objetos ADO/RDS se desactivan, de manera 
+predeterminada, para las páginas cargadas desde una "zona de sitios 
+restringidos". Las líneas siguientes describen el comportamiento de 
+ADO/RDS al ejecutarse en esos modos:
+
+3.2.1 Objetos seguros 
+Los siguientes objetos se consideran "seguros". Esto significa que las 
+operaciones no seguras (que se detallan en 3.2.3) se desactivan en un 
+entorno seguro (p.e., Internet Explorer, de manera predeterminada; a 
+menos que se utilice una configuración personalizada para que funcione 
+en un modo no seguro) y se permiten en un entorno no seguro (p.e., 
+Visual Basic).
+a. Objeto RDS.DataControl
+b. Objeto RDS.DataSpace
+c. Objeto ADO Recordset
+
+3.2.2 Objetos no seguros 
+Los siguientes objetos se consideran "no seguros." No se pueden crear 
+directa o indirectamente (y entregarse a un usuario) cuando se 
+trabaja en un entorno seguro.
+a. Objeto RDSServer.DataFactory
+b. Objeto Connection de ADO
+c. Objeto Command de ADO
+
+3.2.3 Operaciones no seguras sobre objetos seguros 
+Las siguientes operaciones se consideran no seguras sobre objetos 
+"seguros": RDS.DataControl, RDS.DataSpace, Recordset de ADO. Estas 
+operaciones se desactivan en un entorno seguro, pero se permiten en 
+un entorno no seguro.
+
+a. RDS.DataControl
+i) Todos los escenarios de dos capas y DCOM sobre el objeto 
+RDS.DataControl. Esto significa que no se pueden abrir conexiones a 
+bases de datos desde su equipo local o desde servidores a los que se 
+conecte mediante el protocolo DCOM.
+ii) Todas las operaciones de tres capas sobre HTTP se restringen al 
+servidor desde donde se ha descargado la página. Esto significa que 
+la propiedad Server del objeto RDS.DataControl debe ser igual al 
+nombre de host (http://servidor) del que se ha descargado la página.
+
+b. RDS.DataSpace
+i) Todos los escenarios de dos capas y DCOM sobre el objeto 
+RDS.DataSpace. Esto significa que no se puede utilizar el objeto 
+RDS.DataSpace para invocar objetos de negocios sobre su equipo 
+local o sobre el protocolo DCOM.
+ii) Todos los escenarios de tres capas sobre HTTP se restringen al 
+servidor desde el que se han descargado las páginas. Esto significa 
+que el segundo parámetro de la llamada al método CreateObject en el 
+objeto DataSpace debe apuntar al mismo servidor del que se ha 
+descargado la página.
+
+c. Recordset de ADO
+i) Creación de cualquier conexión donde el proveedor no sea MS 
+Remote. De esta manera la cadena de conexión debe comenzar con 
+"Provider=MS Remote". La etiqueta "Remote Server" de la cadena 
+de conexión debe tener también el mismo nombre que el servidor 
+desde el que se ha descargado la página. No se permiten conexiones 
+de dos capas o DCOM.
+ii) Operaciones de persistencia local, como guardar un recordset en 
+el sistema de archivos local y abrir un recordset desde un archivo en 
+el equipo local.
+
+3.3 Personalización de la configuración de seguridad 
+
+Puede personalizar el comportamiento de ADO/RDS configurando los 
+niveles de seguridad personalizados en Internet Explorer 4.0. Puede 
+elegir la desactivación completa de las operaciones no seguras 
+(descritas anteriormente), o especificar que se muestre una 
+advertencia siempre que se intente una operación no segura, o permitir 
+esa operación sin ninguna advertencia. Se pueden establecer diferentes 
+configuraciones personalizadas para diferentes zonas de seguridad. Los 
+siguientes pasos se llevan a cabo para personalizar su configuración 
+de seguridad para una zona de seguridad específica: 
+
+ADVERTENCIA: tenga cuidado al activar "Ejecutar los archivos de 
+comandos de los controles ActiveX no seguros" (paso 5 más adelante), 
+pues está permitiendo que CUALQUIER control ActiveX, seguro o no 
+seguro, se utilice desde dentro de páginas Web (lo cual expone 
+potencialmente los equipos del usuario a controles o secuencias de 
+comandos malintencionados). Se recomienda que se realice esto sólo en 
+las zonas de seguridad "Intranet" o "Sitios en los que se confía" y no 
+en la zona "Internet".
+
+1. Desde el menú Ver de Internet Explorer 4.0, seleccione Opciones de 
+   Internet para desplegar el cuadro de diálogo Opciones de Internet. 
+   Seleccione la ficha Seguridad.
+2. Desde la lista desplegable Zona, seleccione la zona para la que 
+   desea personalizar la configuración.
+3. Seleccione Personalizar para la zona seleccionada. Así se activa el 
+   botón Configuración del cuadro de diálogo.
+4. Haga clic en Configuración para desplegar el cuadro de diálogo 
+   Configuración de seguridad.
+5. Si desea activar operaciones no seguras (descritas en 3.2.3) sobre 
+   objetos ADO/RDS sin que se muestre ninguna advertencia, entonces, 
+   en el cuadro de diálogo Configuración de seguridad seleccione 
+   "Activar" para la opción, "Ejecutar los archivos de comandos de 
+   los controles ActiveX no seguros". Haga clic en Aceptar.
+5. Si desea que se muestre una advertencia siempre que se intente una 
+   operación no segura (descrita en 3.2.3) sobre objetos ADO/RDS, 
+   entonces, en el cuadro de diálogo Configuración de seguridad 
+   seleccione "Pedir datos" para la opción "Ejecutar los archivos de 
+   comandos de los controles ActiveX no seguros". Haga clic en 
+   Aceptar.
+6. Si desea desactivar completamente las operaciones no seguras 
+   (descritas en 3.2.3) sobre objetos ADO/RDS, entonces seleccione 
+   "Desactivar" en el cuadro de diálogo Configuración de seguridad 
+   para la opción "Ejecutar los archivos de comandos de los controles 
+   ActiveX no seguros". Haga clic en Aceptar.
+7. Si resulta conveniente, repita estos pasos para personalizar la 
+   configuración de seguridad para la seguridad de otras zonas.
+8. Haga clic en Aceptar.
+
+Ahora los objetos ADO/RDS se comportarán del modo personalizado que 
+se ha especificado. Esta configuración afecta al siguiente 
+comportamiento de los objetos ADO/RDS (tal y como se describe en 
+3.2.3) en la zona de seguridad especificada: abrir conexiones de dos 
+capas locales; trabajar sobre DCOM; conectarse a un servidor distinto 
+del que se descargó la página originalmente; guardar y abrir un 
+recordset en o desde archivos del equipo local.
+
+Si establece sus opciones personalizadas como "Pedir datos", se 
+muestra la siguiente advertencia cuando se intenta una operación no 
+segura sobre objetos ADO/RDS:
+
+"La página está teniendo acceso a un origen de datos de otro 
+dominio. ¿Desea permitirlo? El usuario tiene la opción de responder 
+"Sí" o "No". Si la respuesta es "Sí", se completa la operación, en 
+otro caso falla.
+
+----------------------------------------------------------------
+4. ERRORES, LIMITACIONES, SOLUCIONES CONOCIDAS Y NOTAS DE ÚLTIMA 
+   HORA DE LA DOCUMENTACIÓN 
+----------------------------------------------------------------
+
+4.1 La imitación de un cliente en RDS no se admite actualmente 
+    debido a que se ha perdido esta compatibilidad desde el sistema 
+    operativo.
+
+4.2 Al utilizar adUseClient o acceso remoto a SQL Server 6.5 Service 
+    Pack 3, utilizando la clave DISTINCT en las consultas, se ignora 
+    dicha clave para los conjuntos de resultados actualizables. Ésta 
+    es una característica de SQL Server y se debería resolver en un 
+    futuro service pack.
+
+4.3 Al crear "Servidores virtuales" en Internet Information Server 4.0, 
+    hay que realizar dos pasos más necesarios para configurar el 
+    servidor para que funcione con RDS:
+
+A) Al configurar el servidor, active "Permitir acceso y ejecución."
+B) Mueva msadcs.dll a vroot\msadc, donde vroot es el directorio de 
+   inicio de su servidor virtual.
+
+4.4 La documentación de ADO se refiere a "OpenOptionEnum" como el 
+    tipo del cuarto parámetro del método Open del objeto Connection 
+    de ADO. Este parámetro se define realmente como un Long, y puede 
+    tomar valores de ConnectOptionEnum.
+
+4.5 Al utilizar el método Recordset.Save, para un mejor resultado 
+    utilice CursorLocation=adUseClient. Algunos proveedores de OLE DB 
+    no son compatibles con toda la funcionalidad necesaria para 
+    admitir el guardado de recordset, y el cursor del cliente se 
+    puede utilizar para proporcionar esa funcionalidad.
+
+4.6 Eventos de ADO 
+
+Los títulos de WillMove y MoveComplete, WillChangeField y 
+FieldChangeComplete, WillChangeRecord y RecordChangeComplete, 
+WillChangeRecordset y RecordsetChangeComplete, y EndOfRecordset 
+se enumeran como eventos de Connection. Sin embargo son eventos de 
+Recordset.
+
+4.6.1 WillConnect
+La descripción de la documentación para los parámetros de Options 
+indica que el valor de este parámetro modificará la cadena de 
+conexión. Sin embargo, la única opción válida es adAsyncOpen que no 
+modifica la cadena de conexión. La documentación también indica "vea 
+la propiedad CommandType si desea una lista de valores aceptables". No 
+hay una propiedad CommandType en el objeto Connection y ninguno de 
+los valores de la propiedad CommandType del objeto Command son válidos 
+en este caso.
+
+La descripción de la documentación para el parámetro adStatus indica 
+que "este parámetro se establece a adStatusOK si la operación que ha 
+originado el evento se ha completado con éxito". Debido a que se trata 
+de un evento "before (antes)", todavía no se ha realizado ninguna 
+operación; esto también implica que este evento puede descubrir un 
+error, lo cual no es el caso por la misma razón.
+
+El párrafo de entrada indica que "los parámetros que se van a utilizar 
+en la conexión pendiente se proporcionan como parámetros de entrada y 
+se pueden cambiar antes de que se ejecute el método". Esto es verdad 
+excepto para el parámetro pConnection.
+
+4.6.2 ConnectComplete y Disconnect
+La descripción de la documentación para el parámetro adStatus indica 
+que "cuando se llama a alguno de esos métodos, este parámetro se 
+establece a adStatusOK si la operación que ha originado el evento se 
+ha completado con éxito, o a adStatusErrorsOccurred si la operación 
+ha fallado". Esto no es cierto para el evento Disconnect: el estado 
+nunca será adStatusErrorsOccurred (debido a que no hay un parámetro 
+pError para este evento).
+
+La descripción del parámetro adStatus también indica que "establezca 
+este parámetro a adStatusUnwantedEvent para evitar las notificaciones 
+subsiguientes". Sin embargo al cerrar y volver a abrir una conexión se 
+hace que cualquier evento que se haya "desactivado" de esta manera 
+vuelva a disparar de nuevo las notificaciones.
+
+4.6.3 WillExecute
+La descripción de la documentación para el parámetro CursorType indica 
+que "este parámetro no se puede cambiar si se establece como 
+adOpenUnspecified cuando se llama a este método". Esto no es correcto. 
+No importa qué valor de parámetro llega, se puede cambiar. Si la 
+operación que ha originado el evento no era la apertura de un 
+recordset entonces será ignorado.
+
+La descripción en la documentación del parámetro LockType indica que, 
+"este parámetro no se puede cambiar si está establecido como 
+adLockUnspecified cuando se llama a este método". Como en el caso 
+anterior, esto no es cierto. Este parámetro se puede cambiar sin 
+importar qué valor está entrando. De nuevo, si el recordset abierto 
+no ha disparado el evento, será ignorado.
+
+La descripción en la documentación del parámetro Options debería 
+mencionar que cualquiera de los valores de la propiedad CommandType 
+del objeto Command son válidos en este caso.
+
+El comentario en la documentación de que "el parámetro pConnection, 
+pCommand o pRecordset correspondiente se establecerá como el objeto 
+que ha originado el evento y los dos restantes se establecerán a 
+Nothing" no es correcto. Este evento siempre tendrá una referencia al 
+objeto pConnection.
+
+4.6.4 InfoMessage
+La descripción en la documentación del parámetro pError establece que 
+"describe el error que ha ocurrido si el valor de adStatus es 
+adStatusErrorsOccurred; y en cualquier otro caso no se establece". 
+Esto no es correcto, este evento se dispara en cualquier momento en 
+que se devuelve una advertencia. En ese caso el estado de este evento 
+se establece como adStatusOK y el objeto pError contiene la 
+advertencia.
+
+La descripción en la documentación del parámetro adStatus indica que 
+"este parámetro se establece como adStatusOK si la operación que ha 
+originado el evento se ha completado con éxito, o como 
+adStatusErrorsOccurred si la operación ha fallado". De nuevo este 
+evento se dispara para las advertencias, la operación nunca "falla" y 
+el estado nunca será adStatusErrorsOccurred.
+
+La descripción en la documentación del parámetro pConnection indica 
+que esta referencia al objeto de conexión es para "la conexión en la 
+que se ejecuta el comando". Las advertencias también pueden ocurrir 
+en otros tipos de operaciones, como por ejemplo al abrir una conexión.
+
+4.6.5 WillMove y MoveComplete
+En la sección Comentarios, las siguientes operaciones de Recordset 
+también pueden originar que se disparen estos eventos: Filter, 
+AbsolutePage, AbsolutePosition. También se disparan si el recordset 
+secundario tiene eventos de recordset conectados y se mueve el 
+recordset principal. Además, la eliminación NO dispara esos eventos.
+
+4.6.6 WillChangeRecord y RecordChangeComplete
+En la sección de comentarios no se debería advertir que esos eventos 
+ocurren para el primer campo que se cambie de una fila.
+
+4.6.7 FetchProgress
+Podría merecer la pena mencionar las propiedades de Recordset que 
+afecta a la entrega asíncrona y con qué frecuencia se debería llamar 
+a este evento de ahora en adelante.
+
+4.7 La documentación de ADO/RDS se refiere a una propiedad llamada 
+URL del objeto RDS.DataControl. Esta propiedad no existe en 
+la revisión de la versión del componente RDS 2.0.
+
+4.8 La entrega asíncrona está disponible en ADO 2.0 al utilizar 
+CursorLocation=adUseClient. Hay dos maneras de activar esto: una 
+mediante el parámetro Options de Recordset.Open y otra mediante la 
+propiedad "Asynchronous Rowset Processing" de la colección Properties 
+del Recordset. Para obtener el mejor resultado, utilice siempre el 
+parámetro de Recordset.Open. Si no se utiliza el parámetro se puede 
+originar la pérdida de eventos relacionados con la entrega en segundo 
+plano de ADO.
+
+4.9 Cuando ADO está devolviendo valores de parámetros de "salida" o 
+"devueltos" al usuario desde un origen de datos, ADO sólo leerá los 
+valores una vez en el proveedor. Esto significa que si el usuario lee 
+los valores antes de que estén preparados, puede que no se recuperen.
+
+Un caso principal para esto se muestra mediante el siguiente código:
+
+Sub params()
+Dim conn As New Connection
+Dim cmd As New Command
+Dim rs As Recordset
+
+conn.Open "pubs", "sa", ""
+'conn.Open "provider=sqloledb;data source=sqlserver;user id=sa;password=;initial catalog=pubs"
+conn.Execute "DROP PROC test_proc"
+conn.Execute "CREATE PROCEDURE test_proc as SELECT * from authors RETURN 1"
+Set cmd.ActiveConnection = conn
+cmd.CommandText = "test_proc"
+cmd.CommandType = adCmdStoredProc
+cmd.Parameters.Append cmd.CreateParameter("RetVal", adInteger, adParamReturnValue)
+
+Set rs = cmd.Execute()
+Debug.print rs(0)
+
+'Teniendo acceso al valor del parámetro antes de que se haya cerrado 
+'el recordset sobre un cursor de tipo forward-only, de sólo lectura 
+'en Microsoft SQL Server dará lugar a que el valor del parámetro que 
+'se recupere antes de que esté disponible. Haciendo referencia al 
+'parámetro sólo tras cerrarse el recordset (en lugar de antes y 
+'después) se recuperará el valor correcto del parámetro.
+
+Debug.Print "Return Val : "; cmd(0)
+rs.Close
+Debug.Print "Return Val : "; cmd(0)
+conn.Close
+
+End Sub
+
+4.10 Al utilizar CursorLocation=adUseClient, el método 
+Recordset.Resync() sólo está disponible para Recordset que no sean 
+de solo lectura.
+
+4.11 Para poder utilizar los eventos FechtProgress y FetchComplete 
+de ADO 2.0 con Visual Basic, se requiere al menos la versión 6 de 
+Visual Basic.
+
+4.12 Al utilizar los eventos de ADO frente a un proveedor que no 
+admite marcadores, el usuario recibirá una notificación 
+RecordsetChanged cada vez que se requiera que se entreguen nuevas 
+filas desde el proveedor de OLE DB. La frecuencia con que ocurra 
+depende de la propiedad Recordset.CacheSize.
+
+4.13 Al utilizar RDS sobre un servidor IIS, el número de subprocesos 
+que se crean por procesador se puede controlar mediante la 
+manipulación del registro del servidor Web. El número de subprocesos 
+por procesador puede afectar al rendimiento en una situación de 
+tráfico intenso, o de tráfico escaso, pero no en escenarios de 
+tamaños de consulta grandes. El usuario debería experimentar para 
+obtener los mejores resultados. El valor específico que se ajusta es:
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W3SVC\Parameters\ADCThreads
+
+Donde ADCThreads es REG_DWORD agregado por el usuario en el rango 
+de 1 a 50. El valor predeterminado es 6 y los valores no válidos se 
+establecen de manera predeterminada a 6 o a 50. El usuario necesitará 
+crear este valor del registro, no se incluye en el registro de manera 
+predeterminada.
+
+4.14 Hay algunas columnas en los Recordset que se devuelven desde 
+OpenSchema en el objeto Connection que son un tipo con las que no se 
+pueden comparar otras variables de Visual Basic. Éstas son columnas 
+que tienen un tipo de dato DBTYPE_UI4 correspondiente a OLE DB. 
+Consulte la especificación de OLE DB para esas columnas en los 
+conjuntos de filas del esquema que tienen este tipo.
+
+4.15 Al utilizar el método OpenSchema sobre el objeto Connection de 
+ADO es posible restringir los resultados utilizando el segundo 
+parámetro de la función. Este parámetro contiene una matriz de 
+valores de tipo variant y se pueden especificar en VBA como:
+
+Dim criteria(3) As Variant
+
+criteria(0) = "pubs"		' Usa la base de datos "pubs" de SQL Server
+criteria(1) = Empty		' No hay restricción en el esquema/propietario
+criteria(2) = Empty		' No hay restricción en el nombre de la tabla 
+criteria(3) = "table"		' Sólo se devuelven objetos de tipo "table".
+Set rs = cnn.OpenSchema(adSchemaTables, Criteria)
+
+4.16 En ADO, la propiedad RecordCount del objeto Recordset puede que 
+no siempre sea compatible con el proveedor o el tipo de cursor 
+específico que se esté utilizando. En esos casos en los que el 
+proveedor o el tipo de cursor no admite RecordCount, se devolverá -1 
+como valor.

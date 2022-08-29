@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Archivo Léame del Proveedor OLE DB 7.00.459 de Microsoft SQL Server
+-------------------------------------------------------------------
+
+(c) 1998 Microsoft Corporation. Reservados todos los derechos.
+
+Este documento proporciona información de última hora u otra 
+información suplementaria a la documentación del Proveedor OLE DB 
+de Microsoft SQL Server.
+
+---------
+CONTENIDO
+---------
+
+1. DESCRIPCIÓN DEL PRODUCTO
+   
+2. NOTAS TÉCNICAS
+
+---------------------------
+1. DESCRIPCIÓN DEL PRODUCTO
+---------------------------
+SQLOLEDB, Proveedor OLE DB de Microsoft SQL Server, dispone de 
+interfaces para aquellos clientes que deseen tener acceso a los datos 
+de uno o más servidores de SQL Server.
+
+-----------------
+2. NOTAS TÉCNICAS
+-----------------
+
+2.1 Cambios a las propiedades de SQLOLEDB
+
+Tenga en cuenta los cambios siguientes en las propiedades de SQLOLEDB:
+
+* La propiedad DBPROP_INIT_DATASOURCE se utiliza ahora para 
+  especificar el nombre de un servidor que funciona con SQL Server. 
+  No utilice nombres largos para las bases de datos.
+
+* La propiedad DBPROP_INIT_CATALOG se utiliza ahora para especificar 
+  la base de datos inicial.
+
+* La propiedad DBPROP_INIT_LOCATION property ya no se admite.
+
+* La propiedad DBPROP_AUTH_INTEGRATED ahora se admite. Si establece 
+  la propiedad DBPROP_AUTH_INTEGRATED a ‘SSPI’, se utilicirá la 
+  seguridad integrada. Si establece el valor del puntero BSTR a nulo, 
+  se utilizará la seguridad de SQL Server.
+
+* La propiedad SSPROP_AUTH_TRUSTEDCONNECTION ya no se admite.
+
+* La propiedad DBPROP_INIT_MODE específica del proveedor ya no se 
+  admite.
+
+2.2
+Si intenta ejecutar un comando sobre una conexión que ya tiene un 
+comando en proceso, SQLOLEDB crea otra conexión para procesar el 
+nuevo comando si se cumplen las condiciones siguientes:
+
+*  DBPROP_MULTIPLECONNECTIONS tiene el valor VARIANT_TRUE.
+*  El primer comando no produjo un conjunto de resultados o no se 
+   utiliza un cursor de servidor.
+*  La conexión no tiene una transacción activa.
+
+Si hay una transacción activa en la conexión, el intento de ejecutar 
+un segundo comando devolverá E_FAIL. Si no hay una transacción activa 
+pero el valor de DBPROP_MULTIPLECONNECTIONS es VARIANT_FALSE, el 
+intento de ejecutar un segundo comando devolverá DB_E_OBJECTOPEN.
+
+SQL Server toma como base cada conexión para administrar las 
+transacciones y los bloqueos. Si se genera otra conexión, los 
+comandos de las conexiones independientes no comparten bloqueos. 
+Asegúrese de que los comandos no se bloquean entre sí para evitar 
+bloqueos en las peticiones de filas de otro comando.
+
+2.3
+Para mejorar el rendimiento y disminuir el tráfico en la red, 
+SQLOLEDB no deriva información de parámetros automáticamente a 
+menos que llame a ICommandWithParameters::GetParameterInfo o 
+ICommandPrepare::Prepare antes de ejecutar un comando. Esto significa 
+que SQLOLEDB automáticamente:
+
+* No comprobará la exactitud de los tipos de datos especificados con 
+  ICommandWithParameters::SetParameterInfo.
+* No asignará a partir del valor DBTYPE especificado en la 
+  información de enlace suplementaria el tipo de datos de SQL correcto 
+  para el parámetro.
+
+Las aplicaciones recibirán posibles errores o pérdida de precisión 
+con cada uno de estos métodos si ellos especifican tipos de datos 
+que no son compatibles con los tipos de datos de SQL del parámetro.
+
+Para evitar que esto suceda la aplicación debería:
+
+* Si la parte no modificable del código incluye 
+  ICommandWithParameters::SetParameterInfo, asegúrese de que 
+  pwszDataSourceType coincide con el tipo de datos de SQL del 
+  parámetro.
+* Si la parte no modificable del código incluye un suplemento, 
+  asegúrese de que el enlace de DBTYPE para el parámetro es del mismo 
+  tipo que el tipo de datos de SQL del parámetro.
+* El código de la aplicación debe llamar a 
+  ICommandWithParameters::GetParameterInfo para que el proveedor 
+  pueda obtener dinámicamente los tipos de datos de SQL de los 
+  parámetros. Tenga en cuenta que esto disminuirá la velocidad de 
+  la red al servidor.

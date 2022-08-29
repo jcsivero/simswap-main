@@ -1,0 +1,161 @@
+[Version]
+Signature="$Windows NT$"
+Provider="BackOffice Setup"
+
+[Components]
+sqlC.bos
+NtopwksC.bos
+NtopsvrC.bos
+sqldbgc.bos
+mdacc.bos
+snaC.bos
+apeC.bos
+vssC.bos
+vaC.bos
+vfpC.bos
+scptdbgc.bos
+fpC.bos
+paC.bos
+vidC.bos
+
+[Component Display Order]
+sqlC.bos
+NtopwksC.bos
+NtopsvrC.bos
+sqldbgc.bos
+mdacc.bos
+snaC.bos
+apeC.bos
+vssC.bos
+vaC.bos
+vfpC.bos
+scptdbgc.bos
+fpC.bos
+paC.bos
+vidC.bos
+
+[Component Install Order]
+sqlC.bos
+NtopwksC.bos
+NtopsvrC.bos
+sqldbgc.bos
+mdacc.bos
+snaC.bos
+apeC.bos
+vssC.bos
+vaC.bos
+vfpC.bos
+scptdbgc.bos
+fpC.bos
+paC.bos
+vidC.bos
+
+[setup.exe]
+CDTitle=Visual Studio Server CD-1
+directory=
+path=cd1
+
+[sqlC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=sql
+path=cd3
+
+[NtopwksC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=NToptPak
+path=cd2
+
+[NtopsvrC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=NToptPak
+path=cd2
+
+[snaC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=SNA4\Server
+path=cd1
+CDIdentifier=vs98svr1.inf
+
+[sqldbgc.bos]
+CDTitle=Visual Studio Server CD-1
+directory=SQDBG_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[apeC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=APE_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[vssC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=VSS_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[vaC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=VA_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[vfpC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=VFP_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[scptdbgc.bos]
+CDTitle=Visual Studio Server CD-1
+directory=SCRPT_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[fpC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=Fp98ext
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[vidC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=VID_SS
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[paC.bos]
+CDTitle=Visual Studio Server CD-1
+directory=Deploy
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[mdacc.bos]
+CDTitle=Visual Studio Server CD-1
+directory=mdac2
+path=cd2
+CDIdentifier=vs98svr1.inf
+
+[Scenarios]
+complete.rio
+pcmplete.rio
+custom.rio
+vbS.rio
+vcS.rio
+vidS.rio
+vjs.rio
+vfpS.rio
+vssS.rio
+
+[Scenario Display Order]
+complete.rio
+pcmplete.rio
+custom.rio
+vbS.rio
+vcS.rio
+vidS.rio
+vjs.rio
+vfpS.rio
+vssS.rio
+
+[Strings]

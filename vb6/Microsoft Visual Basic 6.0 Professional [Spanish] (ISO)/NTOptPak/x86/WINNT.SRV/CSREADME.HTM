@@ -1,0 +1,273 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Notas de la versión</title>
+
+<script language="JavaScript">
+	TempString = navigator.appVersion 
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script>
+
+<meta name="DESCRIPTION" content="Notas de la versión"></head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<font face="Verdana,Arial,Helvetica">
+
+<h1>Microsoft Certificate Server versión&nbsp;1.0 Notas de la versión</h1>
+
+<p>En este documento se incluyen las siguientes secciones:<br><br>
+
+<a href="#QuickStart">Tutorial</a><br>
+<a href="#CertificateServerFeatures">Nuevas características de Certificate Server versión&nbsp;1.0</a><br>	
+<a href="#KnownProblemsandLimitations">Otras limitaciones y problemas conocidos </a><br>
+<a href="#DocumentationIssues">Problemas de la documentación</a><br><a href="#CopyrightInformation">Información de copyright</a>
+</p>
+
+<hr>
+
+<h1><a name="QuickStart">Tutorial</a></h1>
+
+<p>Debe leer la siguiente información antes de intentar instalar Certificate Server versión&nbsp;1.0.</p>
+
+<ul>
+
+<li>En el paso Escriba la información de identificación del Asistente de configuración, debe proporcionar la siguiente información: Nombre, Organización, Departamento, Localidad, Estado y País. </li><br><br>
+
+<li>Esta versión de Certificate Server no es compatible con las jerarquías de entidades emisoras de certificados. </li><br><br>
+
+</ul>
+
+<h1><a name="CertificateServerFeatures">Nuevas características de Certificate Server versión&nbsp;1.0</a></h1>
+
+<p> Microsoft Certificate Server versión&nbsp;1.0 incluye muchas características nuevas. A continuación se describen brevemente estas características.</p>
+
+<ul>
+<li><strong>Administración basada en Web</strong><br>
+Mediante un explorador de Web, el administrador se puede conectar al servidor de certificados, ver el registro de certificados y la cola de certificados, y revocar certificados. 
+</li><br><br>
+
+<li><strong>Ordenar componentes de nombre</strong><br>
+Se puede utilizar un valor REG_MULTI_SZ del Registro para establecer el orden de los componentes de un Nombre en referencia relativa (RDN) en el momento de la inicialización del módulo de directivas.</li><br><br>
+
+<li><strong>Múltiples valores de RDN</strong><br>
+En el módulo de directivas y en el intermediario del servidor, cualquier interfaz que especifique un componente de nombre (como CN) puede especificar múltiples componentes de nombre en referencia mediante valores separados por comas.<br>
+Ejemplo: La cadena "CN=prueba,nombre" tendrá como resultado un DN que contiene "CN=prueba CN=nombre".</li><br><br>
+
+<li><strong>Extensiones</strong><br>
+Mediante la interfaz ICertServerPolicy, el módulo de directivas ahora puede especificar extensiones para que se incluyan en el certificado publicado. El módulo de directivas ahora puede llamar a interfaces estándar y tipos de extensión estándar de codificación ASN.1, incluidos enteros y cadenas.<br>
+Ejemplo: El siguiente ejemplo de Microsoft&reg; Visual Basic&reg; establece una cadena de dirección URL de revocación y un indicador de extensión crítica en el certificado:<br><br>
+Dim CertPolicy As CCertServerPolicy<br>
+Set CertPolicy = New CCertServerPolicy<br>
+CertPolicy.SetCertificateExtension _<br>
+<dl><dl><dd>
+	"2.29.38.4", _<br>
+	PROPTYPE_STRING, _<br>
+	EXTENSION_CRITICAL_FLAG, _<br>
+	"http://UrlTest.htm"</li>
+</dl></dl></dd><br>
+ 
+<li><strong>Peticiones pendientes</strong><br>
+El módulo de directivas puede especificar que no se emita ni deniegue una petición sino que se registre para uso del administrador. Mediante la interfaz ICertAdmin o la herramienta de administración basada en Web, el administrador puede especificar si la petición pendiente se volverá a enviar el módulo de directivas o se denegará.<br>
+Ejemplo: Vea policyvb.dll, que se incluye en los archivos de código de ejemplo disponibles en Platform SDK en MSDN.</li><br><br>
+
+<li><strong>Control de fechas</strong><br>
+El módulo de directivas puede establecer ahora las fechas de comienzo y de caducidad en el certificado que se va a emitir.<br>
+Ejemplo: El siguiente ejemplo de Microsoft&reg; Visual Basic&reg; establece las propiedades de comienzo y caducidad en el certificado:<br>
+Dim CertPolicy As CCertServerPolicy<br>
+Set CertPolicy = New CCertServerPolicy<br>
+CertPolicy.SetCertificateProperty _<br>
+<dl><dl><dd>
+	"NotBefore", _<br>
+	PROPTYPE_DATE, _<br>
+	date1</li>
+</dl></dl></dd><br>
+
+CertPolicy.SetCertificateProperty _<br>
+<dl><dl><dd>
+	"NotAfter", _<br>
+	PROPTYPE_DATE, _<br>
+	date2</li>
+</dl></dl></dd><br>
+
+<li><strong>Revocación de tipo Netscape</strong><br>
+Se proporcionan secuencias de comandos de Web que permiten al servidor realizar comprobaciones de revocación tal y como se especifican en el documento de extensiones de certificado de Netscape.</li><br><br>
+
+<li><strong>Interfaz del módulo de salida</strong><br>
+Ahora las interfaces ICertExit e ICertServerExit son funcionales. Esto permite definir un módulo de salida y recuperar certificados a medida que se emiten, así como publicarlos en un directorio u otro depósito.</li><br><br>
+
+<li><strong>Claves del equipo local </strong><br>
+Certificate Server utiliza ahora claves de Microsoft&reg; CryptoAPI con la clave de Registro CRYPT_MACHINEKEYSET especificada. Esto permite al servidor ejecutarse como un servicio válido sin necesidad de especificar una cuenta de inicio de sesión de usuario.</li><br><br>
+
+<li><strong>Interfaz de administrador expandida</strong><br>
+Se han agregado los siguientes métodos a la interfaz ICertAdmin:<br>
+*	ResubmitRequest<br>
+*	DenyRequest<br>
+*	IsCertificateValid<br>
+*	GetRevocationReason<br>
+*	SetRequestAttributes</li><br><br>
+
+<li><strong>Compatibilidad con etiquetas &lt;KEYGEN&gt;</strong><br>
+Certificate Server ahora permite la creación de certificados de autenticación de cliente para Netscape Navigator, lo que requiere compatibilidad con la etiqueta HTML propietaria de Netscape &lt;KEYGEN&gt;.<br>
+Ejemplo: Vea las páginas kgenroll.asp y kgaccept.asp para obtener ejemplos de páginas ASP que implementan el registro de Netscape.</li><br><br>
+
+<li><strong>Formatos de petición</strong><br>
+El método ICertRequest::Submit ahora permite introducir peticiones en Base64, Base64+, atributos y encabezados de texto o en formato binario. Se admiten tanto peticiones PKCS10 como KeyGen.</li><br><br>
+
+<li><strong>Atributos de encabezado</strong><br>
+Ahora una solicitud puede contener atributos de encabezado cuando se incluye en una solicitud.<br>
+Ejemplo: A continuación se muestra una solicitud con atributos de encabezado para CommonName y Organization:<br>
+CommonName: Su nombre<br>
+Organization: OrgPrueba<br>
+-----BEGIN CERTIFICATE REQUEST-----<br>
+sasdkfh4589023457sdfnmcvnasdtr347509345sadifjsacnv<br>
+-----END CERTIFICATE REQUEST-----<br><br>
+
+Además, ahora la interfaz ICertAdmin puede establecer atributos de petición y las interfaces ICertServerPolicy e ICertServerExit pueden recuperar atributos de petición.</li><br><br>
+
+<li><strong>Tipos de establecimiento de propiedades de Visual Basic expandidos</strong><br>
+Ahora se admiten los tipos String, Date, Long y Binary en llamadas a los métodos SetCertificateProperty, GetRequestProperty y GetCertificateProperty de las interfaces ICertServerPolicy e ICertServerExit.</li><br><br>
+
+<li><strong>Llamadas COM e IDispatch directas en las interfaces </strong><br>
+Ahora es posible llamar a todas las interfaces de Certificate Server como interfaces IDispatch o COM normales.</li><br><br>
+
+<li><strong>Instalación desatendida</strong><br>
+Certificate Server admite ahora una instalación desatendida. El siguiente es un ejemplo de las cadenas que se utilizan para realizar una instalación desatendida de Certificate Server:<br><br>
+[certsrv_client]<br>
+sharedfolder = \\servidor\recurso_compartido\cs<br><br>
+
+[certsrv_server]<br>
+name = mi_nombre_prueba<br>
+organization = mi_org_prueba<br>
+organizationalunit = mi_departamento<br>
+locality = mi_localidad <br>
+State = mi_estado<br>
+country = EE.UU.</li><br><br>
+
+</ul>
+
+<hr>
+
+<h1><a name="KnownProblemsandLimitations">Otras limitaciones y problemas conocidos</a></h1>
+
+<p>La siguiente lista contiene problemas y limitaciones que se sabe que existen en esta versión de Certificate Server:</p>
+
+<ul>
+<li>No se admite la instalación de Certificate Server versión 1.0 en un controlador de reserva.</li><br><br>
+
+<li>Microsoft Certificate Server requiere que el Nombre común del sujeto que se especifica para el propio Certificate Server durante la instalación inicial esté limitado a los siguientes caracteres:<br><br>
+
+a-zA-Z0-9 {espacio} \()+-./:=?<br><br>
+
+Para conseguir la máxima compatibilidad con sistemas que no sean de Microsoft, se recomienda que todos los caracteres de cada RDN en cualquier DN especificado en una petición de certificado, certificado emitido y el propio Certificate Server se limiten a los siguientes caracteres:<br><br>
+
+a-zA-Z0-9 {espacio} ()+-./:=?<br><br>
+
+<li>Actualizar el servidor Web desde una versión beta anterior no hace que se actualicen los archivos binarios de Certificate Server.<br><br>
+Se recomienda actualizar los archivos binarios de Certificate Server y sólo se puede lograr si se desinstala y reinstala Certificate Server.  No se conservarán los valores de Certificate Server en el Registro ni la base de datos.  Hay disponible una opción para conservar las claves de una entidad emisora de certificados existente al reinstalar.<br><br>
+Para desinstalar Certificate Server, cambie al directorio de instalación en el CD de distribución (p. ej., d:\NTOPTPAK\Es\x86\Winnt.SRV).  Inicie el proceso de desinstalación; para ello, escriba "sysocmgr /i:certmast.inf /n".  Seleccione desinstalar: desactive la opción Certificate Server y haga clic en Siguiente.  Se desinstalará Certificate Server.<br><br>
+Para reinstalar Certificate Server, utilice el mismo directorio y escriba "sysocmgr /i:certmast.inf /n".  Seleccione instalar; para ello, active la opción Certificate Server y haga clic en Siguiente.  Si desea conservar las claves de la anterior entidad emisora de certificados, active la casilla de verificación Mostrar configuración avanzada antes de hacer clic en Siguiente.  En la página Configuración avanzada, haga clic en el cuadro Utilizar claves existentes y resalte el nombre de la entidad emisora de certificados que se va a conservar.  Haga clic en Siguiente y continúe con la instalación.</li><br><br>
+
+<li>En el paso "Información de identificación" del Asistente de configuración, si escribe un asterisco (*) o un signo de interrogación (?) en el campo Nombre, aparecerá el siguiente mensaje de error durante la instalación:<br><br>
+"Error al configurar Certificate Server.  Necesita ejecutar de nuevo el Asistente de configuración de Certificate Server para completar la configuración Certificate Server.  No se puede copiar => 0x6e(110).  C:\Winnt\System32\CertSrv\CertEnroll\nsrev_....(campo Nombre insertado aquí).asp"<br><br>
+
+La solución consiste en evitar caracteres asterisco y signo de interrogación en el campo de nombre de la CA.</li><br><br>
+  
+<li>En esta versión, la ubicación de la "Carpeta compartida" designada en el paso "Elija ubicación de almacenamiento" del Asistente de configuración se debe encontrar en el equipo donde se instala Certificate Server.</li><br><br>
+
+<li>Esta versión de Certificate Server no es compatible con las jerarquías de entidades emisoras de certificados.</li><br><br>
+
+<li>Para utilizar el control de registro debe establecer el Nivel de seguridad de Internet Explorer en Medio.</li><br><br>
+
+<li>Cuando se selecciona Requerir un certificado de autenticación de cliente en la Página Web de herramientas de registro de Certificate Server, las páginas de registro intentan detectar la versión y el tipo del explorador que se está ejecutando.  Si el explorador es Internet Explorer versión 3.0 a 3.02 y se ejecuta en Intel, se descargará el antiguo archivo certenr3.dll.  Si el explorador es Internet Explorer versión 3.0 a 3.02 y se ejecuta en una plataforma Alpha, se pedirá al usuario que actualice el explorador a Internet Explorer 3.02 UPD (Authenticode 2.0).  Si el explorador es Internet Explorer versión 3.02 UPD (Authenticode 2.0) o superior y se ejecuta en una plataforma Intel o Alpha, se descargará el archivo Xenroll.dll específico de la plataforma.  También detectará un explorador de Netscape y emitirá el certificado apropiado. Si las páginas no pueden detectar qué explorador se está ejecutando, se pedirá al usuario que identifique el tipo de equipo y el explorador. Los usuarios que desean escribir su propio control deben obtener el archivo descargable de almacenamiento certenr3.exe que se encuentra en http://www.microsoft.com/intdev/security/csa/enroll.htm (que incluye información acerca de cómo hacerlo).</li><br><br>  
+
+<li>Hay una interfaz de usuario no documentada que emerge cuando un usuario instala un certificado de autenticación de cliente generado por el nuevo control de registro de certificado (XEnroll). La interfaz de usuario pregunta al usuario si desea instalar el certificado raíz.  El usuario debe instalar también el certificado raíz de la entidad emisora de certificados (CA) si ejecuta Internet Explorer versión 3.02 o anterior.  El certificado raíz que instala XEnroll se coloca en HKEY_CURRENT_USER\software\microsoft\systemcertificates y el raíz de CA va bajo HKEY_LOCAL_MACHINE\services\currentcontrolset\securityproviders\Schannel\certificateauthorities.  Sólo Internet Explorer 4.0 sabe dónde buscar el certificado raíz instalado por XEnroll.  Si el usuario ejecuta Internet Explorer 3.02 o anterior, tendrá que instalar el certificado raíz de la CA desde las páginas ASP.</li><br><br>
+
+<li>Las Herramientas de administración de Certificate Server sólo muestran un botón 'Requery' si hay entradas en la base de datos del servidor cuando se inician las herramientas. Por ejemplo, si se ejecuta la Utilidad de registro de certificados antes de emitir ningún certificado, la base de datos del servidor estará vacía y la utilidad Registro no mostrará un botón 'Requery'. Esto significa que si la Utilidad de registro de certificados se deja en ejecución y se emiten certificados, será necesario salir de la utilidad y reiniciarla para poder ver los certificados emitidos. Una vez que se muestra un certificado en la Utilidad de registro de certificados, el botón 'Requery' se activa y al hacer clic en él se mostrarán las entradas de los certificados recién emitidos.<br>
+La Utilidad de cola de certificados muestra un comportamiento similar con respecto a las peticiones pendientes. El botón 'Requery' de la Utilidad de cola de certificados sólo será visible si la utilidad se inicia después de que se haya enviado al menos una petición.</li><br><br>
+
+<li>Si obtiene un error de ODBC al utilizar herramientas de administración como la Utilidad de registro de certificados o la Utilidad de cola de certificados, haga lo siguiente:<br><br>
+
+1. Abra un símbolo de sistema de MS-DOS y escriba "net stop IISADMIN".<br><br>
+
+2. Responda "Sí" cuando se le pregunte si detener los servicios WWW, FTP y cualquier otro servicio enumerado.<br><br>
+
+3. Una vez que se complete, reinicie todos los servidores aplicables. Por ejemplo, para reiniciar el servicio WWW, escriba "net start W3SVC". Para reiniciar el servicio FTP, escriba "net start MSFTPSVC".</li><br><br>
+
+<li>Debido a una limitación de SChannel que incluye SHA-1, los clientes no podrán instalar un certificado SHA-1 a menos que Windows NT Service Pack 3 esté presente en el equipo. Esto significa que los clientes que utilicen Windows NT sin Service Pack 3 y los clientes que utilicen Windows 95 no pueden emplear una entidad emisora de certificados que tenga un certificado raíz SHA-1 firmado automáticamente.</li><br><br>
+
+<li>Las jerarquías de CA no son completamente funcionales debido a la falta de compatibilidad con SChannel.</li><br><br>
+
+<li>Las búsquedas de la CRL local desde el equipo servidor de la CA pueden bloquearse en ciertas condiciones.  La solución consiste en detener e iniciar Certificate Server tras generar una nueva CRL y escribirla en un archivo disponible para acceso Web mediante "Generar una nueva lista de revocación de certificados". Este problema sólo debe aparecer al intentar una operación  "http: get" desde el equipo servidor de CA al mismo u otro equipo.  Un ejemplo de ello es intentar comprobar el estado de revocación de un certificado que contiene la CRL en un proceso que se ejecuta en el mismo equipo que la CA, cuando la CRL no está en la memoria caché o cuando la CRL ha caducado: en estos casos, la CRL se obtendrá a través de HTTP.</li><br><br>
+
+<li>En algunos casos Certificate Server puede no iniciarse automáticamente al no poder cargar un módulo de directivas externo (el módulo de directivas está presente pero hay un problema de tiempos). Certificate Server también se puede bloquear por esta razón cuando lo llama CertReq. En tal caso se agregará un suceso al Registro de sucesos para indicarlo. Para solucionar el problema, inicie el servicio tras iniciar el equipo mediante "net start certsvc" o mediante el subprograma Sevicios del Panel de control.</li><br><br>
+
+<li>Certsrv no notifica al módulo de salida en el caso de emisión de una CRL.</li><br><br>
+
+<li>Certsrv no notifica al módulo de salida en el caso de un cierre del sistema.</li><br><br>
+
+<li>En esta versión sólo se admiten instalaciones completas de Certificate Server. No se permite instalar el Cliente Web de Certificate Server en un equipo por sí mismo.</li><br><br>
+
+<li>Al solicitar un certificado mediante las páginas de registro, debe utilizar el botón 'Enviar' en lugar de la tecla ENTRAR. De lo contrario, se producirá un error.</li><br><br>
+
+<li>Una limitación de Internet Explorer evita que su IU muestre más de 26 certificados personales.  Si solicita más de 26 certificados, la IU bajo Ver.Opciones.Seguridad.Personal está vacía incluso aunque haya certificados en el almacén 'My'.  Si elimina suficientes certificados bajo HKEY_CURRENT_USER\Software\microsoft\SystemCertificates\My\Certificates de forma que no haya más de 26, los certificados se mostrarán de nuevo en la IU.  
+</li><br><br>
+</ul>
+
+<hr>
+
+<h1><a name="DocumentationIssues">Problemas de la documentación</a></h1>
+
+<p>La siguiente es una lista de problemas de la documentación que existen en esta versión de Certificate Server:</p>
+
+<ul>
+<li>En el Manual del administrador de Certificate Server se utiliza el término "Certificado de sitio" cuando el término pretendido es "Certificado de firma"</li><br><br>
+
+<li>En la sección llamada "Exploradores de Web", se dan instrucciones de hacer clic en la ficha "Seguridad"; debe ser la ficha "Contenido".  Donde dice hacer clic en "Sitios" debe decir "Entidades emisoras".</li><br><br>
+
+<li>En las Notas de instalación de Certificate Server, se debe observar que los certificados se almacenan en C:\%systemroot%\system32\certlog.</li><br><br>
+
+<li>Configuración avanzada<br><br>
+La página de registro de cliente proporcionada como ejemplo (a la que se tiene acceso mediante http://nombre_servidor/CertSrv/CertEnroll/ceenroll.asp) ahora tiene un botón "Avanzada".  Al hacer clic en el botón Avanzada, se lleva al usuario a otra página (ceadv.asp) que permite establecer numerosas características de la petición de certificado.  Para ello hay botones de opción, casillas de verificación y cuadros de lista desplegable.  Cada uno corresponde a una propiedad del control Certificate Enrollment, cuya documentación se incluye en los documentos de producto de Certificate Server.  La correspondencia es la siguiente.<br><br>
+<ul>
+<li>Key Spec: vea la descripción de la propiedad KeySpec</li><br><br>
+<li>Algoritmo:  vea la descripción de la propiedad HashAlgorithm</li><br><br>
+<li>Propiedades: vea el capítulo acerca de las propiedades del control Certificate Enrollment</li><br><br>
+<li>Uso: el cuadro de lista Uso permite al usuario seleccionar qué tipo de certificado se solicita.  Cada tipo de certificado tiene un OID que se establecerá en la extensión Enhanced Key Usage del certificado X.509v3 emitido.</li><br><br>
+<li>CSP:  el cuadro de lista CSP permite al usuario seleccionar el Proveedor de servicios de encriptación que utilizar.   Los proveedores de servicios de encriptación se describen en la documentación de Microsoft CryptoAPI.  El control de registro de cliente es compatible actualmente con la utilización de Microsoft Base CSP y Microsoft Enhanced CSP  Se describen en la documentación de CryptoAPI CSP.</li><br><br>
+</ul><br><br>
+Puede que desee adaptar estas páginas para enmascarar estas opciones de usuarios accidentales.  Las páginas se proporcionan como un ejemplo para los administradores del Web acerca de cómo utilizar las características del control de registro de certificados.<br><br>
+</li>	
+
+</ul>
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente. </p>
+
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1998 Microsoft Corporation. Reservados todos los derechos.</a></em></p>
+
+</font>
+</body>
+</html>

@@ -1,0 +1,40 @@
+[Version]
+Signature = "$Windows NT$"
+
+[Strings]
+Title="Instalación de Microsoft Windows NT 4.0 Option Pack"
+
+[PageTitles]
+SetupPage=%Title%
+
+[Components.x86]
+iis = iis.dll,OcEntry,iis.inf
+mts = mtssetup.dll,MTSSetupProc,mtsiis.inf
+DAC=dagsetup.dll,DAGSetup,dagsetup.inf
+wsh = wsh.dll,OcEntry,wsh.inf
+fp = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+vid = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+iisdbgTop = iisdbg.dll,ScrptDbg,iisdbg.inf
+RASICS = rasics.dll,RASICSEntry,rasics.inf
+Msmq_Client = msmqocm.dll,MsmqOcm,msmqclnt.inf
+
+[Components.alpha]
+iis = iis.dll,OcEntry,iis.inf
+mts = mtssetup.dll,MTSSetupProc,mtsiis.inf
+DAC=dagsetup.dll,DAGSetup,dagsetup.inf
+wsh = wsh.dll,OcEntry,wsh.inf
+fp = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+vid = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+iisdbgTop = iisdbg.dll,ScrptDbg,iisdbg.inf
+RASICS = rasics.dll,RASICSEntry,rasics.inf
+Msmq_Client = msmqocm.dll,MsmqOcm,msmqclnt.inf
+
+[PageReplace]
+welcome = iis
+mode = iis
+final = Msmq_Client,iis
+
+[PageAdd]
+early = iis,mts,Msmq_Client
+prenet = 
+late = default

@@ -1,0 +1,13 @@
+#define	STRING_BASE     0
+
+#define IDS_ERR_PROP_VALUE		STRING_BASE + 1
+#define IDS_ERR_PROP_VALUE_RANGE	STRING_BASE + 2
+#define IDS_ERR_CANT_CHANGE		STRING_BASE + 3
+
+STRINGTABLE
+BEGIN
+  IDS_ERR_PROP_VALUE, "Invalid Property Value.  The value passed is not a valid value for the %1 property."
+  IDS_ERR_PROP_VALUE_RANGE, "Invalid Property Value.  The value for the %1 property must be between %2 and %3."
+  IDS_ERR_CANT_CHANGE, "The %1 property cannot be changed at this time."
+END
+

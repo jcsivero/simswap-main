@@ -1,0 +1,381 @@
+----------------------------------------------------------
+Archivo Léame de Microsoft Remote Data Service versión 1.1
+----------------------------------------------------------
+
+                           (c) Microsoft Corporation, 1997
+
+Este documento ofrece noticias de última hora u otra 
+información que sirve de complemento a la documentación de 
+Microsoft Remote Data Service (RDS) versión 1.1.
+
+---------
+CONTENIDO
+---------
+
+1. DESCRIPCIÓN DEL PRODUCTO
+   1.1 Cambio del nombre del producto
+
+2. NUEVAS CARACTERÍSTICAS
+
+3. NOTAS ACERCA DE LA INSTALACIÓN
+   3.1 Antes de ejecutar la instalación
+       3.1.1 Requisitos de hardware 
+       3.1.2 Requisitos de software 
+   3.2 Instalación de Microsoft Remote Data Service
+       3.2.1 Instalación de los componentes del cliente RDS en los
+             servidores web
+       3.2.2 Instalación y uso de los componentes del cliente RDS 
+             en los equipos cliente
+   3.3 Validación de la instalación
+
+4. SOPORTE TÉCNICO
+   4.1 Consultas al Soporte técnico de Microsoft
+   4.2 Visita al sitio Web de Microsoft Remote Data Service
+   4.3 Suscripción al grupo de noticias público de Remote Data 
+       Service
+
+5. NOTAS TÉCNICAS
+
+6. PROBLEMAS CONOCIDOS
+
+---------------------------
+1. DESCRIPCIÓN DEL PRODUCTO
+---------------------------
+
+Microsoft Remote Data Service (RDS) es un marco de conectividad y 
+publicación de datos rápido y eficiente para aplicaciones 
+ubicadas en Internet Explorer. Se basa en una tecnología distribuida 
+de cliente/servidor que funciona sobre protocolos de aplicación HTTP, 
+HTTPS (HTTP sobre Nivel de socket seguro) y DCOM. Utilizando controles 
+ActiveX de reconocimiento de datos, RDS proporciona un entorno de 
+programación de acceso a datos del estilo de Visual Basic a los 
+programadores de Web que necesitan generar aplicaciones distribuidas 
+con una gran cantidad de información para uso en intranets 
+corporativas y en Internet.
+
+1.1 Cambio del nombre del producto
+
+El nombre, Microsoft Advanced Data Connector (ADC), cambia a 
+Microsoft Remote Data Service (RDS), una característica de Microsoft 
+ActiveX Data Objects (ADO). ADC siempre se ha basado en ADO y este 
+cambio representa un paso adelante para integrar y clarificar la 
+relación entre estos dos componentes. ADO es una interfaz de 
+programación que permite un acceso sencillo y flexible a los orígenes 
+de datos de OLE DB y ODBC. Remote Data Service se erige sobre ADO 
+para proporcionar un conjunto de registros sencillo y sin conexión, 
+y servicio remoto. La funcionalidad de Advanced Data Connector no se 
+ha visto afectada por este cambio.
+
+
+-------------------------
+2. NUEVAS CARACTERÍSTICAS
+-------------------------
+
+A continuación, se muestran nuevas características del cliente 
+Remote Data Service 1.1. Para obtener más información acerca de 
+estas características, consulte la documentación.
+
+El cliente 1.1 proporciona una ruta de actualización para las 
+aplicaciones de 1.0. Advanced Data Connector 1.0 era compatible con 
+el explorador Internet Explorer 3.0x. Remote Data Service 1.1 admite 
+tanto Internet Explorer 3.0x como 4.0, lo que permite una mayor 
+compatibilidad. En el cliente 1.5, hay un modelo de programación 
+ligeramente actualizado para enlace de datos. El cliente 1.1 conserva 
+el modelo de programación de la versión 1.0, por lo que aún puede 
+ejecutar sus aplicaciones mientras elige, cuando tenga tiempo, hacer 
+unos cuantos cambios necesarios.
+
+El cliente 1.1 consiste principalmente en unos pequeños ajustes y 
+cambios de compatibilidad, aunque también ofrece posibilidades de 
+actualización ampliadas. Ahora puede actualizar los datos a todos los 
+orígenes de datos compatibles con ODBC y ya no es necesario que 
+utilice la cláusula "for browse".
+
+Puesto que el cliente 1.1 se basa en el servidor 1.5, el servidor 1.5 
+puede alojar clientes de 1.1 y 1.5.
+
+---------------------------------
+3. NOTAS ACERCA DE LA INSTALACIÓN
+---------------------------------
+
+3.1 Antes de ejecutar la instalación
+
+Antes de instalar Microsoft Remote Data Service, compruebe que los 
+equipos del cliente y servidor cumplen los requisitos mínimos de 
+hardware y software.
+
+3.1.1 Requisitos de hardware
+
+Para instalar Remote Data Service, el hardware debe cumplir una serie 
+de requisitos, que incluye lo siguiente:
+
+· Cualquier equipo compatible con x86 con el sistema Windows NT o 
+  Windows 95.
+· Un disco duro con un mínimo de 8 megabytes (MB) de espacio 
+  disponible para una instalación completa de todos los componentes 
+  actualizados necesarios para que se ejecute RDS.
+· Un mínimo de 12 MB de RAM en los equipos cliente.
+· Un mínimo de 24 MB de RAM en los equipos de servidor (32 MB de 
+  RAM recomendado). 
+
+3.1.2 Requisitos de software
+
+Antes de instalar Remote Data Service en un equipo de servidor, el 
+equipo del servidor Web debe cumplir los siguientes requisitos de 
+software:
+
+· Servidor Remote Data Service 1.5.
+· Cualquiera de las siguientes plataformas de sistema operativo: 
+  Windows NT Server 4.0 o Workstation SP3 o posterior. Remote Data 
+  Service 1.1 admite actualmente la plataforma x86 de Intel. Para 
+  entornos de producción, se recomienda encarecidamente la plataforma 
+  NT Server.
+· Microsoft Internet Information Server (IIS) 3.0 ó 4.0, con páginas 
+  Active Server de Microsoft.
+· Microsoft SQL Server 6.5 con Service Pack 2 (u otro origen de datos 
+  ODBC).
+ 
+Para tener acceso a las aplicaciones de Remote Data Service desde 
+equipos cliente, los equipos cliente deben cumplir los siguientes 
+requisitos de software:
+
+· Cualquiera de las siguientes plataformas: Windows 95, Windows NT 
+  Server 4.0 (con Service Pack 3) o posterior, o Windows NT 
+  Workstation 4.0 o posterior.
+· Microsoft Internet Explorer versión 3.0x, 4.0 o posterior.
+
+Nota: Remote Data Service no ha sido probado con el explorador 
+Netscape.
+ 
+Para generar páginas Web de cliente, puede utilizar las herramientas 
+de edición HTML habituales, como Bloc de notas o la más completa, como
+Microsoft ActiveX Control Pad.
+
+Para programar objetos de negocios del servidor, puede usar cualquier 
+herramienta compatible con ActiveX/COM DLL, como Microsoft Visual 
+Basic 4.0 o posterior, o Microsoft Visual C++.
+
+3.2 Instalación de Microsoft Remote Data Service
+
+Para que Remote Data Service funcione correctamente, debe comprobar 
+que los componentes de servidor y cliente de Remote Data Service 
+están instalados correctamente en los equipos de servidor y cliente, 
+respectivamente.
+
+3.2.1 Instalación de los componentes del cliente RDS en los servidores 
+Web
+
+Deberá instalar los componentes del servidor de Microsoft Remote Data 
+Service 1.5 en el servidor Web a través del programa de instalación 
+de MDAC (Microsoft Data Access Components) 1.5. El programa de 
+instalación asume que el equipo cumple todos los requisitos de 
+software.
+
+Nota: los componentes del cliente de Microsoft Remote Data Service 
+versión 1.1 funcionan con los componentes del servidor de Microsoft 
+Remote Data Service 1.5. RDS 1.1 es una ruta de actualización para 
+compatibilizar las aplicaciones de RDS 1.0 con Internet Explorer 4.0 
+y para aprovechar la nueva funcionalidad que ofrece el servidor RDS 
+1.5. En las aplicaciones de RDS 1.0 existentes, puede utilizar el 
+cliente 1.1 con los componentes del servidor 1.5 tanto con 
+funcionalidad de Internet Explorer 3.0x como 4.0. Con las aplicaciones 
+nuevas y sólo de Internet Explorer 4.0, se recomienda utilizar los 
+componentes del cliente RDS 1.5 con los componentes del servidor RDS 
+1.5.
+ 
+>>>Para instalar los componentes del cliente de Remote Data Service 
+1.1:
+
+1) Desde el equipo del servidor Web, conecte con el sitio Web de 
+   Remote Data Service en http://www.microsoft.com/data/rds/.
+
+2) Haga clic en Free Downloads en el marco izquierdo.
+
+3) Haga clic en el vínculo correspondiente a la instalación que desea 
+   (mdac_nts.exe for Windows NT Server; mdac_ntw.exe for Windows NT 
+   Workstation; mdac_95.exe for Windows 95; mdac_as.exe for Alpha 
+   server; mdac_aw.exe for Alpha workstation) y elija Custom Install 
+   para instalar los componentes y la documentación del cliente de RDS 
+   1.1.
+
+4) Siga las instrucciones de instalación que aparecen en pantalla. 
+ 
+El programa de instalación instala los archivos de programa en el 
+directorio <dispositivo>:\Archivos de programa\Archivos 
+comunes\System\MSADC. Esta ubicación es adyacente a otras tecnologías 
+complementarias de Microsoft como ActiveX Data Objects y OLE DB. Con 
+el programa de instalación, se crean los siguientes subdirectorios 
+bajo el directorio \MSADC.
+
+Subdirectorio		Descripción
+-------------		-----------
+..\MSADC\Doc11 		Contiene la documentación.
+..\MSADC\Samples11	Contiene los archivos de ejemplo.
+
+El programa de instalación del servidor ya habrá creado un directorio 
+raíz virtual de Microsoft Internet Information Server en el equipo del 
+servidor Web. El directorio raíz está designado como 
+http://<nombredeservidor>/msadc, que puede utilizar para hacer 
+referencia al sistema de archivos físico desde el explorador.
+
+Una vez que haya seguido este procedimiento para instalar Microsoft 
+Remote Data Service en el equipo del servidor Web, puede validar la 
+instalación (vea la sección 3.3).
+
+3.2.2 Instalación y uso de los componentes del cliente RDS en los 
+equipos cliente
+
+Para comprobar que los equipos cliente incluyen todas las DLL de 
+cliente necesarias para ejecutar Remote Data Service, debe incluir el 
+archivo mdac11.cab en el parámetro CODEBASE de HTML en el código del 
+objeto RDS.DataControl de su página Web. Al descargar el archivo 
+mdac11.cab, éste instala automáticamente los archivos de cliente 
+necesarios en el equipo del cliente. Así se simplifica la distribución 
+de páginas Web habilitadas para Remote Data Service. Para obtener más 
+información acerca de cómo incluir esta información en las páginas 
+Web, consulte el tema referente al objeto RDS.DataControl en la Ayuda 
+en pantalla.
+
+ 
+3.3 Validación de la instalación
+
+Puede utilizar la aplicación de ejemplo ADCTest.asp para validar la 
+instalación de Microsoft Remote Data Service. 
+
+>>>Para validar la instalación con ADCTest
+
+1 Inicie Internet Explorer e introduzca la siguiente dirección: 
+
+  http://<nombredeservidor>/MSADC/Samples11/adctest.asp 
+
+  donde <nombredeservidor> es el nombre de su servidor Web.
+
+  Debería aparecer la página Remote Data Service Query. Observará 
+  que la información correspondiente al servidor, la conexión y la 
+  consulta se proporcionan automáticamente.
+
+2 Haga clic en el botón Run! para ejecutar la consulta.
+  Si en la cuadrícula se muestra un conjunto de resultados, la 
+  instalación es correcta.
+
+Si se encuentra con algún problema, consulte las instrucciones de 
+instalación y los temas "Solucionar problemas de Remote Data Service" 
+y "Otra informarción de la configuración de RDS" en la Ayuda en 
+pantalla. A los temas de Ayuda se puede tener acceso ejecutando 
+el archivo default.htm en el directorio \docs.
+
+------------------
+4. SOPORTE TÉCNICO
+------------------
+
+4.1 Consultas al Soporte técnico de Microsoft
+
+Si tiene alguna duda acerca de Remote Data Service, póngase en 
+contacto con el fabricante de su PC o servidor. Consulte la 
+documentación incluida con su PC o servidor para obtener el número 
+de teléfono de soporte del producto.
+
+4.2 Visita al sitio Web de Microsoft Remote Data Service
+
+Puede visitar la página principal de Microsoft Remote Data Service 
+en el World Wide Web para obtener actualizaciones de la documentación 
+e información acerca de tecnologías afines. La dirección es 
+http://www.microsoft.com/data/rds/.
+
+4.3 Suscripción al grupo de noticias público de Remote Data Service
+
+Para facilitar el debate y compartir información, Microsoft ha creado 
+un grupo de noticias público: microsoft.public.ado.rds. Puede enviar 
+artículos y mensajes a este grupo de noticias sin moderador y sin 
+soporte. Microsoft no garantiza la respuesta o soporte directo. Para 
+obtener más información, visite el sitio Web de Remote Data Service, 
+en http://www.microsoft.com/data/rds/.
+
+-----------------
+5. NOTAS TÉCNICAS
+-----------------
+
+· Aplicaciones de ejemplo
+  Para cargar la cuadrícula en las aplicaciones de ejemplo de RDS, 
+  necesita tener acceso a Internet (en contraposición a su intranet). 
+  Si intenta cargar los ejemplos que utilizan la cuadrícula Sheridan, 
+  el archivo .cab de Sheridan al que se hace referencia en la línea 
+  CODEBASE intenta descargar el parche mfc42.dll del sitio Web de 
+  modificaciones de Microsoft. Si no puede tener acceso a esta 
+  modificación, no se cargará la cuadrícula. Si el control ActiveX 
+  de la cuadrícula (ssdatb32.ocx) ya reside en el equipo cliente, la 
+  línea CODEBASE no necesitará sacar el archivo .cab y no ocurrirá 
+  el problema.
+
+· Al instalar las aplicaciones de ejemplo, se produce un intento de 
+  crear una cuenta de usuario ("adcdemo") dentro de SQL Server. Si 
+  esta cuenta ya existe, la instalación será correcta; no obstante, 
+  cuando ejecute la aplicación de ejemplo, es posible que reciba un 
+  mensaje que indica error en el inicio de sesión. Puede modificar 
+  los archivos de ejemplo para establecer el nombre de usuario y la 
+  contraseña de una cuenta de trabajo.
+
+· Uso de base de datos FoxPro
+  Si tiene acceso a datos de Visual FoxPro, debe utilizar el último 
+  controlador ODBC para Visual FoxPro ODBC (versión 5.0.0.402 o 
+  posterior), que está disponible en 
+  http://www.microsoft.com/vfoxpro/vfdownload. Si no utiliza el 
+  último controlador, es posible que no pueda ejecutar las consultas 
+  correctamente.
+
+· Error "System error: out of virtual memory" ("Error de sistema: 
+  sin memoria virtual")
+  Si recibe el mensaje de error "System error: out of virtual memory" 
+  del servidor Web indicando que debe reiniciar el equipo, lo puede 
+  solucionar del siguiente modo. El equipo del servidor Web puede 
+  estar sin memoria virtual o puede que el servidor de orígenes de 
+  datos SQL requiera más espacio para tratar la consulta del tamaño 
+  que intenta ejecutar. La memoria virtual se puede ajustar desde el 
+  Panel de control (haga clic en el icono Sistema, seleccione la ficha 
+  Rendimiento y haga clic en el botón Memoria virtual para ver si hay 
+  espacio de disco adicional disponible). Puede encontrar más 
+  información acerca de cómo ajustar el espacio TempDB en el tema 
+  "Asegurar suficiente espacio en TempDB" bajo el Tema de Ayuda 
+  "Rendimiento".
+
+----------------------
+6. PROBLEMAS CONOCIDOS
+----------------------
+
+A continuación, se muestra una lista de los problemas conocidos con 
+Remote Data Service 1.1.
+
+· La versión 1.0.0.806 de Visual Basic Script DLL (vbscript.dll) tiene 
+  una pérdida de datos. Una versión actualizada de la DLL (2.0.0.1114 
+  o posterior) soluciona el problema. Está disponible con Internet 
+  Information Server 3.0 y se puede descargar desde 
+  http://www.microsoft.com/vbscript.
+
+· Cuando utiliza RDS con el control de cuadro de lista o cuadro 
+  combinado de Visual Basic 5.0 en Internet Explorer versión 4.0, debe 
+  establecer la propiedad ListField del control de cuadro de lista o 
+  cuadro combinado en tiempo de diseño en las etiquetas <OBJECT> del 
+  control. De otro modo, si establece la propiedad ListField en tiempo 
+  de ejecución en código de VBScript, los controles no se poblarán con 
+  datos. Por tanto, debe utilizar código HTML como el siguiente:
+
+	<OBJECT....>
+	   <PARAM NAME="ListField" VALUE="ColName">
+	   ...
+	</OBJECT>
+
+  en vez de código VBScript como:
+
+	Combo1.ListField="ColName"
+
+· Si realiza cambios en los datos de la página RDS y va a otra página 
+  sin cancelar o aplicar los cambios, es posible que cuando vuelva a 
+  su página RDS reciba un mensaje "Unexpected Error" ("Error 
+  inesperado"). Para solucionar este problema, se debe llamar al 
+  método Refresh del objeto RDS.DataControl.
+
+· Al cargar las páginas de ejemplo por primera vez en algunos equipos 
+  con Microsoft Internet Explorer versión 3.02, puede que no se cargue 
+  un objeto o que reciba un mensaje "Unexpected Error (0x80020009)". 
+  Si ocurre esto, haga clic en el botón "Refresh" ("Actualizar") para 
+  corregir el problema.

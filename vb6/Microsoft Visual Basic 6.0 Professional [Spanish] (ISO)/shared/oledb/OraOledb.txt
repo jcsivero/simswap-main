@@ -1,0 +1,85 @@
+--------------------------------------------------------------------
+Archivo Léame del Proveedor de Microsoft OLE DB para Oracle, versión 2.0
+--------------------------------------------------------------------
+
+(c) 1998 Microsoft Corporation. Reservados todos los derechos.
+
+Este documento ofrece noticias de última hora u otra información que 
+sirve de complemento a la documentación del Proveedor de Microsoft OLE 
+DB para Oracle.
+
+---------
+CONTENIDO
+---------
+
+1. DESCRIPCIÓN DEL PRODUCTO
+
+2. REQUISITOS DEL SISTEMA
+
+3. NOTAS TÉCNICAS
+
+4. LIMITACIONES CONOCIDAS
+
+---------------------------
+1. DESCRIPCIÓN DEL PRODUCTO
+---------------------------
+Este proveedor permite que los clientes de OLE DB tengan acceso 
+a los orígenes de datos de Oracle.
+Es una novedad de Microsoft Data Access 2.0. El número de versión del 
+proveedor coincide con el número de versión de Data Access.
+
+-------------------------
+2. REQUISITOS DEL SISTEMA
+-------------------------
+El proveedor de Microsoft OLE DB para Oracle proporciona el acceso a 
+las bases de datos de Oracle 7.3 u Oracle 8 mediante el software de 
+cliente Oracle, versión 7.3.3.4.0 o superior, que debe estar 
+instalado en el equipo cliente. Este proveedor ha sido probado con 
+software de cliente Oracle versión 7.3.3.4.0 y con SQL*Net versión 
+2.3.3.0.4, y en ambas versiones se han producido los mejores 
+resultados. Al actualizar un cliente Oracle, es importante instalar 
+la actualización de cliente y también aplicar "los archivos 
+compatibles necesarios" que se incluyen con la revisión del servidor.
+
+Para obtener más información acerca de los productos de Oracle, 
+consulte la documentación de Oracle.
+
+-----------------
+3. NOTAS TÉCNICAS
+-----------------
+a) El proveedor de Microsoft OLE DB para orígenes de datos de Oracle 
+   no admite desplazamiento directamente, ni admite actualización a 
+   través del conjunto de filas mediante el uso de IRowsetChange. Si 
+   el proveedor se ha instanciado con IDataInitialize o si se ha 
+   invocado a través de ADO, Service Components proporcionará 
+   funcionalidad de actualización y desplazamiento si lo solicita la 
+   aplicación. Además, el proveedor admite la ejecución de comandos 
+   de actualización SQL.
+
+b) En algunos casos, los datos numéricos serán devueltos como 
+   DBTYPE_VARNUMERIC, un nuevo tipo de datos en OLE DB 2.0. Las 
+   situaciones más destacadas se producen con las columnas definidas 
+   como FLOAT, NUMBER (sin precisión o escala), columnas numéricas 
+   calculadas o cualquier situación en la que la escala es negativa o 
+   excede de 38 dígitos.
+
+c) IDBSchemaRowset::GetRowset realiza una selección diferenciando 
+   entre mayúsculas y minúsculas sólo si pone entre comillas el valor 
+   pasado a IDBSchemaRowset.  
+
+d) La unidad de transacción de trabajo, según informa GetTransaction, 
+   será siempre NULL. Por ejemplo, al obtener una transacción de una 
+   sesión y llamar a GetTransaction en ésta. El valor de XACTUOW de 
+   XACTTRANSINFO será siempre NULL.
+
+-------------------------
+4. LIMITACIONES CONOCIDAS
+-------------------------
+a) Este proveedor no admite el escape {recordset} que implementa el 
+   controlador de Microsoft ODBC para Oracle.
+
+b) OLE DB 2.0 incluye un nuevo indicador en IConvertType::CanConvert, 
+   que es DBCONVERTFLAGS_FROMVARIANT. El proveedor admite este 
+   indicador, aunque no tiene ningún efecto sobre el valor de retorno 
+   de CanConvert por el momento.
+

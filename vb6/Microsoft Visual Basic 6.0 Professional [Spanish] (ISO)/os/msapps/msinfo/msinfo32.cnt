@@ -1,0 +1,83 @@
+:Base msinfo32.hlp>proc4
+:Title Información del sistema de Microsoft
+:Index msinfo32=msinfo32.hlp>proc4
+1 Información general
+2 Introducción=msinfo32_index
+2 Menú Archivo
+3 Ejecutar=HID_FILE_RUN
+3 Guardar=HID_FILE_SAVE
+3 Imprimir=HID_FILE_PRINT
+3 Salir=HID_APP_EXIT
+2 Menú Edición
+3 Copiar=HID_EDIT_COPY
+3 Seleccionar todo=HID_SELECT_ALL
+2 Menú Ver
+3 Barra de herramientas=HID_VIEW_TOOLBAR
+3 Barra de estado=HID_VIEW_STATUS_BAR
+3 Actualizar=HID_VIEW_REFRESH
+3 Cancelar actualización=HID_STOP_UPDATE
+3 Siempre visible=HID_ALWAYS_ONTOP
+2 Menú Probar
+3 Probar los controladores multimedia=HID_TEST_ENACT
+3 Cancelar prueba de multimedia=HID_TEST_CANCEL
+3 Buscar pruebas de multimedia=HID_TEST_LOCATE
+3 Configurar multimedia=HID_TEST_CONFIGURE
+2 Menú Ayuda
+3 Temas de ayuda=HID_HELP_INDEX
+3 Acerca del Sistema de información de Microsoft=HID_APP_ABOUT
+1 Cómo...
+3 Ordenar datos por categoría=howto_sort
+3 Mostrar el espacio disponible en las unidades de red=howto_show_network_drives
+3 Probar un controlador de audio=howto_test_audio_driver
+3 Buscar una muestra alternativa=howto_locate_alternative_sample
+3 Configurar un controlador de audio=howto_configure_audio_driver
+3 Copiar datos de una categoría específica=howto_copy_category_data
+3 Ejecutar otra aplicación=HID_FILE_RUN
+3 Guardar un listado con toda la información=HID_FILE_SAVE
+3 Imprimir un listado con toda la información=HID_FILE_PRINT
+3 Seleccionar la lista completa de elementos=HID_SELECT_ALL
+3 Ocultar los mapas de bits de las barras de herramientas=HID_VIEW_TOOLBAR
+3 Actualizar la información de la categoría actual=HID_VIEW_REFRESH
+1 Qué es...
+3 Una muestra apropiada de una prueba de multimedia=popup_appropriateness
+3 Modulación por codificación de impulsos (PCM)=popup_pcm
+3 Memoria virtual=popup_virtual_memory
+3 16 bits=popup_bitness
+3 Memoria física disponible=popup_av_phys_mem
+1 Categorías de información
+2 Sistema
+3 Descripción=HID_ITEMS_SYSTEM
+2 Imprimir
+2 Descripción=HID_ITEMS_PRINTING
+2 Biblioteca DLL del sistema
+2 Descripción=HID_ITEMS_SYSTEM_DLLS
+2 Fuentes
+3 Sustituciones de fuentes=HID_CATEGORY_FONT_SUBSTITUTIONS
+3 Administradores de fuentes=HID_CATEGORY_FONT_MANAGERS
+2 Revisión
+3 Configuración del registro=HID_CATEGORY_PROOFING_REGISTRY_SETTINGS
+3 Configuración de INI=HID_CATEGORY_PROOFING_INI_SETTINGS
+3 Información de archivos=HID_CATEGORY_PROOFING_FILE_INFO
+2 Filtros gráficos
+3 Configuración del registro=HID_CATEGORY_GRAPHIC_FILTERS_REGISTRY_SETTINGS
+3 Configuración de INI=HID_CATEGORY_GRAPHIC_FILTERS_INI_SETTINGS
+3 Información de archivos=HID_CATEGORY_GRAPHIC_FILTERS_FILE_INFO
+2 Convertidores de texto
+3 Configuración del registro=HID_CATEGORY_TEXT_CONVERTERS_REGISTRY_SETTINGS
+3 Configuración de INI=HID_CATEGORY_TEXT_CONVERTERS_INI_SETTINGS
+3 Información de archivos=HID_CATEGORY_TEXT_CONVERTERS_FILE_INFO
+2 Adaptador de vídeo
+3 Descripción=HID_ITEMS_DISPLAY
+2 Audio
+3 Descripción=HID_ITEMS_AUDIO
+2 Vídeo
+3 Descripción=HID_ITEMS_VIDEO
+2 CD-ROM
+3 Descripción=HID_ITEMS_CDROM
+2 Aplicaciones activas
+3 Descripción=HID_ITEMS_APPLICATIONS_RUNNING
+2 Registro OLE
+3 Configuración del registro=HID_CATEGORY_OLE_REGISTRATION_REGISTRY_SETTINGS
+3 Configuración de INI=HID_CATEGORY_OLE_REGISTRATION_INI_SETTINGS
+2 Módulos activos
+3 Descripción=HID_ITEMS_ACTIVE_MODULES

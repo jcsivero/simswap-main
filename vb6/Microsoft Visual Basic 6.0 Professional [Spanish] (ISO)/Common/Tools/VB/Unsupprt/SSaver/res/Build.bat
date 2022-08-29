@@ -1,0 +1,2 @@
+RC SSaver.rc
+pause

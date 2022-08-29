@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Solución de problemas</title>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	TempString = navigator.appVersion 
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/cocss.css">');
+//-->
+</script>
+
+
+<META NAME="DESCRIPTION" CONTENT="Solución de problemas"></head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana, Arial, Helvetica">
+
+<h1><a name="troubleshootinganderrormessages">Solución de problemas</a></h1>
+
+<p>Si tiene alguna dificultad con el servidor Web, utilice las siguientes secciones de este tema para solucionar los problemas.</p>
+
+<ul>
+<li><a href="#gettinghelp">Obtener asistencia mientras trabaja </a></li>
+<li><a href="#installation">Instalación</a></li>
+<li><a href="#testing">Probar la instalación</a></li>
+<li><a href="#userrights">Derechos de usuario</a></li>
+<li><a href="#anonymous">Autenticación anónima</a></li>
+<li><a href="#anonymous">Autenticación básica</a></li>
+</ul>
+
+<h2><a name="gettinghelp">Obtener asistencia mientras trabaja </a></h2>
+
+<p>Existen grupos de noticias de igual a igual para ayudarle a interactuar con otros usuarios de nuestros productos, incluidos Microsoft Most Valuable Professionals (MVP). Puede utilizar cualquier software lector de noticias para tener acceso a estos grupos de noticias; sin embargo, le sugerimos que utilice Internet Mail and News. Independientemente del lector de noticias o el cliente de noticias que utilice, es posible que tenga que configurarlo para que lea los grupos de noticias. Cuando se le pida el servidor de noticias, especifique <strong>msnews.microsoft.com</strong>. No necesita escribir un nombre de cuenta o una contraseña. Antes de exponer en los grupos de noticias, revise las reglas de conducta de los grupos de noticias de Microsoft. Para obtener más información acerca de los grupos de noticias de Microsoft vea <a href="http://www.microsoft.com/support/news/" target="_top" >http://www.microsoft.com/support/news/</a> y elija Internet Information Server.
+
+<h2><a name="installation">Instalación</a></h2>
+
+<p>Si tiene problemas al instalar PWS o con el funcionamiento del programa tras la instalación, compruebe lo siguiente.</p>
+
+<h3><a name="H3_37762316"></a>Desinstalar versiones anteriores </h3>
+
+<p>PWS 4.0 no actualiza automáticamente PWS 4.0 Alpha, Beta 1 o Beta&nbsp;2. Si tiene PWS 4.0 Alpha, Beta 1 o Beta&nbsp;2, debe desinstalarlo antes de instalar PWS 4.0. Puede hacerlo utilizando la aplicación <strong>Agregar o quitar programas </strong> del Panel de control o mediante el programa de instalación de PWS</p>
+
+<ol>
+<li>Haga clic en <strong>Inicio</strong>,seleccione <strong>Programas</strong>, <strong>Microsoft Internet Information Server</strong> y haga clic en <strong>Instalación de Internet Information Server</strong>. </li>
+<li>Seleccione <strong>Quitar todo</strong>.</li>
+</ol>
+
+<h2><a name="testing">Probar la instalación</a></h2>
+
+<p>Tras instalar, puede probar su instalación mediante Internet Explorer para ver los archivos de su directorio particular.</p>
+
+<p class="bigfix">&nbsp;</p>
+<big>Para probar un sitio Web en la Intranet </big><!--</p>--><br>
+
+<ol>
+<li>Asegúrese de que el equipo tiene una conexión de red activa y de que el servicio de servidor WINS (u otro método de resolución de nombres) funciona.</li>
+<li>Inicie un explorador de Web, como Microsoft Internet Explorer.</li>
+<LI>Escriba el localizador de recursos universal (dirección URL) del directorio particular del nuevo servidor.</li>
+<p>La dirección URL es&#147;http://&#148; seguida del nombre de red de Windows de su servidor, seguido a su vez de la ruta de acceso al archivo que desea ver. (Observe las barras diagonales.) Por ejemplo, si su sitio Web está registrado con el servidor WINS como  &#147;Admin1&#148; y desea ver el archivo PagPrinc.htm en el raíz del directorio particular, escriba <strong>http://admin1/PagPrinc.htm</strong>en el cuadro <strong>Dirección</strong> y, a continuación, presione ENTRAR. En la pantalla aparece la página principal.<!--</p>--><br>
+</ol>
+
+<p class="bigfix">&nbsp;</p>
+<big>Para probar un sitio Web en un equipo no conectado a una red</big><!--</p>--><br>
+<ol>
+<li>Inicie un explorador de Web, como Microsoft Internet Explorer.</li>
+<LI>Escriba el localizador de recursos universal (dirección URL) del directorio particular del nuevo servidor.</li>
+<p>La dirección URL es&#147;http://&#148; seguida del nombre del equipo, seguido a su vez de la ruta de acceso al archivo que desea ver. (Observe las barras diagonales.) Para buscar el nombre del equipo, haga clic en <strong>Inicio</strong>, seleccione <strong>Configuración</strong> y haga clic en <strong>Panel de control</strong>. Abra la aplicación Red para ver el nombre del equipo.</li>
+<li>Si el explorador muestra un mensaje de error que indica que no se puede encontrar el sitio o el servidor, es posible que necesite instalar Microsoft Loopback Adapter y modificar su archivo HOSTS. 
+<ol>
+<li>En la aplicación Red, seleccione la ficha <strong>Adaptadores</strong>. 
+<li>En la hoja de propiedades <strong>Adaptadores</strong>, haga clic en <strong>Agregar</strong>. 
+<li>Seleccione <strong>MS Loopback Adapter</strong> y haga clic en <strong>Aceptar</strong>. Se le pedirán los discos de instalación de Windows&nbsp;NT.</li>
+</ol>
+</ol>
+
+
+<h2><a name="userrights">Derechos de usuario</a></h2>
+
+<P>Si un usuario tiene problemas para ver sus archivos publicados (es decir, el usuario recibe el error de HTTP "403; Prohibido" o errores de HTTP similares al intentar solicitar una página Web), probablemente haya un problema relacionado con los derechos de usuario configurados en el sitio Web. Con el fin de dar a los usuarios acceso a los archivos publicados, compruebe los siguientes elementos.</p>
+
+<ol>
+<li>Busque el archivo, el directorio o el directorio virtual específico al que el usuario no puede tener acceso en el Administrador de servicios Internet. </li>
+<li>Vea las propiedades de ese archivo, directorio o directorio virtual. </li>
+<li>Seleccione la hoja de propiedades <strong>Archivo</strong> (si está viendo las propiedades de un archivo) o la hoja de propiedades <strong>Directorio</strong> (si está viendo las propiedades de un directorio o directorio virtual). Asegúrese de que el directorio o el archivo tiene permisos de acceso de Lectura (la casilla de verificación <strong>Lectura</strong> está activada). </li>
+<li>Seleccione la hoja de propiedades <strong>Seguridad de archivos</strong> o <strong>Seguridad de directorios</strong>. </li>
+<li>Asegúrese de que el usuario tiene acceso anónimo, permisos de autenticación básica o permisos de Desafío/Respuesta de Windows&nbsp;NT que le permitirán ver el contenido: haga clic en el botón <strong>Modificar</strong> en el campo <strong>Control de autenticación y acceso anónimo</strong>. </li>
+ <li>Haga clic en el botón <strong>Modificar</strong> del campo <strong>Restricciones de TCP/IP y nombre de dominio</strong>para asegurarse de que al equipo, grupo de equipos o nombre de dominio del cliente no se le restringió el acceso al recurso.</li>
+</ol>
+
+<h2><a name="anonymous">Autenticación anónima</a></h2>
+
+<p>Si un usuario anónimo no puede tener acceso al sitio, compruebe lo siguiente.</p>
+
+<p>Asegúrese de que la contraseña del usuario anónimo es la misma en el Administrador de servicios Internet (ISM) y en el Administrador de usuarios:</P>
+
+<ol>
+<li>En ISM, seleccione el sitio Web, el directorio virtual, el directorio o el archivo en el que necesita comprobar el acceso anónimo y vea sus propiedades. </li>
+<li>Seleccione la hoja de propiedades <strong>Seguridad de archivos</strong> (si está viendo las propiedades de un archivo) o la hoja de propiedades <strong>Seguridad de directorios</strong> (si está viendo las propiedades de un sitio Web, directorio o directorio virtual) y haga clic en el botón <strong>Modificar</strong> del campo <strong>Control de autenticación y acceso anónimo</strong>. </li>
+<li>En el cuadro de diálogo <strong>Métodos de autenticación</strong>, asegúrese de que la casilla de verificación <strong>Permitir acceso anónimo</strong> está activada. </li>
+<li>Haga clic en el botón <strong>Modificar</strong> para ver el nombre de usuario y la contraseña que se utilizan cuando un usuario anónimo se conecta a su sitio. Para que el sitio Web pueda sincronizar automáticamente su configuración de contraseña anónima con la establecida en Windows&nbsp;NT, active la casilla de verificación <strong>Habilitar sincronización automática de contraseñas</strong> (está activada de forma predeterminada para todos los recursos que admiten acceso anónimo). </li>
+</ol>
+
+<p>Asegúrese de que el usuario anónimo tiene derechos de <strong>Inicio de sesión local</strong> en el Administrador de usuarios para dominios de Windows&nbsp;NT </p>
+
+<ol>
+<li>Inicie el Administrador de usuarios desde la barra de herramientas de Microsoft Management Console (MMC).</li>
+<li>En el Administrador de usuarios, seleccione <strong>Derechos de usuario</strong> en el menú <strong>Directivas</strong>. </li>
+<li>Elija el derecho <strong>Inicio de sesión local</strong> y asegúrese de que  IUSR_<nombre_equipo> (o la cuenta anónima) aparece en la lista.</li>
+</ol>
+
+<p>Si tiene problemas para <em>evitar</em> que un usuario anónimo tenga acceso al sitio, compruebe lo siguiente:</p>
+
+<ol>
+<li>Seleccione la hoja de propiedades <strong>Seguridad de archivos</strong> (si está viendo las propiedades de un archivo) o la hoja de propiedades <strong>Seguridad de directorios</strong> (si está viendo las propiedades de un sitio Web, directorio o directorio virtual) y haga clic en el botón <strong>Modificar</strong> del campo <strong>Control de autenticación y acceso anónimo</strong>. </li>
+<li>En el cuadro de diálogo <strong>Métodos de autenticación</strong>, asegúrese de que la casilla de verificación <strong>Permitir acceso anónimo</strong> <em>no</em>está activada.</li>
+</ol>
+
+<h2><a name="anonymous">Autenticación básica</a></h2>
+
+<p>Si los usuarios con derechos de Autenticación básica tienen problemas para obtener acceso a su sitio, realice las siguientes comprobaciones.</p>
+
+<p>Asegúrese de que el usuario que inicia la sesión tiene derechos de <strong>Inicio de sesión local</strong> en el Administrador de usuarios para dominios de Windows&nbsp;NT </p>
+
+<ol>
+<li>Inicie el Administrador de usuarios desde la barra de herramientas de Microsoft Management Console (MMC).</li>
+<li>En el Administrador de usuarios, seleccione <strong>Derechos de usuario</strong> en el menú <strong>Directivas</strong>. </li>
+<li>Elija el derecho <strong>Inicio de sesión local</strong> y asegúrese de que  IUSR_<nombre_equipo> (o la cuenta anónima) aparece en la lista.</li>
+</ol>
+
+<p>Asegúrese de que especifica un dominio de conexión predeterminado para el usuario: en el cuadro de diálogo <strong>Métodos de autenticación</strong>, haga clic en <strong>Modificar</strong> del campo <strong>Autenticación básica</strong> y escriba el nombre del dominio.</p>
+
+<p>Si le preocupa la seguridad en la transmisión de contraseñas en texto simple (un estándar que se aplica a la Autenticación básica), utilice Secure Sockets Layer (SSL) para asegurar las contraseñas de texto simple. Puede configurar la autenticación de clientes mediante SSL si abre el cuadro de diálogo <strong>Comunicaciones seguras </strong> desde la hoja de propiedades <strong>Seguridad de directorios </strong> (o <strong>Seguridad de archivos</strong>). Utilice el Administrador de claves para crear peticiones de claves y el cuadro de diálogo <strong>Comunicaciones seguras </strong> para habilitar un sistema de autenticación mediante SSL.
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente. </p>
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+<hr>
+
+</font>
+</body>
+</html>
+
+

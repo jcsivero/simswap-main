@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Notas de la versión</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Comprueba si el explorador es de Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Comprueba si es IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Comprueba si el explorador es Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script>
+
+<META NAME="DESCRIPTION" CONTENT="Notas de la versión"></head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<font face="Verdana,Arial,Helvetica">
+
+<h1>Notas de la versión de Remote Data Service&nbsp;1.5</h1>
+
+<p>Este documento proporciona información de última hora u otra información que complementa a la documentación de Microsoft&reg; Remote Data Service 1.5.</p>
+
+<p>Incluye las siguientes secciones:<br>
+<a href="#productdescription">Descripción del producto</a><br>	
+<a href="#newfeatures">Nuevas características</a><br>
+<a href="#Installationnotes">Notas de la instalación</a><br>	
+<a href="#technicalsupport">Soporte técnico</a><br>	
+<a href="#technicalnotes">Notas técnicas</a><br>
+<a href="#KnownIssues">Problemas conocidos</a><br>
+<A href="#docandhelp">Documentación y ayuda</a><br>
+<a href="#CopyrightInformation">Información de copyright</a>
+</p>
+
+<hr>
+
+<h1><a name="productdescription">Descripción del producto</a></h1>
+
+<p>Microsoft Remote Data Service (RDS) es un marco de conectividad y publicación de datos rápido y eficiente para aplicaciones alojadas en Internet Explorer. Se basa en una tecnología distribuida cliente-servidor que funciona sobre los protocolos HTTP, HTTPS (HTTP sobre Secure Sockets Layer) y DCOM. Mediante controles ActiveX compatibles con datos, RDS proporciona una programación de acceso a datos en el estilo de Microsoft&reg; Visual Basic&reg; a los programadores de Web que necesitan crear aplicaciones distribuidas que impliquen gran cantidad de datos para su utilización en intranets corporativas y en Internet.</p>
+
+<h2>Cambio de nombre del producto</h2>
+
+<p>El nombre Microsoft&reg; Advanced Data Connector (ADC) ha cambiado a Microsoft&reg; Remote Data Service (RDS), una característica de Microsoft&reg; ActiveX&#153; Data Objects (ADO). ADC siempre se ha basado en ADO, y este cambio representa un movimiento para integrar más estrechamente y clarificar las relaciones entre estos dos componentes. ADO es una interfaz de programación que permite un acceso sencillo y flexible a los orígenes de datos OLE DB y ODBC. Remote Data Service se basa en ADO para proporcionar un conjunto de registros sencillo y sin conexión, así como servicio remoto. La funcionalidad de Advanced Data Connector no se ha visto afectada con este cambio y verá numerosas y extraordinarias características nuevas en la versión 1.5.</p>
+
+<hr>
+
+<h1><a name="newfeatures">Nuevas características</a></h1>
+
+<p>A continuación se enumeran las nuevas características de Remote Data Service 1.5.  Para obtener más información acerca de estas características, consulte la documentación.</p>
+
+<ul>
+<li>Mayor capacidad de actualización.  Ahora puede actualizar datos en todos los orígenes de datos compatibles con ODBC y ya no necesitará utilizar la cláusula  "for browse".</li>
+<li>Los métodos de los ActiveX Data Objects (ADO) ahora proporcionan la funcionalidad remota de RDS desde ADO. Esta adición al modelo de programación integra totalmente RDS en ADO.</li>
+<li>Ordenación y filtros sobre objetos <strong>Recordset</strong>.</li>
+<li>Compatibilidad adicional para ejecución asíncrona y búsqueda en conjuntos de resultados. Esto permite devolver el control al programador o al usuario sin necesidad de esperar a que termine una consulta.</li>
+<li>Múltiples parámetros de salida para objetos de negocios.</li>
+<li>El método <strong>CreateRecordset</strong> del objeto <strong>RDS.DataControl</strong>, de forma que ahora es posible crear objetos <strong>Recordset</strong> personalizados en el cliente, así como en <strong>RDSServer.DataFactory</strong>.</li>
+<li>El método <strong>ConvertToString</strong> del objeto <strong>RDSServer.DataFactory</strong>.</li>
+<li> La ordenación segura de matrices proporciona soporte para el tipo de datos Safe Array.</li>
+<li>La suplantación del cliente proporciona compatibilidad para la característica de autenticación de contraseñas Desafío/Respuesta de NT de IIS.</li>
+</ul>
+
+<hr>
+<h1><a name="Installationnotes">Notas de la instalación</a></h1>
+
+<h2>Antes de ejecutar el programa de instalación</h2>
+
+<p>Antes de instalar Microsoft Remote Data Service, compruebe que los equipos cliente y servidor cumplen los requisitos mínimos de hardware y software.</p>
+
+<h2>Requisitos de hardware</h2>
+
+<p>Para instalar Remote Data Service debe cumplir determinados requisitos de hardware, que incluyen los siguientes:</p>
+
+<ul>
+<li>PC x86 compatible con Microsoft&reg; Windows NT&reg; o Microsoft&reg; Windows&reg; 95  o una máquina con procesador Alpha de Digital Equipment Corporation.</li>
+<li>Un disco duro con un mínimo de 8 megabytes (MB) de espacio disponible para la instalación completa de todos los componentes actualizados requeridos para ejecutar RDS.</li>
+<li>Un mínimo de 12 MB de memoria RAM en los equipos cliente.</li>
+<li>Un mínimo de 24 MB de memoria RAM en los equipos servidor (se recomiendan 32 MB de RAM).</li>
+</ul>
+
+<h2>Requisitos de software</h2>
+
+<p>Antes de instalar Remote Data Service en un equipo servidor, éste debe cumplir los siguientes requisitos de software:</p>
+
+<ul>
+<li>Cualquiera de las siguientes plataformas de sistemas operativos: Windows&nbsp;NT 4.0 Server o Workstation con Service Pack 3 (SP3) o posterior.  Remote Data Service acepta actualmente las plataformas x86/Intel y Alpha. Para entornos de datos de producción, se recomienda encarecidamente la plataforma NT Server.</li>
+<li>Microsoft&reg; Internet Information Server (IIS) 3.0 ó 4.0, con páginas Active Server de Microsoft&reg;.</li>
+<li>Microsoft&reg; SQL Server 6.5 con Service Pack 2 u otro origen de datos ODBC 2.0 o posterior (compatible con el Nivel 1).</li>
+</ul>
+ 
+<p>Para obtener acceso a las aplicaciones de Remote Data Service desde equipos cliente, éstos deben cumplir los siguientes requisitos de software:</p>
+
+<ul>
+<li>Cualquiera de las siguientes plataformas de sistemas operativos: Windows 95, Windows&nbsp;NT Server 4.0 o posterior, o Windows&nbsp;NT Workstation 4.0 o posterior.</li>
+<li>Microsoft&reg; Internet Explorer versión 4.0 o posterior.</li>
+</ul>
+
+<p><strong>Nota</strong>&nbsp;&nbsp;&nbsp; No se ha probado Remote Data Service con la tecnología del explorador Netscape.</p>
+ 
+<p>Para crear páginas Web clientes puede utilizar las herramientas típicas de edición HTML, como el Bloc de notas o Microsoft ActiveX Control Pad, que tiene características más completas.</p>
+
+<p>Para programar objetos de negocios del lado del servidor puede utilizar cualquier herramienta ActiveX&#153;/COM compatible con DLL, como Microsoft&reg; Visual Basic&reg; 4.0 o posterior, o Microsoft&reg; Visual C++&reg;.</p>
+
+<h2>Instalación de Microsoft Remote Data Service</h2>
+
+<p>Para que Remote Data Service funcione correctamente, debe comprobar que los componentes de servidor y cliente de Remote Data Service están correctamente instalados. El componente de servidor se instala mediante el programa de instalación (mdac_nts.exe para Windows&nbsp;NT Server, mdac_ntw.exe para Windows&nbsp;NT Workstation, mdac_95.exe para Windows&nbsp;95, mdac_as para el servidor Alpha, mdac_aw.exe para la estación de trabajo Alpha) o con la instalación integrada de IIS 4.0. Los archivos requeridos del cliente se proporcionan con Internet Explorer 4.0, por lo que no es necesario un archivo .cab ni un programa de instalación.</p>
+
+<h2>Instalación de los componentes de servidor de RDS en sus servidores Web </h2>
+
+<p>Instalará los componentes de servidor de Microsoft Remote Data Service en su equipo servidor Web, que  debe tener Windows&nbsp;NT Server versión 4.0 con SP3 o posterior. El programa de instalación da por sentado que el equipo cumple todos los requisitos de software.</p>
+
+<h3>Para instalar los componentes de servidor de Remote Data Service:</h3>
+
+<ol>
+<li>Desde su equipo servidor Web, conecte con el sitio World Wide Web de Remote Data Service en http://www.microsoft.com/data/rds/ (este sitio está en inglés).</li>
+<li>Haga clic en Free Downloads en el marco izquierdo.</li>
+<li>Haga clic en el vínculo de instalación que desee (mdac_nts.exe para Windows&nbsp;NT Server, mdac_ntw.exe para Windows&nbsp;NT Workstation, mdac_95.exe para Windows&nbsp;95; mdac_as.exe para el servidor Alpha, mdac_aw.exe para la estación de trabajo Alpha) para instalar el software y la documentación.</li>
+<li>Cierre los demás programas que pueda haber en ejecución.</li>
+<li>Siga las instrucciones de instalación que aparecerán en la pantalla. </li>
+</ol>
+
+<p>El programa de instalación instala los archivos de programa en el directorio &lt;dispositivo&gt;:\Archivos de programa\Archivos comunes\System\MSADC. (Esta ubicación es adyacente a otras tecnologías complementarias de Microsoft como ActiveX Data Objects y OLE DB). El programa de instalación crea los subdirectorios siguientes bajo el directorio \MSADC.</p>
+
+<table>
+<th colspan="2" rowspan=1 table width="50"></th>
+<tr>
+<td><strong>Subdirectorio</strong></td>
+<td><strong>Descripción</strong></td>
+</tr>
+<tr>
+<td>..\MSADC\Doc </td>
+<td>Contiene la documentación.</td>
+</tr>
+<tr>
+<td>..\MSADC\Samples</td>
+<td>Contiene los archivos de ejemplo. </td>
+</tr>
+<tr>
+<td>..\MSADC\Samples11</td>
+<td>Contiene los archivos de ejemplo del cliente RDS 1.1, si se instaló. </td>
+</tr>
+</table>
+
+<p>El programa de instalación del servidor (mdac_nts.exe) también crea una raíz virtual de Microsoft Internet Information Server en el equipo servidor Web. La raíz se llama http://&lt;NombreServidor&gt;/msadc y puede utilizarla para hacer referencia a los archivos de ese árbol de directorios desde el explorador.</p>
+
+<p>Una vez que haya seguido este procedimiento para configurar Microsoft Remote Data Service en su equipo servidor Web, podrá validar la instalación (consulte Validación de la instalación, más abajo).</p>
+
+<h2>Instalación de los componentes de cliente de RDS en sus equipos clientes</h2>
+
+<p>Microsoft Internet Explorer 4.0 ya incluye los componentes de cliente necesarios de Remote Data Service (RDS). Por tanto, no necesita incluir un archivo .cab en su página Web porque los equipos clientes ya tienen las DLL de los componentes de cliente de RDS. Consulte en las notas técnicas la lista de archivos de cliente si su aplicación necesita proporcionar los archivos de cliente.</p>
+
+<h2>Validación de la instalación</h2>
+
+<p>Puede utilizar la aplicación de ejemplo ADCTest.asp para validar la instalación de Microsoft Remote Data Service.</p>
+
+<h3>Para validar la instalación con ADCTest:</h3>
+
+<ol>
+<li>Inicie Internet Explorer y escriba la dirección siguiente:</li> 
+<p>http://&lt;NombreServidor&gt;/MSADC/Samples/adctest.asp<br> 
+donde &lt;NombreServidor&gt; es el nombre de su servidor Web.<br>
+Debe aparecer la página de consulta de Remote Data Service. Observará que la información de servidor, conexión y consulta se proporciona automáticamente.<!-- </p> --><br>
+<li>Haga clic en Run para ejecutar la consulta. </li>
+<p>Si la cuadrícula muestra un conjunto de resultados, la instalación es correcta.<!-- </p> --><br>
+</ol>
+
+<p>Si tiene problemas, revise las instrucciones de instalación y consulte los temas "Troubleshooting Remote Data Service" y "Other RDS Configuration Information" en la Ayuda en pantalla.</p>
+
+<hr>
+
+<h1><a name="technicalsupport">Soporte técnico</a></h1>
+
+<h2>Cómo ponerse en contacto con el soporte técnico de Microsoft</h2>
+
+<p>Si tiene alguna pregunta técnica acerca de Remote Data Service, visite el sitio Web Microsoft Data Access en http://www.microsoft.com/data/ para obtener información acerca del Soporte técnico de Microsoft disponible (este sitio está en inglés).</p>
+
+<h2>Visitar el sitio Web de Microsoft Remote Data Service</h2>
+
+<p>Puede visitar la página principal de Microsoft Remote Data Service en el World Wide Web para obtener actualizaciones de la documentación e información acerca de otras tecnologías relacionadas. La dirección es http://www.microsoft.com/data/rds (este sitio está en inglés).</p>
+
+<h2>Unirse al grupo público de noticias de Remote Data Service</h2>
+
+<p>Para facilitar la discusión y compartir información, Microsoft ha configurado un grupo público de noticias: microsoft.public.ado.rds. Sus artículos y mensajes serán bienvenidos en este grupo de noticias sin moderador ni soporte técnico. Microsoft no garantiza las respuestas ni el soporte directo. Para obtener más información, visite el sitio Web de Remote Data Service, http://www.microsoft.com/data/rds/ (este sitio está en inglés).</p>
+
+<hr>
+
+<h1><a name="technicalnotes">Notas técnicas</a></h1>
+
+<ul>
+<li>Los clientes y servidores de RDS (ADC) Beta 1 y Beta 2 no están diseñados para combinarlos con las versiones finales de los clientes y servidores de RDS. Debe desinstalar y actualizar a la versión final del software para beneficiarse de las revisiones del producto y las nuevas características. Los archivos de cliente de RDS 1.5 se suministran con Internet Explorer 4.0, por lo que no hace falta un archivo .cab ni una instalación distinta.</li><br><br>
+
+<li><strong>Utilizar bases de datos FoxPro</strong></li>
+<p>Si tiene acceso a datos de Visual FoxPro, debe utilizar el controlador ODBC de Visual FoxPro más actualizado (versión 5.0.0.402 o posterior), que está disponible en http://www.microsoft.com/vfoxpro/vfdownload (este sitio está en inglés). Si no utiliza el controlador más actualizado, es posible que no pueda ejecutar correctamente las consultas.</p>
+
+<li><strong>Aplicaciones de ejemplo</strong></li>
+<p>Para cargar la cuadrícula en las aplicaciones de ejemplo de RDS, necesita poder tener acceso a Internet (a diferencia de su intranet). Si intenta cargar los ejemplos que utilizan la cuadrícula Sheridan, el archivo contenedor de Sheridan al que se hace referencia en la línea CODEBASE intenta descargar la revisión del archivo mfc42.dll del sitio Web de soluciones generales de Microsoft. Si no puede obtener acceso a esta revisión, no se cargará la cuadrícula. Si el control ActiveX para la cuadrícula (ssdatb32.ocx) ya reside en el equipo cliente, la línea CODEBASE no necesitará descomprimir el archivo .cab y no aparecerá el indicador de descarga de la revisión.</p>
+
+<li>Cuando instale las aplicaciones de ejemplo, se intentará crear una cuenta de usuario ("adcdemo") en Microsoft&reg; SQL Server. Si la cuenta ya existe, la instalación será correcta; sin embargo, cuando ejecute la aplicación de ejemplo recibirá el mensaje "Error al iniciar la sesión". Puede modificar los archivos de ejemplo para asignar al nombre de usuario y a la contraseña la información de cuenta de prueba real.</li><br><br>
+
+<li><strong>Error "Error del sistema: memoria virtual insuficiente"</strong></li>
+<p>Si recibe el error "Error del sistema: memoria virtual insuficiente" del servidor Web que necesita reiniciar, puede ser un posible motivo del problema.  El equipo servidor Web puede haberse quedado sin memoria virtual o puede que el servidor de origen de datos SQL requiera más espacio TempDB para tratar el tamaño de la consulta que está intentando ejecutar.  Se puede ajustar la memoria virtual desde el Panel de control (haga clic en el icono Sistema, seleccione la ficha Rendimiento y haga clic en el botón Memoria virtual para comprobar si hay espacio disponible en el disco duro).  Para encontrar más información acerca de cómo ajustar el espacio TempDB, vea el subtema "Ensuring Sufficient TempDB Space" del tema de ayuda "Performance".</p>
+
+<li><strong>Archivos de cliente de MDAC proporcionados con Internet Explorer 4.0</strong></li>
+<p>Para comodidad del cliente Web, Internet Explorer versión 4.0 incluye los archivos de cliente de Microsoft Data Access Components. A continuación se proporciona una lista de archivos y sus ubicaciones de instalación, por si desea que estos archivos estén disponibles para sus componentes de cliente que no sean de Internet Explorer pero que utilicen el servidor MDAC.</p>
+<p>Los archivos marcados con un asterisco (*) deben autoregistrarse con regsvr32.dll, que puede encontrar en el directorio \System (o \system32) de su equipo. La notación sobre \system que hay a continuación hace referencia al directorio \winnt\system32 de los equipos con Windows NT o al directorio  \win95\system de los equipos con Windows 95. Es importante que estos archivos estén instalados de forma coherente en sus ubicaciones para asegurar que todos los programas que se basan en ellos continúen funcionando correctamente en esta versión y en las posteriores.</p>
+<p>
+msadce.dll* : instalado en \Archivos de programa\Archivos comunes\system\msadc<br>
+msadcer.dll : instalado en \Archivos de programa\Archivos comunes\system\msadc<br>
+msadco.dll* : instalado en \Archivos de programa\Archivos comunes\system\msadc<br>
+msadcor.dll : instalado en \Archivos de programa\Archivos comunes\system\msadc<br>
+msader15.dll : instalado en \Archivos de programa\Archivos comunes\system\ado<br>
+msador15.dll* : instalado en \Archivos de programa\Archivos comunes\system\ado<br>
+msdadc.dll* : instalado en \Archivos de programa\Archivos comunes\system\ole db<br>
+msdaps.dll* : instalado en \Archivos de programa\Archivos comunes\system\ole db<br>
+msdaer.dll* : (Opcional, para los mensajes de error de ADO) instalado en \Archivos de programa\Archivos comunes\system\ole db<br>
+msdaerr.dll* : (Opcional, para los mensajes de error de ADO) instalado en \Archivos de programa\Archivos comunes\system\ole db<br>
+msr2c.dll* : instalado en \system por Internet Explorer<br>
+msr2cenu.dll : instalado en \system por Internet Explorer<br>
+wininet.dll* : instalado en \system por Internet Explorer<br>
+msdatsrc.tlb : instalado en \system<br><br></p>
+
+<li>Si hace falta cambiar el nombre de la ubicación de la instalación, debe mantenerse la raíz virtual IIS de /MSADC. El archivo MSADCS.DLL requiere estar ubicado en el directorio raíz de la raíz virtual /MSADC.</li><br><br>
+<li><strong>No se puede hacer un filtro con el valor NULL</strong></li>
+<p>Actualmente, la propiedad <strong>Filter</strong> no puede buscar valores Null. La configuración debe establecerse como sigue: 'zipcode', '=', '&lt;null&gt;' (que el código de VBScript convierte en NULL), seguido del método <strong>Reset</strong> para ejecutar la acción de filtro. Obtendrá un error de no coincidencia de tipos.</p>
+<li><strong>RDS.DataControl</strong> incluye tres eventos que no se mencionan en la documentación. Estos eventos están asociados con el relleno del conjunto de registros asíncrono.</li>
+<p><strong>OnReadyStateChange</strong> : se activa siempre que cambia la propiedad <strong>ReadyState</strong>. Este evento no está disponible en JScript.</p>
+<p><strong>OnDataSetComplete</strong> : se activa cuando se han obtenido todos los datos.</p>
+<p><strong>OnDataSetChanged</strong> : se activa cuando se devuelve un <strong>Recordset</strong> nuevo que aún no está totalmente lleno.</p>
+<p>Durante una obtención asíncrona, se produce la siguiente secuencia de eventos:</p>
+<p><strong>OnReadyStateChange</strong> : la propiedad <strong>ReadyState</strong> toma el valor <strong>adcReadyStateInteractive</strong> mientras se obtienen los datos.</p>
+<p><strong>OnDataSetComplete</strong> : se han obtenido todos los datos, pero <strong>ReadyState</strong> sigue teniendo el valor <strong>adcReadyStateInteractive</strong>.</p>
+<p><strong>OnReadyStateChange</strong> : la propiedad <strong>ReadyState</strong> cambia a <strong>adcReadyStateComplete</strong>.</p>
+
+<li>La cadena de conexión de Remote Data Service suele hacer referencia a DSN del sistema con una sintaxis parecida a "DSN=MiDSN;UID=Ventas;PWD=Secreta;". La sintaxis para utilizar un DSN de archivo podría ser "FileDSN=c:\MiSQL.dsn;".</li><br><br>
+<p>Para obtener un conjunto de resultados sin conexión mediante ADO, puede utilizar la sintaxis siguiente.</p>
+<p>En vez de: cnn.Connectionstring = "provider=msdasql;dsn=MiSQL;uid=Ventas;pwd=Secreta" 
+puede utilizar: cnn.Connectionstring = "provider=MS Remote;Remote Server=http://MiServidor;Remote Provider=msdasql;dsn=MiSQL;uid=sa;pwd="</p>
+</ul>
+
+<hr>
+
+<h1><a name="KnownIssues">Problemas conocidos</a></h1>
+
+<p>A continuación se muestra la lista de problemas conocidos de Remote Data Service 1.5.</p>
+
+<ul>
+
+<li>El evento asíncrono <strong>OnReadyStateChange</strong> no se produce. Para solucionarlo, puede probar los siguientes eventos y propiedades para un estado equivalente:</li>
+<p>Se producirá el evento <strong>OnDataSetChanged</strong> cuando el <strong>Recordset</strong> exista, la ejecución de la consulta termine, pero no todas las filas estén presentes. Inmediatamente después de producirse el evento <strong>OnDataSetChanged</strong>, la propiedad <strong>ReadyState</strong> tendrá el valor 3.</p>
+<p>Se producirá el evento <strong>OnDataSetComplete</strong> cuando el <strong>Recordset</strong> exista y todas las filas estén presentes. Inmediatamente después de producirse el evento <strong>OnDataSetComplete</strong> la propiedad <strong>ReadyState</strong> tendrá el valor 4.</p>
+<li>Si recibe un error en la instalación acerca de MTXOCI.DLL, puede que su equipo tenga una versión anterior de Microsoft Transaction Server (MTS). Para resolver este problema, actualice a la versión más reciente de MTS, que proporciona este archivo necesario.</li><br><br>
+<li>La versión 1.0.0.806 de la DLL de Visual Basic Script (vbscript.dll) tiene una fuga de memoria. La versión actualizada de la DLL (2.0.0.1114 o posterior) resuelve este problema; está disponible en Internet Information Server 3.0 y se puede descargar desde http://www.microsoft.com/vbscript (este sitio está en inglés).</li><br><br>
+<li>El archivo msdaps.dll se registrará y funcionará correctamente. Sin embargo, actualmente no se puede registrar. Esto sólo afectará a la desinstalación y no a la funcionalidad del producto. Esto se resolverá en el Service Pack 4 de NT.</li><br><br>
+<li>Cuando utilice Microsoft SQL Server 6.5 con Service Pack 3 de SQL Server instalado, las instrucciones UPDATE, INSERT o DELETE fallarán si se ejecutan contra una autocombinación. Se producirá un error en la línea de código que contenga el método <strong>SubmitChanges</strong>.</li><br><br>
+<li>El ejemplo adctest.asp fallará sin mostrar ningún mensaje a menos que la máquina donde se ejecuta tenga acceso a Internet (a diferencia de una intranet). La aplicación necesita cargar algunos archivos dll de microsoft.com.</li><br><br>
+
+<li>Los temas de referencia del lenguaje para el método <strong>Reset</strong> y las propiedades <strong>SortColumn</strong>, <strong>SortDirection</strong>, <strong>FilterValue</strong>, <strong>FilterCriterion</strong> y <strong>FilterColumn</strong> afirman todos que la ejecución del método <strong>Reset</strong> reemplaza el <strong>Recordset</strong> existente del objeto <strong>RDS.DataControl</strong> con un <strong>Recordset</strong> de sólo lectura.  Esto no es correcto; el nuevo <strong>Recordset</strong> es actualizable.</li><br><br>
+
+<li>Cuando utilice la cláusula ORDER BY en una consulta a un servidor SQL de Microsoft  con el Service Pack 3 de Microsoft SQL Server instalado y devuelva un cursor actualizable del cliente, las columnas a las que hace referencia la cláusula ORDER BY deben especificarse también en la cláusula SELECT.</li><br><br>
+<li>El controlador ODBC para bases de datos Informix no acepta transacciones (ser capaz de deshacer un cambio en los datos). RDS no acepta la actualización en controladores sin compatibilidad con transacciones. Si se intenta llamar a <strong>SubmitChanges</strong> se obtendrá el siguiente error, "El proveedor no admite la operación solicitada por la aplicación".</li>
+</ul>
+
+<hr>
+
+<h1><a name="docandhelp">Documentación y ayuda</a></h1>
+
+<p>La documentación y los archivos de ayuda de este componente están en inglés.</p>
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&copy; 1998 Microsoft Corporation</p>
+<p>AUSENCIA DE GARANTÍAS. Microsoft desconoce expresamente toda garantía con respecto al PRODUCTO SOFTWARE. EL PRODUCTO SOFTWARE Y TODA DOCUMENTACIÓN RELACIONADA SE PROPORCIONAN "COMO ESTÁN" SIN GARANTÍA DE NINGÚN TIPO, TANTO EXPRESA COMO IMPLÍCITA, INCLUYENDO, SIN LIMITACIÓN, LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD, ADECUACIÓN PARA UN FIN DETERMINADO O NO INFRACCIÓN. USTED ASUME TODO RIESGO DERIVADO DEL USO O FUNCIONAMIENTO DEL PRODUCTO SOFTWARE.</p>
+<p>LIMITACIÓN DE RESPONSABILIDAD. En la medida permitida por la ley aplicable, en ningún caso Microsoft o sus proveedores serán responsables por ningún daño, especial, incidental, indirecto o consecuencial, cualquiera que sea (incluyendo sin limitación, daños por pérdida de beneficios, interrupción de negocios, pérdida de información comercial o cualquier otra pérdida pecuniaria) que pudiere surgir del uso o imposibilidad de uso del PRODUCTO SOFTWARE o la provisión o ausencia en la provisión del Soporte Técnico, aun en el caso de que se hubiera informado a Microsoft de la posibilidad de dichos daños. En cualquier caso, la única responsabilidad de Microsoft ante cualquier disposición de este CLUF se limitará a un monto no mayor del que usted pagó por el PRODUCTO SOFTWARE o a cinco dólares estadounidenses; disponiéndose sin embargo, que si usted se ha comprometido a través de un Contrato de Soporte Técnico con Microsoft, la máxima responsabilidad de Microsoft en relación al Soporte Técnico se regirá por los términos de ese contrato. Debido a que algunos estados y jurisdicciones no permiten la exclusión o limitación de responsabilidad, es posible que la limitación anterior no le resulte aplicable.</p>
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1998, Microsoft Corporation. Reservados todos los derechos.</a></em></p>
+
+</font>
+</body>
+</html>

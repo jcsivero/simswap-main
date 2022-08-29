@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Notas de la versión de Microsoft Management Console (MMC)</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script>
+
+<META NAME="DESCRIPTION" CONTENT="Notas de la versión."></head>
+
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">
+
+
+<h1 align="left">Microsoft Management Console (MMC) versión&nbsp;5.0 beta&nbsp;3<br> Notas de la versión </h1>
+
+<p>
+<a href="#Welcome">Bienvenidos a MMC</a><br>
+<a href="#Running">Ejecutar MMC</a><br>
+<a href="#ProductDocumentation">Documentación del producto</a><br>
+<a href="#ObtainingSupport">Obtener soporte y enviar comentarios</a><br>
+<a href="#OtherKnownProblemsandLimitations">Otros problemas y limitaciones conocidos </a><br>
+<!-- <a href="#Troubleshooting">Solución de problemas</a><br> -->
+<a href="#CopyrightInformation">Información de copyright</a><br>
+</p>
+
+<hr>
+
+<h1><a name="Welcome">Bienvenidos a MMC versión&nbsp;5.0</a></h1>
+
+<p>Bienvenidos a la versión beta&nbsp;3 de MMC de Internet Information Server. MMC integra en una única consola todas las herramientas necesarias para realizar determinadas tareas administrativas. Para crear una nueva consola, un administrador de sistema agrega a MMC herramientas administrativas como complementos. Estos complementos pueden ser las herramientas administrativas estándar para Windows, que se están convirtiendo en complementos. También pueden ser herramientas administrativas configuradas como complementos por proveedores independientes de software. Al agregar componentes a una consola, un administrador puede ensamblar todas las herramientas y la información que necesita para evaluar y configurar un componente del sistema. Es posible agregar a una consola incluso vínculos con herramientas basadas en Web, páginas Web que proporcionen información o actualizaciones a componentes del sistema. </p>
+
+<p>Una vez terminada una consola, el administrador puede guardarla en un archivo .msc (Management Saved Console). De manera predeterminada está disponible en el grupo <strong>Mis herramientas de administración</strong>, que se encuentra en <strong>Programas</strong>, bajo el menú <strong>Inicio</strong>. El administrador puede entregar la consola a otras personas en las que haya delegado las tareas administrativas. Es posible enviar la consola por correo electrónico, ponerla en una carpeta compartida de la red o asignale directivas del sistema. Cuando se abre la consola, aparece con la misma configuración exacta con que se guardó.</p>
+
+<hr>
+
+<h1><a name="Running">Ejecutar MMC</a></h1>
+
+<p><strong><span style="color: #0000FF"><font color="#0000FF">Importante</font> </span></strong>&nbsp;&nbsp;&nbsp;Esta versión de MMC&nbsp;5.0 IIS beta&nbsp;3 está destinada a fines de prueba únicamente. Microsoft recomienda que ejecute esta versión en un entorno de prueba y no para tareas críticas.</p>
+
+<p>Para abrir las consolas administrativas estándar de Microsoft, haga clic en el menú <strong>Inicio</strong>, <strong>Programas</strong>, <strong>Herramientas administrativas</strong> y, después, haga clic en la herramienta que desee abrir. También puede hacer clic en un archivo .msc desde el Explorador de Windows para abrirlo.</p>
+
+<p>Para crear una nueva consola, en el menú <strong>Inicio</strong>, haga clic en <strong>Ejecutar</strong>, escriba <strong>mmc</strong> y haga clic en <strong>Aceptar</strong>.</p>
+
+<hr>
+<h1><a name="ProductDocumentation">Documentación del producto</a></h1>
+
+<p>Toda la documentación del producto está disponible en pantalla. Cuando MMC está en ejecución, puede tener acceso a los temas de Ayuda de MMC si hace clic en <strong>Ayuda de MMC</strong> en el menú <strong>Ayuda</strong>.  </p>
+
+<p>Para ver ayuda acerca de un complemento de una consola de MMC, haga clic en el complemento y, en el menú <strong>Ayuda</strong>, haga clic en <strong>Ayuda de complemento</strong>.</p> Si <strong>Ayuda de complemento</strong> no está disponible, significa que no hay Ayuda para el complemento seleccionado.</p>
+
+<hr>
+
+<h1><a name="ObtainingSupport">Obtener soporte técnico y enviar comentarios </a></h1>
+
+<p>Para ver noticias acerca de MMC, en el menú <strong>Ayuda</strong> de MMC, seleccione <strong>Microsoft en el Web</strong> y haga clic en <strong>Noticias de productos</strong>. Esto le llevará a la página Web de MMC en el sitio Web de Microsoft. En dicha página se ofrece una introducción a MMC, así como las preguntas más frecuentes e información acerca de cómo escribir complementos.</p>
+
+<p>Para enviar comentarios acerca de MMC, seleccione <strong>Microsoft en el Web</strong> y haga clic en <strong>Enviar comentarios</strong>. Aparecerá una página Web que explica cómo enviar comentarios acerca del producto.</p>
+
+<hr><h1><a name="OtherKnownProblemsandLimitations">Otros problemas y limitaciones conocidos</a></h1>
+
+<p>La siguiente lista contiene algunos problemas y limitaciones que se sabe que existen en esta versión beta&nbsp;3:</p>
+
+<p>
+<a href="#help">La Ayuda puede no estar totalmente implementada</a><br>
+<a href="#readonly">El modo de sólo lectura no está disponible </a><br>
+</p>
+
+<ul>
+
+<p><a name="help"><STRONG>La Ayuda puede no estar totalmente implementada</STRONG></a></p>
+
+<li>En esta versión no está disponible la Ayuda contextual para los cuadros de diálogo de MMC.</li>
+<li>La Ayuda sólo está implementada para algunas de las consolas administrativas estándar incluidas con esta versión de MMC.</li>
+</ul>
+
+<ul>
+<p><a name="readonly"><STRONG>El modo de sólo lectura no está disponible </STRONG></a></p>
+
+<li>El modo de sólo lectura no está disponible en esta versión. Las futuras versiones de MMC proporcionarán un modo de sólo lectura para asegurar que los usuarios no modifiquen los archivos de consola suministrados con las aplicaciones.</li>
+</ul>
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright </a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente.</p>
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. </p>
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+<hr>
+
+</font>
+</body>
+</html>

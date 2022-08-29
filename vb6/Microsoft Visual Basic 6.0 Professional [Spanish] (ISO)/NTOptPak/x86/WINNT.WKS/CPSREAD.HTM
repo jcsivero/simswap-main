@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<!-- REM (C) Copyright 1998 Microsoft Corporation.  Reservados todos los derechos. 
+     ESTE CÓDIGO E INFORMACIÓN SE PROPORCIONA "TAL CUAL", SIN GARANTÍA
+     DE NINGUNA CLASE, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITÁNDOSE
+     A LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD Y APTITUD PARA UN 
+     PROPÓSITO DETERMINADO. -->
+
+<head><title>Archivo Léame de los servicios de punto de conexión</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Comprueba si el explorador es de Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Comprueba si es IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Comprueba si el explorador es Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<META NAME="DESCRIPTION" CONTENT="Complementa la información incluida en la documentación principal"></head>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">	
+
+<a name="top"></a>
+<a name="E10E28"><h1>Archivo Léame de los servicios de punto de conexión</h1></a>
+
+<ul>
+<li><a href="#E10E31" name="LOCE10E31" ><p>Problemas conocidos</a></li>
+<li><a href="#E10E32" name="LOCE10E32" >Para obtener más información</a></li>
+</ul>
+
+<p>Antes de instalar este producto, revise este documento en su totalidad y lea el 
+<em>Manual del administrador de servicios de punto de conexión de Microsoft</em> y <em>Referencia de administración de servicios de punto de conexión de Microsoft</em>. Estos documentos contienen información crítica para asegurar la instalación y uso correctos del producto.</p>
+
+<p>Si está ejecutando Windows NT Workstation con el componente Personal Web Manager de Windows&nbsp;NT 4.0 Option Pack, no estará disponible toda la documentación desde el acceso directo Documentación del producto del menú Inicio. Estos significa que la documentación de Servicios de punto de conexión no estará disponible. Para ver esta documentación, tiene que verla desde Administrador de servicios Internet. Para ello: 
+
+<ol>
+<li>Haga clic en <b>Inicio</b>, <b>Windows NT&nbsp;4.0 Option Pack</b>, <b>Microsoft Personal Web Server</b>, <b>Administrador de servicios Internet</b>.</li>  
+<li>Seleccione <b>Internet Information Server</b> en el panel izquierdo.</li>
+<li>En el menú <b>Ayuda</b>, haga clic en <b>Ayuda acerca de Internet Information Server</b>. Aparecerá toda la documentación, incluyendo la de Servicios de punto de conexión.</li>  
+</ol>
+
+Para cambiar el acceso directo Documentación del producto en el menú Inicio de manera que se muestre toda la documentación, desinstale el componente Personal Web Manager de Personal Web Server. </p>
+
+<p><strong><span style="color: #0000FF"><font color="#0000FF">Importante</font></span></strong>&nbsp;&nbsp;&nbsp;Este archivo léame contiene información importante de última hora acerca de este producto.</p>
+
+<p><a name=E10E31><strong>Problemas conocidos de los Servicios de punto de conexión</strong></a></p>
+
+<ul>
+<li>La primera vez que inicie el Administrador de libretas de teléfonos no podrá exponer en el Servicio de libretas de teléfonos por motivos de seguridad. Para poder exponer: 
+<ol>
+<li>Asegúrese de que el servicio FTP predeterminado está instalado y en ejecución en el equipo donde se ejecuta el Servicio de libretas de teléfonos. Si no está instalado, consulte <i>Guía de instalación y diseño de Internet Information Server</i> para ver los procedimientos de instalación.</li>
+<li>Compruebe que ha establecido el directorio raíz virtual para exponer. Para ello, en el panel izquierdo de Microsoft Management Console, haga doble clic en el sitio Default FTP. Debe aparecer en el árbol un directorio virtual llamado PBSData. <br><br>Si instaló el servicio FTP después de instalar el Servicio de libretas de teléfonos, tendrá que configurar el directorio virtual PBSData. <br><br>Para ello, haga clic con el botón secundario del <i>mouse</i> (ratón) en el sitio Default FTP, seleccione <b>Nuevo</b> y haga clic en <b>Directorio virtual</b>. Después, siga las instrucciones del Asistente para nuevo directorio virual: 
+<ol>
+<li>Cuando se le pida el alias del directorio virtual, escriba PBSdata.</li>
+<li>Cuando se le pida la ruta física del directorio, escriba: <br><strong>c:\inetpub\wwwroot\Phone Book Service\data</strong> </li>
+<li>Cuando se le pregunte si desea proporcionar permisos de acceso, asegúrese de que está activada la opción <strong>Permitir acceso de escritura</strong> y haga clic en <strong>Finalizar</strong>.</li>
+</ol>
+</li>
+<li>Si no lo ha hecho todavía en el paso anterior, active el acceso de escritura para el directorio virtual de publicación. Para ello, haga clic con el botón secundario del <i>mouse</i> en PBSData y haga clic en <i>Propiedades</i>. En la ficha <strong>Directorio virtual</strong>, compruebe que está activada la casilla de verificación <strong>Escritura</strong>.  </li>
+<li>Si desea compartir de forma segura el directorio del Servicio de libretas de teléfonos, puede especificar una cuenta de usuario de Windows NT que debe emplear el Administrador de libretas de teléfonos. Para obtener más información, consulte la sección "Configuración de seguridad" de <i>Referencia de administración de Servicios de punto de conexión</i>. </li>
+</ol>
+Para obtener más información, consulte el Manual de administración de Servicios de punto de conexión.</li>
+<li>Si desinstala el Servicio de libretas de teléfonos, los directorios virtuales no se quitarán automáticamente de Microsoft Management Console; tendrá que quitarlos manualmente.</li>
+<li>Si está ejecutando de forma remota los Servicios de punto de conexión y se pierde la conexión con el servidor de archivos, se puede producir un error de tiempo de ejecución o se puede bloquear el Administrador de libretas de teléfonos.</li>
+<li>El Administrador de libretas de teléfonos no acepta la exposición o importación remota de libretas de teléfonos de un tipo de plataforma a otro tipo diferente (por ejemplo, desde un equipo x86 a un equipo Alpha).</li>
+<li>Los archivos de libreta de teléfonos deben ser de texto sin formato (.txt). Los archivos de libreta de teléfonos guardados con otros formatos (por ejemplo, Word, Wordpad o Rich-Text Format) no funcionarán correctamente.</li>
+<li>Los archivos de libreta de teléfonos no se expondrán correctamente si los nombres de usuario o los nombres de host están escritos con un juego de caracteres de doble byte (DBCS). Exponga mediante la dirección IP del servidor de libretas de teléfonos y una cuenta de usuario SBCS. </li>
+<li>Si desinstala Microsoft&reg; Access 97 o Visual Basic&reg; de un equipo que ejecute el Administrador de libretas de teléfonos, deberá volver a instalarlo una vez completada la desinstalación. </li>
+<li>El Administrador de libretas de teléfonos sólo puede importar archivos de regiones que contengan 200 entradas de regiones como máximo mediante la interfaz gráfica. Si su archivo de regiones contiene más de 200 entradas, divídalo en dos archivos independientes o importe el archivo de regiones mediante la interfaz de línea de comandos.  </li>
+</ul>
+
+<a name="E10E32"><p><strong>Para obtener más información</strong></p></a>
+
+<p>Para obtener Ayuda acerca de cómo utilizar los Servicios de punto de conexión, lea el <em>Manual del administrador de Servicios de punto de conexión de Microsoft</em> y <em>Referencia de administración de puntos de conexión de Microsoft </em>.</p>
+
+<p><a href="#top">Volver al principio</a></p>
+	
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente.</p>
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1998 Microsoft Corporation. Reservados todos los derechos.</a></em></p>
+
+</font>
+</body>
+</html>
+

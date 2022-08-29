@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Microsoft Index Server: Notas de la versión</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion 
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script>
+
+<META NAME="DESCRIPTION" CONTENT="Complementa la información que se encuentra en la documentación principal "></head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">	
+
+
+<h1><a name="ReleaseNotes">Notas de la versión de Microsoft Index Server</a></h1>
+
+<p>Gracias por instalar Microsoft&#174; Index Server versión 2.0 para Microsoft&#174; Internet Information Server (IIS) versión 4.0 en Microsoft&#174; Windows&nbsp;NT&#174; Server. Este tema complementa la información contenida en la documentación en pantalla.</p>
+
+<p>Está página contiene:</p>
+
+<ul>
+<li><a href="#VisittheIndexServerHomePage">Visite la página principal de Index Server</a></li>
+<li><a href="#ChangestotheDocumentation">Cambios en la documentación</a></li>
+<li><a href="#TechSupport">Guía de soporte técnico</a></li>
+</ul>
+
+<hr>
+
+<h2><a name="VisittheIndexServerHomePage">Visite la página principal de Index Server</a></h2>
+
+<p>Para obtener más información acerca de Index Server y las características relacionadas, vea la página principal de Index Server:</p>
+<p><a href="http://www.microsoft.com/ntserver/search/" target="_top">http://www.microsoft.com/ntserver/search</a></p>
+
+<hr>
+
+<h2><a name="ChangestotheDocumentation">Cambios en la documentación </a></h2>
+
+<p>Esta sección actualiza la documentación de Index Server para los siguientes temas:</p>
+
+<ul>
+<li><a href="#IndexNewWebSite">Indizar un sitio Web recién creado </a></li>
+<li><a href="#WebhitsOutOfProcess">Ejecutar Webhits fuera del proceso de IIS</a></li>
+</ul>
+
+<h3><a name="IndexNewWebSite">Indizar un sitio Web recién creado </a></h3>
+
+<p>Cuando crea un nuevo sitio Web mediante Internet Information Server (IIS), el sitio no se indiza de forma predeterminada y por lo tanto no puede buscar documentos en ese sitio con Index Server.</p>
+
+<big>Para indizar un nuevo sitio Web</big><!--</p>--><br>
+
+<ol>
+<li>En el panel izquierdo de Microsoft Management Console (MMC), haga clic con el botón secundario en el sitio Web recién creado.</li>
+<li>Haga clic en <strong>Propiedades</strong> en el menú.</li>
+<li>En la hoja de propiedades <strong>Directorio particular</strong>, seleccione <strong>Indizar este directorio</strong>.</li>
+<li>Haga clic en <strong>Aceptar</strong>.</li>
+</ol>
+
+<p>A continuación, debe agregar un catálogo para el sitio nuevo. Para aprender cómo agregar un catálogo, vea <a href="/iishelp/ix/htm/ixadmccc.htm#CreatingCatalogs">Crear catálogos </a> en la documentación principal.</p>
+
+
+<h3><a name="WebhitsOutOfProcess">Ejecutar Webhits fuera del proceso de IIS</a></h3>
+
+<p>Los formularios de consulta de ejemplo de Index Server sample configuran la aplicación ISAPI Webhits para ejecutarse fuera del proceso de IIS, ya que las aplicaciones ISAPI están generalmente configuradas para ejecutarse fuera de proceso cuando no son confiables. Es mejor ejecutar las aplicaciones no confiables fuera de proceso para que así IIS no se vea afectado si la aplicación falla. Webhits está configurado en los ejemplos de Index Server para ejecutarse fuera de proceso ya que utiliza filtros de texto (IFilter) para mostrar los aciertos de las consultas en archivos. Al provenir los filtros de texto  de varias compañías, es difícil garantizar que todos sean robustos.</p>
+
+<p>Los filtros incluidos con Index Server han sido minuciosamente comprobados.  Éstos incluyen los filtros de HTML, Microsoft Office y de texto. Si no ha instalado ningún filtro de terceros es seguro (y más eficiente) ejecutar los Webhits en el proceso IIS en su servidor Web.
+
+<p>El Administrador de servicios Internet de IIS puede configurar los directorios virtuales para ejecutarse en el proceso de IIS o fuera de él. Para configurar los Webhits para ejecutarse en el proceso o fuera de él, modifique las propiedades del directorio virtual en el que residen los archivos .htw. A continuación, en la hoja de propiedades <strong>Directorio</strong>, establezca adecuadamente la casilla de verificación <strong>Ejecutar en espacio de memoria separado (proceso aislado)</strong>. Index Server instala de forma predeterminada ejemplos de archivos .htw en el directorio virtual /IISsamples/ISsamples/Oop.</p>
+
+<P>Si no puede ejecutar Webhits en el proceso IIS, las limitaciones en IIS imponen restricciones a los Webhits. Por ejemplo, los archivos en directorios virtuales en equipos que no sean el servidor Web no se podrán mostrar mediante Webhits cuando Webhits se ejecuta fuera del proceso IIS. Además, los archivos con extensiones no asociadas a un IFilter no se pueden mostrar con Webhits cuando Webhits se ejecuta fuera del proceso IIS y cuando el parámetro del Registro <strong>WebhitsDisplayScript</strong> no está establecido como 2.</p>
+
+<P>Puede solucionar estas limitaciones, pero la solución compromete la seguridad del servidor de Web. Utilice esta solución sólo si la seguridad no es una preocupación significativa en la instalación. La solución requiere que el administrador realice las siguientes tareas:</P>
+
+<ul>
+<Li>Permitir acceso anónimo al directorio mediante el Administrador de servicios Internet.</li>
+<li>Configurar una cuenta que tenga acceso administrativo como usuario predeterminado del directorio.</li>
+</ul>
+
+<big>Para configurar una cuenta de usuario</big><!--</p>--><br>
+
+<ol>
+<li>Haga clic en <strong>Inicio</strong>, seleccione <strong>Windows NT 4.0 Option Pack</strong>, <strong>Microsoft Transaction Server</strong> y haga clic en <strong>Transaction Server Explorer</strong>.</li>
+<li> En MMC, haga doble clic en la carpeta <strong>Microsoft Transaction Server</strong>.</li>
+<li>Abra la carpeta <strong>Equipos</strong>.</li>
+<li>Abra <strong>Mi PC</strong> (o la carpeta que representa el servidor Web).</li>
+<li>Abra <strong>Paquetes instalados </strong>.</li>
+<li>Haga clic con el boton secundario del <i>mouse</I> (ratón) en el paquete que representa Iissamples/Issamples/Oop y haga clic en <strong>Propiedades</strong> en el menú para abrir la hoja de propiedades.</li>
+<li>En la hoja de propiedades <strong>Identidad</strong>, escriba un nombre de usuario y una contraseña en los cuadro <strong>Usuarior</strong> y <strong>Contraseña</strong> y haga clic en <strong>Aceptar</strong>.</li>
+<p>Esta cuenta debe tener privilegios administrativos en el equipo local.<!--</p>--><br>
+</ol>
+
+<hr>
+
+<H2><a name="TechSupport">Guía de soporte técnico de Microsoft</a></H2>
+
+<p>Si tiene una pregunta técnica acerca de Microsoft Index Server, utilice esta documentación en pantalla o consulte la Ayuda; haga clic en <strong>Ayuda</STRONG> durante un procedimiento Si sigue teniendo dudas, Microsoft ofrece soporte técnico y servicios que van desde herramientas de Ayuda automática a la asistencia directa de un ingeniero de soporte técnico de Microsoft. Nota: Los servicios disponibles en Estados Unidos y Canadá se proporcionan en inglés (vea <EM><STRONG>Soporte técnico en español</STRONG> y <STRONG>Soporte técnico a nivel mundial</STRONG></EM> a continuación) </p>
+
+<h3>Herramientas de Ayuda automática para que encuentre las respuestas por sí mismo</h3>
+	
+<P><STRONG>Soporte técnico en línea de Microsoft:</STRONG> este novedoso sitio utiliza la tecnología más reciente de Microsoft para ayudarle a tener acceso a la información técnica y los recursos más relevantes para responder a sus preguntas de soporte.  Utilice los Asistentes para solución de problemas para hacer diagnósticos y responder a preguntas técnicas fácilmente.  O bien, seleccione artículos técnicos, ayudas de programación o preguntas frecuentes en Microsoft Knowledge Base (más de 75.000 artículos).  Visite <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A> y vea qué fácil es encontrar las respuestas que necesita.</P>
+
+<h3>Soporte técnico en inglés</h3>
+	
+<P><STRONG>Soporte de pago por incidente:</STRONG> si todavía necesita respuestas a sus dudas técnicas, puede adquirir Pay-Per-Incident Support (Soporte de pago por incidente).  En Estados Unidos de América y Canadá y con un costo de 195 dólares estadounidenses por incidente, llame al número (800) 936-5900, 24 horas al día y siete días a la semana, incluso festivos.</P>
+
+<P><EM>Nota:  las tarifas de soporte para las llamadas a números (800) se facturarán a su tarjeta de crédito VISA, MasterCard o American Express.</em></p>
+  
+<P><STRONG>Soporte anual con prioridad:</STRONG> si prevé un volumen elevado de incidentes de soporte o necesita un acceso con prioridad a los ingenieros de soporte técnico de Microsoft, puede adquirir una Priority Annual Comprehensive Account (Cuenta anual global de prioridad).  En los Estados Unidos de América y Canadá, para obtener más información o para adquirir una cuenta anual con un costo de 1.695 dólares estadounidenses por 10 incidentes, llame al número (800) 936-3500, 24 horas al día y siete días a la semana, incluso festivos.  Para enviar un incidente con una cuenta existente, llame al número (800) 936-4900, 24 horas al día y siete días a la semana, incluso festivos.</P>
+  
+<P><STRONG>Envío de preguntas mediante Internet</STRONG>: en Estados Unidos de América y Canadá, también puede enviar sus preguntas de soporte de pago por incidente o anual prioritario mediante Internet con respuesta por Web.  Para obtener más detalles, vaya al soporte técnico en línea de Microsoft en <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A>.</P>
+
+<p><strong>Priority Plus:</STRONG> el soporte técnico de Microsoft también ofrece cuentas especiales para negocios de tamaño medio que requieren una resolución prioritaria de incidentes incluido un soporte comercial crítico y el acceso a información determinada para ayudar a profesionales de tecnologías de la información y de Ayuda técnica en el planeamiento de soporte para un mejor desarrollo de los productos.  Para obtener más información, en los Estados Unidos de América y Canadá, llame al número (800) 936-3500, 24 horas al día y siete días a la semana, incluso festivos.</p>
+
+<P><STRONG>Línea de consulta prioritaria:</STRONG> reciba servicios de consultoría por horas para preguntas de soporte que estén fuera del territorio tradicional del soporte técnico. Se incluye el diseño y planeamiento para el despliegue, el desarrollo de software, la revisión de código y el planeamiento de implementación. Priority Consult Line (Línea de consulta prioritaria) trata todos los productos de Microsoft, incluidos aquellos productos de Microsoft que se utilizan para desarrollar soluciones de Internet e intranet. Para obtener más información o adquirir servicios de consultoría por horas con un costo de 195 dólares por hora (mínimo una hora), llame al número (800) 936-5200, de 6:00 a.m. a 6:00 p.m. hora del Pacífico, de lunes a viernes, festivos excluidos.</p>
+	
+<H3>Opciones adicionales de soporte </H3>
+ 
+<P><STRONG>Programas y servicios profesionales:</STRONG> el soporte técnico de Microsoft también ofrece programas y servicios de soporte profesional para negocios de tamaño grande que necesitan una relación directa con Microsoft.  Para obtener más información, vea la sección de soporte técnico del archivo de Ayuda o visite el soporte técnico en línea de Microsoft en <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A>.</P>
+
+<P><STRONG>Teléfono de texto:</STRONG> los servicios de teléfono de texto (TTY/TTD) de Microsoft están disponibles para las personas con deficiencias auditivas. En Estados Unidos de América, utilice un módem TTY/TTD y llame al número (425) 635-4948. En Canadá, utilice un módem TTY/TTD y llame al número (905) 568-9641.</p>
+
+<H2>Soporte t&eacute;cnico en espa&ntilde;ol</H2>
+<P>Para obtener informaci&oacute;n espec&iacute;fica en espa&ntilde;ol sobre servicios de soporte Microsoft, p&oacute;ngase en contacto directamente con la subsidiaria de Microsoft que atiende a su pa&iacute;s a trav&eacute;s de los n&uacute;meros que se incluyen a continuaci&oacute;n. El soporte de Microsoft abarca desde los servicios de informaci&oacute;n electr&oacute;nica de bajo costo hasta planes de soporte anuales. Si desea informaci&oacute;n detallada, consulte la secci&oacute;n de soporte t&eacute;cnico de la Ayuda en pantalla. Los servicios de soporte t&eacute;cnico de Microsoft est&aacute;n sujetos a los precios, t&eacute;rminos y condiciones vigentes de Microsoft, y pueden cambiar sin aviso previo.</P>
+<P><STRONG>Servicios de informaci&oacute;n</STRONG></P>
+<P>Desde el sitio World Wide Web de Microsoft ubicado en: <A href="http://www.microsoft.com/" target="_top">http://www.microsoft.com/</A> puede visitar los sitios Web de las subsidiarias de habla hispana existentes en cada pa&iacute;s, para ello elija el pa&iacute;s cuyas p&aacute;ginas desea visitar. La informaci&oacute;n centralizada espec&iacute;fica para Latinoam&eacute;rica tambi&eacute;n est&aacute; en <A href="http://www.microsoft.com/latam/soporte" target="_top">http://www.microsoft.com/latam/soporte</A>. La información específica para España está en <A HREF="http://microsoft.com/spain/support/">http://microsoft.com/spain/support/</A>.</P>
+<P><STRONG>Soporte est&aacute;ndar y Soporte prioritario</STRONG></P>
+<P>P&oacute;ngase en contacto con la subsidiaria de Microsoft que atiende a su pa&iacute;s a trav&eacute;s de la lista de tel&eacute;fonos que se incluye m&aacute;s adelante. En Estados Unidos o Canad&aacute;, vea <I>Soporte t&eacute;cnico en ingl&eacute;s</I>.</P>
+<P>A continuaci&oacute;n se enumeran las subsidiarias de habla hispana de Microsoft y los pa&iacute;ses a los que sirven. Si no hay una oficina de Microsoft en su pa&iacute;s, p&oacute;ngase en contacto con el establecimiento donde adquiri&oacute; el producto de Microsoft. Si desea m&aacute;s informaci&oacute;n acerca de las subsidiarias, consulte en el producto la secci&oacute;n Soporte t&eacute;cnico a nivel mundial de la Ayuda en pantalla. </P>
+<P>Cuando llame, deber&aacute; estar delante de su PC y tener a mano la documentaci&oacute;n del producto. </P>
+<TABLE BORDER CELLSPACING=3 CELLPADDING=2 WIDTH=720>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#000080" HEIGHT=20>
+<B><P ALIGN="CENTER"><FONT COLOR="#FFFFFF">Subsidiaria, sitio Web y tipo de servicios</FONT></B></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#000080" HEIGHT=20>
+<B><P ALIGN="CENTER"><FONT COLOR="#FFFFFF">Tel&eacute;fono de cada servicio</FONT></B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=19>
+<B><P>Argentina</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=21>
+<P>Microsoft de Argentina S.A.</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19>
+<P ALIGN="RIGHT"><A HREF="http://www.microsoft.com/argentina/soporte">http://www.microsoft.com/argentina/soporte</A></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19>
+<P ALIGN="JUSTIFY">    Servicios al Cliente: <br>
+     Fax:<br>
+     Soporte T&eacute;cnico:<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19>
+<P ALIGN="JUSTIFY">     (54) (1) 316-4600<br>
+     (54) (1) 316-1922<br>
+     (54) (1) 316-4664<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Bolivia <A HREF="#Uruguay">Vea Uruguay</A></B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Brasil</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Inform&aacute;tica Ltda.</P>
+</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>             Phone:<br>
+             Fax:<br>
+             Technical Support Phone:<br>
+             Technical Support Fax:<br>
+             Technical Support Bulletin Board Service (BBS):<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>          (55) (11) 5514 - 7100<br>
+          (55) (11) 5514 - 7107/5514-7108<br>
+          (55) (11) 5506 - 8087<br>
+          (55) (11) 5506 - 7621<br>
+          (55) (11) 5506 - 1234<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Caribe y Centro Am&eacute;rica</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Caribbean, Inc.</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P></B></U><A HREF="http://www.microsoft.com/centroam/soporte">http://www.microsoft.com/centroam/soporte</A></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P>Caribe</B></U></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Servicio al Cliente:</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>(506) 293 - 5339</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P>Puerto Rico</B></U></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>1-800-297-5982</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Fax:<BR>
+         Soporte T&eacute;cnico:
+</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>(1) (954) 491-8849<BR>
+         (506) 293-5860<BR>
+         (408) 953-8086<br></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P>Centro Am&eacute;rica</B></U></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>         Soporte T&eacute;cnico:</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>          (506) 293 - 5860</P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Chile</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Chile S.A.</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/chile/soporte">http://www.microsoft.com/chile/soporte</A></P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          Teléfono: <br>
+          Fax:<br>
+		  Servicios de Información:<br><br>
+		  Soporte Técnico:<br>
+          Sistemas Operativos, aplicaciones,<br>
+		  Juegos e Internet Explorer.<br>
+          Teléfono:<br>
+          Fax:
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          56-2-330-6000<br>
+          56-2-330-6190<br>
+		  800-330-600<br><br><br><br><br><br>
+          56-2-330-6222<br>
+          56-2-204-9424
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Colombia</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Colombia</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/colombia/soporte">http://www.microsoft.com/colombia/soporte</A></P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR><TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+
+<P ALIGN="JUSTIFY">L&iacute;nea de Respuesta Microsoft (Santaf&eacute; de Bogot&aacute; D.C.)<BR>
+PBX:<br>
+         Fax:<br>
+         Correo de Voz:</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P ALIGN="CENTER">&nbsp;</P>
+<P>               (571) 523-0022<br>
+               (571) 523-1220<br>
+               (571) 503-4216</P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2 BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Ecuador</B></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2 BGCOLOR="#ffffff" HEIGHT=17>
+<P>Corporaci&oacute;n Microsoft del Ecuador S.A.</P>
+<P></TD>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/ecuador/soporte">http://www.microsoft.com/ecuador/soporte</A></P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          PBX:<br>
+          Fax:<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          (593) 2 - 460453<br>
+          (593) 2 - 463093<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Espa&ntilde;a</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Ib&eacute;rica SRL</P></TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://microsoft.com/spain/support/">http://microsoft.com/spain/support/</A></P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD></TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Teléfono de Soporte Técnico:</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P> 902 197 198</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>M&eacute;xico</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft M&eacute;xico, S.A. de C.V.</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/mexico/soporte">http://www.microsoft.com/mexico/soporte</A>
+</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>          Aplicaciones y Sistemas Operativos de Escritorio:<br>
+          Herramientas de Desarrollo y Sistemas Avanzados:<br>
+          Servicios al Cliente:<BR>
+          Bulletin Board Service:<br>
+         
+          (2400s/14400k baud, 8 bits, No parity, 1 stop bit, ANSI terminal emul.)<br>
+          (28800k baud, 8 bits, No parity, 1 stop bit, ANSI terminal emulation)<BR>
+          User: MSMEXICO, NO Password
+          <p>
+          Fast Tips & FaxBack:<BR></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>               (52) (5) 265-3399<br><br>
+               (52) (5) 267-2110<br>
+               (52) (5) 265-3380<BR>     
+               (52) (5) 628-6202 y 628-6200<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+(52) (5) 267-2199</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Paraguay <A HREF="#Uruguay">Vea Uruguay</A></B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Per&uacute;</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Per&uacute; S.A.</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<A HREF="http://www.microsoft.com/peru/soporte">http://www.microsoft.com/peru/soporte</A></P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>               Servicios al Cliente:<br>
+                    Fax:
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+               (51)(1) 422-4116<br>
+                    (51)(1) 440-2619
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<A NAME="Uruguay"></A><B><P>Uruguay/Paraguay/Bolivia</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Soporte T&eacute;cnico Microsoft</P></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P></P>
+<B><P>    </B><A HREF="http://www.microsoft.com/uruguay/soporte">http://www.microsoft.com/uruguay/soporte</A></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>               Tel&eacute;fono:<br>
+                    Fax:<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P ALIGN="JUSTIFY">               (598) (2) 774934<br>
+                    (598) (2) 774935<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Venezuela</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Microsoft Venezuela S.A.</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P><A HREF="http://www.microsoft.com/venezuela/soporte">http://www.microsoft.com/venezuela/soporte</A></P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>               Tel&eacute;fono:<br>
+                    Fax:<br>
+                    Soporte T&eacute;cnico:
+</P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P ALIGN="JUSTIFY">                    (582) 265 99 22<br>
+                    (582) 265 08 63<br>
+                    (582) 993 6755</TD>
+</TR>
+</TABLE>
+<P><STRONG>Soporte técnico a nivel mundial:</STRONG> Los servicios de soporte y los precios pueden variar fuera de Estados Unidos de América y Canadá.  Para obtener información acerca del soporte disponible fuera de Estados Unidos de América y Canadá, póngase en contacto con la subsidiaria local de Microsoft en su área.  Para obtener una lista mundial de subsidiarias de Microsoft visite el soporte técnico en lí nea de Microsoft en <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A>.</P>
+
+<P><EM>Nota: Los servicios disponibles en Estados Unidos y Canadá se proporcionan en inglés.  Los servicios de soporte y los precios pueden variar fuera de Estados Unidos de América y Canadá.  </p>
+  
+<p>Los servicios de soporte de Microsoft están sujetos a los precios, términos y condiciones de Microsoft vigentes en ese momento que pueden cambiar sin previo aviso.
+</EM></P>
+
+
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente. </p>
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+<hr>
+
+</font>
+</body>
+</html>

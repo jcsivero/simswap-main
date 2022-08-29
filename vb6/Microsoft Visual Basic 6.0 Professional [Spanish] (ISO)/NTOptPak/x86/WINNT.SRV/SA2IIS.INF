@@ -1,0 +1,574 @@
+[Version]
+Signature="$Windows NT$"
+; LayoutFile=sa2layt.inf
+
+[Optional Components]
+SSE
+SA2IIS
+
+[SSE]
+OptionDesc = %SSE_DESC%
+Tip =  %SSE_TIP%
+IconIndex = *
+Bitmap = WMICO
+DefPath = "%24%\%PROGRAMF%"
+DefProgramGroup_IIS = "%IISPROG_GRP%"
+DefProgramGroup_OptPack = "%OPTPACKPROG_GRP%"
+
+[SA2IIS]
+Parent=SSE
+Needs = iis_www
+OptionDesc = %SA2_DESC%
+Tip =  %SA2_TIP%
+IconIndex = *
+Bitmap = WMICO
+UserInfoKey = "%REGROOT%\%USERINFO%","%USER_VALNAME%","%ORG_VALNAME%"
+Uninstall=SA_Uninst
+AddReg=SA_AddReg
+AddVroots=SA_VRoots
+CopyFiles=SAC_Root,SAC_Images,SAC_Manual,SAC_Art,SAC_Publish,SAC_Webmaps,SSE_Docs
+;AddShortcuts=SA_Shortcuts
+;AddShortcuts_IIS=SA_Shortcuts
+AddShortcuts_OptPack=SA_Shortcuts
+
+[SA_Uninst]
+DelDirs=SAC_Root
+DelReg=SA_RegUninst
+DelVroots=SA_Vroots
+DelFiles=SAC_Root,SAC_Images,SAC_Manual,SAC_Art,SAC_Publish,SAC_Webmaps
+;DelShortcuts=SA_Shortcuts
+;DelShortcuts_IIS=SA_Shortcuts
+DelShortcuts_OptPack=SA_Shortcuts
+
+[SA_AddReg]
+HKLM,"%REGROOT%\Directories",GIF,,"%33000%\%SADIR%\%SA_IMAGES_DIR%"
+HKLM,"%REGROOT%\%USERINFO%","%USER_VALNAME%",,""
+HKLM,"%REGROOT%\%USERINFO%","%ORG_VALNAME%",,""
+HKLM,"%REGROOT%\%USERINFO%",Lic_Key,,"DMZGB9-KMG2ZY-99"
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wmapper.exe",,,"%33000%\%SADIR%\wmapper.exe"
+HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wmapper.exe",Path,,"%33000%\%SADIR%"
+HKCR,".wmp",,,"%SA_PROGID%"
+HKCR,"%SA_PROGID%",,,"WebMap"
+HKCR,"%SA_PROGID%\DefaultIcon",,,"%33000%\%SADIR%\wmapper.exe,1"
+HKCR,"%SA_PROGID%\shell\open\command",,,""%33000%\%SADIR%\wmapper.exe %%1"
+
+[SA_RegUninst]
+HKCU,"%REGROOT%"
+HKLM,"%REGROOT%"
+; HKLM,"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\wmapper.exe"
+; HKCR,".wmp"
+; HKCR,"%SA_PROGID%"
+
+[SA_Shortcuts]
+"%SA_SUBPROG_GRP%", "%SA_ITEM%", "%33000%\%SADIR%\wmapper.exe", "%33000%\%SADIR%\WebMaps"
+"%SA_SUBPROG_GRP%", "%SA_DOCS%", "%33000%\%SADIR%\default.htm", "%33000%\%SADIR%"
+"%SA_SUBPROG_GRP%", "%MAIN_DOCSLINK%", "%33000%\%SADIR%\SSADocs.url", "%33000%\%SADIR%", "%SystemRoot%\system32\url.dll", 0
+"%SSE_SUBPROG_GRP%", "%SITESERVERLINK%", "%33000%\%SADIR%\SiteServ.url", "%33000%\%SADIR%", "%SystemRoot%\system32\url.dll", 0
+
+[SA_VRoots]
+"IISHELP/SSE/SA"="%33000%\%SADIR%"
+
+[DestinationDirs]
+SAC_Root =   33000,%SADIR%
+SAC_Images = 33000,%SADIR%\%SA_IMAGES_DIR%
+SAC_Manual = 33000,%SADIR%\%SA_MANUAL_DIR%
+SAC_Art =    33000,%SADIR%\%SA_M_ART_DIR%
+SAC_Publish =33000,%SADIR%\%SA_PUBLISH_DIR%
+SAC_Webmaps = 33000,%SADIR%\%SA_Webmaps_DIR%
+SSE_Docs = 18, %SSE_DOC_DIR%
+
+[SSE_Docs]
+legal.htm,,,0x20
+sitebanr.gif,,,0x20
+ssewelcome.htm,,,0x20
+
+[SAC_Root]
+bestwith.gif,,,0x20
+Broken Links.ncs,,,0x20
+default.htm,,,0x20
+Default.ncr,,,0x20
+doclist.htm,,,0x20
+Gateways.ncr,,,0x20
+gnicimpo.gif,,,0x20
+gnicnote.gif,,,0x20
+gnnlogo.gif,,,0x20
+Home Site Objects.ncs,,,0x20
+Images Without ALT.ncs,,,0x20
+Images.ncr,,,0x20
+imbk2.gif,,,0x20
+Inlinks.ncl,,,0x20
+Internet Services.ncr,,,0x20
+legal.htm,,,0x20
+Links.ncr,,,0x20
+Load Size Over 32K.ncs,,,0x20
+msbt.gif,,,0x20
+navys.gif,,,0x20
+ncdis.wms,,,0x20
+nclbl.wms,,,0x20
+ncpub.wms,,,0x20
+Non-Home Site Objects.ncs,,,0x20
+Not Found Objects (404).ncs,,,0x20
+Other.ncr,,,0x20
+Outlinks.ncl,,,0x20
+Pages.ncr,,,0x20
+pctree32.dll
+pro.gif,,,0x20
+pss.htm,,,0x20
+readme.htm,,,0x20
+RouteTo.ncl,,,0x20
+SiteServ.url,,,0x20
+SSADocs.url,,,0x20
+Unavailable Objects.ncs,,,0x20
+Unverified Objects.ncs,,,0x20
+wdtile3.gif,,,0x20
+whfigs1.gif,,,0x20
+wmapper.cnt,,,0x20
+wmapper.exe,,,0x20
+wmapper.fts,,,0x20
+wmapper.gid,,,0x20
+wmapper.hlp,,,0x20
+satop.htm,,,0x20
+
+[SAC_Images]
+applic.gif,,,0x20
+audio.gif,,,0x20
+bhelp.gif,,,0x20
+bpage.gif,,,0x20
+disc.gif,,,0x20
+epage.gif,,,0x20
+form.gif,,,0x20
+ftp.gif,,,0x20
+gateway.gif,,,0x20
+gopher.gif,,,0x20
+gray-wev.jpg
+image.gif,,,0x20
+internet.gif,,,0x20
+java.gif,,,0x20
+mail.gif,,,0x20
+media.gif,,,0x20
+msword.gif,,,0x20
+news.gif,,,0x20
+page.gif,,,0x20
+pdf.gif,,,0x20
+postscri.gif,,,0x20
+robot.gif,,,0x20
+rose25.gif,,,0x20
+rpthead.gif,,,0x20
+sitesumm.gif,,,0x20
+telnet.gif,,,0x20
+text.gif,,,0x20
+upage.gif,,,0x20
+video.gif,,,0x20
+wais.gif,,,0x20
+webmap.gif,,,0x20
+wmcompar.gif,,,0x20
+wmdisply.gif,,,0x20
+wmexplor.gif,,,0x20
+wmhelp.gif,,,0x20
+wmhelppg.gif,,,0x20
+wmhome.gif,,,0x20
+wmlabels.gif,,,0x20
+wmmain.gif,,,0x20
+wmnew.gif,,,0x20
+wmnewfil.gif,,,0x20
+wmnewurl.gif,,,0x20
+wmopen.gif,,,0x20
+wmproper.gif,,,0x20
+wmreport.gif,,,0x20
+wmsave.gif,,,0x20
+wmsearch.gif,,,0x20
+wmstats.gif,,,0x20
+wmverify.gif,,,0x20
+xpage.gif,,,0x20
+
+[SAC_Manual]
+anatomy.htm,,,0x20
+app1.htm,,,0x20
+create.htm,,,0x20
+glossary.htm,,,0x20
+index.htm,,,0x20
+intro.htm,,,0x20
+links.htm,,,0x20
+reports.htm,,,0x20
+routes.htm,,,0x20
+search.htm,,,0x20
+site.htm,,,0x20
+toc.htm,,,0x20
+welcome.htm,,,0x20
+wmhelp.htm,,,0x20
+
+[SAC_Art]
+access.gif,,,0x20
+addhelp.gif,,,0x20
+applic.gif,,,0x20
+audio.gif,,,0x20
+brokelnk.gif,,,0x20
+busyin.gif,,,0x20
+busyout.gif,,,0x20
+byproxy1.gif,,,0x20
+byproxy2.gif,,,0x20
+cbolicvw.gif,,,0x20
+cnn.gif,,,0x20
+color.gif,,,0x20
+comup-db.gif,,,0x20
+defproxy.gif,,,0x20
+dispcbvw.gif,,,0x20
+displ-db.gif,,,0x20
+distance.gif,,,0x20
+excel.gif,,,0x20
+expalt.gif,,,0x20
+expand.gif,,,0x20
+expfrom.gif,,,0x20
+explstat.gif,,,0x20
+exportdb.gif,,,0x20
+exroutes.gif,,,0x20
+form.gif,,,0x20
+ftp2.gif,,,0x20
+gateway.gif,,,0x20
+gopher.gif,,,0x20
+helper.gif,,,0x20
+hotdog.gif,,,0x20
+html.gif,,,0x20
+imagem.gif,,,0x20
+inlinks.gif,,,0x20
+inlnkchg.gif,,,0x20
+internet.gif,,,0x20
+java.gif,,,0x20
+label-db.gif,,,0x20
+labels.gif,,,0x20
+labove.gif,,,0x20
+lbelow.gif,,,0x20
+lexterna.gif,,,0x20
+link2.gif,,,0x20
+linkhide.gif,,,0x20
+linkorph.gif,,,0x20
+linkprop.gif,,,0x20
+linktype.gif,,,0x20
+linkusag.gif,,,0x20
+linkwind.gif,,,0x20
+linterna.gif,,,0x20
+lnkancst.gif,,,0x20
+loadsrch.gif,,,0x20
+lwithin.gif,,,0x20
+mail.gif,,,0x20
+main-alt.gif,,,0x20
+mapfildb.gif,,,0x20
+metadata.gif,,,0x20
+minusbut.gif,,,0x20
+msword.gif,,,0x20
+news.gif,,,0x20
+notsrch.gif,,,0x20
+object.gif,,,0x20
+orient.gif,,,0x20
+pageicn.gif,,,0x20
+pageobj.gif,,,0x20
+passadd.gif,,,0x20
+passwd.gif,,,0x20
+pdf.gif,,,0x20
+pgfrm.gif,,,0x20
+plus-but.gif,,,0x20
+proggnrl.gif,,,0x20
+propdbox.gif,,,0x20
+propimag.gif,,,0x20
+proppage.gif,,,0x20
+pstscrpt.gif,,,0x20
+pub-db.gif,,,0x20
+quesbig.gif,,,0x20
+quesbut.gif,,,0x20
+rcolumn1.gif,,,0x20
+rcolumn2.gif,,,0x20
+remap.gif,,,0x20
+remapg.gif,,,0x20
+results.gif,,,0x20
+robot.gif,,,0x20
+rose.gif,,,0x20
+scrnadv.gif,,,0x20
+srchnet.gif,,,0x20
+telnet.gif,,,0x20
+textsrch.gif,,,0x20
+toolcblc.gif,,,0x20
+toolmain.gif,,,0x20
+treebrws.gif,,,0x20
+treeview.gif,,,0x20
+twoviews.gif,,,0x20
+txtonly.gif,,,0x20
+unavailb.gif,,,0x20
+video.gif,,,0x20
+wais2.gif,,,0x20
+webmap.gif,,,0x20
+
+[SAC_Publish]
+iconrm.txt
+mapico12.gif,,,0x20
+mapico16.gif,,,0x20
+mapico21.gif,,,0x20
+mapico25.gif,,,0x20
+mapico32.gif,,,0x20
+
+[SAC_Webmaps]
+SAMPLE.WMP,,,0x20
+
+
+[Strings]
+IISPROG_GRP = "Microsoft Internet Information Server"
+OPTPACKPROG_GRP = "Windows NT 4.0 Option Pack"
+SSE_SUBPROG_GRP = "Microsoft Site Server Express 2.0"
+SITESERVERLINK = "Upgrade to Microsoft Site Server"
+MAIN_DOCSLINK = "Documentation"
+SA_SUBPROG_GRP = "Microsoft Site Server Express 2.0"
+SA_ITEM = "Content Analyzer"
+SA_DOCS = "Content Start Page"
+DISK_DESCRIPT = "Microsoft IIS CD-ROM"
+SSE_DESC = "Microsoft Site Server Express 2.0"
+SSE_TIP = "Microsoft Site Server Express includes site analysis, usage analysis and web publishing capabilities."
+SA2_DESC = "Analysis - Content"
+SA2_TIP = "Provides comprehensive site visualization, content analysis, link management and reporting capabilities for managing Web sites."
+PROGRAMF = "Program Files"
+SADIR = "Content Analyzer Express"
+REGROOT = "Software\Microsoft\Site Analyst\2.0IIS" ;; DO NOT LOCALIZE ;;
+USERINFO = "User Info"                    ;;;; DO NOT LOCALIZE THIS !! ;;;;
+USER_VALNAME = "Name"                     ;;;; DO NOT LOCALIZE THIS !! ;;;;
+ORG_VALNAME = "Company"                   ;;;; DO NOT LOCALIZE THIS !! ;;;;
+SA_PROGID = "Microsoft.Site Analyst"      ;;;; DO NOT LOCALIZE THIS !! ;;;;
+SSE_DOC_DIR = "SSE"
+
+;;; Probably unsafe to localize the dir names below too ;;;
+SA_IMAGES_DIR = "images"
+SA_MANUAL_DIR = "Manual"
+SA_M_ART_DIR = "Manual\Art"
+SA_PUBLISH_DIR = "Publish"
+SA_Webmaps_DIR = "Webmaps"
+
+
+;;;;;;;; Replaced by aut-gen stuff below ;;;;;;;;;;;
+; [SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+; 0="","",0
+; 1=%DISKDESCRIPT%,"sa2iis.cab",0
+;
+; [SourceDisksFiles]
+; <file> = <cabinet number>,<subdir>,<size>
+; Note: File is not in a cabinet if cab# is 0
+; bestwith.gif=1,,100000
+;;;;;;;; Replaced by aut-gen stuff below ;;;;;;;;;;;
+;*** BEGIN **********************************************************
+;**                                                                **
+;** Automatically generated on: Thu Oct 16 13:41:34 1997           **
+;**                                                                **
+;** Diamond Version: (32) 1.00.0540 (02/01/96)                     **
+;**                                                                **
+;*** BEGIN **********************************************************
+
+
+[SourceDisksNames]
+1="%DISK_DESCRIPT%",sa2iis.cab,0
+
+[SourceDisksFiles]
+xpage.gif=1,,216,ce95136b
+addhelp.gif=1,,2678,70273ace
+anatomy.htm=1,,54706,67972737
+app1.htm=1,,21504,ada3f89c
+applic.gif=1,,212,873163e5
+audio.gif=1,,206,a58da356
+bestwith.gif=1,,944,a1c8c943
+bhelp.gif=1,,993,7e1c902e
+bpage.gif=1,,216,1dc01383
+brokelnk.gif=1,,6545,34f927c4
+busyin.gif=1,,10735,630c90d3
+busyout.gif=1,,11693,3e5326ee
+byproxy1.gif=1,,3390,726ddb7f
+byproxy2.gif=1,,9180,c0555024
+cbolicvw.gif=1,,10700,50e87821
+cnn.gif=1,,6124,1020bbe8
+color.gif=1,,21298,d4923065
+comup-db.gif=1,,6787,b0621655
+create.htm=1,,72967,d0d2a5ef
+default.htm=1,,3219,b5a04c3d
+Default.ncr=1,,2831,7ebd1e8d
+defproxy.gif=1,,8600,2f1c6de4
+disc.gif=1,,579,41a77177
+dispcbvw.gif=1,,10254,5f5eab23
+displ-db.gif=1,,10153,c89e4bec
+distance.gif=1,,16594,775ef1d6
+doclist.htm=1,,2136,dd04cd84
+epage.gif=1,,209,a5e012d0
+excel.gif=1,,23246,42e547dc
+expalt.gif=1,,6971,f851bf00
+expand.gif=1,,11918,ddc45a84
+expfrom.gif=1,,12906,4789ea2f
+explstat.gif=1,,10144,a2382834
+exportdb.gif=1,,3638,91fba6d
+exroutes.gif=1,,19338,7398f67b
+form.gif=1,,159,94930677
+ftp.gif=1,,236,48b5f13d
+ftp2.gif=1,,189,92ac8aec
+gateway.gif=1,,206,6bf36bb7
+Gateways.ncr=1,,2831,358a31cc
+glossary.htm=1,,26676,3dead1a1
+gnicimpo.gif=1,,536,37816ecb
+gnicnote.gif=1,,410,bafefe7a
+gnnlogo.gif=1,,1151,76bda5d8
+gopher.gif=1,,258,28464d31
+gray-wev.jpg=1,,5945,b33d01b1
+helper.gif=1,,9780,4455cd4f
+Home Site Objects.ncs=1,,122,6a85934a
+hotdog.gif=1,,35282,c1a97aeb
+html.gif=1,,26828,64c3ebb7
+iconrm.txt=1,,177,fc25d72
+image.gif=1,,266,7979226e
+imagem.gif=1,,215,43433170
+Images Without ALT.ncs=1,,116,defa8544
+Images.ncr=1,,2831,9f5a69d6
+imbk2.gif=1,,20860,88e5eeb6
+inlinks.gif=1,,15086,7e3bc0e7
+Inlinks.ncl=1,,1136,ed49ab86
+inlnkchg.gif=1,,9097,aef2dcf9
+Internet Services.ncr=1,,2831,c044a710
+internet.gif=1,,212,e5102085
+java.gif=1,,228,71d0e9d8
+label-db.gif=1,,7911,a4d4f180
+labels.gif=1,,6771,5d233604
+labove.gif=1,,172,5074b87a
+lbelow.gif=1,,169,b1541f32
+legal.htm=1,,2559,2f672216
+lexterna.gif=1,,171,a1dda7d0
+link2.gif=1,,168,1790f171
+linkhide.gif=1,,17919,393b50b2
+linkorph.gif=1,,20490,7edb4be4
+linkprop.gif=1,,8627,873f2062
+links.htm=1,,87745,7de8bd51
+Links.ncr=1,,2831,b2347e0d
+linktype.gif=1,,11989,df577e9
+linkusag.gif=1,,23456,84bbc542
+linkwind.gif=1,,12040,ea6985
+linterna.gif=1,,174,fec94832
+lnkancst.gif=1,,14753,aac3cca4
+Load Size Over 32K.ncs=1,,116,1cb5c9b6
+loadsrch.gif=1,,5495,a5fe2804
+lwithin.gif=1,,175,d1a4e6d1
+mail.gif=1,,257,91446a58
+main-alt.gif=1,,15211,856dff40
+index.htm=1,,68525,c391df6e
+intro.htm=1,,11298,f173d82d
+toc.htm=1,,19454,8a7d703c
+mapfildb.gif=1,,5868,cb734525
+mapico12.gif=1,,869,ab3695ed
+mapico16.gif=1,,888,b8347d0c
+mapico21.gif=1,,1031,9f4fed8b
+mapico25.gif=1,,1098,af02439f
+mapico32.gif=1,,1282,72b867fe
+media.gif=1,,202,29b64a57
+metadata.gif=1,,15107,6ba9d6e
+minusbut.gif=1,,873,3bd13d0d
+msbt.gif=1,,1151,76bda5d8
+msword.gif=1,,247,f261c481
+navys.gif=1,,936,39523bfe
+ncdis.wms=1,,324,e38f6e6d
+nclbl.wms=1,,850,f6b9c4ff
+ncpub.wms=1,,160,2972caa2
+news.gif=1,,232,1ae3b8f3
+Non-Home Site Objects.ncs=1,,126,3e690b00
+Not Found Objects (404).ncs=1,,121,2c1e3510
+notsrch.gif=1,,5707,26e214b3
+object.gif=1,,4695,f5609d31
+orient.gif=1,,14623,e6fe2d04
+Other.ncr=1,,2831,594b2272
+Outlinks.ncl=1,,1356,c64961d5
+page.gif=1,,209,a5e012d0
+pageicn.gif=1,,899,6d99a49a
+pageobj.gif=1,,50006,52f01574
+Pages.ncr=1,,2831,537e4892
+passadd.gif=1,,3823,1c14117d
+passwd.gif=1,,7158,7d8a6884
+pctree32.dll=1,,141696,85870438
+pdf.gif=1,,208,4cccb4a2
+pgfrm.gif=1,,161,9afca555
+plus-but.gif=1,,880,8c933ca9
+postscri.gif=1,,224,d8ed0c72
+pro.gif=1,,832,8f594759
+proggnrl.gif=1,,7759,376bb222
+propdbox.gif=1,,9519,cc292e88
+propimag.gif=1,,8164,33382637
+proppage.gif=1,,9519,44cfbe8f
+pstscrpt.gif=1,,164,c5f4a592
+pub-db.gif=1,,7262,48cd752b
+quesbig.gif=1,,150,1d41df7f
+quesbut.gif=1,,885,67386adf
+rcolumn1.gif=1,,11175,53121e5f
+rcolumn2.gif=1,,11115,7c3424f0
+readme.htm=1,,6292,b617ac9
+remap.gif=1,,9597,a57ca1f
+remapg.gif=1,,7495,6d95fd4c
+reports.htm=1,,15242,ef76039a
+results.gif=1,,12361,50700732
+robot.gif=1,,193,6dc70db2
+rose.gif=1,,192,fb1e3ba1
+rose25.gif=1,,949,eb3bc0f2
+routes.htm=1,,23961,f1ab924b
+RouteTo.ncl=1,,880,ae605455
+rpthead.gif=1,,8092,6521b9f5
+Sample.wmp=1,,55558,d2083770
+scrnadv.gif=1,,8112,da1e62d3
+search.htm=1,,96884,2954595
+site.htm=1,,105981,ec00958a
+sitesumm.gif=1,,5253,e768aedc
+srchnet.gif=1,,4406,71739f77
+telnet.gif=1,,217,a26a7c4f
+text.gif=1,,218,41ebe319
+textsrch.gif=1,,5722,5ba29648
+toolcblc.gif=1,,4124,acc898d1
+toolmain.gif=1,,5504,53378069
+treebrws.gif=1,,57084,1997f439
+treeview.gif=1,,9419,c8b0da9b
+twoviews.gif=1,,20321,1bd2c4b1
+txtonly.gif=1,,164,1cc2fc9e
+Unavailable Objects.ncs=1,,117,5875da9a
+unavailb.gif=1,,6566,ab16fdf9
+Unverified Objects.ncs=1,,116,45c57ca
+upage.gif=1,,216,7deca64e
+video.gif=1,,259,a9de16e1
+wais.gif=1,,179,6af99ce9
+wais2.gif=1,,127,eaee1d79
+wdtile3.gif=1,,20860,88e5eeb6
+webmap.gif=1,,970,42e9d760
+welcome.htm=1,,4722,b61f9294
+whfigs1.gif=1,,2800,88845048
+wmapper.cnt=1,,3727,abe6b9eb
+wmapper.exe=1,,1946752,968398ad
+wmapper.fts=1,,124416,7022a67b
+wmapper.gid=1,,30353,621afa2
+wmapper.hlp=1,,184510,5e22d0ac
+wmcompar.gif=1,,942,f5244281
+wmdisply.gif=1,,968,b1db8afe
+wmexplor.gif=1,,946,5f749168
+wmhelp.gif=1,,925,8af49048
+wmhelp.htm=1,,30646,81b8ad12
+wmhelppg.gif=1,,960,403e48a1
+wmhome.gif=1,,1005,ffe9d06b
+wmlabels.gif=1,,935,b68f3280
+wmmain.gif=1,,959,33a111f0
+wmnew.gif=1,,924,550f72a5
+wmnewfil.gif=1,,967,93e4d4ec
+wmnewurl.gif=1,,968,39bd1e97
+wmopen.gif=1,,928,81a67a08
+wmproper.gif=1,,943,f197474a
+wmreport.gif=1,,939,9e55e170
+wmsave.gif=1,,925,26de3440
+wmsearch.gif=1,,917,5752f170
+wmstats.gif=1,,972,d36cfe34
+wmverify.gif=1,,957,6970bf0c
+access.gif=1,,12215,3cbf63e3
+pss.htm=1,,8980,2e4aaebc
+broken links.ncs=1,,109,5807a7d0
+SiteServ.url=1,,61,8baf5499
+SSADocs.url=1,,71,55e66420
+satop.htm=1,,2937,fbb5b76e
+sitebanr.gif=1,,2306,1806544a
+ssewelcome.htm=1,,1591,9266df90
+;*** END ************************************************************
+;**                                                                **
+;** Automatically generated on: Thu Oct 16 13:41:34 1997           **
+;**                                                                **
+;*** END ************************************************************
+

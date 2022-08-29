@@ -1,0 +1,801 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<title>Notas de instalación</title>
+<META NAME="MS-HAID" CONTENT="install.htm">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" link="#0000FF" vlink="#660066" onclick="checkExpand()">
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000">
+
+<!-------------------Scripting----------->
+
+<script language="JSCRIPT">
+
+  function checkExpand( )
+  {
+     if ("" != event.srcElement.id)
+     {
+        var ch = event.srcElement.id + "Child";
+        var el = document.all[ch];
+        if (null != el)
+        {
+           el.style.display = "none" == el.style.display ? "" : "none";
+           if (el.style.display != "none")
+           event.returnValue=false;
+        }
+     }
+  }
+
+</script>
+
+<!-----------------Readme Intro------------------->
+
+<h2><a name="geninstall">Notas de instalación</a></h2>
+<p>&#169; 1998 Microsoft Corporation. Reservados todos los derechos.</p>
+<P>Otros productos y nombres de empresas que aparecen en este documento pueden ser marcas registradas de sus respectivos propietarios. </P>
+<p><i>Notas de instalación</i> contiene información vital acerca de la instalación de Microsoft&#174; Visual Studio&#8482; 6.0 -- Sistema de programación para Windows e Internet, y su familia de productos de programación. La información de este archivo se aplica a todos o a algunos de los productos incluidos en Visual Studio. Este archivo actualiza la información proporcionada en la documentación de <i>MSDN Library Visual Studio 6.0</i>.</p>
+<p><i>Notas de instalación</i> forma parte de la &#34;familia&#34; de archivos Léame incluidos en el conjunto de programas. Todos los archivos Léame de los productos se encuentran en el directorio raíz del disco 1 de Visual Studio. Estos archivos (install.htm, así como otros llamados léame<i>XX</i>.htm, siendo <i>XX</i> el indicador de un producto) utilizan la tecnología Web actual para que los usuarios puedan ver y encontrar la información rápidamente. Los archivos se pueden ver con un explorador de Web, como Microsoft&#174; Internet Explorer 4, o en el Bloc de Notas.</p>
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="PrintingInstructions">¿Cómo puedo imprimir desde Microsoft Internet Explorer al mismo tiempo todos los archivos Léame disponibles?</a></h5>
+
+<div id="PrintingInstructionsChild" onclick="cl_script_data"  style="display:none">
+
+<a name="#ieinstructions"></a>
+<blockquote>
+<ol>
+<li>Abra léame<i>XX</i>.htm o install.htm, en Microsoft Internet Explorer.</li>
+<li>En el menú <b>Archivo</b>, haga clic en <b>Imprimir</b>.</li>
+<li>En el cuadro de diálogo <b>Imprimir</b>, configure las opciones de impresión que desee utilizar.</li>
+<li>Seleccione <b>Imprimir todos los documentos vinculados</b> y haga clic en <b>Aceptar</b>.</li>
+</ol> 
+</blockquote>
+
+</div>
+
+<!---------------TOC---------------------->
+
+<p>
+<h3>Contenido</h3>
+<blockquote><b>Nota</b>&nbsp;&nbsp;&nbsp;Compruebe que todos los encabezados de la tabla de contenido están expandidos cuando busque un tema entre ellos.
+</blockquote>
+</p>
+
+<!-------------------Section 1--------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="InformationonFilesandProgramsShippedwithVisualStudio">Instrucciones de instalación para los programas de Visual Studio</a></h5>
+
+<div id="InformationonFilesandProgramsShippedwithVisualStudioChild">
+
+	<blockquote>
+<a href="#releaseversionoverbeta">Instalar sobre una instalación anterior de una Beta, una versión preliminar o una vista previa técnica de Visual Studio</a> </blockquote>
+
+	<blockquote>
+<a href="#sidebysideinstallation">&#34;Instalar varios productos&#34;: Instalar varias versiones de productos de Visual Studio 6.0 en el mismo equipo</a> </blockquote>
+
+	<blockquote>
+<a href="#installingondualbootcomputers">Advertencia al realizar la instalación en equipos con arranque dual</a> </blockquote>
+
+        <blockquote> 
+<a href="#installationonsharedcddrive">Instalar Visual Studio desde una unidad de CD compartida</a> </blockquote>
+
+	<blockquote>
+<a href="#letiefinish">Permitir que termine el programa de instalación de Microsoft Internet Explorer antes de realizar la instalación de Visual Studio</a> </blockquote>
+
+	<blockquote>
+<a href="#ieinstallsoldmdacfiles">Cuando el programa de instalación de Microsoft Internet Explorer instala versiones antiguas de los archivos MDAC</a> </blockquote>
+
+	<blockquote>
+<a href="#nonusnt40">Instrucciones de instalación especiales para equipos en los están instaladas versiones de Microsoft Windows NT 4.0 y Microsoft Internet Explorer que no corresponden a EE.UU.</a> </blockquote>
+
+	<blockquote>
+<a href="#localizediespneededforenglishvs">Los sistemas BiDi deben tener una versión localizada de Internet Explorer 4.0 SP 1 antes de instalar la versión inglesa de Visual Studio 6.0</a> </blockquote>
+
+	<blockquote>
+<a href="#webpublishingwizarddisc">Cuando el Asistente para la instalación busca el disco del Asistente para la publicación en Web</a> </blockquote>
+
+	<blockquote>
+<a href="#installingclienttoolsafterinstallingvs">Cómo instalar herramientas cliente y componentes de servidor después de instalar los productos de Visual Studio 6.0</a> </blockquote>
+
+	<blockquote>
+<a href="#howtocontacttechnicalsupport">Cómo ponerse en contacto con el Soporte técnico</a></blockquote>
+
+	
+</div>
+<p>
+
+<!-----------------------Section 2------------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="ServerSideSetups">Instalar los componentes de servidor</a></h5>
+
+<div id="ServerSideSetupsChild">
+
+	<blockquote>
+<a href="#minimumreqsforserversideinstall">Requisitos mínimos para la instalación y el funcionamiento de componentes de servidor</a></blockquote>
+
+	<blockquote>
+<a href="#setupalreadyrunning">El mensaje &#34;El programa de instalación ya se está ejecutando&#34; aparece durante la instalación de los componentes de servidor</a></blockquote>
+
+	<blockquote>
+<a href="#servercomponentsonwin95">Instalar componentes de servidor en Windows 95</a></blockquote>
+
+	<blockquote>
+<a href="#sqlandwinntop">Problemas de compatibilidad conocidos con SQL Server 6.5 y Windows NT Option Pack 4.0</a> </blockquote>
+
+</div>
+<p>
+
+<!-----------------------Section 3------------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="configuringdebugging">Configurar para la depuración</a></h5>
+
+<div id="configuringdebuggingChild">
+
+	<blockquote>
+<a href="#iispatchforaspdebugging">Para depurar ASP, instale la revisión de IIS después de instalar BackOffice</a> </blockquote>
+
+	<blockquote>
+<a href="#sqldebuggingoncomputerswithsql65andvc5orhigher">Utilizar los servicios de depuración de SQL en un equipo con SQL Server 6.5 y Visual C++ 5.0 o posterior</a> </blockquote>
+
+</div>
+<p>
+
+<!----------------------Section 4------------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="RelatedtoWindows95Computers">Problemas específicos de los equipos con Windows 9<i>x</i></a></h5>
+
+<div id="RelatedtoWindows95ComputersChild">
+
+	<blockquote>
+<a href="#windows95registrysize">Tamaño del Registro de Windows 95: el límite de 64 KB puede hacer que aparezca una advertencia durante la instalación de Visual Studio</a></blockquote>
+
+	<blockquote>
+<a href="#whenautologonisenabled">Deshabilitar el inicio de sesión automático antes de ejecutar el programa de instalación de Visual Studio 6.0</a></blockquote>
+
+	<blockquote>
+<a href="#internetconnectiondialog">Puede aparecer un cuadro de diálogo de conexión a Internet en el inicio de Windows o de otras aplicaciones</a></blockquote>
+
+	<blockquote>
+<a href="#servercomponentsonwin95">Instalar componentes de servidor en Windows 95</a></blockquote>
+
+	<blockquote>
+<a href="#iispatchforaspdebugging">Para depurar ASP en equipos con Windows 95/98, instale la revisión de IIS después de instalar BackOffice</a> </blockquote>
+
+	<blockquote>
+<a href="#resumingsetupafterinstallingpws">El Asistente para la instalación podría no reiniciarse después de instalar PWS en equipos con Windows 95</a></blockquote>
+
+	<blockquote>
+<a href="#frontpage98onwin95">Instalar las extensiones de Microsoft FrontPage 98 en equipos con Windows 95</a></blockquote>
+</div>
+<p>
+
+<!--------------------Section 5------------------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="RelatedtoOtherPrograms">Notas acerca del efecto sobre otros programas instalados</a></h5>
+
+<div id="RelatedtoOtherProgramsChild">
+
+	<blockquote>
+<a href="#iisamexchangedriver">El controlador IISAM de Exchange fallará si Microsoft Exchange o Microsoft Outlook aún no están instalados</a> </blockquote>
+
+</div>
+<p>
+
+<!-----------------------Section 6----------------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="ForComputerswithNonUSVersionsofMicrosoftPrograms">Problemas relacionados con los equipos en los que están instaladas versiones no inglesas de programas de Microsoft</a></h5>
+
+<div id="ForComputerswithNonUSVersionsofMicrosoftProgramsChild">
+
+	<blockquote>
+<a href="#nonusnt40">Instrucciones de instalación especiales para equipos con versiones no inglesas de Microsoft Windows NT 4.0 y Microsoft Internet Explorer</a> </blockquote>
+
+	<blockquote>
+<a href="#localizediespneededforenglishvs">Los sistemas BiDi deben tener una versión localizada de Internet Explorer 4.0 SP 1 antes de instalar la versión inglesa de Visual Studio 6.0</a> </blockquote>
+
+	<blockquote>
+<a href="#necpc98">Problema de instalación de NEC PC 98</a></blockquote>
+
+</div>
+
+<!-----------------------SECTION 7-------------------->
+
+<h5><a class=ex href="#" title="Haga clic para expandir o contraer." id="DASDK">Data Access SDK 2.0</a></h5>
+
+<div id="DASDKChild">
+
+	<blockquote>
+<a href="#installreq">Requisitos de la instalación</a></blockquote>
+
+	<blockquote>
+<a href="#toinstallmdacsdk2">Cómo instalar Microsoft Data Access SDK 2.0</a></blockquote>
+
+	<blockquote>
+<a href="#sql65orolderwithmdac2">Antes de usar SQL Server 6.5 o anterior con MDAC 2.0</a></blockquote>
+
+	<blockquote>
+<a href="#ieinstallsoldmdacfiles">Cuando el programa de instalación de Microsoft Internet Explorer instala versiones anteriores de los archivos de MDAC</a> </blockquote>
+
+
+<!------------------------->
+
+<p> 
+<h5>Para obtener más información acerca de los problemas generales que afectan a Visual Studio 6.0, consulte el archivo Léame de Microsoft&#174; Visual Studio&#8482;, readmevs.htm, que se encuentra en el disco 1 de los discos de instalación de Visual Studio.</h5></p>
+<p>
+<h5>Para obtener más información acerca de los problemas que afectan a la Visual Studio 6.0 Edición empresarial, consulte el archivo Léame de Microsoft&#174; Visual Studio&#8482;, readmeve.htm, que se encuentra en el disco 1 de los discos de instalación de Visual Studio Edición empresarial.</h5></p>
+<p>
+<h5>Para obtener más información acerca del sistema de Ayuda del conjunto de productos de Visual Studio, consulte el archivo Léame de MSDN&#8482 (Microsoft&#174; Developer Network), readmeDN.htm, que se encuentra en el disco 1 de los discos de instalación de Microsoft Developer Network.</h5></p>
+<p>
+<hr align=left color=black SIZE=1 width=640>
+<!------------------------CONTENTS--------------------->
+<!--SECTION 1-->
+
+<h3>Instrucciones de instalación para los programas de Visual Studio</h3>
+
+<p>Esta sección presenta información relacionada con la instalación de los programas y archivos incluidos con Visual Studio 6.0.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 1) TOPIC 1-->
+		  
+<h4><a name="releaseversionoverbeta">Instalar sobre una instalación anterior de una Beta, una versión preliminar o una Vista previa técnica de Visual Studio</a></h4>
+<p>
+No instale la versión final de Visual Studio 6.0 en equipos en los que haya instaladas versiones preliminares, vistas previas técnicas o betas de algún producto de Visual Studio. El destino de los archivos y la configuración de registro han cambiado durante el desarrollo. Si instala la versión final en equipos con una Vista previa de tecnología, una versión preliminar o una beta, puede que no se instale algún componente final, mientras que la versión beta anterior permanecerá en el sistema. Como resultado, el producto puede resultar inestable o, aún peor, el sistema puede resultar inestable.</p>
+<p>Vuelva a formatear el disco duro y a instalar el sistema operativo antes de volver a utilizar en un entorno de producción un equipo que se haya utilizado como plataforma de pruebas beta.
+</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 1) TOPIC 2-->
+		  
+<h4><a name="sidebysideinstallation"> Instalar múltiples versiones de productos de Visual Studio 6.0 en el mismo equipo</a></h4>
+<p>
+Los productos de Visual Studio con la misma versión y el mismo idioma, Visual C++ y Visual Basic versión 6.0 en inglés, por ejemplo, pueden instalarse de forma independiente en la misma estación de trabajo. Microsoft permite estas instalaciones. El Asistente para la instalación de Visual Studio 6.0 detecta si hay instaladas otras versiones de la línea de productos 6.0 en la estación de trabajo de un programador.</p>
+<p>En general, no se pueden mezclar versiones de diferentes idiomas, de diferente compilación o de distinto nivel de producto en la misma estación de trabajo. Esto significa que la instalación puede fallar, uno o más de los productos de Visual Studio 6.0 podrían no funcionar aunque la instalación se realice correctamente o, en el peor de los casos, no podría desinstalar ningún producto por completo.</p>
+<p>Si el asistente muestra una advertencia durante la instalación, lo más seguro es desinstalar el producto de Visual Studio 6.0 antes de continuar. El esquema de detección comprueba los siguientes escenarios:</p>
+<ul><li>Usuarios que <b>instalan versiones en diferentes idiomas</b> del mismo producto. Por ejemplo, Visual Basic en japonés y Visual Basic en inglés. Se admiten la instalación de ciertas combinaciones.</li>
+<p>
+<table COLS=2 cellspacing="2" cellpadding="5" border="1" frame="below" rules="rows">
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Producto</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Instalación admitida</b></font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual Basic</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar en dos ubicaciones diferentes</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual C++</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>No se pueden instalar varias versiones.</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual FoxPro</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar en dos ubicaciones diferentes</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual InterDev</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar en la misma ubicación. Debe volver a instalar después de desinstalar una versión.</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual J++</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar en la misma ubicación. Debe volver a instalar después de desinstalar una versión.</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual SourceSafe</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar en la misma ubicación. Debe volver a instalar después de desinstalar una versión.<p><b>Nota</b>&nbsp;&nbsp;&nbsp;El idioma de interfaz de usuario seleccionado al ejecutar SourceSafe dependerá de la configuración de idioma del sistema. Si el idioma no está instalado en SourceSafe, utilizará inglés.</p></font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>MSDN</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar en el directorio predeterminado.</font></td>
+</tr>
+</table>
+<p>
+<li>Usuarios que <b>instalan diferentes niveles de productos de Visual Studio 6.0</b>. Por ejemplo, Visual J++ Edición estándar y Visual InterDev Edición profesional. No se pueden instalar diferentes niveles del mismo producto en la misma estación de trabajo.</li>
+<p>
+<li>Usuarios que <b>instalan versiones diferentes</b>. Se puede actualizar a una versión posterior de Visual Studio sobre una versión anterior. Sin embargo, no es posible instalar versiones anteriores sobre versiones posteriores.</li>
+<p>
+<li>Usuarios que <b>instalan versiones independientes de los productos de Visual Studio 6.0 sobre las versiones instaladas por Visual Studio 6.0 Edición profesional o Edición empresarial</b>. Por ejemplo, Visual FoxPro 6.0 sobre Visual Studio Edición profesional 6.0. Es posible instalar una versión independiente del mismo idioma (inglés) de los productos de Visual Studio 6.0. Es seguro instalar Visual FoxPro 6.0 (inglés) desde la versión independiente en una estación de trabajo en la que ya esté instalado Visual Basic 6.0 desde Visual Studio Edición profesional.</li>
+</ul>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 1) TOPIC 3-->
+		  
+<h4><a name="installingondualbootcomputers">Advertencia al realizar la instalación en equipos con arranque dual </a></h4>
+<p>
+Si dispone de un equipo con arranque dual y desea instalar y ejecutar los programas de Visual Studio con ambos sistemas operativos, deberá instalar los productos en directorios diferentes.</p>
+<p>Si se instala un producto de Visual Studio, como Visual C++ o Visual Basic, varias veces en el mismo directorio, se puede producir un comportamiento errático. En ocasiones se instala un producto para varios sistemas operativos en la misma ubicación para ahorrar espacio en el disco, pero producirá problemas y no se admite.</p>
+<p>Por ejemplo, si realiza la instalación en el mismo directorio, no podrá desinstalar el producto por completo desde ambos sistemas operativos. Si se desinstala en un sistema se puede producir un comportamiento indefinido, en el que se puede incluir la eliminación de archivos de sistema del otro sistema operativo.</p>
+
+         <!------------------------------------------------------>
+         <!--(Sec. 1) TOPIC 4-->
+
+<h4><a name="installationonsharedcddrive">Instalar Visual Studio desde una unidad de CD compartida</a></h4>
+<p>
+Si instala Visual Studio 6.0 desde una unidad de CD compartida, utilice un nombre de recurso compartido de menos de nueve caracteres y sin espacios incrustados.</p>
+
+         <!------------------------------------------------------>
+         <!--(Sec. 1) TOPIC 5-->
+
+
+<h4><a name="letiefinish">Deje que termine el programa de instalación de Microsoft Internet Explorer antes de realizar la instalación de Visual Studio</a></h4>
+<p>
+Durante la instalación de Visual Studio, el Asistente para la instalación instalará Internet Explorer 4.01 Service Pack (SP) 1. Casi al final de la instalación de Internet Explorer, el Asistente para la instalación de Internet Explorer reiniciará su equipo. El Asistente para la instalación de Internet Explorer volverá a ejecutarse automáticamente y seguirá copiando archivos y configurando su sistema.</p>
+<p>En algunos equipos, el Asistente para la instalación de Visual Studio puede ejecutarse también mientras el Asistente para la instalación de Internet Explorer finaliza esta tarea.  Debe dejar que el Asistente para la instalación de Internet Explorer finalice este proceso antes de continuar con la instalación de Visual Studio.</p>
+<p>En concreto, es esencial que no continúe con la instalación hasta llegar al punto en el que haya que volver a iniciar el sistema. Si reinicia el equipo durante la fase final de configuración de Internet Explorer, dañará la instalación de Visual Studio. El Asistente para la instalación de Internet Explorer muestra un indicador de progreso mientras está en su fase final. Cuando desaparezca este indicador ya será seguro continuar con el Asistente para la instalación de Visual Studio.
+</p>
+         <!------------------------------------------------------>
+         <!--(Sec. 1) TOPIC 6-->
+
+<h4><a name="ieinstallsoldmdacfiles">Cuando el programa de instalación de Microsoft Internet Explorer instala versiones antiguas de los archivos MDAC </a></h4>
+<p>
+Los archivos de Microsoft Data Access (MDAC) instalados por Microsoft Internet Explorer 4.0 pueden ser anteriores a los archivos MDAC instalados por los productos de Visual Studio 6.0. Si instala Internet Explorer en un equipo que ya tenga Visual Studio 6.0 y aparece un mensaje que le pida que confirme si desea instalar las versiones más antiguas de los archivos MDAC, elija la opción que le permite mantener los archivos que tiene instalados actualmente en su equipo.</p>
+
+         <!------------------------------------------------------>
+         <!--(Sec. 1) TOPIC 7-->
+
+<h4><a name="webpublishingwizarddisc">Cuando el Asistente para la instalación busca el disco del Asistente para la publicación en Web</a></h4>
+<p>
+Al instalar Visual Studio 6.0 o Visual J++ Technology Preview 2, si aparece un mensaje de error pidiéndole que introduzca el disco del Asistente para la publicación en Web, cierre el cuadro de diálogo y continúe con la instalación. </p>
+<p>Ni Visual Studio ni Visual J++ incluyen un Asistente para la publicación en Web en un disco independiente. Es posible que se presente este mensaje cuando los usuarios instalan Visual Studio o Visual J++ en equipos que tengan directorios Temp configurados en unidades extraíbles, como unidades Iomega Jaz.
+</p> 
+<p>Cuando termine la instalación de Visual Studio o Visual J++, si desea instalar el Asistente para la publicación en Web deberá realizar los siguientes pasos: 
+</p>
+<ol><li>Configure la variable de entorno Temp para un directorio de una unidad fija, como su disco duro.</li>
+<li>Ejecute wpie15.exe desde <i>[unidad del CD:]</i> \setup del disco compacto.
+</li>
+<li>Una vez que haya finalizado la instalación del Asistente para la publicación en Web, vuelva a configurar su variable de entorno Temp tal y como estaba inicialmente, si es necesario.</li>
+</ol>
+
+         <!------------------------------------------------------>
+         <!--(Sec. 1) TOPIC 8-->
+
+<h4><a name="installingclienttoolsafterinstallingvs">Instalar herramientas de cliente y componentes de servidor después de instalar los productos de Visual Studio 6.0 </a></h4>
+<p>
+El proceso de instalación está formado por varios componentes. Estos componentes no se ejecutan desde <b>Agregar o quitar Programas</b> en el <b>Panel de control</b>. Cuando utilice <b>Agregar o quitar programas</b>, sólo verá la parte del producto que corresponde a la instalación del producto.</p>
+<p>Para instalar cualquiera de las siguientes herramientas deberá ejecutar la instalación completa.
+</p>
+<ul>
+<li>Application Performance Explorer</li>
+<li>Data Access Components 2.0</li>
+<li>FrontPage 98</li>
+<li>Extensiones de servidor de FrontPage 98</li>
+<li>InstallShield</li>
+<li>NT Option Pack para Windows 95</li>
+<li>Ejemplos de Visual FoxPro Server</li>
+<li>Componentes de Visual InterDev Server</li>
+<li>Visual SourceSafe Server</li>
+<li>Visual Studio Analyzer</li>
+<li>MSDN</li>
+</ul> 
+<p>Para instalar cualquier herramienta de esta lista después de instalar los productos de Visual Studio 6.0, ejecute instalar.exe desde el disco 1. Así se ejecutará la instalación completa en &#34;modo de mantenimiento&#34;. Dispondrá de todas las opciones que tenía al instalar por primera vez el producto de Visual Studio 6.0, pero no tendrá que pasar por todos los cuadros de diálogo preliminares.
+</p>
+         <!------------------------------------------------------>
+         <!--(Sec. 1) TOPIC 9-->
+
+<h4><a name="howtocontacttechnicalsupport">Cómo ponerse en contacto con el Soporte técnico</a></h4>
+<p>La documentación en pantalla incluye información completa acerca de cómo obtener asistencia técnica, así como de las opciones disponibles, entre las que se incluyen la asistencia gratuita y la asistencia en línea. Haga clic en el icono de MSDN Library Visual Studio 6.0 y abra la Documentación de Visual Studio. La información de soporte se encuentra en Soporte técnico, en la sección Introducción a Visual Studio 6.0.</p>
+<blockquote><b>Nota</b>&nbsp;&nbsp;&nbsp;Debe instalar MSDN para obtener la documentación en pantalla.</blockquote>
+<p>Puede buscar información en el Web en las direcciones <a href="http://www.microsoft.com/spain/support">http://www.microsoft.com/spain/support</a> o <a href="http://www.microsoft.com/latam/soporte">http://www.microsoft.com/latam/soporte</a>. Además, puede llamar al número (425) 635-7012 en EE.UU.
+</p>
+
+<hr align=left color=black SIZE=1 width=320>
+<!------------->
+<!--SECTION 2-->
+
+<h3><a name="serversidesetups">Instalar los componentes de servidor</a></h3>
+
+<p>Esta sección muestra problemas de instalación identificados para los componentes de servidor incluidos en Visual Studio.</p>
+          <!------------------------------------------------------>
+          <!--(Sec. 2) TOPIC 1-->
+
+<h4><a name="minimumreqsforserversideinstall">Requisitos mínimos para la instalación y el funcionamiento de los componentes de servidor</a></h4>
+<p>Consulte la siguiente tabla para obtener información acerca de requisitos de sistema operativo, de explorador y otros requisitos para la instalación y utilización de los componentes de servidor.</p>
+<P><B>Tabla de requisitos mínimos para la instalación de componentes de servidor</B></P>
+<table cellspacing="1" cellpadding="5" border="1" rules="all" cols="6" frame="below">
+<tr valign="top"></tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Componente</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>NT Server</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>NT Workstation</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Windows 95/98</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Requiere Microsoft Internet Explorer</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Otras dependencias</b></font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows NT Option Pack 4.0</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0 SP3</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Limitado en Win95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>SQL Server 6.5 (DEV Edition)</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 3.51 +</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instala algunas herramientas en Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>No</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Servicio de depuración de SQL Server</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Srvr. 3.51 Sp5 o posterior</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>---</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>---</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>No</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Requiere SQL server 6.5 (SP3)</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Componentes de Visual SourceSafe Server</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí. Versión 4 para ver la Ayuda HTML</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Posting Acceptor (2.0)</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0 SP3</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>---</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instale NTOP antes de PA 2.0</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Depuración en máquinas remotas (depuración de secuencias de comandos)</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí. Versión 4 o posterior</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Componentes de Visual InterDev Server</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0 SP3</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí. Versión 4 o posterior</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instale las extensiones NTOP, MDAC y FP antes de VIDSS</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Extensiones de servidor de FrontPage</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0 SP3</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí. Versión 4 o posterior</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instale las extensiones NTOP y MDAC antes de FP</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ejemplos y extensiones ISAPI de Fox</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>---</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NO hay dependencias del SO (ejemplos)</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>---</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Cualquier explorador genérico</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual Studio Analyzer</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0 SP3</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95 (con la actualización DCOM)</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí. Sólo en W95 para obtener DCOM</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Application Performance Explorer</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0 SP3</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95 (con la actualización DCOM)</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Sí. Sólo en W95 para obtener DCOM</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Ninguna</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Actualización de MDAC  2.0</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Windows 95</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>No</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar después de NTOP y antes de SNA</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>SNA server</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT4 Srvr.</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>NT Workstation 4.0</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>---</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>No</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Instalar después de MDAC y MTS</font></td>
+</tr>
+</table>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 2) TOPIC 2-->
+
+<h4><a name="setupalreadyrunning"></a>El mensaje &#34;El programa de instalación ya se está ejecutando&#34; aparece durante la instalación de los componentes de servidor</h4>
+<p>
+Al instalar los componentes de servidor de Visual Studio 6.0 en un equipo con Windows NT Server mediante el Asistente para la instalación, puede encontrarse con el mensaje &#34;Ya se está ejecutando otra copia de la Instalación. Termine la otra instalación o reinicie Windows&#34;.</p>
+<p>
+Esta situación suele producirse en equipos lentos en los que el cronómetro del asistente salta mientras espera a que termine la instalación de ACME y el Asistente inicia la siguiente instalación.</p>
+<p>Haga clic en <b>Aceptar</b> en el cuadro del mensaje. Esta acción indicará al asistente que debe detener uno de los procesos en conflicto y continuar con el resto de las instalaciones. La página de resumen que se genera automáticamente al finalizar la instalación mostrará una lista con los componentes que no se instalaron completamente, si hay alguno.</p>
+<p>Para instalar el componente que ha fallado, ejecute de nuevo el asistente para la instalación.</p>
+          <!------------------------------------------------------>
+          <!--(Sec. 2) TOPIC 3-->
+
+<h4><a name="servercomponentsonwin95"></a>Instalar componentes de servidor en Windows 95</h4>
+<p><i>Se recomienda que instale todas las aplicaciones de servidor en equipos que ejecuten Windows NT.</i></p>
+<p>Las ediciones empresarial y profesional de los productos de Visual Studio 6.0 incluyen varias aplicaciones de servidor de Microsoft diseñadas específicamente para el programador que trabaja con Visual Studio. La mayoría de las aplicaciones pueden ser instaladas en Windows 95 o Windows NT. Le recomendamos que instale todas las aplicaciones de servidor en Windows NT, Workstation o Server.</p>
+<p>Si decide instalar los servidores en un equipo con Windows 95, el orden de instalación será importante. En Windows 95, algunas aplicaciones deben instalarse antes que otras para que la instalación se realice correctamente y el producto funcione. Instale los componentes en este orden:
+<ol><li>NT Option Pack</li>
+<li>Extensiones de servidor de FrontPage 98</li>
+<li>Data Access Components 2.0</li>
+<li>Componentes de Visual InterDev Server</li>
+<li>Application Performance Explorer</li>
+<li>Visual Studio Analyzer</li>
+</ol>
+<ul><li>(En cualquier orden) Visual SourceSafe Server</li>
+<li>(En cualquier orden) Ejemplos de Visual FoxPro Server</li>
+</ul>
+El Asistente para la instalación presenta estas opciones en el mismo orden. De nuevo, el orden sólo es importante en Windows 95.
+</p>
+<p>Para obtener información acerca de otros problemas relacionados con Windows 95, consulte <a href="#forwin95">Problemas específicos de equipos con Windows 95</a></p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 2) TOPIC 4-->
+
+<h4><a name="sqlandwinntop"></a>Problemas de compatibilidad con SQL Server 6.5 y Windows NT Option Pack 4.0 conocidos</h4>
+<p>
+Si instala SQL Server 6.5 en un equipo con Windows NT Option Pack 4.0 instalado, puede que se sobrescriban algunos de los controles en tiempo de diseño (DTC).</p>
+<p>
+Si esto sucede, aparecerá un mensaje de error cuando inicie Microsoft Transaction Server (MTS). El mensaje le indicará que debe volver a instalar MTS.</p>
+<p>Para evitar esta situación, instale NT Option Pack después de instalar SQL Server.
+<p>
+<hr align=left color=black SIZE=1 width=320>
+<!-------------------------------------------------------------->
+<!--SECTION 3-->
+
+<h3><a name="configuringdebugging">Configurar para la depuración</a></h3>
+
+<p>La información de esta sección trata problemas relacionados con la depuración y la configuración de equipos para servicios de depuración.</p>
+          <!------------------------------------------------------>
+          <!--(Sec. 3) TOPIC 1-->
+
+<h4><a name="iispatchforaspdebugging">Para depurar ASP, instale la revisión de IIS después de instalar BackOffice</a></h4>
+<p>
+Internet Information Server (IIS) tiene una revisión que soluciona algunos problemas relacionados con la depuración de páginas Active Server (ASP) desde Visual InterDev. Esta revisión también soluciona un problema de Windows 95/98, por el que los cambios en Global.asa no quedan reflejados en su aplicación (como agregar, cambiar o quitar conexiones de datos) hasta que detiene y vuelve a iniciar su servidor Web.</p>
+<p>Para asegurarse de que la depuración ASP funciona correctamente o para solucionar el problema con Windows 95/98, aplique la revisión después de que termine el Asistente para la instalación de BackOffice.</p>
+<p><b>Para aplicar la revisión de IIS en ordenadores con Windows NT</b>
+<ol> 
+<li>Ejecute \IIS\WinNT\ASP2FIX1.exe desde el disco de instalación.</li>
+<p>
+<table cellspacing="1" cellpadding="5" border="1" rules="all" frame="below">
+<tr valign="top"></tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Producto</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Ubicación en disco</b></font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual Studio, Edición profesional</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>CD 2</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual Studio, Edición empresarial</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>CD 3</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual InterDev</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>CD 1</font></td>
+</tr>
+</table>
+</p>
+<li>Reinicie el sistema cuando se le indique.</li>
+</ol>
+<p>
+<p><b>Para aplicar la revisión de IIS en equipos con Windows 9<i>x</i></b>
+<ol> 
+<li>Detenga el servidor Web desde el <b>indicador de línea de comandos</b>: escriba <b>pws/stop</b> y presione ENTRAR.</li>
+<p>
+<li>En el directorio \<i>&lt;windows&gt;</i>\system\inetsrv, cambie el nombre de Asp.dll por Asp.old</li>
+<p>
+<li>Desde el directorio \IIS\Win9<i>x</i>\ del disco de instalación, copie Asp.dll y péguelo en \<i>&lt;windows&gt;</i>\system\inetsrv en su equipo.</li>
+<p>
+<table cellspacing="1" cellpadding="5" border="1" rules="all" frame="below">
+<tr valign="top"></tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Producto</b></font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2><b>Ubicación en disco</b></font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual Studio, Edición profesional</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>CD 2</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual Studio, Edición empresarial</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>CD 3</font></td>
+</tr>
+<tr>
+    <td><font face="verdana,arial,helvetica" SIZE=2>Visual InterDev</font></td>
+    <td><font face="verdana,arial,helvetica" SIZE=2>CD 1</font></td>
+</tr>
+</table>
+</p>
+<p>
+<li>Vuelva al <b>indicador de línea de comandos</b> y reinicie el servidor Web: escriba <b>pws/start</b> y presione ENTRAR.</li>
+</ol>
+
+
+          <!------------------------------------------------------>
+          <!--(Sec. 3) TOPIC 2-->
+
+<h4><a name="sqldebuggingoncomputerswithsql65andvc5orhigher">Utilizar los servicios de depuración de SQL en un equipo con SQL Server 6.5 y Visual C++ 5.0 o posterior</a></h4>
+<p>
+Para utilizar los servicios de depuración de SQL en un equipo con SQL Server 6.5 y Visual C++ 5.0 o posterior, asegúrese de que las propiedades de configuración de la Automatización remota (AR) de su equipo son correctas.</p>
+<p><b>Para comprobar las propiedades de configuración de AR</b>
+<ol> 
+<li>Ejecute dcomcnfg.exe.
+<li>Seleccione Remote Automation CLSID_StubMarhsaler.
+<li>Haga clic en <b>Propiedades</b>.
+<li>En la ficha <b>Identidad</b>, seleccione Usuario interactivo.
+</ol>
+<p>Además, sus escenarios de depuración de SQL podrían no funcionar si ejecuta SQL Server como un servicio bajo la cuenta Local System. Debe seleccionar <b>Esta cuenta</b> e introducir una cuenta y una contraseña válidas.
+</p>
+<hr align=left color=black SIZE=1 width=320>
+<!--------------------------------------------------------->
+<!--SECTION 4-->
+
+<h3><a name="forwin95">Problemas específicos de equipos con Windows 9<i>x</i></a></h3>
+
+<p>Esta sección muestra problemas identificados al instalar Visual Studio 6.0 en equipos con Windows 95 o Windows 98.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 4) TOPIC 1-->
+
+<h4><a name="windows95registrysize">Tamaño del Registro de Windows 95: el límite de 64 KB puede hacer que aparezca una advertencia durante la instalación de Visual Studio</a></h4>
+<p>La limitación a 64 KB del tamaño de la clave SharedDLL en el registro del sistema de Windows 95 puede generar una advertencia al instalar Visual Studio 6.0.</p>
+<p>Antes de seguir con la instalación, debería acortar la ruta del directorio en el que piensa instalar Visual Studio 6.0, reduciendo así la cantidad de espacio necesario en el registro. Además, puede desinstalar programas que ya no utilice mediante Agregar o quitar programas del Panel de control. Se eliminarán las claves del Registro utilizadas exclusivamente por estos programas.</p>
+<p>Para ahorrar más espacio de Registro utilizado por los programas que desea conservar, desinstale y vuelva a instalar estos programas para acortar las rutas de instalación.</p>
+<p>Considere la posibilidad de usar la utilidad RegClean, diseñada para limpiar las entradas innecesarias del Registro. Para obtener más información y un vínculo de descarga, vaya a <a href="http://support.microsoft.com/support/kb/articles/q147/7/69.asp">http://support.microsoft.com/support/kb/articles/q147/7/69.asp</a></p>
+<p><b>Nota</b>&nbsp;&nbsp;&nbsp;En equipos con Windows NT Workstation y Windows NT Server, el programa de instalación de Visual Studio cambiará automáticamente el tamaño del Registro.
+</p>
+<p></p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 4) TOPIC 2-->
+
+<h4><a name="whenautologonisenabled">Deshabilitar el inicio de sesión automático antes de ejecutar el programa de instalación de Visual Studio 6.0</a></h4>
+<p>El programa de instalación de Visual Studio puede fallar en equipos con Windows 95 configurados con inicio de sesión automático.</p>
+<p>Antes de instalar Visual Studio 6.0 o cualquiera de sus productos en un equipo con Windows 95 que tenga habilitado el inicio de sesión automático, desactive el inicio de sesión automático siguiendo las instrucciones que se encuentran en <a href="http://support.microsoft.com/support/kb/articles/q141/8/58.asp">http://support.microsoft.com/support/kb/articles/q141/8/58.asp</a>.</p><blockquote><b>Note</b>&nbsp;&nbsp;&nbsp;Este artículo contiene varios pasos adicionales que pueden no ser relevantes en su sistema.
+</blockquote>
+<p>Si ha instalado productos de Visual Studio en un equipo con Windows 95 configurado con el inicio de sesión automático y la instalación ha fallado, repita los pasos de la instalación con el inicio de sesión automático deshabilitado.</p>
+
+
+          <!------------------------------------------------------>
+          <!--(Sec. 4) TOPIC 3-->
+
+<h4><a name="internetconnectiondialog">Puede que aparezca un cuadro de diálogo de conexión a Internet en el inicio de Windows o de otras aplicaciones</a></h4>
+<p>Si se permiten conexiones remotas en Windows 95 o Windows 98, puede que el sistema intente inicializar una conexión a Internet en el inicio de Windows o en el inicio de muchas aplicaciones. Este comportamiento se llama a veces &#34;marcado automático&#34; o &#34;conexión automática&#34;. Puede desactivar este comportamiento si establece la clave del Registro EnableRemoteConnect a &#34;N&#34;.
+</p>
+<p>Para ello, cree un archivo de texto &#34;DisbleAutoConnect.reg&#34; con las tres líneas siguientes:
+</p>
+<blockquote>REGEDIT4</blockquote>
+<blockquote>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\OLE]</blockquote>
+<blockquote>&#34;EnableRemoteConnect&#34;=&#34;N&#34;</blockquote>
+<p>Cambiar esta configuración para deshabilitar conexiones remotas no debería evitar ninguna de sus actividades normales en Internet; esta configuración es el valor predeterminado para la mayoría de los sistemas. Sin embargo, para algunas características de DCOM es necesario habilitar las conexiones remotas (vea <a href="http://support.microsoft.com/support/kb/articles/Q177/3/94.asp">http://support.microsoft.com/support/kb/articles/Q177/3/94.asp</a>).
+</p>
+<p>Si necesita a veces tener habilitadas las conexiones remotas, cree otro archivo REG, &#34;EnableRemoteConnect.reg&#34;, con las tres líneas siguientes:
+</p>
+<blockquote>REGEDIT4</blockquote>
+<blockquote>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\OLE]
+</blockquote>
+<blockquote>&#34;EnableRemoteConnect&#34;=&#34;Y&#34;
+</blockquote>
+<p>Ejecute &#34;EnableAutoConnect.reg&#34; para establecer esta configuración y, a continuación, ejecute &#34;DisbleAutoConnect.reg&#34; para deshabilitarla cuando ya no sea necesaria la conexión automática.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 4) TOPIC 4-->
+
+<h4><a name="resumingsetupafterinstallingpws">Puede que el Asistente para instalación no se reinicie después de que se haya instalado PWS en equipos con Windows 95</a></h4>
+<p>Si elige instalar Personal Web Server (PWS) en un equipo con Windows 95, puede que el Asistente para la instalación no reanude correctamente su ejecución cuando se reinicie el equipo. Para continuar, vuelva a ejecutar Instalar.exe desde el primer disco del conjunto de CD de Visual Studio 6.0. El Asistente para la instalación reanudará automáticamente la instalación en el punto correcto.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 4) TOPIC 5-->
+
+
+<h4><a name="frontpage98onwin95">Cómo instalar las Extensiones de Microsoft FrontPage 98 en equipos con Windows 95</a></h4>
+<p>Cuando el Asistente para la instalación ejecuta otras instalaciones de clientes o servidores, el Asistente se vuelve invisible y espera hasta que el componente esté instalado. Después, el Asistente vuelve a aparecer y permite al usuario instalar otro componente.</p>
+<p>Cuando instale las Extensiones de Microsoft FrontPage 98 en algunos equipos con Windows 95, puede que el Asistente para la instalación permanezca oculto durante varios minutos después de que se haya completado la instalación de FrontPage.
+</p>
+<p>Mientras el Asistente esté oculto no podrá ejecutar de nuevo el programa de instalación. No se iniciará un segundo Asistente para la instalación cuando el programa detecte que ya hay uno en ejecución.</p>
+
+<hr align=left color=black SIZE=1 width=320>
+<!--------------------------------------------------------->
+<!--SECTION 5-->
+
+<h3><a name="vs6andothers">Notas acerca del efecto sobre otros programas instalados</a></h3>
+
+<p>En esta sección se muestran problemas de instalación que pueden afectar a otros programas ya instalados en su equipo.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 5) TOPIC 1-->
+
+<h4><a name="iisamexchangedriver">El controlador IISAM de Exchange fallará si Microsoft Exchange o Microsoft Outlook aún no están instalados </a></h4>
+<p>
+El controlador IISAM de Exchange necesita que Microsoft Exchange o Microsoft Outlook estén totalmente instalados antes de realizar la instalación de Visual Studio. Si ninguno de los dos está instalado, el controlador IISAM de Exchange no se registrará automáticamente.</p>
+<p>
+Para solucionar el problema después de instalar Visual Studio 6.0, puede instalar Microsoft Exchange o Microsoft Outlook y después registrar manualmente el controlador IISAM de Exchange mediante esta línea de comandos:</p>
+<font face="Courier" size=2>Regsrv32 msexch35.dll</font>
+<p>
+<p></p>
+<hr align=left color=black SIZE=1 width=320>
+<!-------------------------------------------------------------->
+<!--SECTION 6-->
+
+<h3><a name="fornonusversions">Problemas relacionados con equipos en los que están instaladas versiones no inglesas de programas de Microsoft</a></h3>
+
+<p>Esta sección muestra problemas de instalación conocidos relacionados con equipos que tienen instaladas versiones no inglesas de programas de Microsoft</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 6) TOPIC 1-->
+
+<h4><a name="nonusnt40">Instrucciones de instalación especiales para equipos con versiones no inglesas de Microsoft Windows NT 4.0 y Microsoft Internet Explorer</a></h4>
+<p>
+Si está instalando esta versión de Visual Studio 6.0 en una versión no inglesa de Windows NT 4.0, primero deberá instalar la versión de Windows NT 4.0 Service Pack 3 correspondiente al idioma apropiado.</p>
+<p> 
+Para instalar esta versión de Visual Studio 6.0 en un equipo en el que se utilice una versión internacional de Microsoft Internet Explorer, deberá instalar la versión de Microsoft Internet Explorer del idioma correcto. </p>
+<p>Las versiones internaciones de Windows NT 4.0 Service Pack 3 están disponibles en las siguientes ubicaciones:</p>
+<li>
+<a href="ftp://ftp.microsoft.com/bussys/winnt/winnt-public/fixes">ftp://ftp.microsoft.com/bussys/winnt/winnt-public/fixes</a></li> 
+<li>
+<a href="http://www.microsoft.com/support/winnt/intlsp.asp">http://www.microsoft.com/support/winnt/intlsp.asp</a></li>
+<p>Las versiones internacionales de Microsoft Internet Explorer 4.<i>x</i> están disponibles en:</p>
+<li>
+<a href="http://www.microsoft.com/ie_intl/es/download/">http://www.microsoft.com/ie_intl/es/download/</a></li>
+<p>
+          <!------------------------------------------------------>
+          <!--(Sec. 6) TOPIC 2-->
+
+<h4><a name="localizediespneededforenglishvs">Los sistemas BiDi deben tener una versión localizada de Internet Explorer 4.0 SP 1 antes de instalar la versión inglesa de Visual Studio 6.0 </a></h4>
+<p>
+Antes de instalar la versión inglesa de Visual Studio 6.0 en un sistema configurado con un juego de caracteres bidireccional (BiDi), como Hebreo o Árabe, primero deberá instalar la versión localizada de Microsoft Internet Explorer 4.01 Service Pack 1.
+</p>
+<p>Las versiones internacionales de Microsoft Internet Explorer 4.x están disponibles en:
+</p>
+<li>
+<a href="http://www.microsoft.com/ie/es/download/">http://www.microsoft.com/ie/es/download/</a></li>
+<p>
+          <!------------------------------------------------------>
+          <!--(Sec. 6) TOPIC 3-->
+
+<h4><a name="necpc98">Problemas de instalación de NEC PC 98</a></h4>
+<p>En los NEC PC98 en los que la unidad C es una disquetera, si se presenta el error <i>No se puede leer en la unidad \Device\Floppy0:</i>, coloque un disquete formateado en la unidad. Compruebe que la puerta de la unidad está cerrada y que el disco tiene el formato correcto. Después, siga adelante con la instalación.</p>
+
+<hr align=left color=black SIZE=1 width=320>
+<!--------------------------------------------------------->
+<!--SECTION 7-->
+
+<h3><a name="dasdkissues">Data Access SDK 2.0</a></h3>
+
+<p>Esta sección trata todos los problemas relacionados con Data Access SDK 2.0.</p>
+          <!------------------------------------------------------>
+          <!--(Sec. 7) TOPIC 1-->
+
+<h4><a name="installreq">Requisitos de la instalación</a></h4>
+<p>El Data Access SDK, incluido con Visual Studio necesita que estén instalados los componentes de acceso a datos de Microsoft antes de instalar este SDK. De no ser así, cuando se ejecute la instalación del SDK, aparecerá el mensaje:</p>
+<blockquote>ODBC no está instalado en este equipo. Si continúa, recibirá mensajes de error. ¿Desea continuar?</blockquote>
+<p>Para resolverlo, asegúrese de que ha ejecutado la instalación de Visual Studio antes de instalar el Data Access SDK.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 7) TOPIC 2-->
+
+<h4><a name="toinstallmdacsdk2">Cómo instalar Microsoft Data Access SDK 2.0</a></h4>
+<p>Microsoft Data Access SDK 2.0 puede instalarse ejecutando el archivo DASDK.exe desde el directorio \dasdk del disco 2.</p>
+<p>El SDK incluye ejemplos de Microsoft Data Access Components y más información y herramientas para los programadores que utilicen ODBC y OLE DB.</p>
+
+          <!------------------------------------------------------>
+          <!--(Sec. 7) TOPIC 3-->
+
+<h4><a name="sql65orolderwithmdac2">Antes de usar SQL Server 6.5 o anterior con MDAC 2.0</a></h4>
+<p>Debe actualizar los procedimientos de catálogo si piensa utilizar SQL Server 6.5 o posterior con MDAC 2.0. Consulte el archivo de Ayuda del controlador de SQL Server, drvssrvr.hlp, para obtener más información.</p>
+<p>Normalmente, podrá encontrar drvssrvr.hlp en</p>
+<ul><li>En sistemas NT: \winnt\system32</li>
+<li>En Windows 95: \windows\system</li></ul>
+
+</FONT></BODY>
+</HTML>
+

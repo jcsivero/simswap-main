@@ -1,0 +1,144 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<!-- REM (C) Copyright 1996-1997 Microsoft Corporation.  All Rights Reserved. 
+     THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+     ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+     THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+     PARTICULAR PURPOSE. -->
+
+<head><title>Microsoft Site Server Express - Content Analyzer Readme File</title>
+
+<script language="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<meta name="DESCRIPTION" content="Supplements information found in the main documentation"></head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">
+
+<a name="top"><h1>Microsoft&reg; Site Server Express Content Analyzer Release Notes</h1></a>
+
+<ul>
+<li><a href="#E10E11" name="LOCE10E11" >Welcome</a></li>
+<li><a href="#E10E12" name="LOCE10E12" >System Requirements</a></li>
+<li><a href="#E10E13" name="LOCE10E13" >Browser Compatibility</a></li>
+<li><a href="#E10E15" name="LOCE10E15" >Configuring Content Analyzer <br>to Work with Your Proxy Server</a></li>
+<li><a href="#E10E18" name="LOCE10E18" >Known Issues</a></li>
+<li><a href="#E10E19" name="LOCE10E19" >CERN Acknowledgment</a></li>
+<li><a href="#E10E20" name="LOCE10E20" >XEROX Acknowledgment</a></li>
+</ul>
+
+<a name="E10E11"><strong>Welcome</strong></a>
+
+<p><strong>Important</strong>&nbsp;&nbsp;&nbsp;This README file provides useful information that may not be included in the online documentation. 
+</p>
+
+<a name="E10E12"><strong>System Requirements</strong></a>
+
+<p>Content Analyzer requires the following minimum software and hardware environment for optimal performance:</p>
+
+<p><strong>Hardware Requirements:</strong></p>
+
+<ul>
+<li>Pentium processor</li>
+<li>32 MB of memory is recommended (16 MB minimum)</li>
+<li>15 MB disk space for the program, documentation, and sample maps</li>
+<li>Internet connection (direct or modem)</li>
+</ul>
+
+<p><strong>Software Requirements:</strong></p>
+
+<ul>
+<li>Microsoft&reg; Windows NT&reg; version 4.0</li>
+<li>An Internet browser</li>
+<li>Plug-in applications for multimedia (recommended)</li>
+<li>Publishing and authoring tools for editing resource files (recommended)</li>
+</ul>
+
+<a name="E10E13"><p><strong>Browser Compatibility</strong></p></a>
+
+<p>We've tested Content Analyzer with the most popular 
+browsers. The following browsers have been verified to 
+work with Content Analyzer:</p>
+
+<ul>
+<li>Microsoft Internet Explorer 3.02 (or later)</li>
+<li>Netscape Navigator 3.0 (or later)</li>
+</ul> 
+
+<p>If you're running previous versions of these products, 
+we recommend that you upgrade to the newer versions. 
+</p>
+
+<a name="E10E15"><p><strong>Configuring Content Analyzer to Work With Your Proxy Server</strong></p></a>
+
+<p>To configure Content Analyzer to be used in conjunction with an established  proxy server, enter the
+appropriate information in the <strong>Proxy</strong> tab of the Content Analyzer <strong>View/Program
+Options</strong> dialog box. If you're not sure if you are using a proxy server, contact your system
+administrator. You may also need to ask your administrator for any required user name or password.</p>
+
+<a name="E10E18"><p><strong>Known Issues</strong></p></a>
+
+<p>Please note the following known issues:</p>
+
+<p>When mapping a site, Content Analyzer will access every URL within that site.  This is equivalent to a user clicking on every link.  If you have links to gateway scripts that have side effects (for example, manipulating records in a database), these will all be executed, potentially altering data stored outside of the HTML content of the site.
+</p>
+
+<a name="E10E19"><p><strong>CERN Acknowledgment</strong></p></a>
+
+<p>Content Analyzer includes computer software that was
+created and made available by CERN. This acknowledgment
+shall be mentioned in full in any product that includes
+the CERN computer software included herein or parts thereof.</p>
+
+<p>The name and trademarks of copyright holders may NOT be
+used in advertising or publicity pertaining to the software
+without specific, written, prior permission. Title to
+copyright in this software and any associated documentation
+will at all times remain with copyright holders.
+</p>
+
+<a name="E10E20"><p><strong>Xerox Acknowledgment</strong></p></a>
+
+<p>"Hyperbolic Tree (TM) interface Copyright by Xerox Corporation and InXight Software, Inc., a Xerox New Enterprise Company.  All Rights Reserved."</p>
+
+<p><a href="#top">Return to top</a></p>
+
+<hr>
+
+Microsoft, the Microsoft logo and Cyberbolic are trademarks of Microsoft Corporation. Netscape Communications, Netscape Navigator, and Netscape are trademarks of Netscape Communications Corporation. Portions of the Cyberbolic interface copyright 1996-1997 by Xerox Corporation. All other trademarks are the recognized properties of their respective owners. 
+
+<hr>
+
+<h1><a name="CopyrightInformation">Copyright Information</a></h1>
+
+<p>&copy; 1997 Microsoft Corporation</p>
+
+<p>These materials are provided &#147;as-is,&#148; for informational purposes only.</p>
+
+<p>Neither Microsoft nor its suppliers makes any warranty, express or implied with respect to the content of these materials or the accuracy of any information contained herein, including, without limitation, the implied warranties of merchantability or fitness for a particular purpose. Because some states/jurisdictions do not allow exclusions of implied warranties, the above limitation may not apply to you.</p>
+
+<p>Neither Microsoft nor its suppliers shall have any liability for any damages whatsoever including consequential, incidental, direct, indirect, special, and lost profits. Because some states/jurisdictions do not allow exclusions of implied warranties, the above limitation may not apply to you. In any event, Microsoft&#146;s and its suppliers&#146; entire liability in any manner arising out of these materials, whether by tort, contract, or otherwise shall not exceed the suggested retail price of these materials.</p>
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1997 by Microsoft Corporation. All rights reserved.</a></em></p>
+
+</font>
+</body>
+</html>

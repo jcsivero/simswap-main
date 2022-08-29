@@ -1,0 +1,157 @@
+-------------------------------------------------------
+Archivo Léame de la API Microsoft Data Link versión 2.0 
+-------------------------------------------------------
+
+(c) 1998 Microsoft Corporation. Reservados todos los derechos.
+
+Este documento ofrece noticias de última hora u otra información que 
+sirve de complemento a la documentación de la API Microsoft Data Link.
+
+---------
+CONTENIDO
+---------
+
+1. DESCRIPCIÓN DEL PRODUCTO
+   
+2. NUEVAS CARACTERÍSTICAS
+   
+3. NOTAS TÉCNICAS
+
+4. ERRORES CONOCIDOS, LIMITACIONES Y SOLUCIONES
+
+---------------------------
+1. DESCRIPCIÓN DEL PRODUCTO
+---------------------------
+API Microsoft Data Link proporciona una interfaz común de usuario 
+para definir y administrar conexiones con orígenes de datos de 
+OLE DB. También se puede llamar a esta interfaz de usuario mediante 
+una interfaz de programación de aplicaciones, la API de enlace 
+de datos.
+
+Puede guardar la información de conexión en un archivo de enlace 
+de datos (.udl). A continuación, puede modificar estos archivos 
+a través de la página Data Links Property y las aplicaciones los 
+pueden usar en la creación de conexiones a distintos almacenes de 
+datos de OLE DB. La API Data Link ofrece a las aplicaciones la 
+posibilidad de seleccionar, cargar o guardar archivos .udl. 
+
+La misma interfaz de usuario utilizada para administrar la 
+información de conexión en archivos .udl la pueden utilizar las 
+aplicaciones para obtener información de conexión de los usuarios 
+cuando hacen conexiones ad-hoc con almacenes de datos OLE DB. La 
+API de enlace de datos permite a las aplicaciones obtener una 
+versión de cadena con la información de conexión de un objeto de 
+origen de datos OLE DB existente, crear un objeto de origen de datos 
+de una cadena de conexión existente o usar el cuadro de diálogo 
+Data Links para modificar las propiedades de conexión de un objeto 
+de origen de datos OLE DB sin inicializar. 
+
+-------------------------
+2. NUEVAS CARACTERÍSTICAS
+-------------------------
+La API Microsoft Data Link es una característica nueva de los
+componentes del núcleo de MDAC 2.0.
+
+-----------------
+3. NOTAS TÉCNICAS
+-----------------
+
+Cambios desde la versión preliminar
+-----------------------------------
+Han cambiado algunas cosas desde la versión preliminar de la API 
+Data Link incluida en la versión beta 2 de Visual Studio 98. 
+Asegúrese de desinstalar y eliminar el registro de cualquier 
+versión preliminar de la API Data Link antes de instalar esta 
+versión.
+
+* Cambio de la extensión de archivo de la versión preliminar
+Si ha utilizado una versión preliminar de los componentes de 
+servicio, la extensión del archivo utilizado para almacenar enlaces 
+de datos ha cambiado a ".udl".
+
+* Cambio del formato de archivo de la versión preliminar
+El formato del archivo de enlace de datos ha cambiado en la 
+versión final para ser compatible con unicode. Este cambio supone 
+que los archivos de enlace de datos existentes de la versión 
+preliminar no funcionarán con la versión final. Deberá volver a 
+generar sus archivos de enlace de datos.  
+
+* Cambio del argumento de la versión preliminar
+La versión preliminar de la interfaz IDBPromptInitialize, compatible 
+con el componente de enlace de datos, no incluía un puntero a un 
+control desconocido como primer argumento de PromptDataSource. Las 
+aplicaciones que llaman al método IDBPromptInitialize::PromptInitialize 
+en la versión preliminar de la API Data Link tendrán que agregar 
+este argumento y volver a compilar para que funcione con la versión 
+de lanzamiento.
+
+-----------------------------------------------
+4. ERRORES CONOCIDOS, LIMITACIONES Y SOLUCIONES
+-----------------------------------------------
+A continuación, se muestra una lista de los problemas conocidos de 
+la API Microsoft Data Link 2.0.
+
+* Error en el documento: en la sección "Listing Keywords Multiple 
+  Times", se establece que la excepción está en que si la palabra 
+  clave Provider aparece varias veces, se utilizará la primera 
+  instancia. Esto no es correcto. Si la palabra clave Provider aparece 
+  varias veces, se utilizará la última palabra clave Provider.
+
+* Error en el documento: en "OLE DB Initialization Properties: 
+  Quick Reference", se pueden agregar estas descripciones y valores 
+  abreviados adicionales:
+
+	DBPROP_INIT_OLEDBSERVICES
+	Descripción: servicios OLE DB
+	Valor en la doc. de OLE DB	Valor abrev. cadena de conexión
+	--------------------------	-------------------------------
+	DBPROPVAL_OS_RESOURCEPOOLING	ResourcePooling
+	DBPROPVAL_OS_TXNENLISTMENT	TxnEnlistment
+	DBPROPVAL_OS_ENABLEALL		EnableAll
+
+* Error en el documento: en la descripción de 
+  IDataInitialize::GetDatasource, el cuarto párrafo de la descripción 
+  del argumento ppDatasource debe aparecer del siguiente modo:
+
+  Si *ppDataSource no es nulo y no se ha especificado ningún 
+  proveedor en pwszInitializationString, entonces se utilizará el 
+  origen de datos especificado por *ppDatasource.
+
+  La palabra "no" no aparece en la documentación.
+
+* Error en el documento: en la descripción de 
+  IDBPromptInitialize::PromptDatasource, se establece que el método 
+  devuelve una cadena de conexión. En realidad, el método devuelve un 
+  objeto de origen de datos con el conjunto de propiedades 
+  especificado.
+
+* Error en el documento: en la documentación, se establece que los 
+  argumentos cSourceTypeFilter, rgSourceTypeFilter y 
+  pwszszzProviderFilter de IDBPromptInitialize::PromptDataSource se 
+  reservan para uso futuro. Estos argumentos se implementan del modo 
+  descrito en la versión 2.0 de OLE DB.
+
+* Error en el documento: en la descripción de 
+  IDBPromptInitialize::PromptFileName, se sugiere que se puede pasar 
+  el nombre de archivo a IDataInitialze para obtener un objeto de 
+  origen de datos basado en la cadena de conexión. Esto no es posible. 
+  Para cargar un origen de datos desde un archivo .udl, la aplicación 
+  debe llamar a IDataInitialize::LoadStringFromStorage para obtener la 
+  cadena de conexión del archivo y llamar después a 
+  IDataInitialize::GetDatasource con esa cadena, para obtener el 
+  objeto de origen de datos basado en la cadena de conexión.
+
+* Error en el documento: en la descripción del argumento 
+  dwPromptOptions en IDBPromptInitialize::PromptFilename, se sugiere 
+  que al especificar DBPROMPTOPTIONS_NODIRECTORYCHANGE se evita que 
+  el usuario pueda cambiar los directorios. En realidad, no hay 
+  ningún modo de impedir que el usuario cambie los directorios 
+  mientras está en el cuadro de diálogo; aunque si está establecido 
+  este indicador, el directorio seleccionado por el usuario no está 
+  establecido como directorio predeterminado la siguiente vez que se 
+  presente un cuadro de diálogo de archivo de Windows.
+
+Limitación de 2.0: la versión 2.0 de la API Data Link no admite la 
+creación de proveedores remotos. Las llamadas a 
+IDataInitialize::CreateDBInstanceEx para cualquier cosa distinta de 
+un proveedor local fallarán.

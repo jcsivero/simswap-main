@@ -1,0 +1,244 @@
+*****************************************************************************
+INTRODUCTION 
+*****************************************************************************
+
+This text file explains how to use the Resource Compiler (RC.EXE) to create 
+resource files (.RES) that can be added to your Microsoft (R) 
+Visual Basic (R) project.
+
+For information on how to add the .RES file to your Visual Basic project and
+replace string literals and binary data in code, please search Visual Basic 
+Help and Books On-Line.
+
+*****************************************************************************
+CONTENTS OF RESOURCE.TXT
+*****************************************************************************
+
+1. OVERVIEW
+2. STRING RESOURCES
+3. BINARY RESOURCES
+4. RESOURCE COMPILER OPTIONS
+
+*****************************************************************************
+1. OVERVIEW
+*****************************************************************************
+
+The RC.EXE file located in the \TOOLS\RESOURCE directory can be 
+used for 32-bit resources used in applications under Windows 95 or later and 
+Windows NT 3.51 or later.
+
+The resource sample project (ATM.VBP) in the \SAMPLES\RESOURCE directory of 
+your Visual Basic installation demonstrates most of the functionality 
+described in this file. The ATM.RC file is the resource definition file used
+to create the .RES file for the ATM project. You won't be able to recompile
+the ATM.RC without removing the references to bitmaps, sound files and
+cursors not shipped in Visual Basic version 4.0
+
+The Resource Compiler compiles the resource definition file and the resource
+files (binary files such as icon, bitmap, and cursor files) into a binary 
+resource (.RES) file.
+
+Resources can be divided into two groups:
+
+- String resources (text strings such as "Hello World").
+- Binary resources (icons, bitmaps, cursors, sounds, video, and so forth).
+
+*****************************************************************************
+2. STRING RESOURCES
+*****************************************************************************
+
+String resources are stored in a string table in the resource definition 
+file.
+
+SYNTAX:
+
+STRINGTABLE [load-option] [mem-option]
+BEGIN
+	stringID string
+	.
+    	.
+    	.
+END
+
+The STRINGTABLE statement defines one or more string resources for an
+application.  String resources are simply null-terminated ASCII strings that 
+can be loaded when needed from the executable file, using the LoadResString 
+function.
+
+PARAMETERS
+
+- load-option.  Specifies when the resource is to be loaded.  This optional 
+parameter must be one of the following options:
+  
+Option		Description
+------		-----------
+PRELOAD		Resource is loaded immediately.
+LOADONCALL	(Default) Resource is loaded when called. 
+
+- mem-option.  Specifies whether the resource is fixed or can be moved
+and whether or not can be discarded.  This optional parameter can 
+be one of the following options:
+  
+Option		Description
+------		-----------
+FIXED		Resource remains at a fixed memory location.
+MOVEABLE	Resource can be moved if necessary in order to compact 
+		memory.
+DISCARDABLE	Resource can be discarded if no longer needed.
+
+
+- stringID.  Specifies an integer value that identifies the resource.
+
+- string.  Specifies one or more ASCII strings, enclosed in double quotation 
+marks.  The string must be no longer than 255 characters and must occupy a 
+single line in the source file. 
+
+Grouping strings in separate segments allows all related strings to be read 
+once in a single reading and discarded together.  When possible, you should 
+be able to move and discard the table.  The Resource Compiler allocates 
+16 strings per segment and uses the identifier value to determine which
+segment will contain the string.  Strings with the same upper-12 bits in 
+their identifiers are placed in the same segment.
+
+EXAMPLE
+
+The following example demonstrates the STRINGTABLE statement:
+  
+#define IDS_HELLO    1
+#define IDS_GOODBYE  2
+
+STRINGTABLE
+BEGIN
+    IDS_HELLO,   "Hello"
+    IDS_GOODBYE, "Goodbye"
+END 
+
+*****************************************************************************
+3. BINARY RESOURCES
+*****************************************************************************
+
+Binary resources are not stored in the resource definition file.  The 
+resource definition file includes only a pointer to the files containing 
+the binary resources, for example, icon (.ICO), bitmap (.BMP), cursor (.CUR), 
+sound (.WAV), and video (.AVI) files.
+
+This pointer is called a Single-Line Statement in the resource definition 
+file.
+
+SYNTAX
+
+nameID keyword [load-option] [mem-option] filename
+
+PARAMETERES
+
+- nameID.  Specifies either a name or an integer value identifying the
+resource. This ID has to be unique for every category specified by the 
+keyword. In the category ICON the ID 0 is reserved for the Visual Basic
+icon. Therefore you'll have to start ID for ICONS at 1.
+
+- keyword.  Specifies the type of file.  The parameter must be one of the 
+following options:
+
+Option		Description
+------		-----------
+BITMAP		Defines a bitmap (.BMP)
+CURSOR		Defines a cursor (.CUR)
+ICON		Defines an icon (.ICO)
+SOUND		Defines a wave file (.WAV)
+VIDEO		Defines a video file (.AVI)
+
+
+- load-option.	Specifies when the resource is to be loaded.  The parameter 
+must be one of the following options:
+  
+Option		Description
+------		-----------
+PRELOAD		Resource is loaded immediately.
+LOADONCALL	(Default) Resource is loaded when called. 
+
+- mem-option.	Specifies whether the resource is fixed or can be moved and
+whether it can be discarded.  The parameter must be one of the following 
+options:
+  
+Option		Description
+------		-----------
+FIXED		Resource remains at a fixed memory location.
+MOVEABLE	Resource can be moved if necessary in order to compact
+		memory.
+DISCARDABLE	Resource can be discarded if no longer needed.
+
+The default for binary resources is MOVEABLE.
+
+- filename.  Specifies the name of the file that contains the resource. 
+The name must be a valid MS-DOS (R) filename; it must be a full path 
+if the file is not in the current working directory.  The path can 
+be either a quoted or non-quoted string.
+
+EXAMPLE
+
+The following example specifies two bitmap resources:
+  
+disk1   BITMAP disk.bmp
+12      BITMAP PRELOAD diskette.bmp
+  
+To load binary resources in your Visual Basic code use the LoadResBitmap
+function for icons, bitmaps and cursor. Use the LoadResData function to
+load wave files and AVI files.
+
+For the creation of binary resource files, Microsoft provides the 
+following tools to make it easier to store sounds and graphics in a 
+format that is usable in the Resource Compiler:
+
+- Imagedit is an image editor that supports icons (.ICO), bitmaps (.BMP) 
+and cursors (.CUR).  You can find this tool in the \TOOLS\IMAGEDIT 
+directory on your Visual Basic CD-ROM.
+
+- Microsoft Sound System is a multimedia application that supports 
+wave files (.WAV).
+
+- Microsoft Video is a multimedia application that supports video 
+files (.AVI).
+
+*****************************************************************************
+4. RESOURCE COMPILER OPTIONS
+*****************************************************************************
+
+To start the Resource Compiler, use the rc command.  What you need to 
+specify in the command line depends on whether you are compiling resources, 
+adding compiled resources to an executable file, or doing both.
+
+However, to use the resources in your Visual Basic application, you 
+will only need to compile the resources into a .RES file and add it to
+your Visual Basic project.
+
+SYNTAX
+
+rc /r [options] definition-file
+
+
+PARAMETERS
+
+- /r		This parameter specifies that the .RC file will only be
+		compiled, not linked to any executable.
+
+- options.  You can use the following options with the rc command:
+
+Option		Description
+------		-----------
+/?		Displays a list of rc command-line options.
+/fo newname	Uses newname for the name of the .RES file. 
+
+- definition-file.  The definition-file parameter specifies the name of 
+the resource definition file (.RC) that contains the names, types, 
+filenames, and descriptions of the resources to be compiled.
+
+
+EXAMPLE
+
+RC /r /fo TEST32.RES TEST.RC
+
+
+NOTE
+
+You'll have to close your Visual Basic project or remove the .RES file from your
+project when you recreate the resource file.

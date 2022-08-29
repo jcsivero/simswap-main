@@ -1,0 +1,207 @@
+#include "setupres.h"
+
+STRINGTABLE DISCARDABLE
+BEGIN
+
+//
+//Common with bootstrapper
+//
+#include "commonrc.rc"
+
+//
+// Global Font settings for Setup1 project.  To override,
+// set font properties in code after Form_Load.
+//
+resFONTNAME "MS Sans Serif"	// Don't translate this
+resFONTSIZE "8"	// Don't translate this
+resFONTBOLD "False"	// Don't translate this
+resFONTNAMEBACKUP1 "Arial"	// Don't translate this
+resFONTNAMEBACKUP2 "System"	// Don't translate this
+
+//
+//Global
+//
+resSETMSG "Message d'installation"
+
+//
+//frmBegin
+//
+resSPECDEST "Cliquez sur ce bouton pour installer le logiciel |1 dans le dossier de destination spécifié."
+resSPECNODEST "Cliquez sur ce bouton pour installer le logiciel |1 sur votre ordinateur."
+
+//
+//frmWelcome
+//
+resWELCOME "Programme d'installation de |1."
+
+//
+//frmPath
+//
+resSRCPROMPT "Veuillez entrer le lecteur ou le chemin contenant les fichiers source de |1."
+resDESTPROMPT "Entrez ou sélectionnez un dossier de destination."
+resDESTDIR "Le dossier de destination:"
+resCREATE "n'existe pas. Voulez-vous le créer?"
+resCHANGEDIR "Changer de dossier"
+resINSTFROM "Installer à partir de"
+
+//
+//Setup1.Bas
+//
+resCALCSPACE "Une erreur s'est produite lors du calcul de l'espace disque nécessaire."
+resDRVREAD "Impossible de lire le lecteur "
+resDRVCHK "Veuillez vérifier que le volet du lecteur est bien fermé et que la disquette est formaté et sans erreur."
+resCANTOPEN "Impossible d'ouvrir le fichier:"
+resCANTREAD "Impossible de lire à partir du fichier:"
+resCANTWRITE "Impossible d'écrire dans le fichier:"
+resCHKSPACE "Veuillez vérifier que le lecteur de destination dispose de suffisamment d'espace disque."
+resMAKEDIR "Impossible de créer le dossier:"
+resASKEXIT "Voulez-vous vraiment quitter?"
+resINTERRUPTED "L'installation de |1 a été interrompue avant l'installation complète de votre nouveau logiciel."
+resCANRUN "Vous pouvez effectuer la suite de l'installation de |1 ultérieurement."
+resINCOMPLETE "L'installation n'est pas encore terminée."
+resQUITNOW "Si vous quittez maintenant, ce produit ne sera pas correctement installé."
+resQUITSETUP "Quitter l'installation?"
+resSUCCESS "L'installation de |1 a réussi."
+resERROR "L'installation complète de |1 n'a pas réussi."
+resALLOCUNIT "Erreur lors de la lecture de l'unité d'allocation pour le lecteur"
+resSAMEASSRC "se trouve dans le dossier des fichiers source d'installation. Veuillez entrer un dossier différent."
+resNOCREATE "Impossible de créer le fichier:"
+resNOTPROTECT "Veuillez vérifier que le lecteur de destination n'est pas protégé en écriture."
+resINSERT "Veuillez introduire la disquette portant l'étiquette:"
+resDISK "'Disquette "
+resINTO "' dans le lecteur "
+resSECTNAME "Section:  "
+resINVLINE "Ligne incorrecte dans le fichier d'information d'installation!"
+resDIRSPECIFIED "Le dossier spécifié:"
+resDIRINVALID "est incorrect, incomplet ou protégé en écriture. Veuillez entrer un chemin complet, comprenant le lecteur. Par exemple: 'C:\APPS'."
+resNOTEXIST "Le dossier n'existe pas!"
+resDIRINVNAME "Nom de dossier incorrect"
+resWRITEPROT "Le fichier de destination est protégé en écriture."
+resINUSE "Le fichier de destination est en cours d'utilisation. Veuillez vous assurer que toutes les autres applications sont fermées."
+resOUTOFSPACE "Espace insuffisant sur le lecteur de destination "
+resACCESSVIOLATION "Une violation d'accès s'est produite au cours de la copie du fichier."
+resSHARINGVIOLATION "Une violation de partage s'est produite au cours de la copie du fichier."
+resOUTOFMEMORY "Mémoire insuffisante lors de la copie du fichier."
+resCANNOTCREATE "Impossible de créer le fichier temporaire."
+resCANNOTDELETE "Impossible de supprimer le fichier de destination existant."
+resCANNOTRENAME "Impossible de renommer le fichier temporaire."
+resCANNOTREADSRC "Impossible de lire le fichier source."
+resCANNOTREADDST "Impossible de lire les attributs du fichier de destination."
+resBUFFTOOSMALL "Erreur de copie interne."
+resNOINSTALL "  Le fichier n'a pas pu être installé."
+resCHKCONNECT "Veuillez vérifier la connexion au lecteur "
+resWARNIGNORE "Si vous ignorez une erreur de copie, le fichier ne sera pas copié. L'application risque alors de ne pas fonctionner correctement. Voulez-vous ignorer l'erreur?"
+resTEMPDRIVE "Le lecteur spécifié par la variable d'environnement 'TMP' ou 'TEMP' n'est pas prêt."
+resERR_VSHARE "Il est nécessaire d'ajouter la ligne 'device=vshare.386' à la section [386Enh] de votre fichier SYSTEM.INI afin d'assurer un fonctionnement correct de votre logiciel."
+resCANTREADUNC "Impossible de lire le chemin réseau '|1'."
+resCHECKUNC "Veuillez vérifier que ce chemin est correct et que vous disposez des droits d'accès."
+resCANTFINDAPPREMOVALLOG "Le fichier journal de suppression d'application '|1' est introuvable. Impossible de continuer."
+resBADCOMMANDLINE "Paramètres de ligne de commande incorrects. Impossible de continuer."
+resCANTFINDAPPREMOVALEXE "L'exécutable de suppression d'application '|1' est introuvable. Impossible de continuer."
+resAPPREMOVALICONNAME "Supprimer |1"
+resCANTREGISTERAPPREMOVER "Erreur d'inscription de l'exécutable de suppression d'application dans Windows"
+resCANTCREATEAPPREMOVALICON "Erreur lors de la création d'une icône du Gestionnaire de programmes pour l'utilitaire de suppression d'application"
+resOVERWRITEPRIVATE "L'installation va remplacer des fichiers existants. Ceci risque de causer une perte de données pour une application existante."
+resOVERWRITEPRIVATE2 "Une installation sans suppression préalable d'une installation existante peut porter préjudice à la nouvelle installation ou causer l'échec des futures tentatives de suppression."
+resCANCELSETUP "Annuler l'installation?"
+resCHOOSENEWDEST "Veuillez exécuter l'installation de nouveau et sélectionner un nouvel emplacement pour les fichiers de l'application."
+resVERIFYCONTINUE "Voulez-vous vraiment continuer?"
+resERR_REG "Une erreur s'est produite lors de la mise à jour de la base de registres de Windows."
+resMICROSOFTSHARED "Microsoft Shared\\"
+resCANTCREATEPROGRAMGROUP "Une erreur s'est produite lors de la création du groupe de programmes '|1'."
+resCANTCREATEPROGRAMICON "Une erreur s'est produite lors de la création de l'icône de programme pour '|1'."
+resCANTCOPYLOG "Une erreur s'est produite lors de la copie de '|1' dans le dossier de l'application."
+resCANTFINDREGFILE "Le fichier '|1' ne peut pas être inscrit parce qu'il est introuvable."
+resCANTRUNPROGRAM "Windows n'a pas pu exécuter le programme '|1'. La mémoire est insuffisante ou le programme est introuvable."
+resREMOTELINENOTFOUND "Erreur: 'SETUP.LST' ne contient pas d'informations sur l'inscription du composant distant '|1'. Ces informations devraient figurer dans une clé '|2' de SETUP.LST."
+resPROGRAMMANAGER "Gestionnaire de programmes"
+resUNEXPECTEDRPCREGDAT "Erreur inattendue lors de la création de '|1':"
+resCANTCOPYPATHTOOLONG "Impossible de copier le fichier, le chemin de destination est trop long."
+resCANTCREATEICONPATHTOOLONG "Impossible de créer l'icône de désinstallation, le chemin de destination est trop long."
+resICONMISSING "Aucune icône n'est spécifiée dans SETUP.LST pour |1. Voulez-vous continuer sans créer cette icône? Cliquez sur Oui pour continuer ou sur Non pour quitter l'installation."
+
+//
+//Setup1.Frm
+//
+resBADDEFDIR "Le programme d'installation n'a pas pu déterminer un dossier de destination par défaut valide. Vous devrez spécifier un dossier de destination."
+resDISKSPACE "Le programme d'installation vérifie l'espace disque nécessaire..."
+resPROGMAN "Le programme d'installation crée les icônes du programme..."
+resUPDATING "Le programme d'installation met à jour votre système..."
+resNOEXE "Impossible de déterminer le nom du fichier exécutable de l'application."
+resSETUP "Installation de |1"
+resNOSETUPLST "Le fichier SETUP.LST est endommagé ou introuvable."
+resUNEXPECTED "Une erreur d'installation inattendue s'est produite!"
+resNOFOLDERFORICON "Erreur de personnalisation de l'installation: une icône doit être créée pour |1 mais aucun dossier ni groupe du Gestionnaire de programmes n'a été créé à cet effet."
+resSTILLWITHINACTION "Erreur d'installation: 'CommitAction()' ou 'AbortAction()' absent."
+resREMAUTGROUPNAME "Gestionnaire d'automation à distance"
+resAUTMGR32ICON "Automation Manager"
+resRACMGR32ICON "Gestionnaire de connexion"
+resNT4WithoutSP2 "Avertissement: il est recommandé d'installer le Service Pack 2 pour Windows NT 4.0. À défaut, cette application risque de ne pas fonctionner correctement."
+resINSTALLADO "Installation des composants d'accès aux données..."
+resREBOOT "Le système doit redémarrer pour mettre à jour les paramètres de l'utilisateur..\n\nVoulez-vous redémarrer votre ordinateur maintenant?"
+resREBOOTNO "Votre application peut ne pas fonctionner correctement tant que vous n'avez pas re démarrer votre système."
+//
+//Common.Bas
+//
+resDISKSPCERR "Erreur lors de la lecture de l'espace disponible sur le lecteur "
+
+//
+//Forms/Controls Strings
+//
+//resBTNINSTALL "&Install"
+resFRMDIRECTORY "Dossier:"
+resBTNCHGDIR "&Changer de dossier"
+resBTNEXIT "&Quitter l'installation"
+resLBLBEGIN "Commencer l'installation en cliquant sur le bouton ci-dessous."
+resBTNCANCEL "Annuler"
+resLBLDESTFILE "Fichier de destination:"
+resBTNINSTALLNOW "&Installer"
+resBTNCHGDRV "&Changer de lecteur"
+resLBLDRIVE "Lecteur"
+resLBLAVAIL "Espace disponible"
+resLBLNEEDED "Espace nécessaire"
+resLBLREQUIRED "Espace requis"
+resLBLNOSPACE "L'espace disque est insuffisant sur un ou plusieurs lecteurs."
+resBTNOK "OK"
+resLBLDRIVES "&Lecteurs:"
+resLBLDIRS "&Dossiers:"
+resLBLPATH "&Chemin d'accès:"
+resLBLRUNNING "L'installation ne peut pas installer les fichiers système ou mettre à jour les fichiers partagés s'ils sont utilisés. Avant de poursuivre, fermez toutes les applications en cours."
+resBTNTOOLTIPBEGIN "Cliquez ici pour commencer l'installation."
+//
+// Group.Frm
+//
+resGROUPFRM "|1 - Choisir le groupe de programmes"
+resGROUPLBLMAIN "L'installation va ajouter des éléments au groupe présenté dans la boîte Groupe de programmes. Vous pouvez entrer un nouveau nom de groupe de programmes ou en sélectionner un existant dans la liste Groupes existants."
+resGROUPLBLGROUP "&Groupe de programmes:"
+resGROUPLBLGROUPS "Groupes e&xistants:"
+resGROUPBTNCONTINUE "&Continuer"
+resGROUPINVALIDGROUPNAME "Un nom de groupe de programmes doit comporter moins de |1 caractères et ne contenir aucun des caractères suivants: |2"
+resGROUPINVALIDCHARS """][,)("
+//
+//ServerDt.Frm
+//
+resNETWORKADDRESS "&Adresse réseau"
+resNETWORKPROTOCOL "&Protocole réseau"
+resOK "&Continuer"
+resCANCEL "&Quitter l'installation"
+resREMOTESERVERDETAILSTITLE "Configuration des composants ActiveX distants"
+resREMOTESERVERDETAILSLBL "Veuillez renseigner les informations de configuration relatives au composant distant suivant:"
+resNOTEPROTOSEQNOTSUPPORTED "La séquence de protocole |1 (|2) n'est pas gérée ou pas disponible sur cette machine."
+resNOTEPROTOSEQINVALID "La séquence de protocole |1 (|2) est incorrecte."
+resPROTOSEQUNEXPECTEDERR "Une erreur inattendue s'est produite lors de la lecture des séquences de protocole disponibles sur cette machine."
+resNOPROTOCOLSINSETUPLST "Erreur d'installation: Une erreur inattendue s'est produite lors de la lecture des séquences de protocole dans le fichier SETUP.LST."
+resNOPROTOCOLSSUPPORTED1 "Aucun des protocoles requis par cette application n'est disponible ou installé sur cette machine."
+resNOPROTOCOLSSUPPORTED2 "Pour exécuter correctement l'installation, vous devrez commencer par installer une des séquences de protocole réseau suivantes"
+resSELECTEDPROTONOTSUPPORTED "Cette application ne peut pas accéder au composant distant '|1' si le protocole '|2' n'est pas installé."
+
+resOVERWRITEFORM "Conflit de version"
+resOVERWRITEINFO "Un fichier en cours de copie est plus ancien que celui de votre système. Il est recommandé de conserver votre fichier existant."
+resOVERWRITEFILE "Nom de fichier:	'|1'"
+resOVERWRITEDESC "Description:	'|1'"
+resOVERWRITEVER "Votre version:	'|1'"
+resOVERWRITEKEEP "Voulez-vous conserver ce fichier?"
+resOVERNOTOALL "Non à &tout"
+resOVERYES "&Oui"
+resOVERNO "&Non"
+END

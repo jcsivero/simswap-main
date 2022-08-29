@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>Contents</title>
+<base target="TEXTWIN">
+<!-- SNIFF_START -->
+<SCRIPT LANGUAGE="JAVASCRIPT">
+//<!--
+var g_isIE = false, g_isNav = false, g_iMaj = 0, g_sPlat = "";
+// -->
+</SCRIPT>
+<SCRIPT SRC="ver.js"></SCRIPT>
+
+
+<SCRIPT DEFER SRC="common.js"></SCRIPT>
+<SCRIPT DEFER>
+//<!--
+function InitPage()
+{
+	if (g_isIE && g_iMaj >= 4)	
+	{
+
+		SetTOC();
+	}
+}
+//-->
+</SCRIPT>
+
+<!-- STYLE_START -->
+<SCRIPT LANGUAGE="JAVASCRIPT">
+//<!--
+   var sVR = ''	// Set root for the style sheet
+   var sCSS = '<LINK REL="stylesheet" HREF="' + sVR;
+
+   if(g_isIE)
+   {
+	   if (g_iMaj >= 4) // For MSIE 4.0 or later
+	   {
+		   sCSS += 'basicSDKIE4';
+		   if (g_sPlat == "Win") // Windows only for now
+		   {
+			   document.createStyleSheet(sVR + 'advSDKIE4.css');
+		   }
+	   }
+	   else // For MSIE 3.0 or earlier
+	   {
+		   sCSS += 'basicSDKIE3';
+	   }
+   }
+   else if (g_isNav) // For all Nav versions
+   {
+	   sCSS += 'basicSDKNAV';
+   }
+   else
+   {
+	   sCSS += 'basicSDKIE3'; // default to IE3 sheet
+   }
+
+   sCSS += (sCSS == '' ? '' : '.css" TYPE="text/css">');
+
+   document.write(sCSS);
+//-->
+</SCRIPT>
+<!-- STYLE_END -->
+
+</HEAD>
+
+<!--TOOLBAR_START-->
+<!--TOOLBAR_EXEMPT-->
+<!--TOOLBAR_END-->
+<body background="art/bg2.gif" bgcolor="#000000"
+link="#FFFFFF" vlink="#808080" alink="#FFFFFF"
+bgproperties="fixed">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+
+function lightUp(i) {
+        if (document.images) {
+                var thang = document.images[i].src
+                var off = thang.lastIndexOf("nrm")
+                if (off != -1) {
+                        document.images[i].src = thang.substring(0,off) + "lt" + ".gif"
+                }
+        }
+}
+
+function turnOff(i) {
+        if (document.images) {
+                var thang = document.images[i].src
+                var on = thang.lastIndexOf("lt")
+                if (on != -1) {
+                        document.images[i].src = thang.substring(0,on) + "nrm" + ".gif"                }
+        }
+}
+
+
+</SCRIPT>
+
+
+
+
+<CENTER>
+<DIV STYLE="position:relative; top:0; width:200; align:center">
+<IMG SRC="art/danimhdr.gif" WIDTH="175" HEIGHT="78" alt="Microsoft DirectAnimation SDK">
+
+<BR>
+
+<DIV STYLE="position:absolute; top:100; left:20">
+<a href="default.htm" onMouseOver="lightUp(1)" onMouseOut="turnOff(1)">
+<img src="art/sdkctnrm.gif"  border=0 WIDTH="194" HEIGHT="35" ALT="DirectAnimation SDK"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:135; left:20">
+<a href="DA_E0000.htm" onMouseOver="lightUp(2)" onMouseOut="turnOff(2)">
+<img src="art/getstnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Getting Started"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:155; left:20">
+<a href="DA_E0001.htm" onMouseOver="lightUp(3)" onMouseOut="turnOff(3)">
+<img src="art/exampnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Guide to Samples"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:175; left:20">
+<a href="DA_E0008.htm" onMouseOver="lightUp(4)" onMouseOut="turnOff(4)">
+<img src="art/scbasnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Scripting Cookbook"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:195; left:20">
+<a href="DA_E0019.htm" onMouseOver="lightUp(5)" onMouseOut="turnOff(5)">
+<img src="art/cntrlnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="DirectAnimation Controls"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:215; left:20">
+<a href="DA_E0026.htm" onMouseOver="lightUp(6)" onMouseOut="turnOff(6)">
+<img src="art/prognrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Programmer's Guide"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:235; left:20">
+<a href="DA_E0032.htm" onMouseOver="lightUp(7)" onMouseOut="turnOff(7)">
+<img src="art/scrptnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Scripting Reference"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:255; left:20">
+<a href="DA_E0118.htm" onMouseOver="lightUp(8)" onMouseOut="turnOff(8)">
+<img src="art/javanrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Java Reference"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:275; left:20">
+<a href="DA_E0265.htm" onMouseOver="lightUp(9)" onMouseOut="turnOff(9)">
+<img src="art/glossnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="Glossary"></A>
+</DIV>
+
+<DIV STYLE="position:absolute; top:315; left:20">
+<a href="../../relnotda.htm" onMouseOver="lightUp(11)" onMouseOut="turnOff(11)">
+<img src="art/DARMnrm.gif"  border=0 WIDTH="194" HEIGHT="20" ALT="DirectAnimation Readme"></A>
+</DIV>
+<BR>
+
+
+<DIV STYLE="position:absolute; top:365; left:0">
+<BR><BR>
+<font color="#FFFFFF" size="1" face="VERDANA,Arial, Helvetica">Best experienced with<br></font>
+<A HREF="http://www.microsoft.com/ie/logo.asp" TARGET="_top">
+<IMG SRC="art/ieget_animated.gif" WIDTH="88" HEIGHT="31" BORDER="0" 
+ALT="Get Microsoft Internet Explorer" VSPACE="7"></A>
+<font color="#FFFFFF" size="1" face="VERDANA,Arial, Helvetica"> <br>
+Click here to start. </font>
+</DIV></DIV>
+</CENTER>
+</body>
+</html>

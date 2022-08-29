@@ -1,0 +1,16 @@
+:Base msdasc.hlp
+:Title Ayuda de Vínculos de datos
+1 Introducción a Vínculos de datos
+2 Acerca de los vínculos de datos=About_Data_Links@msdasc.hlp
+2 Acerca de los proveedores de datos OLE DB=About_OLE_DB_Data_Providers@msdasc.hlp
+2 Crear un vínculo de datos=Creating_a_Data_Link@msdasc.hlp
+1 Trabajar con propiedades de vínculo de datos
+2 Trabajar con propiedades de vínculo de datos=Working_With_Data_Link_Properties@msdasc.hlp
+2 Ficha Proveedor=provider_tab@msdasc.hlp
+2 Ficha Conexión=Connection_Tab@msdasc.hlp
+2 Ficha Avanzadas=Advanced_Tab@msdasc.hlp
+2 Ficha Todas=All_Tab@msdasc.hlp
+2 Cuadro de diálogo Modificar valor de propiedad=Edit_Property_Value_Dialog_Box@msdasc.hlp
+1 Organizar vínculos de datos
+2 Organizar vínculos de datos=Organizing_Data_Links@msdasc.hlp
+2 Cuadros de diálogo Seleccionar/Organizar archivos de vínculo de datos=Select_Organize_Data_Link_Dialog_Box@msdasc.hlp

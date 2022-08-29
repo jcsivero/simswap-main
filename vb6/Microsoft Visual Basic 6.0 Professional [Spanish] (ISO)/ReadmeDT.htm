@@ -1,0 +1,119 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Draft//EN">
+<html>
+<HEAD>
+<title>Léame de Microsoft Visual Database Tools</title>
+<meta name="MS-HAID" content="readmedt">
+<BODY BGCOLOR="#FFFFFF" onclick="checkExpand()">
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000" link="#0000FF" vlink="#660066">
+</head>
+
+<!----------------------------------------------------------------------------->
+<!--                            BEGIN JSCRIPT                                -->
+<script language="JSCRIPT">
+
+  function checkExpand( )
+  {
+     if ("" != event.srcElement.id)
+     {
+        var ch = event.srcElement.id + "Child";
+        var el = document.all[ch];
+        if (null != el)
+        {
+           el.style.display = "none" == el.style.display ? "" : "none";
+           if (el.style.display != "none")
+           event.returnValue=false;
+        }
+     }
+  }
+
+</script>
+<!--                             END JSCRIPT                                 -->
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+<!--                         BEGIN README INTRO                              -->
+<h2>Léame de Microsoft Visual Database Tools </h2>
+
+<p>&#169; 1998 Microsoft Corporation. Reservados todos los derechos. </p>
+
+<p>Otros nombres de productos y compañías mencionados aquí pueden ser marcas comerciales de sus respectivos propietarios. </p>
+
+<p>El archivo <i>Léame de Microsoft Visual Database Tools</i> incluye información actualizada sobre la documentación suministrada con Microsoft&#174; Visual Studio&#8482;, un sistema de desarrollo para Windows&#174; e Internet. La información contenida en este documento está más actualizada que la del sistema de Ayuda. Muchos de los problemas descritos en este documento se corregirán en futuras versiones.</p>
+<p>Para ver información acerca de <i>problemas generales de instalación</i> del conjunto de productos Visual Studio 6.0, incluyendo la instalación de más de un producto Visual Studio en el mismo equipo, vea el archivo Léame <a href="install.htm" title="Salta al archivo Léame de instalación (install.htm).">Notas de la instalación</a> (install.htm). Para ver información relacionada con el sistema de Ayuda, vea <a href="readmeDN.htm" title="Salta al archivo readmedn.htm">el archivo Léame de MSDN&#8482;, the Microsoft Developer Network</a>.</p>
+
+
+<!--                            END README INTRODUCTION                      -->
+<!----------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------->
+<!--                               BEGIN TOC                                 -->
+
+<h3><p>Contenido <font color="#000000" size="2" face="Verdana,Arial,Helvetica">- Haga clic en cualquiera de los elementos de abajo </font></p></h3>
+<p><B>Nota</B>&nbsp;&nbsp;&nbsp;Compruebe que todos los títulos de la tabla de contenido estén expandidos cuando busque un tema en este archivo Léame. De este modo sabrá cuándo se encuentra el tema entre los títulos de la tabla de contenido.</p>
+
+
+<h5><a href="#dtwhatsnew">Lo nuevo en Microsoft Visual Database Tools</a></h5>
+
+<h5><a class=ex href="#" title="Haga clic aquí para expandir o contraer." id="dtissues">Problemas conocidos</a></h5>
+
+<div id="dtissuesChild">
+<blockquote>
+
+<blockquote>
+<p><a href="#dt4341">Sólo se admiten los controladores MS ODBC y OLE DB más recientes</a></p>
+<p><a href="#dt8589">Se muestran datos incorrectos cuando se conecta a una base de datos internacional </a></p>
+<p><a href="#dt11241">Se requiere SQL Server Service Pack 3 </a></p>
+<h5>Los siguientes problemas se refieren a Microsoft&#174; Visual Basic&#174;</h5>
+<p><a href="#dt7763">Ejecutar consultas de "creación de tabla" en bases de datos de Oracle</a></p>
+<p><a href="#dt8394">No se muestran todos los paneles Consulta de manera predeterminada</a></p>
+
+</blockquote>
+</div>
+
+<p>&nbsp;</p>
+<!--                                                                         -->
+<!--                           END CONTENTS TOC                              -->
+<!----------------------------------------------------------------------------->
+
+
+<h3><a name="dtwhatsnew">Lo nuevo en Microsoft Visual Database Tools</a></h3>
+<p>
+Para ver información acerca de las características nuevas en esta versión de Visual Database Tools, busque "Lo nuevo en Visual Database Tools" en la tabla de contenido de la documentación de Visual Studio 6.0, en MSDN Library, en la sección Referencia del nodo Documentación de Visual Studio.</p>
+
+
+<h3>Problemas conocidos</h3>
+<p>
+Se sabe que existen los siguientes problemas en esta versión de Visual Database Tools. Para ver información acerca de problemas específicos de productos, vea el archivo Léame del producto correspondiente.</p>
+
+<h4><a name="dt4341"></a>Sólo se admiten los controladores MS ODBC y OLE DB más recientes</h4>
+<p>Aunque los controladores más antiguos y de otros fabricantes pueden funcionar con Visual Database Tools, estas herramientas sólo están certificadas para los controladores Microsoft ODBC y OLE DB más recientes. Si se produce algún comportamiento inesperado, compruebe que está utilizando los controladores correctos.
+</p>
+
+<h4><a name="dt8589"></a>Se muestran datos incorrectos cuando se conecta a una base de datos internacional</h4>
+<p>Si al conectarse a una base de datos internacional se muestran caracteres incorrectos o no válidos, asegúrese de que la configuración regional de su equipo coincide con la de dichos datos.</p>
+
+<h4><a name="dt11241"></a>Se requiere SQL Server Service Pack 3</h4>
+<p>Para utilizar Visual Database Tools con SQL Server 6.5 se requiere SQL Server Service Pack 3. Antes de utilizar Visual Database Tools, asegúrese de que se ha instalado en el servidor Service Pack 3 o posterior.</p>
+
+<h3>Los siguientes problemas se refieren a Microsoft&#174; Visual Basic&#174;</h3>
+
+<h4><a name="dt7763"></a>Ejecutar consultas de "creación de tabla" en bases de datos de Oracle</h4>
+<p>Las consultas de "creación de tabla" que se ejecutan en una base de datos de Oracle mediante el proveedor Microsoft OLE DB para Oracle no funcionan correctamente. En su lugar, utilice el controlador ODBC de Microsoft para crear una conexión a la base de datos.
+</p>
+
+<h4><a name="dt8394"></a>No se muestran todos los paneles Consulta de manera predeterminada</h4>
+<p>Al abrir una tabla en Vista de datos, en realidad está abriendo el Diseñador de consultas con un comando "SELECT * FROM table". Para abrir los paneles Diagrama, Cuadrícula y SQL en Visual Basic, en el menú <b>Ver</b>, haga clic en <b>Mostrar paneles</b>. De esta forma podrá elegir qué paneles desea abrir y cerrar.</p>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</FONT></BODY>
+</HTML>
+

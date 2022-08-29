@@ -1,0 +1,712 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<!-- REM (C) Copyright 1996-1997 Microsoft Corporation.  All Rights Reserved. 
+     THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+     ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+     THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+     PARTICULAR PURPOSE. -->
+
+<head><title>Microsoft Posting Acceptor Readme File</title>
+
+<script language="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<meta name="DESCRIPTION" content="Supplements information found in the main documentation">
+
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<font face="Verdana,Arial,Helvetica">	
+
+<a name ="top"><h1>Microsoft<sup>&reg;</sup> Site Server Express Posting Acceptor Release Notes</h1></a>
+
+<ul>
+<li><a href="#E10E3" name="LOCE10E3" >Welcome</a></li>
+<li><a href="#E10E4" name="LOCE10E4" >What Does the Posting Acceptor Server Add-On Do?</a></li>
+<li><a href="#E10E9" name="LOCE10E9" >Hardware and Software Requirements</a></li>
+<li><a href="#E10E5" name="LOCE10E5" >Known Issues</a></li>
+<li><a href="#E10E7" name="LOCE10E7" >Enabling or Disabling Mapping Modules</a></li>
+<li><a href="#E10E6" name="LOCE10E6" >New Features</a></li>
+<li><a href="#E10E11" name="LOCE10E11" >Using the Microsoft ActiveX Upload Control</a></li>
+<li><a href="#E10E10" name="LOCE10E10" >How to Get Help</a></li>
+</ul>
+
+<p><a name ="E10E3"><strong>Welcome</strong></a></p>
+
+<p>This document describes the Microsoft Posting Acceptor server add-on 
+and provides important information about the product. </p> 
+
+<p>Users of this tool should be familiar with the Microsoft Windows NT operating system.</p>
+
+<p><a name ="E10E4"><strong>What Does the Posting Acceptor Server Add-on Do?</strong></a></p>
+
+<p>Microsoft Posting Acceptor is a server add-on tool that enables Web content providers using HTTP Post (RFC 1867) to publish content to your hosting service. </p>
+
+<p><a name="E10E9"><strong>Hardware and Software Requirements</strong></a></p>
+
+<p><strong>Hardware</strong></p>
+
+<p>Windows&nbsp;NT Server 4.0:</p>
+
+<ul>
+<li>486/33 or higher Intel processor or Alpha RISC processor compatible with Windows NT</li>
+<li>16 MB of memory (64 MB recommended)</li>
+<li>10 MB of hard drive space plus space for users' uploaded files</li>
+</ul>
+
+<p>Windows NT Workstation 4.0:</p>
+
+<ul>
+<li>486/33 or higher Intel processor or Alpha RISC processor compatible with Windows NT</li>
+<li>16 MB of memory (64 MB recommended)</li>
+<li>10 MB of hard drive space plus space for users' uploaded files</li>
+</ul>
+
+<p><strong>Software</strong></p>
+
+<p>Windows NT Server 4.0 (with or without Content Replication System):</p>
+
+<ul>
+<li>Microsoft Internet Information Server (IIS) 3.0 or later</li>
+<li>Active Server Pages</li>
+</ul>
+
+<p>Windows NT Workstation 4.0 (no Content Replication System support):</p>
+
+<ul>
+<li>Windows NT Workstation with Peer Web Services 3.0 or later</li>
+<li>Active Server Pages* </li>
+</ul>
+
+<p>*Active Server Pages (ASP) is not required, but will allow for 
+automatic-routing of the posting client to the proper page for a 
+particular client tool. Microsoft IIS and Personal Web Server (versions 1.0a or later) provide ASP in their 
+respective installations.</p>
+
+<p><a name="E10E5"><strong>Known Issues</strong></a></p>
+
+<ol>
+
+
+<li>If you try to use Internet Explorer on the machine to which you 
+installed the Posting Acceptor, you may receive the following error:
+
+<blockquote>Error initializing the cache.  Shutdown all programs and
+	run ScanDisk or ChkDsk.  Delete the cache, cookies and
+	history directories in your	Windows directory and
+	restart Internet Explorer.  If the problem persists,
+	reinstall Internet Explorer.
+</blockquote>
+This is a known bug in Microsoft Internet Explorer (IE).  For more 
+information, see the Microsoft Knowledge Base: Article Q106387, "Sharing
+Objects with a Service."</li>
+
+<li>Due to a bug in Internet Information Server (IIS) 4.0 beta 1, 
+the Posting Acceptor will not work properly on a system with 
+IIS 4.0 beta 1.</li>
+
+<li>The ActiveX File Upload Control is only supported with Microsoft 
+Internet Explorer 3.02 or later.</li>
+
+<li>When using Posting Acceptor with Microsoft Peer Web Services on a Windows 95 system, it is important to wait until all incoming posts to your server are complete before halting the Web service. Failure to do so may cause the system to hang.</li>
+
+
+
+<li>If you attempt to drag and drop multiple folders that contain duplicate filenames to the ActiveX Upload Control, posting will fail and you will receive the following error:</li>
+
+<p>Cannot move file <duplicate filename> to its final destination. Further processing is stopped.<!--</p>--><br>
+
+<p>For example:<!--</p>--><br>
+
+<p>if you drop the following files onto flupl:<!--</p>--><br>
+
+<p><strong>folder1:</strong><!--</p>--><br>
+
+<ul>
+<li>readme.htm</li>
+<li>image.gif</li>
+<li>default.htm</li>
+</ul>
+
+<p><strong>folder2:</strong><!--</p>--><br>
+
+<ul>
+<li>readme.htm</li>
+<li>bar.htm</li>
+</ul>
+
+<p>and your destination URL is http://servername/stuff,<!--</p>--><br>
+
+<p>then committing http://servername/stuff/readme.htm twice will fail, because the local directory has not been set. To set the local directory, right click the <strong>ActiveX Upload Control</strong>, select <strong>Upload Settings</strong>, and type in the path name of the appropriate local directory.<!--</p>--><br>
+</ol>
+
+<p><a name="E10E7"><strong>Enabling or Disabling Mapping Modules</strong></a></p>
+
+<p>To enable or disable a mapping module, you must set the value of the HKLM/Software/Microsoft/WebPostAcceptors/CPSHost/Mappers registry key. To enable a mapping module, set the value to 1. To disable it, set the value to 0.</p>
+
+<p><a name="E10E6"><strong>New Features</strong></a></p>
+
+<p>Posting Acceptor now includes repost.asp, a sample post-processing page.
+This sample shows a simple application of the Posting Acceptor post-processing feature.  When it is called from uploadn.asp (the form-based RFC1867 page for Netscape clients), it shows the posting status of an upload. After Posting Acceptor is installed, the sample page can be found in the scripts directory. Note: IE clients should use the sample page uploadx.asp.</p>
+
+<p><a name="E10E11"></a><strong>Using the Microsoft ActiveX Upload Control</strong></p>
+
+<p>The Microsoft ActiveX Upload Control can be used in a variety of ways to allow for the simple drag and drop publishing of Web content.  The control allows for publishing over a variety of protocols. It enters the various pieces of information usually needed to publish content by means of FTP or even through the Web Publishing Wizard. Instead, the server administrator sets this information in the Web page that calls the Microsoft ActiveX Upload Control.</p>
+
+<p>This document explains the various ways to tie the control into products such as Microsoft Posting Acceptor and the Microsoft Site Server Content Replication System.</p>
+
+<p>When authoring a page to use the Upload Control, the Web Publishing Provider can be defined in several different ways.  The standard method is to create a PostInfo file on the server that hosts the content and have it define the provider to use (by CLSID) and the relevant parameters.  Details of all Microsoft Service Provider parameters are found in the PostInfo section at the end of this document.</p>
+
+<p><strong>Sample PostInfo File</strong></p>
+
+<p>The following sample uses the HTTP Post Provider and Microsoft Posting Acceptor:</p>
+
+<p><font size="3" face="Courier">&lt;% Response.Buffer = TRUE %&gt;
+<br>
+&lt;% if (Len(Request.ServerVariables("LOGON_USER")) = 0 ) then %&gt;
+<br>
+&nbsp;&nbsp;&nbsp;
+&lt;% Response.Status = "401 Unauthorized" %&gt;
+<br>
+&nbsp;&nbsp;&nbsp;
+&lt; B&gt;Error: Access is denied.&lt;/B&gt;&lt;P&gt;
+<br>
+&lt;% else%&gt;
+<br>
+Version=1.5
+<br>
+[{8B14B770-748C-11D0-A309-00C04FD7CFC5}]
+<br>
+PostingURL="http://&lt;%= Request.ServerVariables("SERVER_NAME") 
+<br>
+%&gt;/scripts/cpshost.dll?PUBLISH"
+<br>
+TargetURL="http://&lt;%= Request.ServerVariables("SERVER_NAME") %&gt;/users/&lt;%= 
+<br>
+Request.ServerVariables("LOGON_USER") %&gt;"
+<br>
+&lt;% end if %&gt;
+</p></font>
+
+<p>The PostInfo file is retrieved by the Web Publishing API by querying the default document of the server hosting the Web page using the Upload Control Web server and parsing for the PostInfo meta tag.  This tag needs to be added to that document in the following format:</p>
+
+<p><font size="3" face="Courier">&lt;META name="postinfo" content="/scripts/postinfo.asp"&gt;</font></p>
+
+<p>The PostInfo file can have any extension and live anywhere on any Web server.  The content value can be a relative path or any fully qualified URL. It can be dynamically generated based on the retrieving user's data or anything else you wish to use.</p>
+
+<p>Another option is to define this information in the Web page hosting the control.  This is done by using the SetBindingParam call within the page.  See below for a definition and an example of the SetBindingParam call.</p>
+
+<p>The Upload Control allows you to define the site information as temporary or permanent.  A temporary site would be used when much of the underlying site information might change from user post to post.  A permanent site would be used when the target URL, posting URL, and so on are to remain constant from user post to post, such as in a setup for a user's personal Web page.</p>
+
+<p>The following is a list of all the properties and methods exposed by the ActiveX Upload Control.</p>
+
+<p><strong>AboutBox</strong></p>
+
+<dl>
+<dt><font size="3" face="Courier">HRESULT AboutBox();</font></dt>
+<dd>Displays the Upload Control About Box.</dd>
+</dl>
+
+<p><strong>FoundPostInfo</strong></p>
+
+<dl>
+<dt><font size="3" face="Courier">int FoundPostInfo();</font></dt>
+<dd>Property is set to true if, during a CreateTempBinding or CreatePermBinding call, WebPost 
+found a PostInfo file on the server.</dd>
+<dt>SetBindingParam</dt>
+<dd><font size="3" face="Courier">void SetBindingParam(</dd>
+<dd>IN BSTR bstrParamName,</dd>
+<dd>IN BSTR bstrParamValue);</dd></font>
+</dl>
+
+<p>This method allows the content author to set the Provider-specific WebPost server 
+variables that would normally be in a PostInfo file.  These variables are described for each provider in the section on POSTINFO files found below.</p>
+
+<dl>
+<dt><em>bstrParamName</em></dt>
+<dd>This is the parameter to be set for this provider binding.</dd>
+<dt><em>bstrParamValue</em></dt>
+<dd>This is the value for the above parameter.</dd>
+</dl>
+
+<p><strong>CreateTempBinding</strong></p>
+
+<pre><font size="3" face="Courier">HRESULT CreateTempBinding(
+   IN BSTR bsDestUrl,
+
+   IN BSTR bsProvCLSID
+); 
+</font></pre>
+
+<p>Creates a temporary site and binds to it. This site will be deleted when the user shuts down the browser.</p>
+
+<dl>
+<dt><em>bsDestUrl</em></dt>
+<dd>Address of a null-terminated string that contains the destination URL for the site. This is where the files dropped on the Upload Control will be posted. This may not be NULL or empty. </dd>
+<dt><em>bsProvCLSID</em></dt>
+<dd>Address of a null-terminated string that contains the CLSID of the provider that will handle this site. This may be NULL or empty, in which case the Upload Control will attempt to find a PostInfo file or auto-bind to an appropriate provider. </dd>
+</dl>
+
+<p><strong>CreatePermBinding</strong></p>
+<font size="3" face="Courier">
+CreatePermBinding(
+<br>
+	&nbsp;&nbsp;&nbsp;
+	IN BSTR bsBindingName,
+<br>
+	&nbsp;&nbsp;&nbsp;
+	IN BSTR bsDestUrl,
+<br>
+	&nbsp;&nbsp;&nbsp;
+	IN BSTR bsProvCLSID
+<br>
+); 
+</font>
+
+<p>Creates a permanent site and binds to it. The site information is persistent--it will remain on the user's machine even after the browser is shut down.</p>
+
+<dl>
+<dt><em>bstrBindingName</em></dt>
+<dd>Address of a null-terminated string that contains the site name. This may not be NULL or empty. </dd>
+<dt><em>bstrDestUrl</em></dt>
+<dd>Address of a null-terminated string that contains the destination URL for the site. This is where the files dropped on the Upload Control will be posted. This may not be NULL or empty. </dd>
+<dt><em>bstrProvCLSID</em></dt>
+<dd>Address of a null-terminated string that contains the CLSID of the provider that will handle this site. This may be NULL or empty, in which case the Upload Control will attempt to find a PostInfo file or auto-bind to an appropriate provider. </dd>
+</dl>
+
+<p><strong>UploadedFile</strong></p>
+
+<pre><font size="3" face="Courier">
+void UploadedFile(
+
+	BSTR bstrFileName,
+
+	long lErrorCode,
+
+	BSTR bstrErrMsg
+);</font></pre>
+
+<p>This event is raised after the object dropped on the Upload Control has either been successfully uploaded or the transmission has failed.</p>
+
+<dl>
+<dt><em>bstrFileName</em></dt>
+<dd>This is the name of the file that was uploaded or failed to upload.</dd>
+<dt><em>lErrorCode</em></dt>
+<dd>This is the status code associated with the file upload.  The value is S_OK if the upload was successful, or contains the HRESULT errorcode if the upload failed.</dd>
+<dt><em>bstrErrMsg</em></dt>
+<dd>This returns the error message related to the error.</dd>
+</dl>
+
+<p><strong>Sample Web Page #1</strong></p>
+
+<p>The following sample page uses the CRS Provider, creates a permanent site definition on the user's machine, does not need a PostInfo file, and will return an error dialog box to the user should a problem occur when posting the content.</p>
+
+<p><font size="3" face="Courier">
+&lt;HTML&gt;
+<br>
+&lt;HEAD&gt;
+<br>
+&lt;TITLE&gt;File Upload Control&lt;/TITLE&gt;
+<br>
+&lt;/HEAD&gt;
+<br>
+&lt;BODY LEFTMARGIN=20 TOPMARGIN=20 BGCOLOR=#FFFFFF TEXT=#000000 LINK=#FF0066 VLINK=#330099 ALINK=#000000 language="VBS" onload="InitializeControl"&gt;
+<br>
+&lt;FONT FACE="ARIAL" SIZE=2&gt;
+<br>
+&lt;CENTER&gt;
+<br>
+&lt;P&gt;&lt;font size=5&gt;&lt;B&gt;FlUpl&lt;/B&gt;&lt;/FONT&gt;
+<br>
+&lt;/CENTER&gt;
+<br>
+<br>
+&lt;H3&gt;File Upload&lt;/H3&gt;
+<br>
+&lt;P&gt;
+<br>
+Here is an ActiveX File Upload Control
+<br>
+&lt;OBJECT
+<br>
+	&nbsp;&nbsp;&nbsp;
+	classid="clsid:886E7BF0-C867-11CF-B1AE-00AA00A3F2C3"
+<br>
+	&nbsp;&nbsp;&nbsp;
+	id=FlUpl1
+<br>
+	&nbsp;&nbsp;&nbsp;
+	width=100
+<br>
+	&nbsp;&nbsp;&nbsp;
+		height=100
+<br>
+	      &nbsp;&nbsp;&nbsp;
+	      align=textmiddle
+<br>
+	      &nbsp;&nbsp;&nbsp;
+	      color=blue
+<br>
+	      &nbsp;&nbsp;&nbsp;
+              codebase=flupl10-x86.cab#Version=1,0,0,100
+<br>
+&gt;
+<br>
+&lt;/OBJECT&gt;
+<br>
+You may drag and drop files onto it. Or double-click on it to get a FileOpen dialog.
+<br><br>
+&lt;SCRIPT LANGUAGE="VBS"&gt;
+<br>
+Sub InitializeControl
+<br>
+' FTP Provider {02B5E1D1-8B7C-11D0-AD45-00AA00A219AA}
+<br>
+' CRS Provider {FFCF1E40-7978-11D0-B1C9-00AA006DCDF4}
+<br>
+' HTTP Post Provider {8B14B770-748C-11D0-A309-00C04FD7CFC5}
+<br><br>
+FlUpl1.CreatePermBinding "MyCRSSite", "http://your-file-name_crs/uploads/etc", "{FFCF1E40-7978-11D0-B1C9-00AA006DCDF4}"
+<br>
+IF NOT Flupl1.FoundPostInfo THEN
+<br>
+	&nbsp;&nbsp;&nbsp;
+	Flupl1.SetBindingParam "Authentication", "NTLM"
+<br>
+	&nbsp;&nbsp;&nbsp;
+	Flupl1.SetBindingParam "ServerName", "your-file-name_crs"
+<br>
+END IF
+<br>
+End Sub
+<br>
+Sub Flupl1_UploadedFile(szFileName, ErrorCode, szErrorMsg)
+<br>
+	&nbsp;&nbsp;&nbsp;
+	If (ErrorCode=0) Then
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		MsgBox "File '" & szFileName & "' posted succesfully."
+<br>
+	&nbsp;&nbsp;&nbsp;
+	else
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		MsgBox "Post Failed.  '" & vbCRLF & vbCRLF & szFileName _
+<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			& vbCRLF & "' failed with error code: " & ErrorCode _
+<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			& vbCRLF & szErrorMsg, vbSystemModal, "Microsoft File Upload Control"
+<br>
+	&nbsp;&nbsp;&nbsp;
+	end if
+<br>
+end sub
+<br>
+&lt;/SCRIPT&gt;
+<br>
+&lt;P ALIGN=CENTER&gt;&lt;font size=2&gt;&lt;B&gt;For more information on VB Script, visit the &lt;A TARGET="_top" HREF="/vbscript/default.htm"&gt;VB Script site.&lt;/A&gt;&lt;/B&gt;&lt;/FONT&gt;
+<br>
+&lt;/FONT&gt;
+<br>
+&lt;/BODY&gt;
+<br>
+&lt;/HTML&gt;
+<br></font></p>
+
+
+<p><strong>Sample Web Page #2</strong></p>
+
+<p>The following sample page uses the HTTP Post Provider, creates a permanent site definition on the user's machine, is set to handle not having a PostInfo file,and will return an error dialog box to the user should a problem occur when posting the content.</p>
+
+<p><font size="3" face="Courier">
+&lt;HTML&gt;
+<br>
+&lt;HEAD&gt;
+<br>
+&lt;TITLE&gt;File Upload&lt;/TITLE&gt;
+<br><br>
+&lt;/HEAD&gt;
+<br>
+&lt;BODY BGCOLOR="#000000" TOPMARGIN=4 LINK="#FFFFFF" TEXT="#FFFFFF" Language="VBScript" OnLoad="InitializeControl"&gt;
+<br>
+&lt;TABLE WIDTH=100% BORDER=0 CELLPADDING=0 CELLSPACING=0 NOWRAP ALIGN=LEFT&gt;
+<br>
+&lt;TR&gt;
+<br>
+&lt;OBJECT
+<br>
+	&nbsp;&nbsp;&nbsp;
+	classid="clsid:886E7BF0-C867-11CF-B1AE-00AA00A3F2C3"
+<br>
+	&nbsp;&nbsp;&nbsp;
+	id=IFlUpl1
+<br>
+	&nbsp;&nbsp;&nbsp;
+	width=100
+<br>
+	&nbsp;&nbsp;&nbsp;
+	height=100
+<br>
+	&nbsp;&nbsp;&nbsp;
+	align=textmiddle
+	
+<br>
+	&nbsp;&nbsp;&nbsp;
+	color=blue
+<br>
+	&nbsp;&nbsp;&nbsp;
+	codebase=flupl10-x86.cab#Version=1,0,0,100
+<br>
+&gt;
+<br>
+&lt;/OBJECT&gt;
+<br>
+&lt;FONT FACE="ARIAL" SIZE="3"&gt;&lt;B&gt;Web Post:RFC (server_name/users)&lt;/B&gt;&lt;/FONT&gt;
+<br>
+&lt;SCRIPT LANGUAGE="VBScript"&gt;
+<br>
+Sub InitializeControl
+<br>
+	&nbsp;&nbsp;&nbsp;
+	IFlUpl1.AboutBox
+<br>
+	&nbsp;&nbsp;&nbsp;
+	IFlUpl1.CreateTempBinding "http://server_name/users", "{8B14B770-748C-11D0-A309-00C04FD7CFC5}"
+<br>
+	&nbsp;&nbsp;&nbsp;
+	If (IFlUpl1.FoundPostInfo=0) Then
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		MsgBox "Cannot find PostInfo", _
+<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			vbSystemModal, "Microsoft File Upload Control"
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		IFlupl1.SetBindingParam "PostingURL", 
+<br>
+"http://server_name/scripts/cpshost.dll?PUBLISH"
+<br>
+	&nbsp;&nbsp;&nbsp;
+	Else
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		MsgBox "FoundPostInfo " & IFlUpl1.FoundPostInfo, _
+
+<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			vbSystemModal, "Microsoft File Upload Control"
+<br>
+	&nbsp;&nbsp;&nbsp;	
+	End If
+<br>
+End Sub
+<br>
+Sub IFlupl1_UploadedFile(szFileName, ErrorCode, szErrorMsg)
+<br>
+	&nbsp;&nbsp;&nbsp;
+	If (ErrorCode=0) Then
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		MsgBox "File '" & szFileName & "' posted succesfully."
+<br>
+	&nbsp;&nbsp;&nbsp;
+	else
+<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		MsgBox "Post Failed.  '" & vbCRLF & vbCRLF & szFileName _
+<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			& vbCRLF & "' failed with error code: " & ErrorCode _
+<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			& vbCRLF & szErrorMsg, vbSystemModal, "Microsoft File Upload Control"
+<br>
+end if
+<br>
+end sub
+<br>
+&lt;/SCRIPT&gt;
+<br>
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+<br>
+&lt;/BODY&gt;
+<br>
+&lt;/HTML&gt;</p></font>
+
+
+<p><strong>PostInfo Parameters</strong></p>
+
+<p>The following tables list the parameters supported by each Microsoft Service Provider. When writing a PostInfo file for a server, as many parameters as possible should be specified for each Service Provider the server will support, in order to minimize the amount of information that must be entered by a user.</p>
+
+<ul>
+<li>The DefaultPage parameter is handled by the Web Publishing API and is not listed under the individual Service Providers below.</li>
+</ul>
+
+<p><strong><em>The CLSID's for the Microsoft Service Providers</em></strong></p>
+
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Service Provider</th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">CLSID</th>
+</tr>
+<tr>
+<td><strong> FTP Provider</strong></td>
+<td> {02B5E1D1-8B7C-11D0-AD45-00AA00A219AA}</td>
+</tr>
+<tr>
+<td><strong>CRS Provider </strong></td>
+<td> {FFCF1E40-7978-11D0-B1C9-00AA006DCDF4}</td>
+</tr>
+<tr>
+<td> <strong>HTTP Post Provider</strong></td>
+<td>{8B14B770-748C-11D0-A309-00C04FD7CFC5} </td>
+</tr>
+<tr>
+<td><strong>Front Page Provider</strong></td>
+<td>{2C93FE81-E03A-11cf-832F-00A0C90A43A8}</td>
+</tr>
+</table>
+
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Parameter</th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Example Value </th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Meaning</th>
+</tr>
+<tr>
+<td align="left" valign="top"><strong>Authentication</strong></td>
+<td align="left" valign="top"> NTLM</td>
+<td align="left" valign="top"> The name of the security package to use when authenticating against the server.</td>
+</tr>
+<tr>
+<td><strong>ServerName</strong></td>
+<td> Myserver</td>
+<td> The name of the CRS server.</td>
+</tr>
+</table>
+
+<p><strong><em>FTP Service Provider</em></strong></p>
+
+<ul>
+<li>Note that if present, the special string "$USERNAME" will be replaced with the name of the account used to log in to the server during publishing. This string can be used in the ServerName and Subfolder values.</li>
+<li>The ConnectTimeout, ConnectRetries, SendTimeout, and ReceiveTimeout, were made site parameters to allow dynamic adjustment of the waiting behavior on network calls. However, a typical PostInfo file will probably not need to include these parameters. The values listed under "Example Value" below for these four parameters are the defaults.</li>
+</ul>
+
+
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Parameter</th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Example Value</th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Meaning</th>
+</tr>
+<tr>
+<td><strong>Server Name</strong></td>
+<td> Myserver</td>
+<td> The name of the FTP server.</td>
+</tr>
+<tr>
+<td><strong>Subfolder</strong></td>
+<td> home/users/$USERNAME</td>
+<td> The path on the FTP server where files should be saved. Note that $USERNAME will be replaced with the "UserName" value.</td>
+</tr>
+<tr>
+<td><strong>ConnectTimeout</strong></td>
+<td> 30000 (msec)</td>
+<td> The length of the timeout to use when connecting to the server.</td>
+</tr>
+<tr>
+<td><strong>ConnectRetries</strong></td>
+<td> 5</td>
+<td> The number of retries to make when connecting to the server.</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td> NTLM</td>
+<td> The name of the security package to use when authenticating against the server.</td>
+</tr>
+<tr>
+<td><strong>SendTimeout</strong></td>
+<td> 30000 (msec)</td>
+<td> The length of the timeout for all network packets sent.</td>
+</tr>
+<tr>
+<td><strong>ReceiveTimeout</strong></td>
+<td> 30000 (msec)</td>
+<td> The length of the timeout for all network packets received.</td>
+</tr>
+<tr>
+<td><strong><em>BasePath</em></strong></td>
+<td> -</td>
+<td> This value is obsolete. If present on a site key that was used with version 1.1 of the Web Publishing Wizard, it will be upgraded to "Subfolder" the first time the FTP Provider binds to the site.</td>
+</tr>
+<tr>
+<td><strong><em>FtpServerName</em></strong></td>
+<td> -</td>
+<td> This value is obsolete. If present on a site key that was used with version 1.1 of the Web Publishing Wizard, it will be upgraded to "ServerName" the first time the FTP Provider binds to the site.</td>
+</tr>
+</table>
+
+<p><strong><em>HTTP POST Service Provider</em></strong></p>
+
+<table border="1" cellpadding="4" cellspacing="1" width="100%">
+<tr>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Parameter</th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Example Value</th>
+<th bgcolor="#C0C0C0" align="Left" valign="bottom">Meaning</th>
+</tr>
+<tr>
+<td><strong>PostingURL</strong></td>
+<td> http://myserver/scripts/cpshost.dll?PUBLISH</td>
+<td> The URL of the HTTP POST acceptor.</td>
+</tr>
+<tr>
+<td><strong>TargetURL</strong></td>
+<td> http://myserver/users</td>
+<td> The URL where the uploaded files should be placed.</td>
+</tr>
+</table>
+
+<p><strong><a name="E10E10">How to Get Help</a></strong></p>
+
+<p>For assistance with Microsoft Posting Acceptor, please access the Microsoft newsgroup:</p>
+
+<p>news://msnews/microsoft.public.site.posting-acceptor</p>
+
+<p><a href="#top">Return to top</a></p>
+	
+<hr>
+
+<h1><a name="CopyrightInformation">Copyright Information</a></h1>
+
+<p>&copy; 1997 Microsoft Corporation</p>
+<p>These materials are provided &#147;as-is,&#148; for informational purposes only.</p>
+<p>Neither Microsoft nor its suppliers makes any warranty, express or implied with respect to the content of these materials or the accuracy of any information contained herein, including, without limitation, the implied warranties of merchantability or fitness for a particular purpose. Because some states/jurisdictions do not allow exclusions of implied warranties, the above limitation may not apply to you.</p>
+<p>Neither Microsoft nor its suppliers shall have any liability for any damages whatsoever including consequential, incidental, direct, indirect, special, and lost profits. Because some states/jurisdictions do not allow exclusions of implied warranties, the above limitation may not apply to you. In any event, Microsoft&#146;s and its suppliers&#146; entire liability in any manner arising out of these materials, whether by tort, contract, or otherwise shall not exceed the suggested retail price of these materials.</p>
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1997 by Microsoft Corporation. All rights reserved.</a></em></p>
+
+</font>
+</body>
+</html>

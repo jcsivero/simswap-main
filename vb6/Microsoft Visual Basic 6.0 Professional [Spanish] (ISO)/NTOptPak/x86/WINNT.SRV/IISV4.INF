@@ -1,0 +1,56 @@
+[Version]
+Signature = "$Windows NT$"
+
+[Strings]
+Title="Instalación de Microsoft Windows NT 4.0 Option Pack"
+
+[PageTitles]
+SetupPage=%Title%
+
+[Components.x86]
+iis = iis.dll,OcEntry,iis.inf
+mts = mtssetup.dll,MTSSetupProc,mtsiis.inf
+DAC=dagsetup.dll,DAGSetup,dagsetup.inf
+indexsrv = indexsrv.dll,IndexSrv,is20.inf
+PostAcc = pak210-x86.exe,,cpsocmntx.inf
+WebPost = wpie15-x86.exe,,wpocmntx.inf
+ins = imsinsc.dll,OcEntry,ins.inf
+ims = imsinsc.dll,OcEntry,ims.inf
+SSE = SA2OCm.DLL,SA2OCMEntry,SA2IIS.inf
+wsh = wsh.dll,OcEntry,wsh.inf
+UsageAnalyst = SA2OCm.DLL,SA2OCMEntry,ua.inf
+fp = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+vid = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+certsrv = certocm.dll,CertSrvOCProc,certsrv.inf
+iisdbgTop = iisdbg.dll,ScrptDbg,iisdbg.inf
+RASICS = rasics.dll,RASICSEntry,rasics.inf
+Msmq_Server = msmqocm.dll,MsmqOcm,msmqsrvr.inf
+
+[Components.alpha]
+iis = iis.dll,OcEntry,iis.inf
+mts = mtssetup.dll,MTSSetupProc,mtsiis.inf
+DAC=dagsetup.dll,DAGSetup,dagsetup.inf
+indexsrv = indexsrv.dll,IndexSrv,is20.inf
+PostAcc = pak210-alpha.exe,,cpsocmnta.inf
+WebPost = wpie15-ALPHA.exe,,wpocmnta.inf
+ins = imsinsc.dll,OcEntry,ins.inf
+ims = imsinsc.dll,OcEntry,ims.inf
+SSE = SA2OCm.DLL,SA2OCMEntry,SA2IIS.inf
+wsh = wsh.dll,OcEntry,wsh.inf
+UsageAnalyst = SA2OCm.DLL,SA2OCMEntry,ua.inf
+fp = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+vid = fp30ext.dll,FrontPage3Extensions,fp30ext.inf
+certsrv = certocm.dll,CertSrvOCProc,certsrv.inf
+iisdbgTop = iisdbg.dll,ScrptDbg,iisdbg.inf
+RASICS = rasics.dll,RASICSEntry,rasics.inf
+Msmq_Server = msmqocm.dll,MsmqOcm,msmqsrvr.inf
+
+[PageReplace]
+welcome = iis
+mode = iis
+final = Msmq_Server,iis
+
+[PageAdd]
+early = iis,mts,indexsrv,ims,ins,Msmq_Server
+prenet = 
+late = default

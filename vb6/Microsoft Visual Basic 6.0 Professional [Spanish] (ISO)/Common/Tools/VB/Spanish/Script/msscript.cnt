@@ -1,0 +1,59 @@
+:Base MSScript.hlp>Langref
+:Title Microsoft Script Control
+1 Información conceptual
+2 Utilizar Microsoft Script Control=scconUsingMicrosoftScriptControl
+2 Agregar un modelo de objetos a Script Control=scconAddingRuntimeFunctionalityToScriptControl
+3 Crear un proyecto sencillo de secuencia de comandos=scconCreatingSimpleScriptProject
+2 Utilizar la colección Modules=scconUsingModulesCollection
+1 Constantes
+2 Constantes de ScriptControl=sccstScriptControl
+1 Mensajes de error
+2 Operación no válida; se está ejecutando la secuencias de comandos=scmsgCantExecute
+2 No se puede establecer la propiedad UseSafeSubset=scmsgCantSetUseSafeSubset
+2 Comando en ejecución anulado=scmsgScriptTimedOut
+2 Propiedad Language no establecida=scmsgLanguagePropertyNotSet
+2 El miembro no es compatible con el motor de comandos seleccionado=scmsgMemberNotSupported
+2 Objeto no válido=scmsgObjectIsNoLongerValid
+1 Eventos
+2 Error (Evento)=scevtError
+2 Timeout (Evento)=scevtTimeout
+1 Métodos
+2 Add (Método)=scmthAdd
+2 AddCode (Método)=scmthAddCode
+2 AddObject (Método)=scmthAddObject
+2 Clear (Método)=scmthClear
+2 Eval (Método)=scmthEval
+2 ExecuteStatement (Método)=scmthExecuteStatement
+2 Item (Método)=scmthItem
+2 Reset (Método)=scmthReset
+2 Run (Método)=scmthRun
+1 Objetos
+2 Error (Objeto)=scobjError
+2 Module (Objeto)=scobjModule
+2 Modules (Colección)=sccolModules
+2 Procedure (Objeto)=scobjProcedure
+2 Procedures (Colección)=sccolProcedures
+2 ScriptControl (Objeto)=scobjScriptControl
+1 Propiedades
+2 AllowUI (Propiedad)=scproAllowUI
+2 CodeObject (Propiedad)=scproCodeObject
+2 Column (Propiedad)=scproColumn
+2 Count (Propiedad)=scproCount
+2 Description (Propiedad)=scproDescription
+2 Error (Propiedad)=scproError
+2 HasReturnValue (Propiedad)=scproHasReturnValue
+2 HelpContext (Propiedad)=scproHelpContext
+2 HelpFile (Propiedad)=scproHelpFile
+2 Language (Propiedad)=scproLanguage
+2 Line (Propiedad)=scproLine
+2 Modules (Propiedad)=scproModules
+2 Name (Propiedad)=scproName
+2 NumArgs (Propiedad)=scproNumArgs
+2 Number (Propiedad)=scproNumber
+2 Procedures (Propiedad)=scproProcedures
+2 SitehWnd (Propiedad)=scproSitehWnd
+2 Source (Propiedad)=scproSource
+2 State (Propiedad)=scproState
+2 Text (Propiedad)=scproText
+2 Timeout (Propiedad)=scproTimeout
+2 UseSafeSubset (Propiedad)=scproUseSafeSubset

@@ -1,0 +1,40 @@
+:Base jetsql35.hlp>langref
+:Title Referencia de Microsoft Jet SQL
+:Index Referencia de Jet SQL=jetsql35.hlp
+:Link acvba80.hlp
+1 Referencia de Microsoft Jet SQL
+2 Introducción
+3 Funciones de dominio agregado de SQL=daidxAggregateFunctions
+3 Palabras reservadas del SQL del motor de base de datos Microsoft Jet=dasqlJetSQLReservedWords
+3 Tipos de datos del SQL del motor de base de datos de Microsoft Jet=dasqlJetDataTypes
+3 Comparación del SQL del motor de base de datos Microsoft Jet y el SQL de ANSI=dasqlJetVANSI
+3 Tipos de datos equivalentes del SQL de ANSI=dasqlEquivalentDataTypes
+2 Lenguaje de definición de datos
+3 CREATE TABLE (Instrucción)=dasqlCreateTable
+3 CREATE INDEX (Instrucción)=dasqlCreateIndex
+3 ALTER TABLE (Instrucción)=dasqlAlter
+3 CONSTRAINT (Cláusula)=dasqlConstraint
+3 DROP (Instrucción)=dasqlDrop
+2 Lenguaje de manipulación de datos
+3 SELECT (Instrucción)=dasqlSelect
+3 SELECT...INTO (Instrucción)=dasqlSelectInto
+3 INSERT INTO (Instrucción)=dasqlInsertInto
+3 UPDATE (Instrucción)=dasqlUpdate
+3 DELETE (Instrucción)=dasqlDelete
+3 INNER JOIN (Operación)=dasqlInnerJoin
+3 LEFT JOIN, RIGHT JOIN (Operaciones)=dasqlLeftRightJoin
+3 PARAMETERS (Declaración)=dasqlParameters
+3 UNION (Operación)=dasqlUnion
+2 Valores del Registro de Windows para orígenes de datos externos
+3 Personalización de los valores del Registro de Windows para objetos de acceso a datos=dahowCustomizingDataAccess
+3 Inicialización del controlador de la base de datos dBASE=dahowChangingdBASE
+3 Inicialización del controlador de origen de datos HTML (Internet)=dahowChangingHTML
+3 Inicialización del controlador de Lotus=dahowChangingLotus
+3 Inicialización del controlador de Microsoft Excel=dahowChangingExcel
+3 Inicialización del controlador de origen de datos Microsoft Exchange=dahowInitializingMicrosoftExchangeDataSourceDriver
+3 Inicialización del controlador de base de datos Microsoft FoxPro=dahowChangingFoxPro
+3 Inicialización del controlador del motor de base de datos Microsoft Jet 3.5=dahowChangingJetEngine30
+3 Inicialización del controlador del motor de base de datos Microsoft Jet 2.5=dahowChangingJetISAM
+3 Inicialización del controlador de base de datos Paradox=dahowChangingParadox
+3 Inicialización del controlador de origen de datos Texto=dahowChangingText
+3 Configuración del motor de base de datos Microsoft Jet para acceso a ODBC=dahowChangingMicrosoftODBC

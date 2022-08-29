@@ -1,0 +1,683 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Notas de la versión</title>
+<!-- 1117e -->
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	TempString = navigator.appVersion 
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="../../../common/cocss.css">');
+//-->
+</script>
+
+<META NAME="DESCRIPTION" CONTENT="Notas de la versión"></head>
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">
+<h1>Personal Web Server Versión&nbsp;4.0<br> Notas de la versión</h1>
+<p>Bienvenidos a Microsoft&reg; Personal Web Server (PWS) 4.0. Consulte estas notas de la versión para obtener la información más actualizada acerca de la instalación, documentación, soporte técnico y otros problemas conocidos.</p>
+<p>
+<a href="#Installing">Instalar PWS&nbsp;4.0</a><br>
+<a href="#ProductDocumentation">Documentación del producto</a><br>
+<a href="#OtherKnownProblemsandLimitations">Otras limitaciones y problemas conocidos </a><br>
+<a href="#ProvidingFeedback">Proporcionar comentarios </a><br>
+<a href="#techsupport">Soporte técnico de Microsoft</a><br>
+</p>
+<hr>
+<H1><a name="Installing">Instalar Personal Web Server Versión&nbsp;4.0 </a></h1>
+<ul>
+<li><strong>Windows&nbsp;NT&nbsp;4.0 y Service Pack&nbsp;3</strong> El servicio Servidor de Windows&nbsp;NT&reg; debe estar instalado y ejecutarse.</li>
+<li><strong>Quitar el software Alpha, Beta&nbsp;1, o Beta&nbsp;2 </strong> Si tiene PWS versión&nbsp;4.0 Alpha o PWS versión&nbsp;4.0 (Beta&nbsp;1 o Beta&nbsp;2), asegúrese de desintalar esa versión (antes de instalar la versión actual). Para ello, en primer lugar inicie el programa de instalación del disco compacto que contiene la versión anterior o bien, en Windows&nbsp;NT, haga clic en <strong>Inicio</strong>, seleccione <strong>Programas</strong>, <strong>Microsoft Personal Web Server (Común)</strong> y, a continuación, haga clic en <strong>Instalación de Personal Web Server</strong>. Haga clic en <strong>Siguiente</STRONG> y, a continuación, haga clic en <strong>Quitar todo</strong>.</li>
+<P>Se producirán errores de instalación de ODBC durante el programa de instalación si hay cualquier otra aplicación o servicio del sistema en ejecución que utilice el software de ODBC existente en el sistema.  Si ocurre algún error de ODBC, detenga todas las aplicaciones de escritorio y de servicios del sistema, y ejecute de nuevo el programa de instalación.</p>
+<p><strong>Notas</strong></p>
+<p> Windows&nbsp;NT 4.0 Option Pack sólo se puede instalar en Windows&nbsp;NT Server&nbsp;4.0 y Windows&nbsp;NT Workstation&nbsp;4.0.</p> 
+<p>Personal Web Server para Windows95, incluido en Windows&nbsp;NT&nbsp;4.0 Option Pack, se instala tanto en Windows&nbsp;95 como en la versión Beta&nbsp;3 de Windows&nbsp;98.
+<p>Windows&nbsp;NT&nbsp;4.0 Option Pack no se puede instalar en ninguna versión de Windows&nbsp;NT&nbsp;5.0.</P>
+</ul>
+<h3>Otras consideraciones de instalación</h3>
+<dl>
+<dt><strong>Reinstalar Windows&nbsp;NT Service Pack&nbsp;3 </strong></dt>
+<dd>Si reinstala Windows&nbsp;NT Service Pack&nbsp;3 por cualquier razón después de instalar PWS&nbsp;4.0, no sobrescriba los nuevos archivos que instaló PWS&nbsp;4.0.</dd>
+<dt><strong>Desinstalar el producto </strong></dt>
+<dd>Para desinstalar el producto, vuelva a ejecutar el programa de instalación de esta versión. Hay varias formas de tener acceso al programa de instalación Puede utilizar el disco compacto o hacer clic en <strong>Inicio</strong>, seleccionar <strong>Programas</strong>, <strong> Windows&nbsp;NT Option Pack&nbsp;4.0</strong> y, a continuación, hacer clic en <strong>Instalación de Windows&nbsp;NT Option Pack&nbsp;4.0</strong>. Siga las instrucciones de los cuadros de diálogo y, cuando se le pida, haga clic en el botón <strong>Agregar o quitar</strong> para desinstalar el software.</dd>
+<dt><strong> Errores y problemas de instalación</strong></dt>
+<ul>
+<li>Los errores que ocurren durante la instalación desatendida se escribirán en el Registro de Windows&nbsp;NT.  Vaya a la siguiente ruta de acceso del Registro para obtener información acerca del error:<br>
+HKEY_LOCAL_MACHINE\<br>
+&nbsp;Software<BR>
+&nbsp;&nbsp;\Microsoft<BR>
+&nbsp;&nbsp;&nbsp;\Windows<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;\Setup<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\OCmanager<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\Errors</li>
+</dl><!-- resume -->
+<h3>Consideraciones de actualización</h3>
+<ul>
+<li>Si actualiza desde una versión anterior de PWS y tiene problemas para ver Default.asp, es probable que tenga una versión más antigua de este archivo. Para instalar la nueva versión PWS&nbsp;4.0 de este archivo, debe quitar manualmente la versión antigua de Default.asp.  La ubicación predeterminada es C:\InetPub\Wwwroot.</li>
+<li>No puede utilizar el Administrador de servicios Internet de Personal Web Server&nbsp;3.0 para configurar propiedades administrativas de Personal Web Server&nbsp;4.0.</li>
+</ul>
+<dl>
+<dt><strong>Instalar.exe no tiene firma de código.</STRONG>
+<dd>Al ejecutar la instalación desde el CD de PWS mediante la página Web de instalación, Internet Explorer mostrará un mensaje de error que indica que Instalar.exe no tiene firma de código.  Instalar.exe es un archivo de 16 bits y los formatos de archivo de 16 bits no pueden tener firma de código.</dd>
+</dl>
+<hr>
+<h1><a name="ProductDocumentation">Documentación del producto</a></h1>
+<p>Toda la documentación del producto está disponible en pantalla. Puede tener acceso a los temas de Ayuda si hace clic en  <strong>Inicio</strong> y selecciona el grupo de programas donde está instalado el producto o mediante el menú <strong>Ayuda</strong> de la herramienta de administración. También hay disponible Ayuda contextual si hace clic en el botón  <strong>Ayuda</strong> en una hoja de propiedades o cuadro de diálogo.</p>
+<h2>Utilizar la documentación</h2>
+<p>Tenga en cuenta las siguientes instrucciones al utilizar la documentación en pantalla:</p>
+<ul>
+<li>El servicio WWW debe estar instalado y se debe ejecutar el servidor para poder ver la documentación (con la excepción de las notas de la versión y los archivos de solución de problemas). Si el sitio Web está detenido, al hacer clic en <strong>Documentación del producto</strong>obtendrá el mensaje "No se ha podido establecer una conexión con el servidor".  Si se produce este error, inicie el Administrador de servicios Internet y compruebe el estado del sitio Web; si está detenido, inicie el servicio.</li>
+<li>En Internet Explorer&nbsp;4.01 los usuarios deben habilitar la opción <strong>No usar servidor proxy para direcciones locales (intranet)</strong> de la hoja de propiedades <strong>Conexión</strong> para ver los archivos locales, como la documentación del producto.</li>
+<li> Si hace clic en el icono Imprimir del marco <strong>Contenido</strong> de la documentación de Option Pack y selecciona la opción <strong>Imprimir todo lo que se encuentra bajo el encabezado actual</strong>, es posible que se produzca una disminución momentánea del rendimiento del servidor si la sección seleccionada contiene un gran número de temas. </li>
+<p>Las páginas impresas mediante el icono de impresión de Contenido no incluirán gráficos ni documentos vinculados. Además, el icono de impresión de Contenido no funciona junto con las secuencias de comandos y los programas de ejemplo que se encuentran en la sección Ejemplos para el programador de la documentación de PWS. Si selecciona un tema de la sección Ejemplos para el programador y hace clic en el icono de impresión de Contenido, aparecerá un mensaje de error que indica que no se puede encontrar el archivo.</p>
+<li>Si instala Internet Connection Services para el Servicio de acceso remoto de Microsoft, Microsoft Script Debugger, Microsoft Windows Scripting Host o Microsoft Message Queue Server (Cliente), debe instalar también el componente Administrador de servicios Internet y la documentación de Administrador avanzado de PWS de PWS.  Para leer la documentación acerca de cualquiera de estos componentes, ejecute el Administrador de servicios Internet, seleccione <strong>Internet Information Server</strong> y, a continuación haga clic en <strong>Ayuda acerca de Internet Information Server</strong> del menú <strong>Ayuda</strong>."</li>
+<li>Para ver la documentación de PWS de forma remota, utilice la siguiente dirección URL: http://&lt;nombre_servidor&gt;/iisHelp/, donde &lt;nombre_servidor&gt; es el nombre del servidor que ejecuta PWS.</li>
+</ul>
+<hr>
+<h1><a name="OtherKnownProblemsandLimitations">Otras limitaciones y problemas conocidos</a></h1>
+<P>La siguiente lista contiene limitaciones y problemas conocidos de esta versión:</p>
+<p>
+<a href="#admin">Administración </a><BR>
+<a href="#isapi">Interfaz de programas de aplicación de Internet Server (ISAPI)</a><br>
+<a href="#asp">Páginas Active Server</a><BR>
+<a href="#security">Seguridad de servidor</a><BR>
+<a href="#exair">Problemas del sitio de ejemplo Exploration Air</a><br>
+<a href="#general">Generalidades</a>
+</p>
+
+<ul>
+
+<p><a name="admin"><strong>Administración</STRONG></a></P>
+
+<li>En versiones anteriores de PWS, podía detener todo el servicio Web si escribía en la línea de comandos <strong>net stop w3svc</strong>. Esto finalizaba todos los servicios Web del equipo y cerraba el proceso Inetinfo.exe.  Como resultado de la nueva arquitectura de múltiples sitios Web, hay otro servicio, Iisadmin, que continúa su ejecución, incluso cuando se cierra W3SVC. Ocurre lo mismo al iniciar y detener servicios desde el Panel de control. Si realmente desea descargar el proceso Inetinfo.exe y asegurarse de que todas las extensiones se han descargado correctamente, debe escribir <strong>net stop iisadmin</strong>, en lugar de <strong>net stop w3svc</strong>. Escribir <strong>net start w3svc</strong> o <strong>net start msftpsvc</strong> inicia automáticamente Iisadmin.</li>
+
+<li>Al iniciar el servidor Web, éste migra todas las nuevas raíces virtuales del Registro a la metabase ("nueva" significa que no está todavía en la metabase). A continuación, el servidor elimina todas las raíces virtuales del Registro y refleja las raíces virtuales de la metabase en las del Registro. Cualquier cambio de las raíces virtuales de la metabase se vuelve a reflejar en las raíces virtuales del Registro, lo que elimina las entradas del Registro que se cambiaron o agregaron desde la instalación original.
+
+<li>Se debe ejecutar el servicio PStore para poder ejecutar PWS.</li>
+
+<li>Si tiene un archivo .dll con dependencias especiales que requieren que estos archivos se carguen antes que otros procesos de servidor Web, puede crear en el Registro una lista definida de los archivos .dll que se tienen que cargar previamente en el programa Inetinfo.exe antes de que se inicie ningún otro servicio de servidor Web.</li>
+
+<p> Para cargar previamente archivos .dll, cree una nueva clave del Registro llamada <strong>PreloadDlls</strong> en la siguiete ruta de acceso del Registro:</p>
+
+<p>
+HKEY_LOCAL_MACHINE\<br>
+&nbsp;SYSTEM<BR>
+&nbsp;&nbsp;\CurrentControlSet<BR>
+&nbsp;&nbsp;&nbsp;\Services<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;\Inetinfo<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\Parameters
+</p>
+
+<p>Defina esta entrada como de tipo multi-sz, con datos que consisten en los nombres de los archivos .dll que desea cargar previamente (separados por retornos de carro).  Si los archivos residen en la misma ruta de acceso, puede escribir únicamente el nombre del archivo .dll.  Si el archivo .dll reside en otro directorio, escriba el nombre del archivo y su ruta de acceso completa.</p>
+
+<li>Cuando intente hacer copia de seguridad de la información de configuración de un sitio Web se le pedirá que escriba una frase de comentario antes de guardar la información de configuración.  Sin embargo, no puede guardar esta información si el comentario contiene caracteres no alfanuméricos, incluidos los caracteres no imprimibles o cualquiera de los siguientes caracteres:</li>
+
+<p>/&nbsp;\&nbsp;\&nbsp;*&nbsp;.&nbsp;?&nbsp;\&nbsp;"&amp;&nbsp;!&nbsp;@&nbsp;#&nbsp;$&nbsp;%&nbsp;^&nbsp;(&nbsp;)&nbsp;=&nbsp;+&nbsp;|&nbsp;`&nbsp;~&nbsp;</p>
+
+<li>No puede utilizar el Administrador de servicios Internet para administrar de forma remota un equipo que ejecuta IIS 4.0 Beta 3.0 desde un equipo que ejecute la versión final de IIS 4.0.  Del mismo modo, no puede administrar un equipo que ejecute la versión final de IIS 4.0 desde uno que ejecute IIS 4.0 Beta 3.0.  Esto se aplica a todas las demás aplicaciones que utilizan la interfaz AdminBase. La solución consiste en poner la versión comercial del archivo Admwprox.dll en todos los equipos y, a continuación, reiniciar.</li>
+
+
+	
+
+
+
+<p><a name="isapi"><strong>Interfaz de programación de aplicaciones de servidor Internet (ISAPI)</strong></a></p>
+		
+<li>La propiedad InProcessIsapiApps (MD_IN_PROCESS_ISAPI_APPS) de la metabase de configuración ahora permite entradas de nombres de .dll sin rutas de acceso que los cualifiquen.  Una entrada sin una ruta de acceso que la cualifique coincidirá con cualquier petición de ISAPI que contenga el nombre de la .dll, cualquiera que sea la ruta de acceso física que se especifique en la petición.  Por ejemplo, lo siguiente sería una lista válida para la propiedad:  "D:\Winnt\System32\Inetsrv\Ssinc.dll" "D:\Winnt\System32\Inetsrv\Httpodbc.dll" "Author.dll" "Shtml.dll" "Admin.dll".</li>
+
+<li>Al depurar aplicaciones ISAPI, filtros ISAPI, componentes de servidor u otro código que escriba para que se ejecute sobre PWS, puede ser útil ejecutar PWS como un proceso. La información acerca de cómo configurar PWS 4.0 para que se ejecute como un proceso se describe en la documentación del producto.  Se han agregado al SDK de PWS 4.0 instrucciones adicionales y dos archivos .reg que automatizan el proceso de cambiar PWS para que se ejecute como un servicio o como un proceso.  </li>
+
+
+<p>Para instalar el SDK</p>
+<ol>
+<li>En el cuadro de diálogo Instalación de PWS, seleccione Internet Personal Web Server y haga clic en <strong>Mostrar subcomponentes</strong>.</li>
+
+<li>Seleccione Documentación, haga clic en <strong>Mostrar subcomponentes</strong> y, a continuación, haga clic en <strong>SDK</strong>. </li>
+
+<li>Haga clic en <strong>Aceptar</strong>.</li>
+
+</ol>
+<p>Puede encontrar las instrucciones en Inetpub\Iissamples\Sdk\Components\IIS_as_process.txt. Para obtener más información, el tema "Establecer un entorno de depuración" en la sección Desarrollo de aplicaciones Web avanzadas de la documentación de Internet Information Server describe cómo establecer un entorno para depurar extensiones ISAPI.</p>
+
+<li>El identificador de la metabase MD_ALLOW_PATH_INFO_FOR_SCRIPT_MAPPINGS no está documentado en Metabase Identifier Reference de Programmer's Reference.  La documentación para la correspondiente propiedad de metabase de automatización, AllowPathInfoForScriptMappings, en Administration Property Reference, también se aplica a MD_ALLOW_PATH_INFO_FOR_SCRIPT_MAPPINGS.  El tipo de usuario es IIS_MD_UT_SERVER.</li>
+
+
+<LI>En Metabase Identifier Reference, que forma parte de la documentación Programmer's Reference para el identificador de metabase MD_SCRIPT_MAPS, la constante MD_SCRIPTMAPFLAG_SCRIPT se identifica incorrectamente como MD_SCRIPTMAPFLAG_SCRIPT_ENGINE.</li>
+
+<li>Las dos propiedades de metabase de configuración, AppAllowDebugging y AppAllowClientDebug, se pueden establecer en la clave IIsWebDirectory, además de en las otras claves especificadas en la documentación.
+
+
+
+
+<p><a name="asp"><strong>Páginas Active Server</STRONG></a></P>
+
+<li>Las propiedades definidas para los objetos Request, Response y Server de ASP sólo son válidas durante el proceso de una petición.  Por ejemplo, si define una propiedad en Global.asa, como Response.Buffer = True, la propiedad sólo se aplicará a una única petición y no a todas las peticiones.</li>
+
+<li>Si detiene el servicio WWW desde el Administrador de servicios Internet mientras depura una secuencia de comandos, el Administrador de servicios Internet no funcionará hasta que continúe la ejecució n de la secuencia de comandos que depura.  Normalmente, si detiene el servicio Web mediante el Panel de control o el comando <strong>net stop</strong>, las secuencias que se depuran con Microsoft Script Debugger finalizan. Sin embargo, si detiene un sitio Web desde el Administrador de servicios Internet, el sitio detendrá su funcionamiento si está depurando actualmente secuencias de comandos que se ejecutan en el servidor que detiene.  Si va a Microsoft Script Debugger y selecciona <strong>Detener depuración </strong> para las secuencias de comandos que está depurando, el Administrador de servicios Internet seguirá funcionando.
+
+<li>Actualmente hay problemas conocidos al utilizar PerlScript con ASP.  Si ejecuta PerlScript de ActiveWare, póngase en contacto con ActiveWare para obtener un nuevo motor de PerlScript.</li>
+
+<li>En la documentación de ASP se indica incorrectamente que el método MapPath no es compatible con la sintaxis de rutas de acceso relativas, como ./<em>ruta de acceso</em> o ../<em>ruta de acceso</em>.  El método MapPath admitirá sintaxis de rutas de acceso relativas sólo si la propiedad EnableParentPaths de la metabase está habilitada. Cuando la propiedad EnableParentPaths no está habilitada, utilizar el método MapPath con una ruta de acceso relativa produce un error.</li>
+
+<li>Al definir permisos de Windows&nbsp;NT para un directorio para el que piensa utilizar autenticación anónima o de Desafío/Respuesta de Windows&nbsp;NT, debe asignar permisos de Lectura a la cuenta de usuario anónimo (IUSR_ <em>nombre_equipo</em>) o a la cuenta propietaria de la aplicación (IWAM_<em>nombre_equipo</em>) si el directorio contiene una aplicación fuera de proceso y un archivo Global.asa.  No definir el permiso de Lectura puede dar como resultado que ASP pase por alto el archivo Global.asa.</li>
+
+<P>De forma similar, para aplicaciones en proceso contenidas en directorios almacenados en una unidad de red, debe asegurarse de que la cuenta de usuario anónimo tiene permisos de Lectura de Windows&nbsp;NT.</p>
+
+<li>En MicrosoftVisual Basic o VBScript, si llama a GetObject() para crear una instancia de un Objeto Admin de IIS y GetObject falla, el código de error devuelto se cambia en ole32 de MkParseDisplayName() a un error MK_E_SYNTAX.</li>
+
+
+<li>La documentación de Scripter's Reference enumera las propiedades del objeto MyInfo y afirma que Personal Web Server inicializa estas propiedades. Aunque esta información es válida para una instalación Macintosh de Personal Web Server en un equipo Macintosh, puede no ser válida para una instalación Windows NT de Personal Web Server. No existe ninguna de las propiedades enumeradas en la documentación de Scripter's Reference cuando se crea por primera vez una instancia de MyInfo. En su lugar, estas propiedades se crean durante la ejecución mediante una instrucción de asignación. Esto significa que si una propiedad no existe, al consultar su valor se devolverá una cadena vacía y cualquier intento de utilizar la propiedad en una expresión devolverá un error.
+</li>
+
+
+<li>Si crea o utiliza componentes desarrollados en Microsoft&reg;&nbsp;Visual Basic&nbsp;5.0 (Edición empresarial o Edición profesional) para utilizarlos con ASP, se recomienda encarecidamente que actualice a Visual Studio#153;&nbsp;97 Service Pack 2, tanto para los equipos de programación como para los servidores.</li>
+
+<p>Puede descargar Visual Studio 97 Service Pack 2 en <a href="http://www.microsoft.com/vstudio/sp/">http://www.microsoft.com/vstudio/sp/</a> (este sitio está en inglés).</p>
+
+	
+<li>El objeto Scripting.Dictionary está marcado erróneamente como procesamiento Ambos.  Se debería marcar como subprocesamiento Controlado.  Para cambiar esto, utilice el Editor del Registro para abrir la siguiente clave del Registro:</li><br>
+
+HKEY_CLASSES_ROOT\<br>
+&nbsp;&nbsp;CLSID<br>
+&nbsp;&nbsp;&nbsp;\{EE09B103-97E0-11CF-978F-00A02463E06F}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\InprocServer32<br>
+
+<p>Cambie el valor con nombre para ThreadingModel a Apartment.  Si utiliza el objeto Dictionary con alcance de aplicación sin hacer este cambio, pueden dañarse los datos.</p>
+
+
+
+<p><a name="security"><strong>Seguridad de servidor</STRONG></a></P>
+
+<li>Aunque el Administrador de servicios Internet le permitirá habilitar la sincronización de contraseñas para una cuenta de usuario anónimo no local, está configuración no es compatible y puede provocar que se deniegue todo acceso al servidor Web o FTP.  La sincronización de contraseñas sólo se debe utilizar con cuentas de usuario anónimo definidas en el equipo local.  Si el sitio Web se basa en permitir que el usuario anónimo pueda tener acceso a los recursos de red, no puede utilizar la característica de sincronización de contraseñas de autenticación anónima y debe especificar una contraseña válida para el usuario anónimo.</li>
+
+<p><a name="exair"><strong>Problemas del sitio de ejemplo Exploration Air</strong></a></p>
+
+<li>Si no ha instalado Remote Data Service, incluido con Microsoft Data Access Components&nbsp;1.5, necesitará modificar el archivo Prefs.txt (que se encuentra de forma predeterminada en Inetpub\IISSamples\ExAir\Benefits\Prefs.txt) para deshabilitar la característica Remote Data Service, que se utiliza en la aplicación Benefits de Exploration Air. Específicamente, cambie RDSAvailable de True a False.</li>
+
+<li>Al utilizar la característica Secure Sockets Layer (SSL) para cargar archivos, el componente Posting Acceptor cargará correctamente un archivo en el servidor Web; sin embargo, la redirección a Verify.asp fallará.  Esto no afectará al funcionamiento del componente Posting Acceptor.</li>
+
+<li>La base de datos de Microsoft SQL Server del sitio de ejemplo Exploration Air está configurada para utilizar el Id. de usuario (UID) y la contraseña predeterminados (es decir, UID=sa y sin contraseña).  Otras configuraciones de SQL no funcionarán.</li>
+
+<li>El componente de carga de archivos que se encuentra en el vínculo Business Partners Only no funcionará si el directorio para la carga de archivos no está correctamente configurado.  A continuación se ofrece un procedimiento que puede utilizar para configurar el sistema para cargar archivos:</li>
+
+	<ol>
+	<li>En el directorio IISSamples\ExAir\BusinessPartners, cree un subdirectorio llamado Upload.</li>
+	<li>Haga clic en <strong>Inicio</strong>, seleccione <strong>Programas</strong>, <strong>Windows&nbsp;NT&nbsp;4.0 Option Pack</strong>, <strong> Personal Web Server</strong> y, a continuación, haga clic en <strong>Administrador de servicios Internet</strong>.</li>
+	<li>En el panel izquierdo del <strong> Administrador de servicios Internet</strong>, haga clic en la carpeta Internet Information Server y, a continuación, haga doble clic en el icono llamado como el servidor.</li>
+	<li>Haga doble clic en <strong>Sitio Web predeterminado</strong> y explore hasta el directorio virtual <strong>IISSamples/ExAir/Business Partners/Upload</strong>.</li>
+	<li>Haga clic con el botón secundario del <i>mouse</i> en <strong>Upload</strong> y seleccione <strong>Propiedades</strong>.  En la hoja de propiedades <strong>Directorio</strong>, bajo <strong>Permisos de acceso</strong>, seleccione <strong>Escritura</strong>. </li>
+	<li>Bajo Permisos en <strong>Configuración de la aplicación </strong>, seleccione <strong>Ninguno</strong>.  Esta configuración permitirá que el componente <strong>Posting Acceptor</strong> funcione correctamente.</li>
+	<li>Cierre el Administrador de servicios Internet y vuelva a intentar la carga de archivos.</li>
+	</ol>
+
+<p><a name="general"><strong>Generalidades</STRONG></a></P>
+
+<li>Además de definir la versión de la configuración del servidor Web, la característica de copia de seguridad y restauración puede utilizarse para restaurar una configuración anterior de PWS cuando ocurre un problema que se puede corregir si se desinstala y reinstala PWS. Sin embargo, este proceso no funcionará cuando se necesite una reinstalación completa del sistema operativo. Si el equipo encuentra un problema que requiere que vuelva a instalar Windows NT 4.0 Option Pack, utilice el siguiente procedimiento para restaurar una configuración anterior:</li>
+
+<ol>
+<li>En el panel izquierdo del Administrador de servicios Internet, haga clic en la carpeta <strong>Internet Information Server</strong> y, a continuación, seleccione el icono con el nombre del equipo.</li>
+<li>Desde la barra de herramientas del Administrador de servicios  Internet, haga clic en <strong>Acción</strong> y seleccione <strong> Hacer copia de seguridad o restaurar configuración</strong>.</li>
+<li>En el cuadro de diálogo <strong>Hacer copia de seguridad o restaurar la configuración</strong>, haga clic en <strong>Crear copia de seguridad </strong>. </li>
+<li>En el cuadro de diálogo <strong>Nombre de copia de seguridad de la configuración</strong>, escriba un nombre para el archivo de copia de seguridad. De forma, el archivo de copia de seguridad se almacena en el directorio C:\Winnt\System32\Inetsrv\Metaback  De forma alternativa, el archivo de copia de seguridad se puede almacenar en el directorio especificado en la siguiente entrada del Registro (si ha creado esta entrada):</li><br>
+
+HKEY_LOCAL_MACHINE\<br>
+&nbsp;SOFTWARE<br>
+&nbsp;&nbsp;\Microsoft<br>
+&nbsp;&nbsp;&nbsp;\InetStp<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\MetaBackup<br>
+
+<p>Seleccione el valor BackupPath, que contiene el nombre del archivo de copia de seguridad que creó con el Administrador de servicios Internet.</p>
+
+<li>Copie el archivo a una ubicación fuera del subdirectorio Inetsrv. Los archivos de copia de seguridad del subdirectorio Metaback se eliminan durante la desinstalación.
+
+<li>Desinstale y reinstale Windows NT 4.0 Option Pack.
+<li>Copie el archivo de copia de seguridad al subdirectorio Metaback (de forma predeterminada C:\Winnt\System32\Inetsrv\Metaback\).
+<li>En el cuadro de diálogo <strong>Nombre de copia de seguridad de la configuración</strong>, seleccione el archivo de copia de seguridad que creó y, a continuación, haga clic en <strong>Restaurar</strong>. Aunque la restauración puede fallar, se restaurará parte de la configuración de la que hizo copia de seguridad. 
+
+<li>Escriba en un símbolo del sistema: <strong>cscript.exe C:\Winnt\System32\Inetsrv\Adminsamples\Adsutil.vbs enum w3svc</strong>.  Este comando enumerará varias configuraciones del servicio Web de PWS. A partir de las configuraciones enumeradas, encuentre los valores de WamUserName y WAMUserPass.  Estos valores representan la Id. de usuario y contraseña que Windows Application Manager (WAM) utiliza para iniciar aplicaciones fuera de proceso.  Durante la reinstalación se restablece la contraseña en el Administrador de usuarios.  
+
+<p class="note"><strong>Nota</strong>&nbsp;&nbsp;&nbsp;Para emplear la utilidad Adsutil.vbs debe haber instalado Windows Scripting Host como parte de la instalación de Windows NT 4.0 Option Pack.
+</p>
+
+
+<li>Haga clic en <strong>Inicio</strong>, seleccione <strong>Herramientas administrativas</strong> y haga clic en <strong>Administrador de usuarios</strong>.  Haga doble clic en la cuenta de usuario <strong>IWAM_&lt;<em>nombre_equipo</em>&gt;</strong>. Escriba la contraseña recuperada en el paso anterior.
+<li>Haga clic en <strong>Aceptar</strong>.
+
+<li>En el cuadro de diálogo <strong>Nombre de copia de seguridad de la configuración</strong>, seleccione el archivo de copia de seguridad que creó y, a continuación, haga clic en <strong>Restaurar</strong>.   La configuración debe estar completamente restaurada.
+</ol>
+<p class="note"><strong>Nota</strong>&nbsp;&nbsp;&nbsp;Si cambia la identidad de las aplicaciones fuera de proceso, esas aplicaciones volverán al nombre de usuario IWAM anterior.
+</p>
+
+
+<li>En el Asistente para página principal de Personal Web Manager, los gráficos de la hoja de estilos asociada a las plantillas de página principal se ven mejor con Internet Explorer&nbsp;4.0.  Las mínimas diferencias entre la forma en que aparece la plantilla de página principal en IE&nbsp;3.0 y en Netscape son normales.</li>
+
+<p>Internet Explorer versiones&nbsp;3.0 y&NBSP;4.0 pasa por alto los caracteres de salto de línea en campos de texto. Para agregar saltos de línea a una entrada de un campo de texto, agregue la etiqueta HTML &lt;BR&gt; al final de cada línea.</p>
+
+<li>Por razones de seguridad, el asistente para publicar de Personal Web Manager no publicará un archivo que resida en una unidad de red. Esto significa que sólo puede publicar archivos del disco duro local. </li>
+
+
+<li>Desinstalar Microsoft SNA Server 3.08 quita el archivo de Administrador ODBC de Microsoft (Odbcad32.exe).  Sin embargo, puede tener acceso manual a esa funcionalidad si hace lo siguiente: 
+
+<ol>
+	<li>Desde el menú <strong>Inicio</strong>, seleccione <strong>Configuración</strong> y, a continuación, haga clic en <strong>Panel de control</strong>.
+	<li>Haga doble clic en el icono <strong>ODBC</strong>.  Con el cuadro de diálogo <strong>Administrador de orígenes de datos ODBC</strong> puede crear, modificar y ver orígenes de datos ODBC y llevar a cabo otras tareas administrativas de ODBC.</li>
+</ol>
+	
+<li>En la documentación de PWS, el tema Contadores de supervisión de sitios Web hace referencia al contador Peticiones Trace/seg. Este contador no está disponible, aunque está disponible el contador Total peticiones Trace.</li>
+
+
+<li>Ejecutar Personal Web Server&nbsp;4.0 en un equipo con un procesador Intel 486 de velocidad inferior a 50&nbsp;MHz y con 16&nbsp;MB o menos de RAM aumenta la probabilidad de que los motores de secuencias de comandos se degraden a un <em>modo de empaquetado de pilas de memoria</em>, lo que significa que el servidor no podrá aceptar nuevas conexiones mientras esté en este modo.  El proceso de empaquetado de pilas puede tardar de 20 a 30 minutos (dependiendo de la velocidad del microprocesador).</li>
+
+
+<li><em>No puede</em> ejecutar la función ADSI Configuration Restore desde dentro de una aplicación de servidor Web (como páginas Active Server o aplicaciones CGI).  Ejecutar Configuration Restore desde una aplicación de servidor Web hará que el servidor deje de responder.</li>
+
+<li>La documentación en línea del producto contiene guías de referencia para programadores y componentes SDK, ambos en inglés.
+</li>
+<li>Si tiene problemas al imprimir la documentación en línea puede ser debido a la versión actual de un control ActiveX. Actualice su explorador a Internet Explorer 4 Service Pack 1.
+</li>
+
+
+
+
+
+</ul>
+
+
+<hr>
+
+<h1><a name="ProvidingFeedback">Proporcionar comentarios</a></h1>
+
+<p>Existen grupos de noticias de igual a igual para ayudarle a interactuar con otros usuarios de nuestros productos, incluidos Microsoft Most Valuable Professionals (MVP). Puede utilizar cualquier software lector de noticias para tener acceso a estos grupos de noticias. Independientemente del lector de noticias o el cliente de noticias que utilice, es posible que tenga que configurarlo para que lea los grupos de noticias. Cuando se le pida el servidor de noticias, especifique <strong>msnews.microsoft.com</strong>. No necesita escribir un nombre de cuenta o una contraseña. Antes de exponer en los grupos de noticias, revise las reglas de conducta de los grupos de noticias de Microsoft. Para obtener más información acerca de los grupos de noticias de Microsoft vea <a href="http://www.microsoft.com/support/news/" target="_top" >http://www.microsoft.com/support/news/</a>  (este sitio está en inglés) y elija Personal Web Server.</p>
+
+<p>Grupos de noticias de soporte de Windows&nbsp;NT Option Pack&nbsp;4.0 estarán disponibles en un futuro próximo.  Debe actualizar a menudo las suscripciones a grupos de noticias para encontrar los grupos de noticias más recientes para este producto.</p>
+
+<hr>
+
+<h1><a name="techsupport">Soporte técnico de Microsoft</a></h1>
+
+
+
+
+
+<p>Si tiene una pregunta técnica acerca de Microsoft&reg; Personal Web Server, utilice esta documentación en pantalla o consulte la Ayuda; haga clic en el botón <strong>Ayuda</STRONG> durante un procedimiento Si sigue teniendo dudas, Microsoft ofrece soporte técnico y servicios que van desde herramientas de Ayuda automática a la asistencia directa de un ingeniero de soporte técnico de Microsoft.</p>
+
+<p><strong>Nota</strong>&nbsp;&nbsp;&nbsp;Los servicios disponibles en Estados Unidos y Canadá se proporcionan en inglés (vea <EM><STRONG>Soporte técnico en español</STRONG> y <STRONG>Soporte técnico a nivel mundial</STRONG></EM> a continuación) </p>
+
+<h2>Herramientas de Ayuda automática para que encuentre las respuestas por sí mismo</h2>
+
+<P><STRONG>Soporte técnico en línea de Microsoft:</STRONG> este novedoso sitio utiliza la tecnología más reciente de Microsoft para ayudarle a tener acceso a la información técnica y los recursos más relevantes para responder a sus preguntas de soporte.  Utilice los Asistentes para solución de problemas para hacer diagnósticos y responder a preguntas técnicas fácilmente.  O bien, seleccione artículos técnicos, ayudas de programación o preguntas frecuentes en Microsoft Knowledge Base (más de 75.000 artículos).  Visite <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A> y vea qué fácil es encontrar las respuestas que necesita.</P>
+
+<h2>Soporte técnico en inglés</h2>
+
+<P><STRONG>Soporte estándar sin costo:</STRONG> el soporte para Personal Web Server se proporciona como parte del soporte disponible para Windows NT Workstation.  Especificamente:</P>  
+
+<blockquote>Un total de dos (2) incidentes sin costo para Personal Web Server o bien para Windows&nbsp;NT Workstation<blockquote>
+
+<P>Para recibir Soporte estándar sin costo en inglés, en Estados Unidos de América, llame al número (425)&nbsp;635-7018 de 6:00 a.m. a 6:00 p.m. hora del Pacífico, de lunes a viernes, festivos excluidos.  En Canadá, para obtener soporte en francés, llame al número (905)&nbsp;568-4494, de 8:00 a.m. a 8:00 p.m. hora de Este, de lunes a viernes, festivos excluidos.</p>
+
+<p><strong>Nota</strong>&nbsp;&nbsp;&nbsp;es posible que estas llamadas tengan un costo.</p>
+
+<p><EM>*Si el producto Microsoft estaba preinstalado o se distribuía con su PC, el fabricante de su PC es responsable de proporcionarle soporte de producto.  Para obtener soporte, póngase en contacto con el fabricante o con la fuente de la que obtuvo el producto Microsoft.</EM></P>
+
+<P><STRONG>Soporte de pago por incidente:</STRONG> si necesita soporte tras el horario comercial normal o si ha utilizado los dos incidentes de Soporte estándar sin costo, como se describió anteriormente, puede adquirir Pay-Per-Incident Support (Soporte de pago por incidente).  En Estados Unidos de América y Canadá y con un costo de 95 dólares estadounidenses por incidente, llame al número (800) 936-5900, 24 horas al día y siete días a la semana, incluso festivos. En los Estados Unidos de América , también puede llamar al (900)&nbsp;555-2110.</P>
+
+<p><strong>Nota</strong>&nbsp;&nbsp;&nbsp;Las tarifas de soporte para las llamadas a números (800) se facturarán a su tarjeta de crédito VISA, MasterCard o American Express. Las tarifas de soporte para las llamadas a números (900) aparecerán en su factura telefónica.</p>
+
+<P><STRONG>Soporte anual con prioridad:</STRONG> si prevé un volumen elevado de incidentes de soporte o necesita un acceso con prioridad a los ingenieros de soporte técnico de Microsoft, puede adquirir una Priority Annual Comprehensive Account (Cuenta anual global de prioridad).  En los Estados Unidos de América y Canadá, para obtener más información o para adquirir una cuenta anual con un costo de 1.695 dólares estadounidenses por 10 incidentes, llame al número (800)&nbsp;936-3500, 24&nbsp;horas al día y siete días a la semana, incluso festivos.  Para enviar un incidente con una cuenta existente, llame al número (800) &nbsp;936-4700, 24&nbsp;horas al día y siete&nbsp;días a la semana, incluso festivos.</P>
+  
+<P><STRONG>Envío de preguntas mediante Internet</STRONG>: en Estados Unidos de América y Canadá, también puede enviar sus preguntas de soporte estándar sin costo, de pago por incidente o anual prioritario mediante Internet con respuesta por Web.  Para obtener más detalles, vaya al soporte técnico en línea de Microsoft en <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A>.</P>
+
+<h2>Opciones adicionales de soporte</h2>
+
+<P><STRONG>Programas y servicios de soporte:</STRONG> el soporte técnico de Microsoft también ofrece programas y servicios de soporte profesional para negocios de tamaño medio y grande que necesitan algo más que la solución estándar de incidentes.  Para obtener más información, vea la sección de soporte técnico del archivo de Ayuda o visite el soporte técnico en línea de Microsoft en <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A>.</P>
+
+<P><STRONG>Teléfono de texto:</STRONG> los servicios de teléfono de texto (TTY/TTD) de Microsoft están disponibles para las personas con deficiencias auditivas. En Estados Unidos de América, utilice un módem TTY/TTD y llame al número (425)&nbsp;635-4948. En Canadá, utilice un módem TTY/TTD y llame al número (905)&nbsp;568-9641.</p>
+
+<H2>Soporte t&eacute;cnico en espa&ntilde;ol</H2>
+<P>Para obtener informaci&oacute;n espec&iacute;fica en espa&ntilde;ol sobre servicios de soporte Microsoft, p&oacute;ngase en contacto directamente con la subsidiaria de Microsoft que atiende a su pa&iacute;s a trav&eacute;s de los n&uacute;meros que se incluyen a continuaci&oacute;n. El soporte de Microsoft abarca desde los servicios de informaci&oacute;n electr&oacute;nica de bajo costo hasta planes de soporte anuales. Si desea informaci&oacute;n detallada, consulte la secci&oacute;n de soporte t&eacute;cnico de la Ayuda en pantalla. Los servicios de soporte t&eacute;cnico de Microsoft est&aacute;n sujetos a los precios, t&eacute;rminos y condiciones vigentes de Microsoft, y pueden cambiar sin aviso previo.</P>
+<P><STRONG>Servicios de informaci&oacute;n</STRONG></P>
+<P>Desde el sitio World Wide Web de Microsoft ubicado en: <A href="http://www.microsoft.com/" target="_top">http://www.microsoft.com/</A> puede visitar los sitios Web de las subsidiarias de habla hispana existentes en cada pa&iacute;s, para ello elija el pa&iacute;s cuyas p&aacute;ginas desea visitar. La informaci&oacute;n centralizada espec&iacute;fica para Latinoam&eacute;rica tambi&eacute;n est&aacute; en <A href="http://www.microsoft.com/latam/soporte" target="_top">http://www.microsoft.com/latam/soporte</A>. La información específica para España está en <A HREF="http://microsoft.com/spain/support/">http://microsoft.com/spain/support/</A>.</P>
+<P><STRONG>Soporte est&aacute;ndar y Soporte prioritario</STRONG></P>
+<P>P&oacute;ngase en contacto con la subsidiaria de Microsoft que atiende a su pa&iacute;s a trav&eacute;s de la lista de tel&eacute;fonos que se incluye m&aacute;s adelante. En Estados Unidos o Canad&aacute;, vea <I>Soporte t&eacute;cnico en ingl&eacute;s</I>.</P>
+<P>A continuaci&oacute;n se enumeran las subsidiarias de habla hispana de Microsoft y los pa&iacute;ses a los que sirven. Si no hay una oficina de Microsoft en su pa&iacute;s, p&oacute;ngase en contacto con el establecimiento donde adquiri&oacute; el producto de Microsoft. Si desea m&aacute;s informaci&oacute;n acerca de las subsidiarias, consulte en el producto la secci&oacute;n Soporte t&eacute;cnico a nivel mundial de la Ayuda en pantalla. </P>
+<P>Cuando llame, deber&aacute; estar delante de su PC y tener a mano la documentaci&oacute;n del producto. </P>
+<TABLE BORDER CELLSPACING=3 CELLPADDING=2 WIDTH=720>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#000080" HEIGHT=20>
+<B><P ALIGN="CENTER"><FONT COLOR="#FFFFFF">Subsidiaria, sitio Web y tipo de servicios</FONT></B></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#000080" HEIGHT=20>
+<B><P ALIGN="CENTER"><FONT COLOR="#FFFFFF">Tel&eacute;fono de cada servicio</FONT></B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=19>
+<B><P>Argentina</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=21>
+<P>Microsoft de Argentina S.A.</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19>
+<P ALIGN="RIGHT"><A HREF="http://www.microsoft.com/argentina/soporte">http://www.microsoft.com/argentina/soporte</A></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19>
+<P ALIGN="JUSTIFY">    Servicios al Cliente: <br>
+     Fax:<br>
+     Soporte T&eacute;cnico:<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=19>
+<P ALIGN="JUSTIFY">     (54) (1) 316-4600<br>
+     (54) (1) 316-1922<br>
+     (54) (1) 316-4664<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Bolivia <A HREF="#Uruguay">Vea Uruguay</A></B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Brasil</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Inform&aacute;tica Ltda.</P>
+</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>             Phone:<br>
+             Fax:<br>
+             Technical Support Phone:<br>
+             Technical Support Fax:<br>
+             Technical Support Bulletin Board Service (BBS):<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>          (55) (11) 5514 - 7100<br>
+          (55) (11) 5514 - 7107/5514-7108<br>
+          (55) (11) 5506 - 8087<br>
+          (55) (11) 5506 - 7621<br>
+          (55) (11) 5506 - 1234<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Caribe y Centro Am&eacute;rica</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Caribbean, Inc.</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P></B></U><A HREF="http://www.microsoft.com/centroam/soporte">http://www.microsoft.com/centroam/soporte</A></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P>Caribe</B></U></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Servicio al Cliente:</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>(506) 293 - 5339</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P>Puerto Rico</B></U></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>1-800-297-5982</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Fax:<BR>
+         Soporte T&eacute;cnico:
+</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>(1) (954) 491-8849<BR>
+         (506) 293-5860<BR>
+         (408) 953-8086<br></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<B><U><P>Centro Am&eacute;rica</B></U></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>         Soporte T&eacute;cnico:</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>          (506) 293 - 5860</P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Chile</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Chile S.A.</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/chile/soporte">http://www.microsoft.com/chile/soporte</A></P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          Teléfono: <br>
+          Fax:<br>
+		  Servicios de Información:<br><br>
+		  Soporte Técnico:<br>
+          Sistemas Operativos, aplicaciones,<br>
+		  Juegos e Internet Explorer.<br>
+          Teléfono:<br>
+          Fax:
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          56-2-330-6000<br>
+          56-2-330-6190<br>
+		  800-330-600<br><br><br><br><br><br>
+          56-2-330-6222<br>
+          56-2-204-9424
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Colombia</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Colombia</TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/colombia/soporte">http://www.microsoft.com/colombia/soporte</A></P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR><TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+
+<P ALIGN="JUSTIFY">L&iacute;nea de Respuesta Microsoft (Santaf&eacute; de Bogot&aacute; D.C.)<BR>
+PBX:<br>
+         Fax:<br>
+         Correo de Voz:</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P ALIGN="CENTER">&nbsp;</P>
+<P>               (571) 523-0022<br>
+               (571) 523-1220<br>
+               (571) 503-4216</P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2 BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Ecuador</B></TD>
+</TR>
+<TR><TD VALIGN="TOP" COLSPAN=2 BGCOLOR="#ffffff" HEIGHT=17>
+<P>Corporaci&oacute;n Microsoft del Ecuador S.A.</P>
+<P></TD>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/ecuador/soporte">http://www.microsoft.com/ecuador/soporte</A></P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          PBX:<br>
+          Fax:<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>          (593) 2 - 460453<br>
+          (593) 2 - 463093<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Espa&ntilde;a</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Ib&eacute;rica SRL</P></TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://microsoft.com/spain/support/">http://microsoft.com/spain/support/</A></P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD></TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Teléfono de Soporte Técnico:</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P> 902 197 198</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>M&eacute;xico</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft M&eacute;xico, S.A. de C.V.</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P><A HREF="http://www.microsoft.com/mexico/soporte">http://www.microsoft.com/mexico/soporte</A>
+</P></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>          Aplicaciones y Sistemas Operativos de Escritorio:<br>
+          Herramientas de Desarrollo y Sistemas Avanzados:<br>
+          Servicios al Cliente:<BR>
+          Bulletin Board Service:<br>
+         
+          (2400s/14400k baud, 8 bits, No parity, 1 stop bit, ANSI terminal emul.)<br>
+          (28800k baud, 8 bits, No parity, 1 stop bit, ANSI terminal emulation)<BR>
+          User: MSMEXICO, NO Password
+          <p>
+          Fast Tips & FaxBack:<BR></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>               (52) (5) 265-3399<br><br>
+               (52) (5) 267-2110<br>
+               (52) (5) 265-3380<BR>     
+               (52) (5) 628-6202 y 628-6200<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+(52) (5) 267-2199</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Paraguay <A HREF="#Uruguay">Vea Uruguay</A></B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Per&uacute;</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>Microsoft Per&uacute; S.A.</TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<A HREF="http://www.microsoft.com/peru/soporte">http://www.microsoft.com/peru/soporte</A></P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>               Servicios al Cliente:<br>
+                    Fax:
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+               (51)(1) 422-4116<br>
+                    (51)(1) 440-2619
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<A NAME="Uruguay"></A><B><P>Uruguay/Paraguay/Bolivia</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Soporte T&eacute;cnico Microsoft</P></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P></P>
+<B><P>    </B><A HREF="http://www.microsoft.com/uruguay/soporte">http://www.microsoft.com/uruguay/soporte</A></TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P>               Tel&eacute;fono:<br>
+                    Fax:<br>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P ALIGN="JUSTIFY">               (598) (2) 774934<br>
+                    (598) (2) 774935<br>
+</TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P></P></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#c0c0c0" HEIGHT=17>
+<B><P>Venezuela</B></TD>
+</TR>
+<TR><TD COLSPAN=2 VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17><P>Microsoft Venezuela S.A.</P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P><A HREF="http://www.microsoft.com/venezuela/soporte">http://www.microsoft.com/venezuela/soporte</A></P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=17>
+<P></P></TD>
+</TR>
+<TR><TD WIDTH="58%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P>               Tel&eacute;fono:<br>
+                    Fax:<br>
+                    Soporte T&eacute;cnico:
+</P>
+</TD>
+<TD WIDTH="50%" VALIGN="TOP" BGCOLOR="#ffffff" HEIGHT=34>
+<P ALIGN="JUSTIFY">                    (582) 265 99 22<br>
+                    (582) 265 08 63<br>
+                    (582) 993 6755</TD>
+</TR>
+</TABLE>
+<P><STRONG>Soporte técnico a nivel mundial:</STRONG> Los servicios de soporte y los precios pueden variar fuera de Estados Unidos de América y Canadá.  Para obtener información acerca del soporte disponible fuera de Estados Unidos de América y Canadá, póngase en contacto con la subsidiaria local de Microsoft en su área.  Para obtener una lista mundial de subsidiarias de Microsoft visite el soporte técnico en lí nea de Microsoft en <A href="http://www.microsoft.com/support/" target="_top">http://www.microsoft.com/support/</A>.</P>
+
+<p><strong>Note</strong>&nbsp;&nbsp;&nbsp;Los servicios disponibles en Estados Unidos y Canadá se proporcionan en inglés.  Los servicios de soporte y los precios pueden variar fuera de Estados Unidos de América y Canadá.  <BR>
+
+Los servicios de soporte de Microsoft están sujetos a los precios, términos y condiciones de Microsoft vigentes en ese momento que pueden cambiar sin previo aviso.</P>
+
+
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente. </p>
+
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+
+
+<hr>
+
+
+<p align="center"><a href="../../../common/iiadden.htm">Anexo al contrato de licencia para el usuario final de software de Microsoft</a>.</p>
+
+
+
+
+
+
+
+
+
+</font>
+</body>
+</html>

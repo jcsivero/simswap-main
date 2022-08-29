@@ -1,0 +1,227 @@
+// File:  generated on 8/29/96 4:51:01 PM - By Brian Harris
+
+                        // Default Win95[ANSI]
+//#define UNICODE	//         WinNT[UNICODE]
+
+[
+#ifdef UNICODE
+    uuid(11269240-F241-11cf-BD9A-00AA00575603),
+    helpstring("VB 5 - IShellLinkW Interface(UNICODE)"),
+#else
+    uuid(11269241-F241-11cf-BD9A-00AA00575603),
+    helpstring("VB 5 - IShellLinkA Interface(ANSI)"),
+#endif
+    version(1.0)
+]
+
+
+#ifdef UNICODE
+    library IShellLinkW
+    #define ISTRING LPWSTR
+#else
+    library IShellLinkA
+    #define ISTRING LPSTR
+#endif
+#define TCHAR unsigned char
+
+{
+    importlib("stdole2.tlb");
+
+    #define MAX_PATH  255
+
+    typedef struct FILETIME
+    {
+      long  dwLowDateTime;
+      long  dwHighDateTime;
+    } FILETIME;
+
+    typedef struct WIN32_FIND_DATA
+    {
+      long      dwFileAttributes;
+      FILETIME  ftCreationTime;
+      FILETIME  ftLastAccessTime;
+      FILETIME  ftLastWriteTime;
+      long      nFileSizeHigh;
+      long      nFileSizeLow;
+      long      dwReserved0;
+      long      dwReserved1;
+      TCHAR     cFileName[MAX_PATH];
+      TCHAR     cAlternate[14];
+    } WIN32_FIND_DATA;
+
+    // IShellLink::Resolve fFlags
+    typedef enum {
+        SLR_NO_UI           = 0x0001,
+        SLR_ANY_MATCH       = 0x0002,
+        SLR_UPDATE          = 0x0004,
+    } SLR_FLAGS;
+
+    // IShellLink::GetPath fFlags
+    typedef enum {
+        SLGP_SHORTPATH      = 0x0001,
+        SLGP_UNCPRIORITY    = 0x0002,
+    } SLGP_FLAGS;
+
+    //==========================================================================
+    [
+        uuid(0000010b-0000-0000-C000-000000000046),
+        helpstring("IPersistFile Interface"),
+        odl
+    ]
+    //==========================================================================
+    interface IPersistFile : IUnknown
+    //==========================================================================
+    {
+        [helpstring("GetClassID")]
+        HRESULT GetClassID (
+                        [in,out] long  *pClassID);
+
+        [helpstring("IsDirty")]
+        HRESULT IsDirty (void);
+
+        [helpstring("Load")]
+        HRESULT Load (
+                        [in]     LPSTR  pszFileName,
+                        [in]     long   dwMode);
+
+        [helpstring("Save")]
+        HRESULT Save (
+                        [in]     LPSTR  pszFileName,
+                        [in]     long   fRemember);
+
+        [helpstring("SaveCompleted")]
+        HRESULT SaveCompleted (
+                        [in]     LPSTR  pszFileName);
+
+        [helpstring("GetCurFile")]
+        HRESULT GetCurFile (
+                        [in,out] LPSTR *ppszFileName);
+    }
+
+    //==========================================================================
+    [
+#ifdef UNICODE
+        uuid(000214F9-0000-0000-C000-000000000046),
+        helpstring("IShellLinkW Interface"),
+#else
+        uuid(000214EE-0000-0000-C000-000000000046),
+        helpstring("IShellLinkA Interface"),
+#endif
+        odl, hidden
+    ]
+
+    //==========================================================================
+#ifdef UNICODE
+    interface IShellLinkW:IUnknown
+#else
+    interface IShellLinkA:IUnknown
+#endif
+    //==========================================================================
+    {
+        [helpstring("GetPath")]
+        HRESULT GetPath(
+                        [in]     ISTRING           pszFile,
+                        [in]     long              cchMaxPath,
+                        [in,out] WIN32_FIND_DATA  *pfd,
+                        [in]     long              fflags);
+
+        [helpstring("GetIDList")]
+        HRESULT GetIDList(
+                        [in,out]  long  *ppidl);
+
+        [helpstring("SetIDList")]
+        HRESULT SetIDList(
+                        [in]      long   pidl);
+
+        [helpstring("GetDescription")]
+        HRESULT GetDescription(
+                        [in]      ISTRING  pszName,
+                        [in]      long     cchMaxName);
+
+        [helpstring("SetDescription")]
+        HRESULT SetDescription(
+                        [in]      ISTRING  pszName);
+
+        [helpstring("GetWorkingDirectory")]
+        HRESULT GetWorkingDirectory(
+                        [in]      ISTRING  pszDir,
+                        [in]      long     cchMaxPath);
+
+        [helpstring("SetWorkingDirectory")]
+        HRESULT SetWorkingDirectory(
+                        [in]      ISTRING  pszDir);
+
+        [helpstring("GetArguments")]
+        HRESULT GetArguments(
+                        [in]      ISTRING  pszArgs,
+                        [in]      long     cchMaxPath);
+
+        [helpstring("SetArguments")]
+        HRESULT SetArguments(
+                        [in]      ISTRING  pszArgs);
+
+        [helpstring("GetHotkey")]
+        HRESULT GetHotkey(
+                        [in,out]  long    *pwHotkey);
+
+        [helpstring("SetHotkey")]
+        HRESULT SetHotkey(
+                        [in]      long    wHotkey);
+
+        [helpstring("GetShowCmd")]
+        HRESULT GetShowCmd(
+                        [in,out]  long   *piShowCmd);
+
+        [helpstring("SetShowCmd")]
+        HRESULT SetShowCmd(
+                        [in]      long    iShowCmd);
+
+        [helpstring("GetIconLocation")]
+        HRESULT GetIconLocation(
+                        [in]      ISTRING  pszIconPath,
+                        [in]      long     cchIconPath,
+                        [in,out]  long    *piIcon);
+
+        [helpstring("SetIconLocation")]
+        HRESULT SetIconLocation(
+                        [in]      ISTRING  pszIconPath,
+                        [in]      long     iIcon);
+
+        [helpstring("SetRelativePath")]
+        HRESULT SetRelativePath(
+                        [in]      ISTRING  pszPathRel,
+                        [in]      long     dwReserved);
+
+        [helpstring("Resolve")]
+        HRESULT Resolve(
+                        [in]      long     hwnd,
+                        [in]      long     fflags);
+
+        [helpstring("SetPath")]
+        HRESULT SetPath(
+                        [in]      ISTRING  pszFile);
+    }
+#ifdef UNICODE
+    //==========================================================================
+    [
+        uuid(00021401-0000-0000-C000-000000000046),
+        helpstring("ShellLinkW Class")
+    ]
+    //==========================================================================
+    coclass ShellLinkW
+    {
+        [default] interface IShellLinkW;
+    }
+#else
+    //==========================================================================
+    [
+        uuid(00021401-0000-0000-C000-000000000046),
+        helpstring("ShellLinkA Class")
+    ]
+    //==========================================================================
+    coclass ShellLinkA
+    {
+        [default] interface IShellLinkA;
+    }
+#endif
+}

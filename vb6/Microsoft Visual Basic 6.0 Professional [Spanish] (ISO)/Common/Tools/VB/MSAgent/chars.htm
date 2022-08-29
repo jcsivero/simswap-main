@@ -1,0 +1,112 @@
+<HTML>
+<HEAD><TITLE>Microsoft Agent Character Data</TITLE>
+</HEAD>
+
+<BODY topmargin=0 leftmargin=100 bgcolor=white link=blue vlink=blue>
+<FONT face="verdana,arial,helvetica" size=2> 
+<IMG SRC="images/title.gif" width=396 height=66 alt="Microsoft Agent">
+
+<H3>Character Data</H3>
+
+Microsoft Agent provides three standard characters: Genie, Merlin, and Robby.
+For each character, three types of character data are available:
+<UL>
+<A href="chars.htm#http">
+<LI>HTTP Access to Animations</A>
+<BR>All the animations for each standard character are available from a World Wide Web server
+maintained by Microsoft.  Individual animations can be downloaded from this server after
+a character is loaded using an HTTP URL.
+
+<A href="chars.htm#file">
+<LI>File Access to Animations</A>
+<BR>As an alternative to using HTTP access, the complete set of animations for each
+standard character is available in a single, downloadable file.
+This file can be accessed using a local or UNC path, but cannot be accessed via HTTP URL.
+
+<A href="chars.htm#images">
+<LI>Images Only</A>
+<BR>Static and dynamic images, in GIF format, for each standard character.
+Can be used to visually represent a character in an application or web page. 
+</UL>
+
+<P><A name="http"><B>HTTP Access to Animations</B></A>
+<P>A complete set of animations for each of the three characters is maintained
+on a World Wide Web server at <I>http://agent.microsoft.com/characters/</I>.  Each character
+is found is a separate directory with the same name as the character.  For example,
+the Genie character is found at <I>http://agent.microsoft.com/characters/genie/genie.acf</I>.
+<P>To access character animations via HTTP from a web page, you specify the correct
+URL for the character you want to use in the <I>Load</I> request.
+Once the <I>Load</I> has succeeded, all subsequent <I>Get</I> requests for that character's animations will automatically
+go to the specified URL and download the animation into the user's cache of temporary internet files.
+
+<P><A name="file"><B>File Access to Animations</B></A>
+<P>These files contain the animation data
+for the three standard Microsoft Agent characters. If you are developing an intranet application for Microsoft Agent, these files provide the animations you will need.
+You can install these files on a user's machine along with your application,
+and load the character data into your application using a local path.
+Alternately, you can publish these files on a network share and load
+the character data into your application using a UNC path.  Note that both if these
+uses are subject to the terms of the <A href="license.htm">
+Microsoft Agent License and Redistribution</A> agreement.
+These files cannot be accessed using an HTTP URL.
+
+<P><B>Instructions</B>
+<P>Simply click on any link below to
+install these files into a new location.  When prompted, choose <I>Save this file to disk</I>.
+The standard location for character animation files is \&lt;Windows Directory&gt;\MSAgent\Chars\.
+<UL>
+<A href="chars/genie.acs">
+<LI>Character animation file for Genie (genie.acs)</A>
+
+<A href="chars/merlin.acs">
+<LI>Character animation file for Merlin (merlin.acs)</A>
+
+<A href="chars/merlinsfx.acs">
+<LI>Character animation file for Merlin with sound effects (merlinsfx.acs)</A>
+ 
+<A href="chars/robby.acs">
+<LI>Character animation file for Robby (robby.acs)</A>
+</UL>
+
+<P><A name="images"><B>Images Only</B></A>
+
+<P>These are static and animated images
+for the three standard Microsoft Agent characters.
+The images are supplied in GIF format.  They can be hosted directly
+on HTML pages or within the WebBrowser control in Visual Basic&reg; or C++ applications.
+They can be used in any situation where a visual representation of one or more standard characters is needed.
+<P>To copy an image file, right-click on an image below and
+select <I>Save Picture As...</I> from the shortcut menu.
+
+<P>
+<CENTER>
+<TABLE width=100%>
+<TR><TD colspan=3 align=left>
+<FONT FACE="verdana,arial,helvetica" SIZE="2"><B>Animated Images</B></FONT>
+<TR>
+<TD>
+<IMG src="images/GenieG.gif" width=128 height=128 alt="genieg.gif">
+<TD>
+<IMG src="images/MerlinG.gif" width=128 height=128 alt="merling.gif">
+<TD>
+<IMG src="images/RobbyG.gif" width=128 height=128 alt="robbyg.gif">
+<TR><TD colspan=3 align=left>
+<FONT FACE="verdana,arial,helvetica" SIZE="2"><B>Static Images</B></FONT>
+<TR>
+<TD>
+<IMG src="images/GenieR.gif" width=128 height=128 alt="genier.gif">
+<TD>
+<IMG src="images/MerlinR.gif" width=128 height=128 alt="merlinr.gif">
+<TD>
+<IMG src="images/RobbyR.gif" width=128 height=128 alt="robbyr.gif">
+</TABLE>
+</CENTER>
+
+
+<P>&nbsp;</FONT>
+<P><FONT FACE="MS SANS SERIF" SIZE="1" COLOR="BLACK">
+&#169; 1998 Microsoft Corporation. All rights reserved.</A>
+</FONT>
+
+</BODY>
+</HTML>

@@ -1,0 +1,45 @@
+;													
+;	INF for Posting Acceptor 1.0 installation
+;	Copyright (c) 1997 Microsoft Corporation
+;
+;	OCM Stuff
+[Version]
+Signature = "$Windows NT$"
+;
+[Optional Components]
+;
+; Only one subcomponent is allowed, and it must match the component name
+; given in the master OC INF
+;
+PostAcc
+;
+; NT x86
+[PostAcc]
+;
+; Standard fields
+;
+Needs = iis_www
+OptionDesc = %PostAcc_desc%
+Tip = %PostAcc_tip%
+Modes = 4
+parent = SSE
+;
+; These fields are specific to per-components INFs for components
+; with stand-alone installation programs.
+;
+; InstallCmd is used if the state changed from uninstalled to installed
+; UninstallCmd is used if the state changed from installed to uninstalled
+; InstalledCmd is used if the state did not change and is installed
+; UninstalledCmd is used if the state did not change and is uninstalled
+;
+InstallCmd = "Pak210-x86.exe /Q:A /R:NG"
+InstalledCmd = "Pak210-x86.exe /Q:A /R:NG"
+UninstallCmd = "RunDll32 ADVPACK.DLL,LaunchINFSection cpshost.inf,CPSHostUninstall,5"
+UninstalledCmd = "RunDll32 ADVPACK.DLL,LaunchINFSection cpshost.inf,CPSHostUninstall,5"
+;
+; size in MB so OC Manager can display something meaningful to the user.
+DiskSpaceEstimate = 10
+;
+[strings]
+PostAcc_desc = "Publishing - Posting Acceptor 1.01"
+PostAcc_tip = "The Posting Acceptor enables the Internet Information Server to receive files uploaded using HTTP POST."

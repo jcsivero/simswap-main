@@ -1,0 +1,1331 @@
+; Localized	10/31/1997 08:52  (GMT)	7:3.0.406 A	rasics.inf
+[Version]
+Signature="$Windows NT$"
+Platform = NTW
+
+[DestinationDirs]
+CPSAD_Root =   33000,%CPSADDIR%
+CPSAD_Root_Uninstal =   33000,%CPSADDIR% 
+CPSDOC_Docs = 33000,%CPSADDIR%\docs
+CPSAD_system = 11
+CPSSRV_system = 11
+CPSSRV_Root = 43100,\%APP_PATH_SERVER%
+CPSSRV_Server = 43100,\%APP_PATH_SERVER%\bin
+CPSSRV_data = 43100,\%APP_PATH_SERVER%\data\database
+CPSDOC_Webdocs = 18,\rasics\cps
+RASDOC_Webdocs = 18,\rasics
+RASDOC_iismisc = 18,\pws\misc
+CMAK_Root =   33000,%CMAKDIR%
+CMAK_CmHelp = 33000,%CMAKDIR%\cm32\%CmLangDir%\%CMHELP_SOURCE_DIR%
+CMAK_CmLang = 33000,%CMAKDIR%\cm32\%CmLangDir%
+CMAK_Webdocs = 18,\rasics\cmak
+CIAS_Root =   33000,%CIASDIR%
+CIAS_RootNoDel = 33000,%CIASDIR%
+CIAS_WebDocs = 18,\rasics\ias
+CIAS_System = 11
+CPSDOC_Welcome = 18,\rasics
+CIAS_Welcome = 18,\rasics
+CMAK_Welcome = 18,\rasics
+
+[Optional Components]
+RASICS
+RASDOC
+COMMONDOC
+CPS
+CPSAD
+CPSDOC
+;CMAK
+CMAKPROG
+CMAKDOC
+
+[RASDOC]
+Parent = RASICS
+;Needs = iis_doc_pwmcore
+OptionDesc = %RASDOC_DESC%
+Tip =  %RASDOC_TIP%
+IconIndex = *
+Bitmap = DOCICO
+;Uninstall=RASDOC_Uninst
+;CopyFiles=RASDOC_Webdocs, RASDOC_iismisc
+;AddVroots=RASDOC_VRoots
+
+[COMMONDOC]
+Parent = RASDOC
+Needs = iis_doc_ismcore
+OptionDesc = %COMMONDOC_DESC%
+Tip =  %COMMONDOC_TIP%
+IconIndex = *
+Bitmap = DOCICO
+Uninstall=RASDOC_Uninst
+CopyFiles=RASDOC_Webdocs, RASDOC_iismisc
+AddVroots=RASDOC_VRoots
+[RASICS]
+OptionDesc = %RASICS_DESC%
+Tip =  %RASICS_TIP%
+IconIndex = *
+Bitmap = COMPICO
+
+[CPS]
+Parent = RASICS
+OptionDesc = %CPS_DESC%
+Tip =  %CPS_TIP%
+IconIndex = *
+Bitmap = CPSICO
+
+[CPSAD]
+Parent = CPS
+Needs = iis_common,DAC_DRV_BRAZOS
+OptionDesc = %CPSAD_DESC%
+Tip =  %CPSAD_TIP%
+IconIndex = *
+Bitmap = CPSICO
+DefPath = "%24%\%PROGRAMF%"
+DefProgramGroup = "%CPSADPROG_GRP%"
+UserInfoKey = "%CPREGROOT%\%USERINFO%","%USER_VALNAME%","%ORG_VALNAME%"
+Uninstall=CPSAD_Uninst
+AddReg=CPSAD_AddReg
+AddShortcuts=CPSAD_Shortcuts
+CopyFiles=CPSAD_Root,CPSAD_system
+
+[CPSSRV]
+Needs = iis_common,dac_drv_brazos,iis_www
+Parent = CPS
+OptionDesc = %CPSSRV_DESC%
+Tip =  %CPSSRV_TIP%
+IconIndex = *
+Bitmap = COMPICO
+DefPath = "%24%\%PROGRAMF%"
+DefProgramGroup = "%CPSADPROG_GRP%"
+UserInfoKey = "%CPREGROOT%\%USERINFO%","%USER_VALNAME%","%ORG_VALNAME%"
+Uninstall=CPSSRV_Uninst
+AddReg=CPSSRV_AddReg
+CopyFiles=CPSSRV_Root,CPSSRV_Server,CPSSRV_system,CPSSRV_data
+
+[CPSDOC]
+Needs =COMMONDOC
+Parent =RASDOC
+OptionDesc = %CPSDOC_DESC%
+Tip =  %CPSDOC_TIP%
+IconIndex = *
+Bitmap = DOCICO
+Uninstall=CPSDOC_Uninst
+CopyFiles=CPSDOC_Webdocs
+AddVroots=CPSDOC_VRoots
+
+[CPSDOC_Uninst]
+DelDir=CPSDOC_Webdocs
+DelFiles=CPSDOC_Webdocs
+DelVroots=CPSDOC_Vroots
+
+[CPSSRV_Uninst]
+DelDir=CPSSRV_Root
+DelReg=CPSSRV_RegUninst
+DelFiles=CPSSRV_Root,CPSSRV_Server,CPSSRV_system,CPSSRV_data
+
+[CPSAD_Uninst]
+DelReg=CPSAD_RegUninst
+DelShortcuts=CPSAD_Shortcuts
+DelFiles=CPSAD_Root_Uninstal 
+
+[CPSDOC_VRoots]
+"IISHELP/ics/I_cps"="%18%\%CPSHELPDIR%"
+
+[CPSAD_AddReg]
+"HKCR", ".pbk", "", "", "CMPBKFile"
+"HKCR", ".pbr", "", "", "CMPBRFile"
+"HKCR", "CMPBKFile", "", "", "%PhoneName%"
+"HKCR", "CMPBRFile", "", "", "%RegionName%"
+"HKLM", "%SharedPath%\DAO\clients","%33000%\%CPSADDIR%\pbadmin.exe", "", ""
+"HKLM", "%SharedPath%\mfc40\clients","%33000%\%CPSADDIR%\pbadmin.exe", "", ""
+"HKLM", "%SharedPath%\olepro32\clients","%33000%\%CPSADDIR%\pbadmin.exe", "", ""
+"HKLM", "%SharedPath%\vbdb32\clients","%33000%\%CPSADDIR%\pbadmin.exe", "", ""
+"HKLM", "%SharedPath%\vbr40032\clients","%33000%\%CPSADDIR%\pbadmin.exe", "", ""
+
+[CPSAD_RegUninst]
+"HKCR", ".pbk"
+"HKCR", ".pbr"
+"HKCR", "CMPBKFile"
+"HKCR", "CMPBRFile"
+"HKLM", "%SharedPath%\DAO\clients", "%33000%\%CPSADDIR%\pbadmin.exe"
+"HKLM", "%SharedPath%\mfc40\clients","%33000%\%CPSADDIR%\pbadmin.exe"
+"HKLM", "%SharedPath%\olepro32\clients","%33000%\%CPSADDIR%\pbadmin.exe"
+"HKLM", "%SharedPath%\vbdb32\clients", "%33000%\%CPSADDIR%\pbadmin.exe"
+"HKLM", "%SharedPath%\vbr40032\clients","%33000%\%CPSADDIR%\pbadmin.exe"
+
+[CPSSRV_AddReg]
+"HKLM", "SOFTWARE\ODBC\ODBC.INI\ODBC Data Sources","%KEY_NAME_DSN_Name%","","" ; creates the key
+"HKLM", "%KEY_ODBC_ROOT_Name%","DBQ","","%43100%\%APP_PATH_SERVER%\%DB_PATH_SERVER%\pbserver.mdb"
+"HKLM", "%KEY_ODBC_ROOT_Name%","Driver","","%11%\%KEY_NAME_ACCESS_DRIVER%"
+"HKLM", "%KEY_ODBC_ROOT_Name%","FIL","","MS Access;"
+"HKLM", "%KEY_ODBC_ROOT_Name%","PWD","",""
+"HKLM", "%KEY_ODBC_ROOT_Name%","UID","",""
+"HKLM", "%KEY_ODBC_ROOT_Data%","ImplicitCommitSync","","Yes"
+"HKLM", "%KEY_ODBC_ROOT_Data%","UserCommitSync","","Yes"
+"HKLM", "%KEY_WWWRoot%","%PBS_SCRIPT_VROOT%","","%43100%\%APP_PATH_SERVER%\Bin,,4"
+"HKLM", "%KEY_WWWRoot%","%PBS_DATA_VROOT%","","%43100%\%APP_PATH_SERVER%\Data,,1"
+"HKLM", "%KEY_FTPRoot%","%PBS_DATA_VROOT%","","%43100%\%APP_PATH_SERVER%\Data,,1"
+"HKLM", "%KEY_Events%","EventMessageFile","","%43100%\%APP_PATH_SERVER%\Bin\pbsvrmsg.dll"
+"HKLM", "%KEY_CPSMON_ROOT%","","",""
+"HKLM", "%KEY_CPSMON_PERF%","Library","","%43100%\%APP_PATH_SERVER%\Bin\pbsmon.dll"
+"HKLM", "%KEY_CPSMON_PERF%","Open","","OpenPerfMon"
+"HKLM", "%KEY_CPSMON_PERF%","Collect","","CollectPerfMon"
+"HKLM", "%KEY_CPSMON_PERF%","Close","","ClosePerfMon"
+
+[CPSSRV_RegUninst]
+"HKLM", "%KEY_ODBC_ROOT_Name%"
+"HKLM", "%KEY_ODBC_ROOT_Data%"
+"HKLM", "%KEY_WWWRoot%","%PBS_SCRIPT_VROOT%"
+"HKLM", "%KEY_WWWRoot%","%PBS_DATA_VROOT%"
+"HKLM", "%KEY_FTPRoot%","%PBS_DATA_VROOT%"
+"HKLM", "%KEY_Events%"
+"HKLM", "%KEY_CPSMON_ROOT%"
+"HKLM", "%KEY_CPSMON_PERF%"
+
+[CPSAD_Shortcuts]
+"%RASICS_DESC%", "%CPPRODNAME%", "%33000%\%CPSADDIR%\pbadmin.exe", "%33000%\%CPSADDIR%"
+
+[CPSAD_Root]
+base.ddf
+country.txt
+pbadmin.exe
+pbadmin.hlp
+pbadmin.chm
+;pbadmin.hhc
+;pbadmin.hhk
+pbserver.mdb,,,16
+diantz.exe
+dta.bat
+dta.ddf
+empty_pb.mdb
+full.bat
+full.ddf
+spain.pbr
+hhwrap.dll
+hhctrl.ocx
+
+[CPSAD_Root_Uninstal]
+base.ddf
+country.txt
+pbadmin.cnt
+pbadmin.exe
+pbadmin.hlp
+pbadmin.chm
+;pbadmin.hhc
+;pbadmin.hhk
+;pbserver.mdb - don't erase this file, needed by pbserver
+diantz.exe
+dta.bat
+dta.ddf
+empty_pb.mdb
+full.bat
+full.ddf
+spain.pbr
+hhwrap.dll
+hhctrl.ocx
+
+[CPSSRV_Root]
+
+[CPSSRV_Server]
+pbserver.dll
+pbsvrmsg.dll
+pbsmon.dll
+
+[CPSSRV_data]
+pbserver.mdb
+
+[CPSSRV_system]
+regsym.ini
+regsym.h
+
+[CPSAD_system]
+;comcat.dll,,,32
+comctl32.ocx,,,32
+cmctles.dll,,,32
+comdlg32.ocx,,,32
+cmdlges.dll,,,32
+ctl3d32.dll,,,32
+dao350.dll,,,32
+dbgrid32.ocx,,,32
+dbgrdes.dll,,,32
+;mfc40.dll,,,32
+msinet.ocx,,,32
+inetes.dll,,,32
+;msjet35.dll,,,32
+;msjint35.dll,,,32
+;msjter35.dll,,,32
+msvbvm50.dll,,,32
+;odbcji32.dll,,,32
+;odbctl32.dll,,,32
+;olepro32.dll,,,32
+stdole2.tlb,,,32
+tabctl32.ocx,,,32
+tabctes.dll,,,32
+vb5db.dll,,,32
+vb5es.dll,,,32
+;vbajet32.dll,,,32
+;wininet.dll,,,32
+
+[CPSDOC_Webdocs]
+; Start of spider generated docs
+cps_ref_000d.htm
+cps_ref_000e.htm
+cps_ref_000f.htm
+cps_ref_000g.htm
+cps_ref_000h.htm
+cps_ref_000i.htm
+cps_ref_000j.htm
+cps_ref_000k.htm
+cps_ref_000l.htm
+cps_ref_000m.htm
+cps_ref_000n.htm
+cps_ref_000o.htm
+cps_ref_000p.htm
+cps_ref_000q.htm
+cps_ref_000r.htm
+cps_ref_000s.htm
+cps_ref_000t.htm
+cps_ref_000u.htm
+cps_ref_000v.htm
+cps_ref_000w.htm
+cps_ref_000x.htm
+cps_ref_000y.htm
+cps_ref_000z.htm
+cps_ref_0010.htm
+cps_ref_0011.htm
+cps_ref_0012.htm
+cps_ref_0013.htm
+cps_ref_0014.htm
+cps_ref_0015.htm
+cps_ref_0016.htm
+cps_ref_0017.htm
+cps_ref_0018.htm
+cps_ref_0019.htm
+cps_ref_001a.htm
+cps_ref_001b.htm
+cps_ref_001c.htm
+cps_ref_001d.htm
+cps_ref_001e.htm
+cps_ref_001f.htm
+cps_ref_001g.htm
+cps_ref_001h.htm
+cps_ref_001i.htm
+cps_ref_001j.htm
+cps_ref_001k.htm
+pbsop02.gif
+pbsop04.gif
+pbsop05.gif
+pbsop06.gif
+pbsop07.gif
+pbsrf01.gif
+pbsrf03.gif
+pbsrf04.gif
+cps_ops_0001.htm
+cps_ops_0002.htm
+cps_ops_0003.htm
+cps_ops_0004.htm
+cps_ops_0005.htm
+cps_ops_0006.htm
+cps_ops_0007.htm
+cps_ops_0008.htm
+cps_ops_0009.htm
+cps_ops_000a.htm
+cps_ops_000b.htm
+cps_ops_000c.htm
+cps_ops_000d.htm
+cps_ops_000e.htm
+cps_ops_000f.htm
+cps_ops_000g.htm
+cps_ops_000h.htm
+cps_ops_000i.htm
+cps_ops_000j.htm
+cps_ops_000k.htm
+cps_ops_000l.htm
+cps_ops_000m.htm
+cps_ops_000n.htm
+cps_ops_000o.htm
+cps_ops_000p.htm
+cps_ops_000q.htm
+cps_ops_000r.htm
+cps_ops_000s.htm
+cps_ops_000t.htm
+cps_ops_000u.htm
+cps_ops_000v.htm
+cps_ops_000w.htm
+cps_ops_000x.htm
+cps_ops_000y.htm
+cps_ops_000z.htm
+cps_ops_0010.htm
+cps_ops_0011.htm
+cps_ops_0012.htm
+cps_ops_0013.htm
+cps_ops_0014.htm
+cps_ops_0015.htm
+cps_ops_0016.htm
+cps_ops_0017.htm
+cps_ops_0018.htm
+cps_ops_0019.htm
+cps_ops_001a.htm
+cps_ops_001b.htm
+cps_ops_001c.htm
+cps_ops_001d.htm
+cps_ops_001e.htm
+cps_ops_001f.htm
+cps_ops_001g.htm
+cps_ops_001h.htm
+cps_ops_001i.htm
+cps_ops_001j.htm
+cps_ops_001k.htm
+cps_ops_001l.htm
+cps_ops_001m.htm
+cps_ops_001n.htm
+cps_ops_001o.htm
+cps_ops_001p.htm
+cps_ops_001q.htm
+cps_ops_001r.htm
+cps_ops_001s.htm
+cps_ops_001t.htm
+cps_ops_001u.htm
+cps_ref_0001.htm
+cps_ref_0002.htm
+cps_ref_0003.htm
+cps_ref_0004.htm
+cps_ref_0005.htm
+cps_ref_0006.htm
+cps_ref_0007.htm
+cps_ref_0008.htm
+cps_ref_0009.htm
+cps_ref_000a.htm
+cps_ref_000b.htm
+cps_ref_000c.htm
+; End of spider generated docs
+cpsread.htm
+bar.htm                
+legal.htm
+gnicimpo.gif
+gnicnote.gif
+gnnlogo.gif
+navys.gif
+pro.gif
+whfigs1.gif
+whfigs3.gif
+whindex.gif
+whnext.gif
+whprev.gif
+
+;[CMAK]
+;Parent = RASICS
+;OptionDesc = %CMAK_DESC%
+;Tip =  %CMAK_TIP%
+;IconIndex = *
+;Bitmap = CMAKICO
+
+[CMAKPROG]
+Needs = iis_common
+Parent = RASICS
+OptionDesc = %CMAK_DESC%
+Tip =  %CMAK_TIP%
+IconIndex = *
+Bitmap = CMAKICO
+DefPath = "%24%\%PROGRAMF%"
+UserInfoKey = "%CMREGROOT%\%USERINFO%","%USER_VALNAME%","%ORG_VALNAME%"
+Uninstall=CMAK_Uninst
+AddReg=CMAK_AddReg
+AddShortcuts=CMAK_Shortcuts
+CopyFiles=CMAK_Root,CMAK_Cmlang,CMAK_CmHelp
+
+[CMAKDOC]
+Needs =COMMONDOC
+Parent =RASDOC
+OptionDesc = %CMAKDOC_DESC%
+Tip =  %CMAKDOC_TIP%
+IconIndex = *
+Bitmap = DOCICO
+CopyFiles=CMAK_Webdocs
+Uninstall=CMAKDOC_Uninst
+AddVroots=CMAK_VRoots
+
+[CMAK_Uninst]
+DelDir=CMAK_Root
+DelReg=CMAK_RegUninst
+DelShortcuts=CMAK_Shortcuts
+DelFiles=CMAK_Root,CMAK_Cmlang,CMAK_CmHelp
+
+[CMAKDOC_Uninst]
+DelDir=CMAK_Webdocs
+DelFiles=CMAK_Webdocs
+DelVroots=CMAK_Vroots
+
+[CMAK_VRoots]
+"IISHELP/ics/I_cmak"="%18%\%CMAKHELPDIR%"
+
+[CMAK_AddReg]
+"HKLM", "%CMAppPath%", "", "", "%33000%\%CMAKDIR%\CMAK.EXE"
+"HKLM", "%CMAppPath%", "Path", "", "%33000%\%CMAKDIR%"
+"HKCR", "%CMAppName%", "", "", "%CMAppName%"
+"HKCR", "%CMAppName%\DefaultIcon", "", "", "%33000%\%CMAKDIR%\CMAK.EXE,1"
+
+[CMAK_RegUninst]
+"HKLM", "%CMAppPath%"
+"HKCR", "%CMAppName%"
+
+[CMAK_Shortcuts]
+"%RASICS_DESC%", "%CMPRODNAME%", "%33000%\%CMAKDIR%\cmak.exe", "%33000%\%CMAKDIR%"
+
+[CMAK_Root]
+cmak.exe
+default.bmp
+defaultl.ico
+defaultp.bmp
+defaults.ico
+defaultt.ico
+empty.pbk
+empty.pbr
+iexpress.exe
+cmakeula.txt
+makecab.exe
+oleaut32.dll
+showicon.exe
+swflash.ocx
+urlmon.dll
+wextract.exe
+
+[CMAK_CmHelp]
+cmtrb32.rtf
+cmctx32.rtf
+cmmgr32.h
+cmmgr32.hpj
+
+[CMAK_Cmlang]
+advapi32.dll
+advpack.dll
+cmdial32.dll
+cmdl32.exe
+cmmgr32.exe
+cmmgr32.hlp
+cmpbk32.dll
+cmstats.dll
+comctl32.dll
+ccfg95.dll
+ccfgnt.dll
+icwscrpt.exe
+cnet16.dll
+cnetcfg.dll
+mbslgn32.dll
+msdun12.exe
+readme.txt
+rnaph.dll
+template.sed
+template.cmp
+template.cms
+template.inf
+uninstcm.inf
+w95inf16.dll
+w95inf32.dll
+wininet.dll
+wintrust.dll
+cmcfg32.dll
+
+[CMAK_Webdocs]
+; Start of spider generated docs
+cmak01.gif
+cmak02.gif
+cmak03.gif
+cmak04.gif
+cmak05.gif
+cmak06.gif
+cmak07.gif
+cmak08.gif
+cmak_0001.htm
+cmak_0002.htm
+cmak_0003.htm
+cmak_0004.htm
+cmak_0005.htm
+cmak_0006.htm
+cmak_0007.htm
+cmak_0008.htm
+cmak_0009.htm
+cmak_000a.htm
+cmak_000b.htm
+cmak_000c.htm
+cmak_000d.htm
+cmak_000e.htm
+cmak_000f.htm
+cmak_000g.htm
+cmak_000h.htm
+cmak_000i.htm
+cmak_000j.htm
+cmak_000k.htm
+cmak_000l.htm
+cmak_000m.htm
+cmak_000n.htm
+cmak_000o.htm
+cmak_000p.htm
+cmak_000q.htm
+cmak_000r.htm
+cmak_000s.htm
+cmak_000t.htm
+cmak_000u.htm
+cmak_000v.htm
+cmak_000w.htm
+cmak_000x.htm
+cmak_000y.htm
+cmak_000z.htm
+cmak_0010.htm
+cmak_0011.htm
+cmak_0012.htm
+cmak_0013.htm
+cmak_0014.htm
+cmak_0015.htm
+cmak_0016.htm
+cmak_0017.htm
+cmak_0018.htm
+cmak_0019.htm
+cmak_001a.htm
+cmak_001b.htm
+cmak_001c.htm
+cmak_001d.htm
+cmak_001e.htm
+cmak_001f.htm
+cmak_001g.htm
+cmak_001h.htm
+cmak_001i.htm
+cmak_001j.htm
+cmak_001k.htm
+cmak_001l.htm
+cmak_001m.htm
+cmak_001n.htm
+cmak_001o.htm
+cmak_001p.htm
+cmak_001q.htm
+cmak_001r.htm
+cmak_001s.htm
+; End of spider generated docs
+cmakread.htm
+bar.htm  
+legal.htm
+gnicimpo.gif
+gnicnote.gif
+gnnlogo.gif
+navys.gif
+pro.gif
+whfigs1.gif
+whfigs3.gif
+whindex.gif
+whnext.gif
+whprev.gif
+
+;[CIAS]
+;Parent=RASICS
+;OptionDesc = %CIAS_DESC%
+;Tip =  %CIAS_TIP%
+;IconIndex = *
+;Bitmap = CIASICO
+
+[CIASOCM]
+Needs = iis_common,iis_inetmgr,DAC_DRV_SQLSRV,DAC_DRV_BRAZOS
+Parent=RASICS
+OptionDesc = %CIAS_DESC%
+Tip =  %CIAS_TIP%
+IconIndex = *
+Bitmap = CIASICO
+CheckVersion = CIAS_Root, authsrv.exe, 1, 0
+DefPath = "%24%\%PROGRAMF%"
+DefProgramGroup = "%CIASPROG_GRP%"
+UserInfoKey = "%CIREGROOT%\%USERINFO%","%USER_VALNAME%","%ORG_VALNAME%"
+Uninstall= CIAS_Uninst
+AddReg= CIAS_AddReg
+AddShortcuts= CIAS_Shortcuts
+CopyFiles= CIAS_Root,CIAS_RootNoDel,CIAS_System
+
+[CIASDOC]
+Needs =COMMONDOC
+Parent=RASDOC
+Uninstall= CIASDOC_Uninst
+OptionDesc = %CIASDOC_DESC%
+Tip =  %CIASDOC_TIP%
+IconIndex = *
+Bitmap = DOCICO
+CopyFiles=  CIAS_WebDocs
+AddVroots=CIAS_VRoots
+
+[CIASDOC_Uninst]
+DelDir=CIAS_WebDocs
+DelFiles=CIAS_WebDocs
+DelVroots=CIAS_Vroots
+
+[CIAS_Uninst]
+DelDir=CIAS_Root
+DelReg=CIAS_RegUninst
+DelShortcuts=CIAS_Shortcuts
+DelFiles=CIAS_Root
+
+[CIAS_VRoots]
+"IISHELP/ics/I_ias"="%18%\%CIASHELPDIR%"
+
+[CIAS_AddReg]
+
+[CIAS_RootNoDel]
+_adminui.mdb,,,16
+
+[CIAS_Root]
+actlapi.dll
+adminui.cnt
+adminui.exe
+adminui.hlp
+adminui.chm
+;adminui.hhc
+authdll.dll
+authodbc.dll
+authperf.dll
+authperf.h
+authperf.ini
+authsam.dll
+authsrv.exe
+dbcon.dll
+dictionary
+iasconf.dll
+radcfg.dll
+radlog.dll
+radstp.dll
+hhwrap.dll
+hhctrl.ocx
+
+[CIAS_WebDocs]
+; Start of spider generated docs
+ciaop19.gif
+ciaop22.gif
+iasop18.gif
+ias_ops_0001.htm
+ias_ops_22lk.htm
+ias_ops_8lr7.htm
+ias_ops_015t.htm
+ias_ops_7qjo.htm
+ias_ops_7ug4.htm
+ias_ops_3jqu.htm
+ias_ops_28vo.htm
+ias_ops_8jn6.htm
+ias_ops_815w.htm
+ias_ops_4yd0.htm
+ias_ops_50rz.htm
+ias_ops_0h0v.htm
+ias_ops_2qbc.htm
+ias_ops_5ndt.htm
+ias_ops_6772.htm
+ias_ops_32id.htm
+ias_ops_20rv.htm
+ias_ops_4nco.htm
+ias_ops_78mk.htm
+ias_ops_3pr9.htm
+ias_ops_7acq.htm
+ias_ops_6bz8.htm
+ias_ops_8n1q.htm
+ias_ops_2s4y.htm
+ias_ops_4ewc.htm
+ias_ops_1pme.htm
+ias_ops_0ael.htm
+ias_ops_3u0k.htm
+ias_ops_8ysr.htm
+ias_ops_602y.htm
+ias_ops_8joi.htm
+ias_ops_6g9u.htm
+ias_ops_31eu.htm
+ias_ops_5bi2.htm
+ias_ops_3pr8.htm
+ias_ops_999i.htm
+ias_ops_2gti.htm
+ias_ops_10yw.htm
+ias_ops_4llu.htm
+ias_ops_6j0a.htm
+ias_ops_6wh1.htm
+ias_ops_2we1.htm
+ias_ops_1t9v.htm
+ias_ops_9p12.htm
+ias_ops_77zr.htm
+ias_ops_66jv.htm
+ias_ops_6m01.htm
+ias_ops_2mss.htm
+ias_ops_441h.htm
+ias_ops_7vuf.htm
+ias_ops_57y0.htm
+ias_ops_4hij.htm
+ias_ops_6smy.htm
+ias_ops_1r8y.htm
+ias_ops_1gma.htm
+ias_ops_81m2.htm
+ias_ops_8yxw.htm
+ias_ops_2ots.htm
+ias_ops_81di.htm
+ias_ops_8189.htm
+ias_ops_0002.htm
+ias_ops_909u.htm
+ias_ops_3are.htm
+ias_ops_20tl.htm
+; End of spider generated docs
+iasread.htm
+bar.htm
+legal.htm
+gnicimpo.gif
+gnicnote.gif
+gnnlogo.gif
+navys.gif
+pro.gif
+whfigs1.gif
+whfigs3.gif
+whindex.gif
+whnext.gif
+whprev.gif
+
+[CIAS_System]
+;comcat.dll,,,32
+comct232.ocx,,,32
+cmct2es.dll,,,32
+comctl32.ocx,,,32
+cmctles.dll,,,32 
+comdlg32.ocx,,,32
+cmdlges.dll,,,32
+dao350.dll,,,32
+dbgrid32.ocx,,,32
+dbgrdes.dll,,,32
+dblist32.ocx,,,32
+dblstes.dll,,,32
+;dbnmpntw.dll,,,32
+mscomm32.ocx,,,32
+mscomes.dll,,,32
+;msjet35.dll,,,32
+;msjint35.dll,,,32
+;msjter35.dll,,,32
+msrdo20.dll,,,32
+rdo20es.dll,,,32
+msvbvm50.dll,,,32
+ntwdblib.dll,,,32
+;odbcji32.dll,,,32
+;odbctl32.dll,,,32
+rdocurs.dll,,,32
+sstrace.dll,,,32
+tabctl32.ocx,,,32
+tabctes.dll,,,32
+vb5db.dll,,,32
+vb5es.dll,,,32
+;vbajet32.dll,,,32
+
+[RASDOC_Uninst]
+DelDir=RASDOC_Webdocs
+DelFiles=RASDOC_Webdocs,RASDOC_iismisc
+DelVroots=RASDOC_Vroots
+
+[RASDOC_VRoots]
+"IISHELP/ics"="%18%\%RASHELPDIR%"
+
+[RASDOC_Webdocs]
+; Start of Spider generated files
+iasop21.gif
+iasop22a.gif
+tunneling.gif
+gsbc03a.gif
+gsbc04a.gif
+bc_gstarted_0001.htm
+bc_gstarted_0002.htm
+bc_gstarted_0003.htm
+bc_gstarted_0004.htm
+bc_gstarted_0005.htm
+bc_gstarted_0006.htm
+bc_gstarted_0007.htm
+bc_gstarted_0008.htm
+bc_gstarted_0009.htm
+bc_gstarted_000a.htm
+bc_gstarted_000b.htm
+bc_gstarted_000c.htm
+bc_gstarted_000d.htm
+bc_gstarted_000e.htm
+bc_gstarted_000f.htm
+bc_gstarted_000g.htm
+bc_gstarted_000h.htm
+bc_gstarted_000i.htm
+bc_gstarted_000j.htm
+bc_gstarted_000k.htm
+bc_gstarted_000l.htm
+bc_gstarted_000m.htm
+bc_gstarted_000n.htm
+bc_gstarted_000o.htm
+bc_gstarted_000p.htm
+bc_gstarted_000q.htm
+bc_gstarted_000r.htm
+bc_gstarted_000s.htm
+bc_gstarted_000t.htm
+bc_gstarted_000u.htm
+bc_gstarted_000v.htm
+bc_gstarted_000w.htm
+bc_gstarted_000x.htm
+bc_gstarted_000y.htm
+bc_gstarted_000z.htm
+bc_gstarted.htm 
+bc_gstarted_1.htm
+bc_gstarted_trtq.htm
+bc_gstarted_pnbo.htm
+glossary_0001.htm
+; End of Spider generated files
+legal.htm
+raccbanr.gif
+racwelcome.htm 
+cmakwelcome.htm
+cpswelcome.htm
+iaswelcome.htm
+
+[RASDOC_iismisc]
+legal.htm
+raccbanr.gif
+racwelcome.htm 
+
+[Strings]
+RASICS_DESC =                           "Servicios de conexión Internet para RAS"
+RASICS_TIP =                            "Administra conexiones de marcado y libretas de teléfonos."
+RASDOC_DESC =                           "Documentación del producto"
+RASDOC_TIP =                            "Documentación de Servicios de conexión a Internet"
+COMMONDOC_DESC =                        "Introducción"
+COMMONDOC_TIP =                         "Introducción a Servicios de conexión a Internet"
+RASHELPDIR =                            "rasics"
+CMAKPROG_GRP =                          "Kit de administración del Administrador de conexión"
+CMPRODNAME =                            "Kit de administración del Administrador de conexión"
+CMAK_DESC =                             "Kit de administración del Administrador de conexión"
+CMAK_TIP =                              "Crea perfiles de marcado para el Administrador de conexión"
+CMAKDOC_DESC =                          "Documentación del kit de administración del Administrador de conexión"
+CMAKDOC_TIP =                           "Documentación del kit de administración del Administrador de conexión"
+CMAKDIR =                               "CMAK"
+CMHELP_SOURCE_DIR =                     "Origen de ayuda CM"
+CMREGROOT =                             "Software\Microsoft\Connection Manager Administration Kit" ;; DO NOT LOCALIZE ;;
+CMAppPath =                             "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\cmak.exe"
+CMAppName =                             "Kit de administración del Administrador de conexión"
+CMAKHELPDIR =                           "rasics\cmak"
+CMLANGDIR =				"spa"	;;;; spa = Spanish -- should be jpn for japanese, etc.
+CPSADPROG_GRP =                         "Administrador de libretas de teléfonos"
+CPPRODNAME =                            "Administrador de libretas de teléfonos"
+CPSAD_DESC =                            "Administrador de libretas de teléfonos"
+CPSAD_TIP =                             "Crea y mantiene las libretas de teléfonos"
+CPSDOC_DESC =                           "Documentración de Servicios de punto de conexión"
+CPSDOC_TIP =                            "Documentación de Servicios de punto de conexión"
+CPS_DESC =                              "Documentación de Servicios de punto de conexión"
+CPS_TIP =                               "Administra y ofrece libretas de teléfonos"
+CPSSRV_DESC =                           "Servicio de libretas de teléfonos"
+CPSSRV_TIP =                            "Instala el servidor de libretas de teléfonos"
+CPSADDIR =                              "PBA"
+CPREGROOT =                             "Software\Microsoft\Phone Book Admin" ;; DO NOT LOCALIZE ;;
+CPSHELPDIR =                            "rasics\cps"
+PhoneName =                             "Libretas de teléfonos"
+RegionName =                            "Archivo de área"
+CIAS_PROVIDERS =                        "SYSTEM\CurrentControlSet\Services\Authsrv\Providers"
+CIAS_PERFORMANCE =                      "SYSTEM\CurrentControlSet\Services\Authsrv\Performance"
+CIAS_VERSION =                          "SYSTEM\CurrentControlSet\Services\Authsrv\Parameters"
+CIASPROG_GRP =                          "Servicios de autenticación Internet"
+CIAS_DESC =                             "Servicios de autenticación Internet"
+CIAS_TIP =                              "Installa Servicios de autenticación Internet"
+CIASDOC_DESC =                          "Documentación de Servicios de autenticación Internet"
+CIASDOC_TIP =                          "Documentación de Servicios de autenticación Internet"
+CIASDIR =                               "IAS"
+CIREGROOT =                             "Software\Microsoft\Internet Authentication Service" ;;;; DO NOT LOCALIZE ;;
+CIASHELPDIR =                           "rasics\ias"
+KEY_ODBC_ROOT_Name =                    "SOFTWARE\ODBC\ODBC.INI\PBServer"
+KEY_ODBC_ROOT_Data =                    "SOFTWARE\ODBC\ODBC.INI\PBServer\Engines\Jet"
+KEY_NAME_DSN_LIST =                     "SOFTWARE\ODBC\ODBC.INI\ODBC Data Sources"
+KEY_NAME_DSN_DATA =                     "Engines\Jet"
+KEY_NAME_DSN_Name =                     "PBServer"
+KEY_ODBC_DRIVERS =                      "SOFTWARE\ODBC\ODBCINST.INI\"
+KEY_NAME_ACCESS_DRIVER =                "ODBCJT32.DLL"
+KEY_WWWRoot =                           "SYSTEM\CurrentControlSet\Services\W3SVC\Parameters\Virtual Roots"
+KEY_FTP =                               "SYSTEM\CurrentControlSet\Services\MSFTPSVC"
+KEY_EVENTS =                            "System\CurrentControlSet\Services\EventLog\Application\Phone Book Service"
+KEY_VROOT =                             "System\CurrentControlSet\Services\W3SVC\Parameters\Virtual Roots"
+KEY_FTPRoot =                           "SYSTEM\CurrentControlSet\Services\MSFTPSVC\Parameters\Virtual Roots"
+APP_PATH_SERVER =                       "Phone Book Service"
+PBS_SCRIPT_VROOT =                      "/PBServer,"
+PBS_DATA_VROOT =                        "/PBSData,"
+DB_PATH_SERVER =                        "data\database"
+KEY_CPSMON_ROOT =                       "SYSTEM\CurrentControlSet\Services\PBServerMonitor"
+KEY_CPSMON_PERF =                       "SYSTEM\CurrentControlSet\Services\PBServerMonitor\Performance"
+SharedPath =                            "SOFTWARE\Microsoft\Shared Tools"
+PROGRAMF =                              "Archivos de programa"
+USERINFO =                              "User Info"                ;;;; DO NOT LOCALIZE THIS !! ;;;;
+USER_VALNAME =                          "Name"                     ;;;; DO NOT LOCALIZE THIS !! ;;;;
+ORG_VALNAME =                           "Company"                  ;;;; DO NOT LOCALIZE THIS !! ;;;;
+DISK_DESCRIPT =                         "CD-ROM de Microsoft IIS" 
+
+
+;;;;;;;; Replaced by aut-gen stuff below ;;;;;;;;;;;
+; [SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+; 0="","",0
+; 1=%DISKDESCRIPT%,"RASICS.cab",0
+;
+; [SourceDisksFiles]
+; <file> = <cabinet number>,<subdir>,<size>
+; Note: File is not in a cabinet if cab# is 0
+; bestwith.gif=1,,100000
+;;;;;;;; Replaced by aut-gen stuff below ;;;;;;;;;;;
+;*** BEGIN **********************************************************
+;**                                                                **
+;** Automatically generated on: Thu Dec 11 14:58:42 1997           **
+;**                                                                **
+;** Diamond Version: (32) 1.00.0540 (02/01/96)                     **
+;**                                                                **
+;*** BEGIN **********************************************************
+
+
+[SourceDisksNames]
+1="%DISK_DESCRIPT%",rasics.CAB,0
+
+[SourceDisksFiles]
+cmak.exe=1,,229744,45225ca2
+default.bmp=1,,47892,7b8831a4
+defaultl.ico=1,,766,91ec13d9
+defaultp.bmp=1,,36344,a1468bfb
+defaults.ico=1,,766,91ec13d9
+defaultt.ico=1,,766,91ec13d9
+empty.pbk=1,,1,e96ccf45
+empty.pbr=1,,1,f4dbdf21
+iexpress.exe=1,,130880,7dde2ab2
+cmakeula.txt=1,,10546,fe3c3004
+makecab.exe=1,,152576,a95db229
+oleaut32.dll=1,,473872,9864119f
+showicon.exe=1,,7504,aa329493
+swflash.ocx=1,,194048,aa006df2
+urlmon.dll=1,,166672,1eedef3d
+wextract.exe=1,,72416,504fc253
+cmtrb32.rtf=1,,88605,4c3165a8
+cmctx32.rtf=1,,22093,5acc15e5
+cmmgr32.h=1,,2300,a17e1486
+cmmgr32.hpj=1,,856,f9635c31
+advapi32.dll=1,,43008,89c63318
+advpack.dll=1,,83424,e723b520
+cmdial32.dll=1,,9632,7afc76e2
+cmdl32.exe=1,,41696,c8a90e3f
+cmmgr32.exe=1,,226064,ba212527
+cmmgr32.hlp=1,,40217,140a4485
+cmpbk32.dll=1,,24848,41f2471e
+cmstats.dll=1,,9072,bfc961f3
+comctl32.dll=1,,310032,6e954a17
+ccfg95.dll=1,,19568,6e5ac928
+ccfgnt.dll=1,,20288,23a65c5b
+icwscrpt.exe=1,,153088,e5e3b6dc
+cnet16.dll=1,,9855,1ad7b0d2
+cnetcfg.dll=1,,135312,319936c
+mbslgn32.dll=1,,29456,4dcf4c41
+msdun12.exe=1,,1457824,a209b54d
+readme.txt=1,,6850,4e6809ed
+rnaph.dll=1,,9728,30ef9824
+template.sed=1,,1122,2d806b70
+template.cmp=1,,87,7114d431
+template.cms=1,,1186,8207f31b
+template.inf=1,,8987,b09bcf5b
+uninstcm.inf=1,,2561,8fc47dfe
+w95inf16.dll=1,,2272,40d920a3
+w95inf32.dll=1,,4608,ce81e62b
+wininet.dll=1,,295184,fe47536
+wintrust.dll=1,,141312,599e11f9
+cmcfg32.dll=1,,17088,aa418d07
+cmak01.gif=1,,8749,cde5e845
+cmak02.gif=1,,25466,13a74c34
+cmak03.gif=1,,18925,484c5c4
+cmak04.gif=1,,19444,3d60d9f9
+cmak05.gif=1,,20820,99482124
+cmak06.gif=1,,5621,6a0d130b
+cmak07.gif=1,,16027,88b2be7d
+cmak08.gif=1,,29537,95f11074
+cmak_0001.htm=1,,2986,638ba787
+cmak_0002.htm=1,,1904,3ff02041
+cmak_0003.htm=1,,2395,f462d598
+cmak_0004.htm=1,,1641,fd21758f
+cmak_0005.htm=1,,5179,3c3521dc
+cmak_0006.htm=1,,3371,91175bdc
+cmak_0007.htm=1,,2249,715be9cb
+cmak_0008.htm=1,,3500,6b525b35
+cmak_0009.htm=1,,2395,c4b8d0eb
+cmak_000a.htm=1,,6685,42580e8e
+cmak_000b.htm=1,,4582,cbcfeb25
+cmak_000c.htm=1,,5166,59d3cefd
+cmak_000d.htm=1,,5430,3b34e458
+cmak_000e.htm=1,,7557,7fd6f343
+cmak_000f.htm=1,,3705,97af4300
+cmak_000g.htm=1,,6435,1b94d101
+cmak_000h.htm=1,,1759,c68434d
+cmak_000i.htm=1,,4829,a5abcc01
+cmak_000j.htm=1,,17372,92f70638
+cmak_000k.htm=1,,2475,b95bea74
+cmak_000l.htm=1,,1840,4b7307f5
+cmak_000m.htm=1,,1801,1905ef46
+cmak_000n.htm=1,,2102,20f5065a
+cmak_000o.htm=1,,2202,7495071e
+cmak_000p.htm=1,,1922,7ab98e58
+cmak_000q.htm=1,,2279,5cdd8c7f
+cmak_000r.htm=1,,2603,3b5ddad
+cmak_000s.htm=1,,1894,b413be32
+cmak_000t.htm=1,,1686,a57e54fc
+cmak_000u.htm=1,,2326,de732ca
+cmak_000v.htm=1,,2516,1aebe4ee
+cmak_000w.htm=1,,2925,1859ed07
+cmak_000x.htm=1,,5479,8c95fed
+cmak_000y.htm=1,,6748,54ee8faf
+cmak_000z.htm=1,,4480,86746797
+cmak_0010.htm=1,,2673,147b178f
+cmak_0011.htm=1,,4451,3c69991e
+cmak_0012.htm=1,,2496,3810b407
+cmak_0013.htm=1,,3274,ce197767
+cmak_0014.htm=1,,2597,2f7c8dc7
+cmak_0015.htm=1,,2234,390a8898
+cmak_0016.htm=1,,4016,4e1b657
+cmak_0017.htm=1,,2337,6e24a9ce
+cmak_0018.htm=1,,2676,54f63b4e
+cmak_0019.htm=1,,2624,8dbce250
+cmak_001a.htm=1,,1694,2cb49424
+cmak_001b.htm=1,,2499,1ee84179
+cmak_001c.htm=1,,1934,65b7c8e8
+cmak_001d.htm=1,,2054,477694f5
+cmak_001e.htm=1,,2030,c6c4facb
+cmak_001f.htm=1,,3271,3a64bb67
+cmak_001g.htm=1,,2061,9ce54f35
+cmak_001h.htm=1,,2149,6a8e075
+cmak_001i.htm=1,,4908,e9c4c808
+cmak_001j.htm=1,,2448,748f8e71
+cmak_001k.htm=1,,2014,14ceb336
+cmak_001l.htm=1,,38204,c1d83156
+cmak_001m.htm=1,,2957,ab4b239c
+cmak_001n.htm=1,,1669,7c2e8de3
+cmak_001o.htm=1,,2238,f2b275dc
+cmak_001p.htm=1,,1698,4456fb2
+cmak_001q.htm=1,,2035,772976fe
+cmak_001r.htm=1,,3442,16a7f768
+cmak_001s.htm=1,,3257,1602f145
+cmakread.htm=1,,12239,f71df3f3
+base.ddf=1,,206,99479586
+country.txt=1,,3862,b9167bce
+pbadmin.exe=1,,553984,12a6be68
+pbadmin.hlp=1,,17922,51a1f596
+pbadmin.chm=1,,15804,9638b5a6
+diantz.exe=1,,121344,eb720699
+dta.bat=1,,173,c6ddda0c
+dta.ddf=1,,34,5498dc07
+empty_pb.mdb=1,,212992,783e682b
+full.bat=1,,183,5f56295e
+full.ddf=1,,34,5498dc07
+fullcab.inf=1,,1170,c1cf3d9e
+spain.pbr=1,,234,bcd29f0
+ctl3d32.dll=1,,27120,ad715a11
+mfc40.dll=1,,923408,1acd0bca
+msinet.ocx=1,,106256,b772a9ab
+inetes.dll=1,,15360,8a0a5c8c
+olepro32.dll=1,,32528,c3305d39
+stdole2.tlb=1,,16896,7c14b052
+cps_ref_000d.htm=1,,5356,f28a9d1a
+cps_ref_000e.htm=1,,1458,41850792
+cps_ref_000f.htm=1,,2298,e1402d13
+cps_ref_000g.htm=1,,2857,c9536c65
+cps_ref_000h.htm=1,,2762,395db640
+cps_ref_000i.htm=1,,1857,bd73565e
+cps_ref_000j.htm=1,,7623,b685d961
+cps_ref_000k.htm=1,,4627,8d408669
+cps_ref_000l.htm=1,,2612,ee92c5c0
+cps_ref_000m.htm=1,,1510,b59ef40e
+cps_ref_000n.htm=1,,4170,1126b9b7
+cps_ref_000o.htm=1,,1561,f4375c5
+cps_ref_000p.htm=1,,1911,733cbb26
+cps_ref_000q.htm=1,,4496,e53d2954
+cps_ref_000r.htm=1,,1529,67255f3a
+cps_ref_000s.htm=1,,1964,28b5daf3
+cps_ref_000t.htm=1,,1498,d868b96a
+cps_ref_000u.htm=1,,1649,d5624667
+cps_ref_000v.htm=1,,2079,b1420424
+cps_ref_000w.htm=1,,2303,6e9b264a
+cps_ref_000x.htm=1,,1789,97d49d76
+cps_ref_000y.htm=1,,1507,56d339a4
+cps_ref_000z.htm=1,,1509,93550566
+cps_ref_0010.htm=1,,3497,f3e35b41
+cps_ref_0011.htm=1,,1541,e17236b
+cps_ref_0012.htm=1,,2991,64a8f8f2
+cps_ref_0013.htm=1,,2503,2b3d3ea7
+cps_ref_0014.htm=1,,2264,a148d712
+cps_ref_0015.htm=1,,2616,3856a762
+cps_ref_0016.htm=1,,2411,8c35757e
+cps_ref_0017.htm=1,,3022,41eaf0d3
+cps_ref_0018.htm=1,,2800,37abf6d5
+cps_ref_0019.htm=1,,3810,cb3105d4
+cps_ref_001a.htm=1,,3636,c373d065
+cps_ref_001b.htm=1,,2437,554a135b
+cps_ref_001c.htm=1,,3202,22125e51
+cps_ref_001d.htm=1,,3502,92ec59cc
+cps_ref_001e.htm=1,,2592,d540b39
+cps_ref_001f.htm=1,,2431,13e7f64e
+cps_ref_001g.htm=1,,2368,6c16096
+cps_ref_001h.htm=1,,2271,68994e2
+cps_ref_001i.htm=1,,1802,b8be0d62
+cps_ref_001j.htm=1,,1993,67079805
+cps_ref_001k.htm=1,,4663,3ad5b525
+pbsop02.gif=1,,2893,b97c14aa
+pbsop04.gif=1,,9970,fedfe352
+pbsop05.gif=1,,5843,d51f22ac
+pbsop06.gif=1,,8837,f1556588
+pbsop07.gif=1,,16149,cbb9fc23
+pbsrf01.gif=1,,2864,7b5f00c4
+pbsrf03.gif=1,,2797,fa64d15c
+pbsrf04.gif=1,,1375,90da71b4
+cps_ops_0001.htm=1,,1413,515c2475
+cps_ops_0002.htm=1,,1900,319e4fa5
+cps_ops_0003.htm=1,,2670,e1547d1
+cps_ops_0004.htm=1,,2067,6bf6d91d
+cps_ops_0005.htm=1,,2962,2e171248
+cps_ops_0006.htm=1,,1771,3bd87a80
+cps_ops_0007.htm=1,,1686,58a00652
+cps_ops_0008.htm=1,,1737,54fee8e6
+cps_ops_0009.htm=1,,1853,c0defedd
+cps_ops_000a.htm=1,,2035,640b8cbd
+cps_ops_000b.htm=1,,1952,a7e0ceb
+cps_ops_000c.htm=1,,1673,eab8f966
+cps_ops_000d.htm=1,,1780,6fbb71b5
+cps_ops_000e.htm=1,,2061,5206a84c
+cps_ops_000f.htm=1,,2465,9bae44ae
+cps_ops_000g.htm=1,,1580,a1b1a45e
+cps_ops_000h.htm=1,,4769,b7ad5298
+cps_ops_000i.htm=1,,3331,415044a7
+cps_ops_000j.htm=1,,1623,8ea00386
+cps_ops_000k.htm=1,,1563,74bde8cc
+cps_ops_000l.htm=1,,2034,6fa75431
+cps_ops_000m.htm=1,,2107,5e328a69
+cps_ops_000n.htm=1,,1549,f47879ba
+cps_ops_000o.htm=1,,1599,2f3fbb4e
+cps_ops_000p.htm=1,,1629,5784d402
+cps_ops_000q.htm=1,,6055,52778498
+cps_ops_000r.htm=1,,1779,d523c608
+cps_ops_000s.htm=1,,1794,29cd11d8
+cps_ops_000t.htm=1,,1786,894c77d5
+cps_ops_000u.htm=1,,5139,95b359bd
+cps_ops_000v.htm=1,,4112,93184038
+cps_ops_000w.htm=1,,1605,3b0ba006
+cps_ops_000x.htm=1,,2334,cb8178eb
+cps_ops_000y.htm=1,,1828,3e5941a8
+cps_ops_000z.htm=1,,1817,a38eebcb
+cps_ops_0010.htm=1,,2403,3066b0fa
+cps_ops_0011.htm=1,,1710,2652e6ac
+cps_ops_0012.htm=1,,4476,e71355ad
+cps_ops_0013.htm=1,,2829,523ed40f
+cps_ops_0014.htm=1,,1560,cad22214
+cps_ops_0015.htm=1,,2647,3377215b
+cps_ops_0016.htm=1,,4110,dde6136c
+cps_ops_0017.htm=1,,3574,c3f44770
+cps_ops_0018.htm=1,,1565,d1e1419b
+cps_ops_0019.htm=1,,2859,9ef2212a
+cps_ops_001a.htm=1,,2454,f77936e3
+cps_ops_001b.htm=1,,1613,939025d1
+cps_ops_001c.htm=1,,1972,93acffd
+cps_ops_001d.htm=1,,3064,b446a091
+cps_ops_001e.htm=1,,1841,a87098d8
+cps_ops_001f.htm=1,,2069,f2afe4e8
+cps_ops_001g.htm=1,,2347,e5abb9c4
+cps_ops_001h.htm=1,,3292,df9f4d26
+cps_ops_001i.htm=1,,1713,7f448709
+cps_ops_001j.htm=1,,4500,97630309
+cps_ops_001k.htm=1,,3002,57d94683
+cps_ops_001l.htm=1,,4604,f2dadc8e
+cps_ops_001m.htm=1,,3624,73fbc52a
+cps_ops_001n.htm=1,,1646,afb5e64c
+cps_ops_001o.htm=1,,2961,384f4236
+cps_ops_001p.htm=1,,4140,e3af3709
+cps_ops_001q.htm=1,,3335,aa5b023f
+cps_ops_001r.htm=1,,1732,26429c23
+cps_ops_001s.htm=1,,1973,a8c123d7
+cps_ops_001t.htm=1,,6182,626ad564
+cps_ops_001u.htm=1,,2726,9955d40b
+cps_ref_0001.htm=1,,1433,a2521ad3
+cps_ref_0002.htm=1,,1733,a93e3493
+cps_ref_0003.htm=1,,2944,4bdde7d5
+cps_ref_0004.htm=1,,1655,c913a27f
+cps_ref_0005.htm=1,,1484,f5d29173
+cps_ref_0006.htm=1,,1579,5121dbef
+cps_ref_0007.htm=1,,1972,b5d90e43
+cps_ref_0008.htm=1,,2244,220d659f
+cps_ref_0009.htm=1,,2738,4b29a527
+cps_ref_000a.htm=1,,1930,dfc932d5
+cps_ref_000b.htm=1,,1961,e598b3fd
+cps_ref_000c.htm=1,,4398,1302461b
+cpsread.htm=1,,5974,a31805bc
+bar.htm=1,,157,ee95aac1
+legal.htm=1,,3514,1149c89a
+gnicimpo.gif=1,,536,37816ecb
+gnicnote.gif=1,,410,bafefe7a
+gnnlogo.gif=1,,1151,76bda5d8
+htindex.htm=1,,6120,b45358a4
+httoc.htm=1,,2568,9498b2c2
+navys.gif=1,,936,39523bfe
+pro.gif=1,,832,8f594759
+whfigs1.gif=1,,2800,88845048
+whfigs3.gif=1,,1976,4c1449ce
+whindex.gif=1,,899,f679ba2
+whnext.gif=1,,888,c3cc32f2
+whprev.gif=1,,884,fc717af0
+comctl32.ocx=1,,597264,4b39ecad
+cmctles.dll=1,,112128,f296f6a4
+comdlg32.ocx=1,,128784,3fdd2e65
+cmdlges.dll=1,,32768,c2370c7a
+dao350.dll=1,,582144,d1beb135
+dbgrid32.ocx=1,,519680,c6088d33
+dbgrdes.dll=1,,35328,68788921
+msvbvm50.dll=1,,1334032,26ce58a3
+tabctl32.ocx=1,,191248,89820f9d
+tabctes.dll=1,,22528,2eb3d46c
+vb5db.dll=1,,78608,e07c3867
+vb5es.dll=1,,99134,cb9e1aa0
+pbserver.mdb=1,,178176,72f7acee
+hhwrap.dll=1,,6976,615965e
+hhctrl.ocx=1,,287672,7e8cc6b2
+iasop21.gif=1,,4781,f0e3d737
+iasop22a.gif=1,,3236,e517cd7
+tunneling.gif=1,,6013,a9251698
+gsbc03a.gif=1,,7015,a53c6b38
+gsbc04a.gif=1,,12479,49fde255
+bc_gstarted_0001.htm=1,,1405,7320697b
+bc_gstarted_0002.htm=1,,2261,1149014f
+bc_gstarted_0003.htm=1,,2519,beacb6fd
+bc_gstarted_0004.htm=1,,2231,cd140f3e
+bc_gstarted_0005.htm=1,,2079,fa67afe0
+bc_gstarted_0006.htm=1,,2234,c93f5170
+bc_gstarted_0007.htm=1,,4099,4a8afded
+bc_gstarted_0008.htm=1,,1579,48d7597a
+bc_gstarted_0009.htm=1,,3219,e243ec29
+bc_gstarted_000a.htm=1,,2451,2aaf2875
+bc_gstarted_000b.htm=1,,1991,1d590fdf
+bc_gstarted_000c.htm=1,,2439,a563f189
+bc_gstarted_000d.htm=1,,3427,1f206367
+bc_gstarted_000e.htm=1,,6183,7be78d8b
+bc_gstarted_000f.htm=1,,1716,cec0abe2
+bc_gstarted_000g.htm=1,,7160,9139f108
+bc_gstarted_000h.htm=1,,5572,f32f950
+bc_gstarted_000i.htm=1,,1618,64a12ffb
+bc_gstarted_000j.htm=1,,2830,5a12f450
+bc_gstarted_000k.htm=1,,3517,3778fe75
+bc_gstarted_000l.htm=1,,2582,52072a35
+bc_gstarted_000m.htm=1,,2203,26038135
+bc_gstarted_000n.htm=1,,2135,b8009328
+bc_gstarted_000o.htm=1,,2059,63cb93c5
+bc_gstarted_000p.htm=1,,2251,242b2f4
+bc_gstarted_000q.htm=1,,2778,a117f40f
+bc_gstarted_000r.htm=1,,1624,57a136b8
+bc_gstarted_000s.htm=1,,1791,d3bed337
+bc_gstarted_000t.htm=1,,2315,84e0b20
+bc_gstarted_000u.htm=1,,1841,e96bd277
+bc_gstarted_000v.htm=1,,5030,878b757b
+bc_gstarted_000w.htm=1,,4029,c4bec2f9
+bc_gstarted_000x.htm=1,,3820,28eab43c
+bc_gstarted_000y.htm=1,,3790,fdbb5a3d
+bc_gstarted_000z.htm=1,,4011,61f2604f
+bc_gstarted.htm=1,,2410,fc96b381
+bc_gstarted_1.htm=1,,2639,b028b3a7
+bc_gstarted_trtq.htm=1,,2441,3a7a5ba
+bc_gstarted_pnbo.htm=1,,2670,c86ba7f1
+glossary_0001.htm=1,,14175,4741e393
+raccbanr.gif=1,,2919,a4594b71
+racwelcome.htm=1,,2211,dc316a6a
+cmakwelcome.htm=1,,2300,6b1e36d5
+cpswelcome.htm=1,,2322,fcaf3fc2
+iaswelcome.htm=1,,1713,18f22d95
+;*** END ************************************************************
+;**                                                                **
+;** Automatically generated on: Thu Dec 11 14:58:42 1997           **
+;**                                                                **
+;*** END ************************************************************

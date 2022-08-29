@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><HEAD><TITLE>Notas de la versión de Microsoft Script Debugger</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<META NAME="DESCRIPTION" CONTENT="Release Notes"></head>
+
+<BODY TEXT="#000000" LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<font face="Verdana,Arial,Helvetica">
+
+
+
+<H1>Notas de la versión de Microsoft Script Debugger</H1>
+<p>&copy;&nbsp;Microsoft Corporation, 1997</p>
+<p>Este documento proporciona información acerca del uso de Microsoft Script Debugger, que incluye sugerencias para la instalación y el uso correctos del depurador, e información que quedó disponible demasiado tarde para incluirse en la documentación.</p>
+<H2>Contenido</H2>
+
+<p><a href="#Setup">Instalación e inicio de Script Debugger</a></p>
+<p><a href="#Help">Ver la documentación de Debugger</a></p>
+<p><a href="#HTML_Source_Editor">Editor de código fuente de HTML</a></p>
+<p><a href="#Script_Debugging_IE">Depuración de secuencias de comandos en Internet Explorer 4.0</a></p>
+<p><a href="#Script_Debugging_IIS">Depuración de secuencias de comandos en Internet Information Server 4.0</a></p>
+<p><a href="#Java">Depuración de Java</a></p>
+<p><a href="#CopyrightInformation">Información de copyright</a></p>
+<p><hr></p>
+<H1><a name="Setup">Instalación e inicio de Script Debugger</a></H1>
+
+<strong><p>Usar Script Debugger con Microsoft&reg; Visual Studio&#153; 98</strong>&nbsp;&nbsp;En general, no debe instalar Script Debugger si ya instaló Visual Studio 98 o cualquiera de sus productos componentes como Microsoft&reg; Visual InterDev&#153; o Microsoft&reg; Visual J++&#153;. Visual Studio incluye su propio depurador que puede utilizar para depurar secuencias de comandos y componentes de Java. Si instala Script Debugger tras instalar cualquier producto de Visual Studio, no podrá iniciar el depurador de Visual Studio como respuesta a errores de los que informa Internet Explorer 4.0.
+<strong><p>Usar la versión correcta</strong>&nbsp;&nbsp;Microsoft Script Debugger funciona con Microsoft Internet Explorer 4.0 o con Internet Information Server 4.0. Como Script Debugger está diseñado para ser genérico en hosts de secuencias de comandos, el programa de instalación no comprueba las versiones específicas de los productos que se instalan, así que debe asegurarse de que ejecuta las versiones correctas de esos productos. Si intenta utilizar Script Debugger con versiones anteriores de Internet Explorer (como Internet Explorer 3.0 o la versión Platform Preview de Internet Explorer 4.0) o con versiones anteriores de Internet Information Server, el depurador no funcionará y puede alterar el servicio IIS.</p>
+<strong><p>Desinstalar versiones anteriores de Script Debugger </strong>&nbsp;&nbsp;Si instaló Script Debugger para Internet Explorer 3.0, debe desinstalar esa versión antes de continuar con esta instalación.</p>
+<strong><p>Desinstalar IIS</strong>&nbsp;&nbsp;Si desinstala Internet Information Server 4.0, el proceso de desinstalación también quitará Script Debugger, incluso aunque instalara Script Debugger por separado. Puede volver a instalar Script Debugger si ejecuta la instalación de IIS y elige instalar únicamente Script Debugger.</p>
+<p><hr></p>
+<H1><a name="Help">Ver la documentación de Debugger</a></H1>
+<strong><p>Iniciar un explorador antes de mostrar la Ayuda</strong>&nbsp;&nbsp;La Ayuda se muestra en el explorador de Web predeterminado. Si ejecuta Internet Information Server, inicie Internet Explorer 4.0 antes de elegir <strong>Temas de Ayuda</strong> en el menú <strong>Ayuda</strong>. Si el explorador no se está ejecutando cuando se muestra la Ayuda, el depurador podría mostrar una ventana en blanco y Script Debugger podría quedarse bloqueado.</p>
+<strong><p>Ver la Ayuda si no hay instalado ningún explorador en el servidor</strong>&nbsp;&nbsp;Si depura en un servidor que no tenga instalado un explorador, es posible que no pueda ver la Ayuda, ya que la Ayuda se muestra en el explorador predeterminado. Sin embargo, si tiene permiso de acceso al servidor Web como un servidor de archivos, puede intentar utilizar un explorador de otro equipo para ver el archivo de Ayuda. Busque un archivo en el servidor llamado SDbug.htm y utilice el protocolo file (file://), no el protocolo HTTP (http://).</p>
+<p><hr></p>
+<H1><a name="HTML_Source_Editor">Editor de código fuente de HTML</a></H1>
+<strong><p>Escribir nombres de archivo al abrir documentos HTML</strong>&nbsp;&nbsp;Cuando elige <strong>Abrir</strong> en el menú <strong>Archivo</strong> para abrir un documento existente en Script Debugger, debe proporcionar un nombre de archivo completo, que incluya la extensión, en el cuadro <strong>Nombre de archivo</strong>.</p>
+
+<strong><p>Abrir documentos HTML desde el escritorio en Microsoft&reg; Windows NT&reg;</strong>&nbsp;&nbsp;En Windows NT, cuando utiliza el cuadro de diálogo <strong>Abrir</strong> para abrir un archivo, puede mostrar los documentos si selecciona <strong>Escritorio</strong> en la lista <strong>Buscar en</strong>. Sin embargo, en esta versión del depurador, el contenido del cuadro de diálogo <strong>Abrir</strong> refleja la configuración del escritorio del usuario predeterminado, no del usuario actual.</p>
+
+
+<strong><p>Abrir documentos en directorios compartidos de Windows NT</strong>&nbsp;&nbsp;En Windows NT, cuando utiliza el cuadro de diálogo <strong>Abrir</strong> para abrir un archivo en una unidad compartida protegida por contraseña, utilice "\*" al final de la ruta de acceso y del nombre del archivo, como en este ejemplo:</p>
+
+<DIR>
+<DIR>
+<pre><FONT FACE="Courier New"><p>\\compartido\micarpeta\*</font></pre></p>
+</DIR>
+</DIR>
+
+<p><hr></p>
+<H1><a name="#Script_Debugging_IE"></a>Depuración de secuencias de comandos en Internet Explorer 4.0</H1>
+<strong><p>Depurar en Active Desktop</strong>&nbsp;&nbsp;Si utiliza Script Debugger cuando Internet Explorer está en modo Active Desktop, todos los programas integrados en el Active Desktop están controlados por el depurador. Por ejemplo, como el Explorador de Windows forma parte de Active Desktop, se suspenderá cuando el depurador esté abierto y en espera en un punto de interrupción. Cuando ejecute el documento actual o cierre el depurador, el Explorador de Windows volverá a funcionar normalmente.</p>
+<strong><p>Explorar un documento tras cerrar el depurador</strong>&nbsp;&nbsp;Si termina una sesión de depuración, cierra Script Debugger, vuelve a Internet Explorer y continúa el trabajo con el documento que depuró, en ocasiones el explorador reinicia el depurador.</p>
+<strong><p>Trabajar con múltiples documentos</strong>&nbsp;&nbsp;Si abre dos documentos en dos ventanas de Internet Explorer, sólo puede depurar uno de ellos cada vez. Por ejemplo, si está en modo interrupción en un documento (está en un punto de interrupción o paso a paso por el código), no puede trabajar también en el otro documento.</p>
+<p>Escribir comandos en la ventana <strong><b>Comandos</b></strong>&nbsp;&nbsp;Puede mostrar la ventana <strong><b>Comandos</b></strong> en cualquier momento mientras Script Debugger está abierto, pero los comandos que escriba en la ventana <strong><b>Comandos</b></strong> no tendrán efecto a menos que esté en modo interrupción.</p>
+<strong><p>Problemas de depuración tras ejecutar Document.Write</strong>&nbsp;&nbsp;Utilizar el comando <CODE>Document.Write</CODE> puede causar problemas en estas circunstancias:</p>
+
+<ul>
+<li>Si un comando <CODE>Document.Write</CODE> va seguido de un comando <CODE>Stop</CODE> (en Visual Basic&reg;, Scripting Edition -- VBScript) o de un comando <CODE>debugger</CODE> (de JScript&#153;), se iniciará el depurador. Sin embargo, en ese punto el procesamiento de páginas se ha interrumpido en Internet Explorer, por lo que debe presionar F5 para terminar de cargar el documento. </LI>
+<li>Si un comando <CODE>Document.Write</CODE> va seguido de un punto de interrupción, se pasa por alto el punto de interrupción. </LI>
+<li>Si escribe un comando <CODE>Document.Write</CODE> en la ventana <strong><b>Comandos</b></strong> mientras está en un punto de interrupción, Internet Explorer puede dejar de responder a los comandos.</LI></ul>
+
+<strong><p>Establecer puntos de interrupción en líneas no válidas</strong>&nbsp;&nbsp;Si intenta establecer un punto de interrupción en una línea que no contiene una secuencia de comandos (como una línea de código HTML), Script Debugger establece el punto de interrupción en la siguiente instrucción válida de código, incluso aunque esa instrucción esté a muchas líneas de distancia de donde intentó establecer el punto de interrupción.</p>
+<strong><p>Llamar a funciones con puntos de interrupción</strong>&nbsp;&nbsp;En la ventana <strong><b>Comandos</b></strong>, si llama a una función que contiene un punto de interrupción, Internet Explorer puede quedarse bloqueado.</p>
+<strong><p>Mostrar correctamente el indicador de línea</strong>&nbsp;&nbsp;Script Debugger puede no mostrar correctamente el indicador de línea actual si:</p>
+
+<ul>
+<li>Está recorriendo paso a paso código JScript dentro de una línea. </LI>
+<li>El documento que depura se muestra en un marco.</LI></ul>
+
+<strong><BLOCKQUOTE>Nota&nbsp;&nbsp;</strong>Si el indicador de línea no se muestra correctamente, puede intentar pasar a la siguiente línea para restaurar el indicador.</BLOCKQUOTE>
+<strong><p>Características no completamente implementadas</strong>&nbsp;&nbsp;Las siguientes características no están completamente implementadas en esta versión de Script Debugger: </p>
+
+<ul>
+<strong><li>Ver valores de variables</strong>&nbsp;&nbsp;Para ver el valor de una variable, utilice la ventana <strong><b>Comandos</b></strong>. Script Debugger no incluye una ventana <strong>Inspección</strong>, como otros depuradores. Para obtener más detalles, consulte la documentación de Script Debugger.</LI>
+<strong><li>Establecer puntos de interrupción al hacer clic</strong>&nbsp;&nbsp;Para establecer un punto de interrupción, elija <strong>Alternar punto de interrupción</strong> en el menú <strong>Depuración</strong> o presione F9. No puede establecer un punto de depuración en una línea al hacer clic en el margen a la izquierda de la línea, como ocurre en algunos entornos.</LI></ul>
+
+<strong><p>Problemas conocidos al depurar secuencias de comandos de cliente</strong>&nbsp;&nbsp;Los siguientes son problemas conocidos adicionales al utilizar esta versión de Script Debugger en Internet Explorer 4.0:</p>
+
+<ul>
+<li>Si está depurando un documento, lo devuelve a Internet Explorer, lo actualiza, continúa la depuración, lo actualiza de nuevo y, a continuación, repite este proceso, Internet Explorer puede quedarse bloqueado o mostrar otro comportamiento inesperado.</LI>
+<li>Si minimiza una ventana secundaria en el depurador, como la ventana  <strong><b>Comandos</b></strong> o la ventana <strong>Documentos en ejecución</strong>, el comando <strong>Restaurar</strong> del menú <strong>Control</strong> no está disponible. Para restaurar la ventana secundaria minimizada, maximícela y, si desea cambiar su tamaño, arrastre sus esquinas. </LI></ul>
+
+<p><hr></p>
+<H1><a name="#Script_Debugging_IIS">Depuración de secuencias de comandos en Internet Information Server 4.0</a></H1>
+<strong><BLOCKQUOTE>Nota&nbsp;</strong>Asegúrese de revisar también la información bajo <a href="#Script_Debugging_IE">Depuración de secuencias de comandos en Internet Explorer 4.0</a>.</BLOCKQUOTE>
+
+<strong><p>Inspeccionar variables tras un error de tiempo de ejecución</strong>&nbsp;&nbsp;Si llama al depurador tras un error de tiempo de ejecución, la ventana <strong><b>Comandos</b></strong> no puede utilizarse para inspeccionar valores de variables en una página ASP. Sin embargo, todavía puede evaluar expresiones mediante el lenguaje predeterminado.</p>
+
+<strong><p>Depurar páginas almacenadas en caché</strong>&nbsp;&nbsp;Si utiliza Internet Explorer 3.0 para solicitar páginas del servidor, o si utiliza Internet Explorer 4.0 y estableció el explorador para que almacenara páginas en caché (estableció "Nunca" en "Comprobar si hay nuevas versiones de páginas almacenadas"), los comandos "Stop" y "debugger" se pasarán por alto.</p>
+
+
+
+<strong><p>Referencias no válidas a objetos en la ventana <b>Comandos</b></strong>&nbsp;&nbsp;En la ventana <strong><b>Comandos</b></strong>, si crea una instancia de un objeto y, a continuación, utiliza una sintaxis errónea para hacer referencia a sus propiedades o métodos, Script Debugger puede quedarse bloqueado. Por ejemplo, en la siguiente secuencia de comandos de VBScript, el segundo no es válido porque no va precedido por un operador "?" y, por tanto, bloqueará el depurador:</p>
+
+<DIR>
+<DIR>
+<PRE><FONT FACE="Courier New">Set miObj = Server.CreateObject("MSWC.Browsertype")
+miObj.frames</FONT></PRE>
+</DIR>
+</DIR>
+
+<strong><p>Depurar después de cerrar IIS</strong>&nbsp;&nbsp;Si cierra Internet Information Server mientras se está ejecutando una sesión de depuración y, a continuación, intenta continuar la depuración, Script Debugger generará un Error de protección general.</p>
+<strong><p>Llamar repetidamente a funciones</strong>&nbsp;&nbsp;Si está en un punto de interrupción, abre la ventana <b>Comandos</b> y llama repetidamente a una función que está definida en una secuencia de comandos de la página, el depurador puede quedarse bloqueado cuando continúe la ejecución del documento.</P>
+
+<p><hr></p>
+<H1><a name="Java">Depuración de Java</a></H1>
+<strong><p>Depurar Java</strong>&nbsp;&nbsp;Esta versión de Script Debugger incluye compatibilidad para la depuración de código Java en aplicaciones clientes, lo que incluye el establecimiento de puntos de interrupción, la comprobación de la pila de llamadas y el uso de la ventana <b>Comandos</b>. Sin embargo, la depuración de código Java en Internet Information Server no es plenamente compatible y puede tener como resultado comportamientos inesperados.</p>
+<strong><p>Depurar aplicaciones Java en equipos Alpha de DEC</strong>&nbsp;&nbsp;Esta versión de Script Debugger no es plenamente compatible con la depuración de aplicaciones Java en equipos Alpha de DEC. Si intenta depurar aplicaciones Java, puede sufrir errores.</p>
+<strong><p>Depurar una aplicación Java de múltiples subprocesos</strong>&nbsp;&nbsp;Si interrumpe una aplicación Java que utiliza múltiples subprocesos, puede desplazarse a otro subproceso si lo elige en la ventana <strong>Pila de llamadas</strong>. Cuando lo hace, el indicador de línea actual se muestra en el subproceso al que se desplazó. Sin embargo, los comandos del depurador como Paso a paso por instrucciones, Paso a paso por procedimientos, etc. sólo afectan al subproceso que Script Debugger interrumpió, no al que se ha desplazado y que muestra el indicador de línea actual.</p>
+<p>&nbsp;</p>
+
+<hr>
+
+
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; Microsoft Corporation, 1997</p>
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente</p>
+
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+<hr>
+
+
+</font>
+</body>
+</html>

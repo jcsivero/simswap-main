@@ -1,0 +1,31 @@
+;
+; Sample master OC INF for test component.
+;
+
+[Version]
+Signature= "$Windows NT$"
+
+
+[Components]
+Msmq_Server = msmqocm.dll,MsmqOcm,msmqsrvr.inf
+
+[Msmq_Server]
+
+;
+; No extra setup files required.
+;
+
+
+;
+; Page specifications.
+;
+[PageReplace]
+;mode=
+
+[PageAdd]
+early = default
+prenet = default
+late = default
+
+
+

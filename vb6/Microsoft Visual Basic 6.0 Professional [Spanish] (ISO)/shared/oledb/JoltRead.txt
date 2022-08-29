@@ -1,0 +1,179 @@
+---------------------------------------------------------------------
+Archivo Léame del Proveedor de Microsoft OLE DB para Jet versión 3.52
+---------------------------------------------------------------------
+
+(c) 1998 Microsoft Corporation. Reservados todos los derechos.
+
+Este documento ofrece noticias de última hora u otra información que 
+sirve de complemento a la documentación del proveedor de Microsoft 
+OLE DB para Jet.
+
+---------
+CONTENIDO
+---------
+
+1. DESCRIPCIÓN DEL PRODUCTO
+   
+2. NUEVAS CARACTERÍSTICAS
+   
+3. NOTAS TÉCNICAS
+
+4. ERRORES CONOCIDOS, LIMITACIONES Y SOLUCIONES
+
+---------------------------
+1. DESCRIPCIÓN DEL PRODUCTO
+---------------------------
+El Proveedor de Microsoft OLE DB para Jet es un proveedor OLE DB 
+nativo para datos almacenados en archivos con formato .mdb 
+utilizado por Microsoft Access. Con este proveedor OLE DB nativo 
+ya no se tiene que basar en el controlador ODBC de Microsoft Access 
+para leer y escribir datos en una base de datos de Microsoft Access.
+
+-------------------------
+2. NUEVAS CARACTERÍSTICAS
+-------------------------
+Con esta versión del Proveedor de Microsoft OLE DB para Jet, puede 
+usar sintaxis estándar ANSI en relación con los marcadores de 
+parámetros en consultas. Las versiones anteriores de este proveedor 
+admitían solamente la sintaxis de marcadores de parámetros específica 
+de Jet, consistente en un nombre de parámetro encerrado entre 
+corchetes, donde el nombre del parámetro es opcional. 
+
+Ejemplo: parameters parm1 text; select * from Table1 WHERE col1 = 
+[parm1];
+
+Esta versión del proveedor admite también la sintaxis ANSI, donde un 
+signo de interrogación, "?", es el marcador de parámetro, ej. 
+"...WHERE col1 = ?". 
+
+Además, con esta versión del Proveedor de Microsoft OLE DB para 
+Jet, la sintaxis específica de Jet en relación con los comodines 
+("*" y "?") ha sido reemplazada por la sintaxis de los comodines 
+ANSI ("%" y "_"). Por ejemplo, consideremos una consulta que devuelve
+todas las instancias en las que los datos de una columna empiezan 
+con la letra "A". Anteriormente, la restricción se habría escrito
+"...WHERE col1 LIKE("A*")", pero ahora se escribiría "...WHERE 
+col1 LIKE("A%")".  Observe que si utilizan la consulta con la 
+sintaxis no ANSI anterior no obtendrán el mismo conjunto de filas.
+
+-----------------
+3. NOTAS TÉCNICAS
+-----------------
+Si ha creado con anterioridad aplicaciones OLE DB para tener 
+acceso a archivos .mdb de Microsoft Access, las aplicaciones 
+utilizaban el controlador ODBC de Microsoft Access. Sin embargo, 
+ahora puede crear aplicaciones más eficaces con el Proveedor de
+Microsoft OLE DB para el motor de bases de datos Jet de Microsoft
+Access.
+
+Con la nueva funcionalidad que proporciona el Proveedor de Microsoft
+OLE DB para Jet, puede pasar por alto el nivel de Conectividad 
+abierta de bases de datos (ODBC) al tener acceso a los archivos de 
+base de datos de Microsoft Access. Esto quiere decir que no necesita
+crear un archivo de nombre de orígenes de datos (DSN), para que ODBC 
+lo utilice para asignar orígenes de datos al software de base de 
+datos subyacente. 
+
+Para conectar con una base de datos de Microsoft Access, antes tenía
+que crear y hacer una referencia a un DSN en sus secuencias.  Por
+ejemplo, la siguiente secuencia establece una conexión con una base 
+de datos de Microsoft Access:
+
+Set cnnConn = Server.CreateObject("ADODB.Connection")
+cnnConn.Open "DSN=PayRollData;UID=SnrAccnt;pwd=Accnt1"
+
+Sin embargo, con el Proveedor de Microsoft OLE DB para Jet, puede
+tener acceso directamente a los archivos de base de datos de 
+Microsoft Access. La siguiente secuencia abre una conexión de base 
+de datos sin hacer referencia a un DSN:
+
+ADOConnection.Provider = "Microsoft.JET.OLEDB.3.51"
+ADOConnection.Properties("id de usuario") = "admin"
+ADOConnection.Properties("contraseña") = ""
+ADOConnection.Properties("origen de datos") = "d:\payroll\raises.mdb"
+ADOConnection.Open
+
+Las aplicaciones que utilizan el controlador ODBC de Microsoft 
+Access seguirán siendo compatibles. No obstante, puede optar por
+convertir las aplicaciones existentes del controlador ODBC de 
+Microsoft Access al Proveedor de Microsoft OLE DB para Jet.
+
+Si necesita tener acceso a bases de datos seguras a través del 
+Proveedor de Microsoft OLE DB para Jet, es posible que tenga que 
+establecer información adicional a la mencionada anteriormente. Para 
+especificar una contraseña de base de datos, en contraposición a 
+una contraseña de usuario, necesita establecer la propiedad "Jet
+OLEDB:Database Password" en el objeto de conexión ADO, igual que 
+antes. Además, si necesita especificar una base de datos de sistema 
+en particular, debe usar la propiedad "Jet OLEDB:System database".
+
+El modo predeterminado de abrir bases de datos con el Proveedor de
+Microsoft OLE DB para Jet es lectura-escritura. Si el archivo .mdb 
+se encuentra en un sistema de archivos de sólo lectura, obtendrá 
+un error cuando intente abrir la base de datos utilizando la
+configuración predeterminada. Solamente puede abrir estas bases de 
+datos en modo de sólo lectura.
+
+-----------------------------------------------
+4. ERRORES CONOCIDOS, LIMITACIONES Y SOLUCIONES
+-----------------------------------------------
+Si decide convertir las aplicaciones, deberá tener en cuenta las diferencias de funcionalidad entre los métodos de acceso de los dos 
+proveedores. En particular, con esta versión, el Proveedor de 
+Microsoft OLE DB para Jet no admite lo siguiente:
+
+* La sintaxis canónica especificada por ODBC para llamar a funciones
+  intrínsecas.
+* El acceso a bases de datos o archivos que no sean las bases de 
+  datos nativas de Microsoft Jet (por ejemplo, Excel, dBase, Texto,
+  etc.) a través de los ISAM instalables de  Microsoft Jet.
+* La posibilidad de crear consultas almacenadas, conocidas a veces 
+  como procedimientos almacenados.
+
+Compatibilidad con ISAM instalable
+
+Actualmente, no es posible tener acceso a datos distintos de los 
+nativos de Jet cuando se utiliza el Proveedor de Microsoft OLE DB 
+para Jet directamente. Si necesita tener acceso imperativamente 
+a datos externos a la aplicación, puede, y debe, seguir usando el 
+Proveedor de Microsoft OLE DB para datos ODBC hasta el lanzamiento 
+de la próxima versión del Proveedor de Microsoft OLE DB para datos 
+Jet. Este proveedor estará disponible con la versión 2.1 de MDAC.
+
+Compatibilidad con procedimientos almacenados
+
+Los procedimientos almacenados se deben crear antes en Access como 
+Querydefs para que se puedan utilizar con el Proveedor de Microsoft 
+OLE DB para Jet. No hay ninguna utilidad para crear procedimientos
+almacenados usando código directamente en esta versión.
+
+
+A continuación, se muestra una lista de los errores conocidos del
+Proveedor de Microsoft OLE DB para Jet 3.52.
+
+IRowsetUpdate::GetOriginalData fallará en una fila recién insertada 
+mientras haya un cambio pendiente.
+----------------------------------------------------------------------
+IRowsetUpdate::GetOriginalData fallará en una fila recién insertada 
+cuando el cambio pendiente esté en espera. El motor Jet 3.5 no 
+servirá en el caso de que intente recuperar los valores originales 
+de las columnas recién insertadas; de ahí que el proveedor de OLE DB 
+no pueda admitir esta funcionalidad.
+
+Propiedades del conjunto de filas sujetas a cambios con JET.
+------------------------------------------------------------
+Con Jet 3.52, las propiedades que estableció antes de crear un 
+conjunto de filas se pueden ver alteradas para reflejar los 
+atributos reales del conjunto de filas devuelto por las condiciones 
+que fuerzan a una desviación. Un ejemplo de esto sería establecer 
+la propiedad DBPROP_BOOKMARK a VT_FALSE (junto con 
+DBPROPOPTIONS_REQUIRED) usando ICommand::SetProperties() o 
+IOpenRowset::OpenRowset(), y obtener después un conjunto de filas 
+con marcadores debido al tipo de conjunto de filas que Jet fue 
+obligado a crear. En vez de no devolver ningún conjunto de filas, 
+Jet lo devolverá con una serie de propiedades diferentes.
+
+Una consecuencia práctica de esto es que algunas API de OLEDB 
+devolverán información adicional. Por ejemplo,
+IColumnsInfo::GetColumnsInfo podría devolver una entrada adicional 
+inesperada de la columna del marcador.
+

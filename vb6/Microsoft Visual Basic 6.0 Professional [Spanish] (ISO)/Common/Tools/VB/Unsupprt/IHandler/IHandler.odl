@@ -1,0 +1,63 @@
+//==========================================================================
+// File:  generated on 11/11/96 10:48 AM:  By Brian Harris
+//==========================================================================
+[
+    uuid(78268EF0-F53D-11cf-BD9C-00AA00575603),
+    helpstring("VB 5 - IExtractIcon Interface"),
+    version(1.0)
+]
+
+//==========================================================================
+library IExtractIconA
+//==========================================================================
+{
+    importlib("stdole2.tlb");
+
+    //==========================================================================
+    typedef    [ helpstring("GetIconLocation() return flags.") ]
+    //==========================================================================
+    enum Return_Flags
+    {
+        GIL_SIMULATEDOC  =0x0001,     // simulate this document icon for this
+        GIL_PERINSTANCE  =0x0002,     // icons from this class are per instance (each file has its own)
+        GIL_PERCLASS     =0x0004,     // icons from this class per class (shared for all files of this type)
+        GIL_NOTFILENAME  =0x0008,     // location is not a filename, must call ::ExtractIcon
+        GIL_DONTCACHE    =0x0010      // this icon should not be cached
+    } Return_Flags;
+
+    //==========================================================================
+    typedef    [ helpstring("GetIconLocation() input flags.") ]
+    //==========================================================================
+    enum Input_Flags
+    {
+        GIL_OPENICON     =0x0001,     // allows containers to specify an "open" look
+        GIL_FORSHELL     =0x0002      // icon is to be displayed in a ShellFolder
+    } Input_Flags;
+
+    //==========================================================================
+    [
+        uuid(000214EB-0000-0000-C000-000000000046),
+        helpstring("IExtractIcon Interface"),
+        odl
+    ]
+    //==========================================================================
+    interface IExtractIcon:IUnknown
+    //==========================================================================
+    {
+        [helpstring("GetIconLocation")]
+        HRESULT GetIconLocation(
+                        [in]     long   uFlags,
+                        [in]     long   szIconFile,
+                        [in]     long   cchMax,
+                        [in,out] long  *piIndex,
+                        [in,out] long  *pwFlags);
+
+        [helpstring("Extract")]
+        HRESULT Extract(
+                        [in]     long   szIconFile,
+                        [in]     long   nIconIndex,
+                        [in,out] long  *phiconLarge,
+                        [in,out] long  *phiconSmall,
+                        [in]     long   nIconSize);
+    }
+}

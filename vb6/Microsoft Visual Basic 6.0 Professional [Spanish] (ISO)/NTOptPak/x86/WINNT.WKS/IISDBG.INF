@@ -1,0 +1,284 @@
+; iisdbg.inf
+; Installation file for Microsoft Script Debugger.
+
+; Edit Log
+; Date  Author  Change
+; 06/17/97      robfu   created file
+; 06/19/97      billsh  Hack-O-Rama
+
+[Version]
+Signature= "$Windows NT$"
+
+[Optional Components]
+iisdbgTop
+iisdbg
+
+[iisdbgTop]
+OptionDesc = %iisdbg_desc%
+Tip = %iisdbg_tip%
+IconIndex = *
+
+
+
+[iisdbg]
+Needs = iis_www
+Parent = iisdbgTop
+OptionDesc = %iisdbg_desc%
+Tip = %iisdbg_tip%
+IconIndex = *
+Modes = 1,3
+
+
+
+[ScrptDbg_Install]
+Copyfiles = iisdbgDocsCopy, iisdbgArtCopy, iisdbgCoreCopy, iisdbgSystemCopy
+AddReg = iisdbgReg
+
+; the following lines are used to trigger an uninstall action
+
+[ScrptDbg_Uninstall]
+DelFiles = iisdbgDocsCopy, iisdbgArtCopy, iisdbgCoreCopy
+DelReg = iisdbgReg, iisdbgRegData
+
+[iisdbgDocsCopy]
+;this is the Caesar HTM docs file
+sdbug.hhc,,,32
+sdbug.htm,,,32
+sdbug_w.htm,,,32
+sdbug_1.htm,,,32
+sdbug_2.htm,,,32
+sdbug_3.htm,,,32
+sdbug_4.htm,,,32
+sdbug_5.htm,,,32
+sdbug_6.htm,,,32
+sdbug_7.htm,,,32
+sdbug_8.htm,,,32
+sdbug_9.htm,,,32
+sdbug_10.htm,,,32
+sdbug_11.htm,,,32
+sdbug_12.htm,,,32
+sdbug_13.htm,,,32
+sdbug_14.htm,,,32
+sdbug_15.htm,,,32
+sdbug_16.htm,,,32
+sdbug_17.htm,,,32
+sdbug_18.htm,,,32
+sdbug_19.htm,,,32
+sdbug_20.htm,,,32
+sdbug_21.htm,,,32
+sdbug_22.htm,,,32
+sdbug_23.htm,,,32
+sdbug_24.htm,,,32
+sdbug_25.htm,,,32
+sdbug_26.htm,,,32
+sdbug_27.htm,,,32
+sdbug_28.htm,,,32
+sdbug_29.htm,,,32
+sdbug_30.htm,,,32
+sdbug_31.htm,,,32
+sdbug_32.htm,,,32
+sdbug_33.htm,,,32
+sdbug_34.htm,,,32
+sdbug_35.htm,,,32
+sdbug_36.htm,,,32
+sdbug_37.htm,,,32
+sdbug_38.htm,,,32
+sdbug_39.htm,,,32
+sdbug_40.htm,,,32
+sdbug_41.htm,,,32
+sdbug_42.htm,,,32
+sdbug_43.htm,,,32
+
+
+[iisdbgArtCopy]
+;these are the IVT art docs
+DcScrClt.gif,,,32
+DbBrkAt.gif,,,32
+DcBrkPt.gif,,,32
+DcCllStk.gif,,,32
+DbCllStk.gif,,,32
+DbClrBrk.gif,,,32
+DeCmdWnd.gif,,,32
+DwCmdJ.gif,,,32
+DwCmdVB.gif,,,32
+DbCmdWnd.gif,,,32
+DcOvr1.gif,,,32
+DbInsBrk.gif,,,32
+DbRun.gif,,,32
+DwRunDox.gif,,,32
+DbRunDox.gif,,,32
+DeRun.gif,,,32
+DeRunAsp.gif,,,32
+DeStx.gif,,,32
+DeStxAsp.gif,,,32
+DeSvrRun.gif,,,32
+DeSvrStx.gif,,,32
+DcSetBrk.gif,,,32
+DbStpIn.gif,,,32
+DbStpOut.gif,,,32
+DbStpOvr.gif,,,32
+DbStop.gif,,,32
+DcScrSvr.gif,,,32
+DwBkMrk.gif,,,32
+DwClStkJ.gif,,,32
+SDbugBan.gif,,,32
+
+[iisdbgCoreCopy]
+;these are the core script debugger files
+ReadMe.Htm,,,32
+msscrdbg.exe,,,32       ; need msscrdbg.exe /regserver and /unregserver
+scrdbg.dll,,,32         ; registered
+sdbgenu.dll,,,32
+comwin.dll,,,32         ; registered
+srcedit.dll,,,32        ; registered
+filesvc.dll,,,32        ; registered
+htmlclr.dll,,,32        ; registered
+textmgr.dll,,,32        ; registered
+sdbgesp.dll,,,32
+
+[iisdbgSystemCopy]
+;these are system files required by Script Debugger
+mdm.exe,,,32    ; need mdm.exe /regserver and /unregserver
+msdbg.dll,,,32  ; registered
+pdm.dll,,,32    ; registered
+msvcrt.dll,,,32    ; NOT registered
+
+
+
+[RegServer]
+msscrdbg.exe,%76543%\%ProductDir%
+scrdbg.dll,%76543%\%ProductDir%
+comwin.dll,%76543%\%ProductDir%
+srcedit.dll,%76543%\%ProductDir%
+filesvc.dll,%76543%\%ProductDir%
+htmlclr.dll,%76543%\%ProductDir%
+textmgr.dll,%76543%\%ProductDir%
+mdm.exe, %11%
+msdbg.dll,%11%
+pdm.dll,%11%
+
+[UnregServer]
+msscrdbg.exe,%76543%\%ProductDir%
+scrdbg.dll,%76543%\%ProductDir%
+comwin.dll,%76543%\%ProductDir%
+srcedit.dll,%76543%\%ProductDir%
+filesvc.dll,%76543%\%ProductDir%
+htmlclr.dll,%76543%\%ProductDir%
+textmgr.dll,%76543%\%ProductDir%
+
+
+
+
+[iisdbgReg]
+HKLM,SOFTWARE\Microsoft\ScrptDbg,InstallDir,,"%76543%\%ProductDir%"
+
+[DestinationDirs]
+iisdbgSystemCopy = 11                 ; System Directory
+iisdbgCoreCopy = 76543,%ProductDir%                ; <root>\Program Files\Microsoft Script Debugger
+iisdbgDocsCopy = 10,help\debug
+iisdbgArtCopy = 10,help\debug\art
+
+[Strings]
+; Strings to be localized
+iisdbg_desc = "Microsoft Script Debugger"
+iisdbg_tip = "Microsoft Script Debugger"
+MSAppName = "Microsoft Script Debugger"
+AppName="Microsoft Script Debugger"
+ProductName="Microsoft Script Debugger"
+ProductDir = "Microsoft Script Debugger"
+
+
+[SourceDisksNames]
+1="%MSAppName%","iisdbg.cab",0
+
+[SourceDisksFiles]
+sdbug.hhc=1,,7823,,
+sdbug.htm=1,,2866,,
+sdbug_w.htm=1,,2697,,
+sdbug_1.htm=1,,1508,,
+sdbug_2.htm=1,,2364,,
+sdbug_3.htm=1,,1343,,
+sdbug_4.htm=1,,2127,,
+sdbug_5.htm=1,,1725,,
+sdbug_6.htm=1,,1521,,
+sdbug_7.htm=1,,2031,,
+sdbug_8.htm=1,,3161,,
+sdbug_9.htm=1,,2570,,
+sdbug_10.htm=1,,1631,,
+sdbug_11.htm=1,,3837,,
+sdbug_12.htm=1,,3906,,
+sdbug_13.htm=1,,3100,,
+sdbug_14.htm=1,,4822,,
+sdbug_15.htm=1,,1980,,
+sdbug_16.htm=1,,2884,,
+sdbug_17.htm=1,,1948,,
+sdbug_18.htm=1,,4434,,
+sdbug_19.htm=1,,2261,,
+sdbug_20.htm=1,,5231,,
+sdbug_21.htm=1,,2020,,
+sdbug_22.htm=1,,3774,,
+sdbug_23.htm=1,,1535,,
+sdbug_24.htm=1,,2898,,
+sdbug_25.htm=1,,4374,,
+sdbug_26.htm=1,,3293,,
+sdbug_27.htm=1,,1677,,
+sdbug_28.htm=1,,3972,,
+sdbug_29.htm=1,,1738,,
+sdbug_30.htm=1,,1472,,
+sdbug_31.htm=1,,1479,,
+sdbug_32.htm=1,,1516,,
+sdbug_33.htm=1,,1972,,
+sdbug_34.htm=1,,1626,,
+sdbug_35.htm=1,,1543,,
+sdbug_36.htm=1,,1343,,
+sdbug_37.htm=1,,3361,,
+sdbug_38.htm=1,,2001,,
+sdbug_39.htm=1,,3326,,
+sdbug_40.htm=1,,1867,,
+sdbug_41.htm=1,,2334,,
+sdbug_42.htm=1,,2195,,
+sdbug_43.htm=1,,1524,,
+DcScrClt.gif=1,,4311,,
+DbBrkAt.gif=1,,927,,
+DcBrkPt.gif=1,,11377,,
+DcCllStk.gif=1,,935,,
+DbCllStk.gif=1,,951,,
+DbClrBrk.gif=1,,954,,
+DeCmdWnd.gif=1,,2665,,
+DwCmdJ.gif=1,,2441,,
+DwCmdVB.gif=1,,2270,,
+DbCmdWnd.gif=1,,954,,
+DcOvr1.gif=1,,18484,,
+DbInsBrk.gif=1,,920,,
+DbRun.gif=1,,932,,
+DwRunDox.gif=1,,3957,,
+DbRunDox.gif=1,,936,,
+DeRun.gif=1,,2981,,
+DeRunAsp.gif=1,,5361,,
+DeStx.gif=1,,3004,,
+DeStxAsp.gif=1,,6570,,
+DeSvrRun.gif=1,,11235,,
+DeSvrStx.gif=1,,12454,,
+DcSetBrk.gif=1,,11425,,
+DbStpIn.gif=1,,932,,
+DbStpOut.gif=1,,935,,
+DbStpOvr.gif=1,,932,,
+DbStop.gif=1,,954,,
+DcScrSvr.gif=1,,4200,,
+DwBkMrk.gif=1,,6633,,
+DwClStkJ.gif=1,,4669,,
+SDbugBan.gif=1,,14616,,
+ReadMe.Htm=1,,8576,,
+msscrdbg.exe=1,,114176,,
+scrdbg.dll=1,,99328,,
+sdbgenu.dll=1,,52224,,
+comwin.dll=1,,61440,,
+srcedit.dll=1,,46080,,
+filesvc.dll=1,,19456,,
+htmlclr.dll=1,,78336,,
+textmgr.dll=1,,229376,,
+mdm.exe=1,,88064,,
+msdbg.dll=1,,332800,,
+pdm.dll=1,,150016,,
+msvcrt.dll=1,,271632,,
+sdbgesp.dll=1,,52224,,

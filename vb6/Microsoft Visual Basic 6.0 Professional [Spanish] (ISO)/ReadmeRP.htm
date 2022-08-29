@@ -1,0 +1,1338 @@
+<html>
+<!----------------------------------------------------------------------------->
+<!--                          BEGIN HTML HEAD                                -->
+
+<head>
+<title>Léame de Microsoft Repository </title>
+<meta name="MS-HAID" content="readmerp">
+</head>
+
+<body BGCOLOR="#FFFFFF" onclick="checkExpand()">
+<font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000" link="#0000FF"
+vlink="#660066"><!--                                           -->
+<!--                             END HEADER                                  -->
+<!----------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<!--                            BEGIN JSCRIPT                                -->
+<!--                                                                         -->
+<script language="JSCRIPT">
+
+  function checkExpand( )
+  {
+     if ("" != event.srcElement.id)
+     {
+        var ch = event.srcElement.id + "Child";
+        var el = document.all[ch];
+        if (null != el)
+        {
+           el.style.display = "none" == el.style.display ? "" : "none";
+           if (el.style.display != "none")
+           event.returnValue=false;
+        }
+     }
+  }
+
+</script>
+<!--                                                                         -->
+<!--                             END JSCRIPT                                 -->
+<!----------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<!--                         BEGIN README INTRO                              -->
+<!--                                                                         -->
+
+
+<h2>Léame de Microsoft Repository 2.0 </h2>
+
+<p>(c) 1998 Microsoft Corporation. Reservados todos los derechos. </p>
+
+<p>El Léame de Repository incluye información actualizada acerca de la documentación que se proporciona con el sistema de desarrollo para Windows e Internet Microsoft(r) Visual Studio. La información de este documento está más actualizada que la información del sistema de Ayuda.
+Muchos de los problemas que se tratan en este documento se corregirán en versiones posteriores.</p>
+
+<p>Para <i>cuestiones de información general</i> sobre el conjunto de productos Visual Studio 6.0,
+incluida la instalación conjunta de productos, consulte el archivo Léame de <a href="install.htm"
+title="Salto al archivo Léame sobre la instalación (install.htm).">Notas de instalación</a>
+(install.htm).</p>
+
+<p>Para las demás cuestiones sobre el sistema de Ayuda del conjunto de productos Visual Studio, consulte el <font
+face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000" link="#0000FF"
+vlink="#660066"><a href="readmeDN.htm" title="Salto a readmeDN.htm">archivo Léame de MSDN&trade; Microsoft Developer Network.</a></p>
+<!--                                                                         -->
+<!--                            END README INTRODUCTION                      -->
+<!----------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<!--                               BEGIN TOC                                 -->
+<!--                                                                         -->
+
+<h3>Contenido </h3>
+<!------------------------------------------------------------------->
+<!--                         SECTION 1.0                           -->
+<!--                                                               -->
+
+<h5><a class="ex" href="#" title="Haga clic para desplegar o replegar." id="Section1">Introducción a Repository</a></h5>
+<div id="Section1Child"><a href="#Topic_10">
+
+<p>¿Qué es Microsoft Repository?</a> </p>
+
+<p><font color="#FF0000" size="1" face="Verdana,Arial,Helvetica"><strong>NUEVO</strong></font>
+<a href="#Topic_11">Lo nuevo en Microsoft Repository 2.0</a> </p>
+
+<p><a href="#Topic_12">Información importante para los clientes de la versión 2.0</a></p>
+</div><!------------------------------------------------------------------->
+<!--                         SECTION 2.0                           -->
+<!--                                                               -->
+
+
+<h5><a class="ex" href="#" title="Haga clic para desplegar o replegar." id="Section2">Instalación</a></h5>
+<div id="Section2Child">
+
+<p><b>Importante:</b>&nbsp;&nbsp;&nbsp;Esta sección contiene información vital acerca de 
+la instalación de Repository 2.0. Lea atentamente todos los apartados antes de comenzar  
+la instalación.</p>
+<a href="#Topic_20">
+
+<p>Notas de instalación de Repository</a></p>
+
+<p><a href="#Topic_21">Archivos de Repository en el disco duro</a> </p>
+</div><!------------------------------------------------------------------->
+<!--                         SECTION 3.0                           -->
+<!--                                                               -->
+
+
+<h5><a class="ex" href="#" title="Haga clic para desplegar o replegar." id="Section3">Características de Repository
+2.0</a></h5>
+<div id="Section3Child"><a href="#Topic_30">
+
+<p>Diferencias entre Repository 1.0 y Repository 2.0</a></p>
+<a href="#Topic_31">
+
+<p>Funcionamiento asíncrono</a></p>
+<a href="#Topic_32">
+
+<p>Tipos de SQL y API utilizados en las definiciones de propiedades </a></p>
+<a href="#Topic_33">
+
+<p>Características nuevas</a></p>
+</div><!------------------------------------------------------------------->
+<!--                         SECTION 4.0                           -->
+<!--                                                               -->
+
+
+<h5><a class="ex" href="#" title="Haga clic para desplegar o replegar." id="Section4">Limitaciones
+y más información</a></h5>
+<div id="Section4Child"><a href="#Topic_40">
+
+<p>Limitaciones conocidas de Microsoft Repository 2.0</a></p>
+
+<p><a href="#Topic_41">Para obtener más información</a> </p>
+</div><!--                                                                   -->
+<!--                           END CONTENTS TOC                              -->
+<!----------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------->
+<!--                             BEGIN CONTENTS                              -->
+<!--                                                                         -->
+<!--                                                                         -->
+<!------------------------------------------------------------------->
+<!--                         SECTION 1.0                           -->
+<!--                                                               -->
+
+
+<p><br>
+</p>
+
+<h3>Introducción a Repository</h3>
+
+<p><br>
+<!------------------------------------------------------><!--                     TOPIC 1.0                    --><!--                                                  --></p>
+
+<h4><a name="Topic_10"></a>¿Qué es Microsoft Repository?</h4>
+
+<p>Microsoft Repository es una tecnología que permite definir y llenar modelos de información. La utilizan las herramientas de desarrollo de ingeniería y software para compartir 
+información sobre artefactos de ingeniería. Los artefactos de ingeniería pueden ser componentes de software,
+componentes industriales, documentos, mapas, páginas Web (cualquier información con una estructura compleja que se desee compartir). Microsoft Repository almacena los datos de depósito en una base de datos relacional. Es compatible con dos sistemas de administración de bases de datos: Microsoft<i>(r)</i>
+SQL Server versión 6.5 o posterior y el motor de bases de datos Microsoft Jet versión 3.0 o
+posterior. </p>
+
+<p><!------------------------------------------------------><!--                     TOPIC 1.1                    --><!--                                                  --></p>
+
+<h4><a name="Topic_11"></a></h4>
+
+<h4>Lo nuevo en Microsoft Repository 2.0</h4>
+
+<p>Microsoft Repository 2.0 contiene mejoras significativas en las áreas de administración 
+de versiones y desarrollo en equipo, mientras que se mantiene la compatibilidad con 
+las anteriores interfaces de Microsoft Repository 1.0. </p>
+
+<p>Las principales áreas de nueva funcionalidad son: 
+
+<ul>
+  <li><b>Versiones de objetos</b>: permiten al usuario del depósito mantener varias versiones
+    de los objetos del depósito. </li>
+  <li><b>Versiones de relaciones</b>: permiten al usuario del depósito mantener varias
+    versiones de las relaciones entre objetos. </li>
+  <li><b>Administración del área de trabajo</b>: proporciona un depósito virtual para usuarios en el que 
+    pueden tratar versiones privadas de objetos y relaciones. Un modelo de Protección/Desprotección permite
+    a los usuarios controlar la información que es visible en sus propias áreas de trabajo y qué cambios 
+    se hacen visibles para los demás usuarios. Esta nueva funcionalidad se describe detalladamente en la
+    documentación del usuario y en las especificaciones que acompañan al software. </li>
+</ul>
+
+<p><br>
+<!------------------------------------------------------><!--                     TOPIC 1.2                   --><!--                                                  --></p>
+
+<h4><a name="Topic_12"></a>Información importante para los clientes de la versión 2.0</h4>
+
+<p>Los usuarios deberían tener en cuenta lo siguiente: 
+
+<ul>
+  <li>Microsoft Repository 2.0 es compatible con las anteriores interfaces y funcionalidad de la versión 1.0.
+    Si todas las aplicaciones que usan una base de datos de depósito sólo utilizan la funcionalidad de la 
+    versión 1.0, no aparecerán incompatibilidades. De igual manera, si todas las aplicaciones que utilizan una
+    base de datos de depósito están preparadas para ambas versiones y áreas de trabajo, deberían funcionar bien.
+    No es recomendable la combinación de aplicaciones preparadas para ambas versiones con aplicaciones que no están preparadas 
+    para versiones y áreas de trabajo en la misma base de datos del depósito. </li>
+  <li>El esquema SQL de Microsoft Repository 2.0 es una extensión del esquema de Microsoft Repository 1.0
+    debido a la introducción de las versiones. Puede que las aplicaciones que pasan por alto las interfaces del 
+    depósito, al tener acceso directamente a tablas SQL tengan que modificar consultas o proporcionar vistas
+    para mantener la compatibilidad con lo anterior. </li>
+  <li>El asistente para migración (MigRepV2.exe) convierte la información de la base de datos subyacente de 
+    Microsoft Repository de la versión 1.0 a la versión 2.0 (de SQL a SQL, y de Jet a Jet). Debe tener registrado el motor de Microsoft Repository versión 2.0 (motor V2) antes de ejecutar el 
+    asistente para migración. Tenga en cuenta que la migración es sólo en un sentido, de la versión 1.0 a la versión
+    2.0. </li>
+  <li>Microsoft Repository 2.0 no es compatible con el modo WRITETHROUGH de ejecución de transacciones.</li>
+  <li>Microsoft Repository 2.0 es compatible con plataformas Intel x86 y Alpha. </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><br>
+<!-------------------------------------------------------------------><!--                         SECTION 2.0                           --><!--                                                               --></p>
+
+<h3>Instalación</h3>
+<!------------------------------------------------------>
+<!--                     TOPIC 2.0                    -->
+<!--                                                  -->
+
+<h4><a name="Topic_20"></a>Notas de instalación de Repository</h4>
+
+<p>Microsoft Repository se instala durante una instalación de Visual Basic. </p>
+
+<p>Microsoft Repository necesita que se instale el componente de acceso a datos. De manera predeterminada,
+el componente Data Access se instala durante una instalación de Visual Basic. Sin embargo, si elige
+ no instalar el componente de acceso a datos y, después, instala una herramienta de terceros que
+utiliza Microsoft Repository, se producirá el error siguiente al iniciar Visual
+Basic 98:</p>
+
+<p><em>&quot;Error al abrir la base de datos de Microsoft Repository. El controlador especificado
+no se ha podido cargar debido a un error 126 del sistema (controlador de Microsoft Access (*.MDB)).
+El complemento de Microsoft Repository para Visual Basic se cierra.&quot;</em></p>
+
+<p>Para corregir este problema, instale el componente Data Access.</p>
+
+<p><br>
+<!------------------------------------------------------><!--                     TOPIC 2.1                    --><!--                                                  --></p>
+
+<h4><a name="Topic_21"></a>Archivos de Repository en el disco duro</h4>
+
+<p>Los archivos siguientes se agregarán al directorio SYSTEM (o SYSTEM32) de Windows: 
+
+<ul>
+  <li>REPUTIL.DLL - Herramientas para el motor de Repository </li>
+</ul>
+
+<p>Los siguientes archivos se agregarán al directorio &quot;Archivos de programa\Archivos comunes\Microsoft
+Shared\Repostry&quot;: 
+
+<ul>
+  <li>REPODBC.DLL - El motor del depósito</li>
+  <li>REPRC.DLL - Recursos del motor del depósito</li>
+  <li>REPBROWS.EXE - Un explorador básico del depósito</li>
+  <li>REPBRRC.DLL - Recursos del explorador del depósito</li>
+  <li>MIGREPV2.EXE - Interfaz de usuario del Asistente para migración</li>
+  <li>MIGV2RC.DLL - Recursos del Asistente para migración</li>
+  <li>MIGV2.DLL - Algoritmo del Asistente para migración</li>
+  <li>REPCDLG.DLL - Cuadro de diálogo común de Repository</li>
+  <li>REPCDLG.OCX - Controles ActiveX para el cuadro de diálogo común de Repository</li>
+  <li>REPCDRC.DLL - Recursos del cuadro de diálogo común de Repository</li>
+</ul>
+
+<p>Los siguientes archivos se agregarán al directorio &quot;Archivos de programa\Archivos comunes\Microsoft
+Shared\Repostry\infoMdl&quot;: 
+
+<ul>
+  <li>REPCDE.DLL - Modelo de información de descripción de componentes</li>
+  <li>REPCOM.DLL - Modelo de información COM</li>
+  <li>REPDTM.DLL - Modelo de información de tipos de datos</li>
+  <li>REPGEN.DLL - Modelo de información genérico</li>
+  <li>UML.DLL - Modelo de información UML (Lenguaje de modelo unificado)</li>
+  <li>REPUMX.DLL - Modelo de información de extensión de UML</li>
+  <li>REPVCM.DLL - Modelo administrador de componentes visuales</li>
+</ul>
+
+<p>Los archivos siguientes se agregarán al directorio de Visual Basic: 
+
+<ul>
+  <li>REPVB.DLL - Complemento Repository para Visual Basic</li>
+  <li>REPVBRC.DLL - Archivo de recursos para el complemento Repository</li>
+  <li>REPVBTIM.DLL - Definiciones de tipo para el modelo MDO</li>
+</ul>
+
+<p><!--                     TOPIC 2.2                    --><!--       --></p>
+
+<h3><a name="Topic_22"></a><font face="Verdana" size="2"><br>
+<!-------------------------------------------------------------------><!--                      SECTION 3.0                           --><!--                                                               --></h3>
+
+<h3>Características de Repository 2.0</font></h3>
+</font><font face="Verdana" size="2"><!------------------------------------------------------>
+<!--                     TOPIC 3.0                   -->
+<!--                                                  -->
+
+
+<h4><a name="Topic_30"></a>Diferencias entre Repository 1.0 y Repository 2.0</h4>
+<b><font SIZE="4">
+
+<h5></font></b>Uso de Repository 1.0</h5>
+
+<p ALIGN="JUSTIFY">Si la base de datos del depósito se ha creado mediante el motor de Repository 1.0 
+y se ha utilizado para la creación, el llenado y la recuperación del modelo de información sólo mediante
+este motor, habrá algunas diferencias cuando ejecute la misma aplicación con el motor de 
+Repository 2.0. Las diferencias surgen del tratamiento de las relaciones, como se enumera a continuación:</p>
+
+<ul>
+  <li>En Repository 1.0, si una aplicación inserta una relación de nombre único con un nombre ya
+    existente, la infracción de la unicidad de nombres se detecta de manera inmediata. En Repository 2.0, la
+    transgresión sólo se detecta de manera inmediata si la relación ya existente está en la caché (por ejemplo,
+    creada como parte de la misma transacción o ya recuperada en la memoria caché).
+    En cualquier otro caso, la validación de unicidad de nombre ocurre en el momento de la confirmación.</li>
+</ul>
+
+<ul>
+  <li>Los enumeradores del motor de Repository 1.0, excepto los de las colecciones de relaciones,
+    tienen contenido estático, por lo que los elementos agregados no aparecen hasta que se solicita un 
+    nuevo enumerador a la colección. En el motor de Repository 2.0, los enumeradores son dinámicos, por lo que 
+    los elementos agregados aparecen inmediatamente en el enumerador.</li>
+</ul>
+
+<ul>
+  <li>En Repository 1.0, si la posición de inserción en <strong>IRelationshipCol::Insert()</strong>
+    es mayor que la cuenta actual de la colección, se trata la llamada como <strong>IRelationshipCol::Add()</strong>.
+    En Repository 2.0, si el punto de inserción especificado es una unidad mayor  que la cuenta actual, la llamada se reduce a <strong>IRelationshipCol::Add()</strong>. Para posiciones mayores de inserción,
+    la llamada devuelve un error puesto que el usuario probablemente se equivocó
+    (sería un error de programación en cualquier caso).</li>
+</ul>
+
+<ul>
+  <li>La invocación a <strong>IRelationshipCol::Insert()</strong> en una colección no ordenada o de destino
+    produce un error en Repository 2.0. En Repository 1.0, la llamada realiza <strong>IRelationshipCol::Add()</strong>
+    en el origen si la colección está ordenada.</li>
+</ul>
+<b><u>
+
+<p></u>Utilización en modo mixto de Repository 1.0 y Repository 2.0 </b></p>
+
+<p ALIGN="left">Es concebible que una aplicación de Repository 1.0 se pueda ejecutar en el 
+motor de Repository 2.0, en la que las operaciones de versiones se realizan mediante otras aplicaciones
+sobre el mismo depósito. El motor del curso tiene que respetar la semántica de las versiones,
+y algunas reglas semánticas serán necesariamente visibles para la aplicación que no tiene control de versiones.
+Una aplicación de Repository 1.0 <em>solamente</em> puede ver estos efectos al funcionar sobre una
+base de datos de depósito en la cual las aplicaciones de Repository 2.0 realizan operaciones de versiones 
+y áreas de trabajo. Estos efectos no surgen cuando todas las aplicaciones que actúan sobre la base de datos del depósito siguen la semántica de Repository 1.0. Además de los efectos mencionados anteriormente, pueden surgir los siguientes:</p>
+
+<ul>
+  <li>Una aplicación de Repository 1.0 puede recuperar un objeto mediante <strong>get_Object()</strong>
+    (obtiene una versión resuelta), eliminarlo (la versión se elimina) y utilizar <strong>get_Object()</strong>
+    una segunda vez (la llamada se resuelve con una versión diferente). </li>
+</ul>
+
+<ul>
+  <li>Puesto que todos los objetos están desbloqueados en Repository 1.0, las actualizaciones nunca fallan en Repository
+    1.0. Sin embargo, en Repository 2.0, todas las operaciones de actualización (actualizaciones de propiedades y de 
+    la colección origen) sobre una versión bloqueada o desprotegida producirán un error. </li>
+</ul>
+
+<ul>
+  <li>En Repository 2.0, una operación de eliminación sobre una versión desprotegida o sobre una versión con 
+    un sucesor producirá un error. Ninguna de las situaciones se podían dar en Repository 1.0.</li>
+</ul>
+
+<ul>
+  <li>En Repository 1.0, <strong>IRelationship::Delete()</strong> elimina la relación
+    completamente por lo que la relación deja de existir en los objetos de origen y 
+    de destino. En Repository 2.0, si hemos explorado desde el destino, la relación
+    desde la versión de origen a las demás versiones de destino sigue existiendo
+    tras la eliminación. Si hemos explorado desde el origen, se elimina la relación desde 
+    esa versión a todas las versiones de destino. El mismo comportamiento se da para <strong>IRelationshipCol::Remove()</strong> y <strong>ITargetObjectCol::Remove()</strong>.</li>
+</ul>
+
+<ul>
+  <li>En Repository 1.0, la propagación de eliminaciones detiene en un objeto si es el destino de
+    alguna otra relación del mismo tipo. En Repository 2.0, además de esta condición, la propagación 
+de eliminación se detiene en una versión no modificable (bloqueada o desprotegida en un área de trabajo diferente) 
+y en las versiones que tienen relaciones entrantes (de cualquier tipo) desde un origen bloqueado (es decir, sin error).</li>
+</ul>
+<b><u>
+
+<p></u>Tablas SQL</b> 
+
+<ul>
+  <li><p ALIGN="left">Las tablas SQL de Repository 2.0 están revisadas de manera exhaustiva para el control de versiones.
+    Las vistas SQL que coinciden con consultas de SQL de Repository 1.0 que se ejecutan sobre una base de datos del depósito en la cual
+    todos los objetos tienen una versión deben funcionar sin ningún cambio. </p>
+  </li>
+  <li><p ALIGN="left">Es probable que las consultas SQL de Repository 1.0 ejecutadas sobre un depósito en el que hay varias
+    versiones de objetos se ejecuten hasta el final, pero su semántica se debería revisar 
+    a la luz del control de versiones. En ciertas situaciones, las consultas pueden devolver varias versiones del mismo 
+    objeto; una aplicación de Repository 1.0 no espera esto.</p>
+  </li>
+  <li><font size="2"><p align="left">La tabla <strong>RTblSites</strong> no tiene la columna <strong>NextLocalID</strong>
+    en Repository 2.0.</p>
+    </font></li>
+  <li><p align="left">La tabla <strong>RTblClassDefs</strong> tiene una nueva columna llamada <strong>VerPropDescs</strong>
+    donde se almacena la definición de clase  en Repository 2.0. La columna <strong>PropDescs</strong>
+    sólo contiene valores nulos y ya no se utiliza. Sin embargo, se mantiene por 
+    compatibilidad.</p>
+  </li>
+</ul>
+<b><u>
+
+<p></u>Varios</b> </p>
+
+<p ALIGN="JUSTIFY">La tabla siguiente muestra otras diferencias entre Repository 1.0 y
+Repository 2.0.</p>
+</font>
+
+<table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="7" WIDTH="600">
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1"><b>Descripción</b></font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1"><b>Motor V1 </b></font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1"><b>Motor V2 </b></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font color="#000000" face="Verdana" size="1">IRepositoryItem::get_Item()</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">Un índice entero fuera de intervalo devuelve EREP_BADPARAMS.</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">Un índice entero fuera de intervalo devuelve DISP_E_BADINDEX.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">IRelationshipCol::Insert()</font><p><font
+    face="Verdana" size="1">ITargetObjectCol::Insert()</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">La inserción se anexa a la colección si la colección no está ordenada. </font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">Error en la inserción con las colecciones no ordenadas (EREP_COL_NOT-SEQUENCED) y las colecciones de destino (EREP_RELSHIP_ORGONLY).</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">IRelationshipCol::Move()</font><p><font
+    face="Verdana" size="1">ITargetObjectCol::Move()</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">Error EREP_RELSHIP_
+    ORGONLY para colecciones no ordenadas y de destino.</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">Error EREP_COL_NOT-SEQUENCED para colecciones no ordenadas, 
+    y EREP_RELSHIP_ ORGONLY para colecciones de destino.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">IRepositoryObjectVersion::put_Name()</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">El error
+    EREP_OBJ_NO-NAMING-RELSHIP no se agrega a la cola de errores.</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">El error REP_OBJ_NONAMING-RELSHIP
+    se agrega a la cola de errores.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">Colecciones de nombres únicos: elemento
+    B con nombre &quot;B&quot; se agrega varias veces a una colección de nombres únicos </font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">El código de error es 
+    EREP_RELSHIP_DUPENAME.</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">El código de error es 
+    EREP_RELSHIP_EXISTS.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">IRepositoryItem::get_Name()</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">Se completa con éxito sobre una relación 
+    sin nombre (devuelve &quot;0&quot;).</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">Produce un error.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">IRelationshipCol::get_Item() </font><p><font
+    face="Verdana" size="1">ITargetObjectCol:: get_Item()</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">El argumento puede ser INTID, OBJID,
+    Index o Name.</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">El argumento puede ser OBJID, Index
+    o Name.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">ExecuteQuery() sobre SQL Server</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">Comprueba la columna INTID en
+    el conjunto de resultados. </font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">Acepta más de un INTID
+    siempre que sea posible una conversión implícita.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="343" VALIGN="TOP"><font face="Verdana" size="1">Actualizar sobre una colección de instancias 
+    de objetos</font></td>
+    <td WIDTH="300" VALIGN="TOP"><font face="Verdana" size="1">Actualiza las propiedades y después los objetos.</font></td>
+    <td WIDTH="272" VALIGN="TOP"><font face="Verdana" size="1">Actualiza los objetos y después las propiedades.</font></td>
+  </tr>
+</table>
+<font face="Verdana" size="2">
+
+<p>&nbsp;</p>
+<!------------------------------------------------------>
+<!--                     TOPIC 3.1                    -->
+<!--                                                  -->
+
+<h4><a name="Topic_31"></a>Funcionamiento asíncrono</h4>
+
+<p ALIGN="left">La carga de colecciones de objetos en respuesta a <strong>IRepositoryODBC::ExecuteQuery()</strong>
+puede ser asíncrona. El subproceso que llama debe comprobar si la carga está completa. Si el subproceso 
+que llama intenta leer datos, actualiza la colección o construye un enumerador mientras la carga está en curso, se bloqueará hasta que la carga esté completa.</p>
+<b><u>
+
+<h5></u>Indicadores</h5>
+
+<ul>
+  </b>
+  <li>Para establecer o borrar la opción &quot;async&quot; (asíncrona):</li>
+</ul>
+
+<dir>
+  <dir>
+    <dl>
+      <dt></font><font face="Courier New" size="2">RODBC_RESET_OPTIONS = 1&nbsp; // Restablecer todas las opciones</font></dt>
+      <dt><font face="Courier New" size="2">RODBC_ASYNCH = 2
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Ejecución de consulta asíncrona</font><font
+        face="Verdana" size="2"></dt>
+    </dl>
+    <u><b>
+  </dir>
+</dir>
+
+<ul>
+  </b></u>
+  <li>Para el estado de carga del objeto:</li>
+</ul>
+
+<blockquote>
+  <dl>
+    <dd><font face="Courier New" size="2">READY = 1
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+      Carga  completa</font></dd>
+    <dd><font face="Courier New" size="2">INPROGRESS = 2
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Carga en curso</font></dd>
+    <dd><font face="Courier New" size="2">CANCELLED = 3
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Carga cancelada (por el solicitante)</font></dd>
+    <dd><font face="Courier New" size="2">FAILED = 4
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+      Error en la carga (motivo desconocido)</font></dd>
+  </dl>
+</blockquote>
+<b><u>
+
+<h5></u>Interfaces nuevas  </h5>
+
+<ul>
+  </b>
+  <li><strong>IObjectCol2</strong>: hereda de <strong>IObjectCol</strong>. </li>
+</ul>
+
+<blockquote>
+  <p>Métodos adicionales:</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><strong>LoadStatus</strong>: obtiene el estado de carga de la colección.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h6>Firma</h6>
+  </blockquote>
+  <blockquote>
+    <dl>
+      <dt><strong>HRESULT LoadStatus(long</strong> *<em>piEstado</em><strong>)</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;// Automatización</dt>
+      <dt><strong>HRESULT get_LoadStatus(long</strong> *<em>piEstado</em><strong>)&nbsp;</strong>&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// COM</dt>
+    </dl>
+    <h6>Argumentos</h6>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <dl>
+    <dd><em>piEstado</em> </dd>
+    <dd>[out, retval] </dd>
+    <dd>Uno de las siguientes: READY/INPROGRESS/CANCELLED/FAILED.</dd>
+  </dl>
+</ul>
+
+<blockquote>
+  <blockquote>
+    <h6>Valor devuelto</h6>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <dl>
+    <dd>S_OK si se ha realizado con éxito, EREP_BADPARAMS si no se proporciona argumento de salida.</dd>
+  </dl>
+</ul>
+
+<blockquote>
+  <ul>
+    <li><strong>Cancel</strong>: solicita la cancelación de la operación de carga en curso.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h6>Firma</h6>
+  </blockquote>
+  <blockquote>
+    <p><strong>HRESULT</strong> <strong>Cancel()</strong></p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h6>Valor devuelto</h6>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <dl>
+    <dd>S_OK.</dd>
+  </dl>
+</blockquote>
+
+<ul>
+  <li><strong>IRepositoryODBC2</strong>: hereda de <strong>IRepositoryODBC</strong>. </li>
+</ul>
+
+<blockquote>
+  <p>Métodos adicionales:<ul>
+    <li><strong>GetOption: </strong>obtiene el valor de la opción de carga.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h6>Firma</h6>
+    <p><strong>HRESULT</strong> <strong>GetOption(long</strong> <em>iOpción</em>, <strong>VARIANT</strong>
+    *<em>psValor</em><strong>)</strong></p>
+  </blockquote>
+  <dl>
+    <dd><h6>Argumentos</font></h6>
+      <font face="Verdana" size="2"></dd>
+    <dd><em>iOpción</em>&nbsp;</dd>
+    <dd>[in] </dd>
+    <dd>RODBC_ASYNCH.</dd>
+    <dd>&nbsp;</dd>
+    <dd><em>psValor</em> </dd>
+    <dd>[out, retval] </dd>
+    <dd>VARIANT_TRUE o VARIANT_FALSE, según si se estableció o no la opción RODBC_ASYNCH.</dd>
+    <dd>&nbsp;</dd>
+    <dd><h6>Valor devuelto</font></h6>
+      <font face="Verdana" size="2"></dd>
+    <dd>S_OK si se ha realizado con éxito, EREP_BADPARAMS si se especificó cualquier otra opción.</dd>
+  </dl>
+</blockquote>
+
+<blockquote>
+  <dir>
+    <li><strong>SetOption: </strong>Establece la opción de carga de la colección. El indicador asíncrono
+      se puede establecer si y sólo si el sistema de base de datos subyacente admite el funcionamiento asíncrono.</li>
+  </dir>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <dl>
+      <h6>Firma</h6>
+      <dt><strong>HRESULT</strong> <strong>SetOption(long</strong> <em>iOpción</em>, <strong>VARIANT</strong>
+        <em>sValor</em><strong>)</strong></dt>
+    </dl>
+    <h6>Argumentos de entrada</h6>
+    <dl>
+      <dt><em>iOpción</em> RODBC_ASYNCH y <em>sValor</em> TRUE establecen el modo asíncrono de la carga.</dt>
+      <dt><em>iOpción</em> RODBC_ASYNCH y <em>sValor</em> FALSE desactivan el modo asíncrono.</dt>
+      <dt><em>iOpción</em> RODBC_RESET_OPTIONS restablece el modo asíncrono de la carga.</dt>
+    </dl>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <h6>Valor devuelto</h6>
+    <p>S_OK si se realiza con éxito, EREP_TYPE_COLMISMATCH si se especifica un valor distinto de TRUE o FALSE
+    en sValor cuando iOpción es RODBC_ASYNCH.</p>
+  </blockquote>
+</blockquote>
+<b><u>
+
+<p></u>Otros cambios   
+
+<ul>
+  </b>
+  <li>La clase <strong>ObjectCol</strong> es compatible con <strong>IObjectCol</strong> [predeterminada] y
+    <strong>IObjectCol2</strong>.</li>
+</ul>
+
+<ul>
+  <li><strong>IObjectCol2::Refresh()</strong> actualiza de manera asíncrona la colección de objetos
+    (vuelve a cargar la colección de objetos y actualiza los objetos del destino) cuando está activo el modo asíncrono.
+    El subproceso que llama debe comprobar si se ha completado la actualización. Si el subproceso que 
+    llama intenta leer datos, actualizar la colección o construir un enumerador mientras 
+    la actualización 
+está en curso, se bloqueará hasta que se complete la actualización.</li>
+</ul>
+<!------------------------------------------------------>
+<!--                     TOPIC 3.2                    -->
+<!--                                                  -->
+
+<p>&nbsp;</p>
+
+<h4><a name="Topic_32"></a>Tipos de SQL y API que se utilizan en las definiciones de propiedades</h4>
+<!------------------------------------------------------>
+<!--                     TOPIC 3.3                    -->
+<!--                                                  -->
+
+<p>Las dos tablas siguientes muestran los tipos de API que reconoce el motor de Repository, 
+así como los tipos de SQL. Estos valores aparecen en las propiedades <b>APIType</b> y <b>SQLType</b>
+de un objeto <b>PropertyDef</b>. Para obtener información acerca de la conversión entre tipos de SQL y
+API, consulte la Referencia al programador de ODBC.</p>
+</font>
+
+<table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="9" WIDTH="331">
+  <tr>
+    <td VALIGN="TOP" COLSPAN="2"><font face="Verdana" size="1"><b>TIPOS DE API RECONOCIDOS POR EL
+    MOTOR</b></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1"><b>TIPO DE API</b></font></td>
+    <td WIDTH="36%" VALIGN="TOP"><b><p ALIGN="CENTER"><font face="Verdana" size="1">VALOR</font></b></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_UTINYINT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-28</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_STINYINT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-26</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_ULONG</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-18</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_USHORT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-17</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_SLONG</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-16</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_SSHORT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-15</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_BINARY</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-2</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_TINYINT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-6</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_BIT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-7</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_CHAR</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">1</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_LONG</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">4</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_SHORT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">5</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_FLOAT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">7</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_DOUBLE</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">8</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_DATE</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">9</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_TIME</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">10</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_C_TIMESTAMP</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">11</font></td>
+  </tr>
+</table>
+<font face="Verdana" size="2"><font SIZE="2">
+
+<p></font>&nbsp;</p>
+</font>
+
+<table BORDER="1" CELLSPACING="1" BORDERCOLOR="#000000" CELLPADDING="9" WIDTH="331">
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1"><b>TIPO DE SQL</b></font></td>
+    <td WIDTH="36%" VALIGN="TOP"><b><p ALIGN="CENTER"><font face="Verdana" size="1">VALOR</font></b></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_LONGVARCHAR</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-1</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_BINARY</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-2</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_VARBINARY</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-3</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_LONGVARBINARY</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-4</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_BIGINT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-5</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_TINYINT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-6</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_BIT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">-7</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_CHAR</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">1</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_NUMERIC</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">2</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_DECIMAL</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">3</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_INTEGER</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">4</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_SMALLINT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">5</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_FLOAT</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">6</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_REAL</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">7</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_DOUBLE</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">8</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_DATETIME</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">9</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_TIME</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">10</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_TIMESTAMP</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">11</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="64%" VALIGN="TOP"><font face="Verdana" size="1">SQL_VARCHAR</font></td>
+    <td WIDTH="36%" VALIGN="TOP"><p ALIGN="CENTER"><font face="Verdana" size="1">12</font></td>
+  </tr>
+</table>
+<font face="Verdana" size="2">
+
+<p>&nbsp;</p>
+
+<h4><a name="Topic_33"></a>Características nuevas</h4>
+
+<h5>Propiedades</h5>
+
+<p>Se han agregado dos nuevas propiedades a la interfaz <strong>IRepository2</strong> para
+indicar la versión del archivo de base de datos. 
+
+<ul>
+  <li><strong>MajorDBVersion</strong></li>
+</ul>
+
+<blockquote>
+  <h6>Firma</h6>
+  <dl>
+    <dt><strong>HRESULT MajorDBVersion(long</strong> *<em>piVersiónPralBD</em><strong>)</strong>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Automatización</dt>
+    <dt><strong>HRESULT get_MajorDBVersion(</strong> long *<em>piVersiónPralBD</em><strong>)</strong>
+      &nbsp;&nbsp;&nbsp;&nbsp; // COM</dt>
+  </dl>
+  <h6><i>Argumentos</h6>
+  </i><dl>
+    <dt><em>piVersiónPralBD </em></dt>
+    <dt>[out, retval] </dt>
+    <dt>El número de versión principal de la primera versión del motor de Repository que presentó este
+      formato de base de datos.</dt>
+  </dl>
+</blockquote>
+
+<ul>
+  <li><strong>MinorDBVersion</strong></li>
+</ul>
+
+<blockquote>
+  <h6>Firma</h6>
+  <dl>
+    <dt><strong>HRESULT MinorDBVersion(long</strong> *<em>piVersiónSecundariaBD</em><strong>)</strong>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Automatización</dt>
+    <dt><strong>HRESULT get_MinorDBVersion(</strong> long *<em>piVersiónSecundariaBD</em><strong>)</strong>
+      &nbsp;&nbsp;&nbsp;&nbsp; // COM</dt>
+  </dl>
+  <h6><i>Argumentos</h6>
+  </i><dl>
+    <dt><em>piVersiónSecundariaBD</em></dt>
+    <dt>[out, retval] </dt>
+    <dt>El número de versión secundaria de la primera versión del motor de Repository que presentó este formato
+      de base de datos.</dt>
+  </dl>
+</blockquote>
+<!------------------------------------------------------>
+<!--                     TOPIC 4.0                    -->
+<!--                                                  -->
+
+<h5>Métodos</h5>
+
+<p>Se agregó un método nuevo <strong>CreateObjectEx()</strong> a la interfaz de <strong>IRepository2</strong>.<strong>
+</strong>Crea la primera versión de un nuevo objeto de Repository del tipo especificado.
+A la versión recién creada se le asigna el identificador de versión del objeto que se ha pasado como argumento, a diferencia de <strong>IRepository::CreateObject()</strong>, en donde Repository asigna el Id. de versión. Tiene la siguiente sintaxis:</p>
+
+<blockquote>
+  <i><b><h6></b></i>Firma<i><b></h6>
+  </b></i><dl>
+    <dt><strong>HRESULT IRepository2::CreateObjectEx(</strong></dt>
+    <dt><strong>VARIANT</strong> <em>IdTipo,</em></dt>
+    <dt><strong>VARIANT</strong> <em>IdObjeto,</em></dt>
+    <dt><strong>VARIANT</strong> <em>IdVersiónExt,</em></dt>
+    <dt><strong>IRepositoryObjectVersion</strong> <em>**ppVersiónObjetoRep</em><strong>)</strong>;</dt>
+  </dl>
+  <b><i><h6></i></b>Argumentos</h6>
+  <dl>
+    <dt><em>IdTipo</em> </dt>
+    <dt>[in] </dt>
+    <dt>Hace lo mismo que <strong> IRepository::CreateObject</strong></dt>
+    <dt>&nbsp;</dt>
+    <dt><em>IdObjeto</em> </dt>
+    <dt>[in] </dt>
+    <dt>Hace lo mismo que <strong>IRepository::CreateObject</strong>&nbsp; </dt>
+    <dt>&nbsp;</dt>
+    <dt><em>IdVersiónExt</em> </dt>
+    <dt>[in] </dt>
+    <dt>Éste es el identificador de la versión del objeto (20 bytes) que se va a asignar a la primera versión 
+      del objeto</dt>
+    <dt>&nbsp;</dt>
+    <dt><em>ppVersiónObjetoRep</em> </dt>
+    <dt>[out] </dt>
+    <dt>Éste es el puntero <strong>IRepositoryObjectVersion</strong> hacia la versión 
+      recién creada</dt>
+  </dl>
+</blockquote>
+
+<p>&nbsp;</p>
+
+<h3><a name="Topic_40"></a>Limitaciones conocidas de Microsoft Repository 2.0</h3>
+<b>
+
+<h4>1. Limitaciones relacionadas con las interfaces y métodos asociados</b></h4>
+
+<p><b>IRepositoryObjectVersion</b> 
+
+<ul>
+  <li><b>MergeVersion()</b>: Las relaciones se insertan al final de la colección
+    ordenada. </li>
+</ul>
+<b>
+
+<p>IRelationshipCol</b> y <b>ITargetObjectCol</b> 
+
+<ul>
+  <li><b>Remove()</b>: Quitar un elemento en una colección ordenada no actualiza el orden 
+    de la colección. </li>
+</ul>
+<b>
+
+<p>IVersionAdminInfo</b> 
+
+<ul>
+  <li><b>VersionModifyTime()</b>: No cambia cuando se modifica una colección de relaciones de origen
+    o de objetos de destino. </li>
+  <li><b>ModifyByUser()</b>: No cambia cuando se modifica una colección de relaciones de origen
+    o de objetos de destino. </li>
+</ul>
+<b>
+
+<p>IRepository2</b> 
+
+<ul>
+  <li><b>CreateObject()</b>: Sólo se puede llamar desde el depósito compartido pero no desde un 
+    área de trabajo. La solución es crear el objeto mediante el depósito central e
+    incluirlo en el área de trabajo. </li>
+</ul>
+<b>
+
+<p>IClassDef</b> e <b>IInterfaceDef</b> 
+
+<ul>
+  <li><b>ObjectInstances()</b>: No alcanza al área de trabajo. </li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h4><strong>2. Constantes de Repository </strong> </h4>
+
+<p>En la documentación de Repository, se menciona que la longitud máxima, en bytes, del nombre que una relación asigna a su objeto de destino es 260, como se define en 
+la constante RELSHIPNAMESIZE. Este valor es realmente 249.</p>
+
+<p>&nbsp;</p>
+
+<h4><strong>3. Convenciones para nombres </strong></h4>
+
+<p>Los nombres de relaciones y objetos deben seguir estas convenciones:</p>
+
+<blockquote>
+  <dl>
+    <dt>1. Los nombres no pueden tener más de 249 caracteres.</dt>
+    <dt>2. Se puede utilizar cualquier carácter en un nombre.</dt>
+    <dt>3. El nombre puede contener espacios en blanco al principio o en medio. También puede ser una cadena vacía.</dt>
+    <dt>4. Si el nombre es todo espacios en blanco, se trata como una cadena vacía. </dt>
+  </dl>
+</blockquote>
+
+<p>Esto se aplica a los nombres que se utilizan entre comillas o se almacenan en variables. Por
+ejemplo, la interfaz &quot;ICarpeta&quot; siguiente debe cumplir estas restricciones:</p>
+
+<blockquote>
+  <p><font face="Courier New" size="2">oFolder(&quot;ICarpeta&quot;).FolderName</font></p>
+</blockquote>
+</font>
+
+<p><font face="Verdana" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -o bien-</p>
+
+<blockquote>
+  <font SIZE="2" COLOR="#000080"><p></font><font face="Courier New" size="2" color="#000000">oFolder(sICarpeta).FolderName</font></p>
+</blockquote>
+</font>
+
+<p><font face="Verdana" color="#000000" SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where:</font><font
+color="#000000" face="Verdana" size="3"> </font><font face="Courier New" size="2"
+color="#000000">sICarpeta = &quot;ICarpeta&quot;</font><font face="Verdana" size="2"></p>
+
+<p>Sin embargo, las normas no son para los nombres que se especifican fuera de comillas
+   (como los nombres de propiedad o los nombres de relación). Por ejemplo, la colección de relaciones &quot;RcCarpetaContiene&quot; below:</p>
+
+<blockquote>
+  <p><font face="Courier New" size="2">oFolder(&quot;IFolder&quot;).RcFolderContains.Count</font></p>
+</blockquote>
+</font>
+
+<p><font face="Verdana" size="2">se debe ajustar a las normas de nombres de Microsoft Visual Basic, excepto en el límite que es de 127 caracteres en lugar de los 255 caracteres que permite Visual Basic.</p>
+
+<p>&nbsp;</p>
+
+<h4><b>4. Procedimientos almacenados</b> </h4>
+
+<p>El nombre del procedimiento almacenado de una tabla se genera precediendo al nombre de la tabla con la
+cadena &quot;R_i&quot;. Puesto que los nombres de tabla son únicos, así se generarán nombres de 
+procedimiento almacenado únicos. Sin embargo, si la longitud del nombre de la tabla es mayor que <b>MaxIdentifierLength</b>-3, al algoritmo de generación de nombre de la tabla produce un error. Por esta razón, un usuario no puede proporcionar 
+un nombre de tabla con una longitud mayor que <b>MaxIdentifierLength</b>-3. Si se proporciona un nombre más largo se produce 
+el error EREP_BADNAME.</p>
+
+<p>Cuando el usuario no proporciona ningún nombre de tabla para una interfaz, el motor genera automáticamente 
+el nombre de tabla a partir del nombre de la interfaz. Si el nombre de la interfaz, sin la letra
+&quot;I&quot; inicial, es menor que <b>MaxIdentifierLength</b>-4, el nombre de la interfaz se 
+utilizará como nombre de tabla. En cualquier otro caso, el nombre de la interfaz se trunca a <b>MaxIdentifierLength</b>-7,
+y se agrega al nombre un número de 4 caracteres (denominado &quot;<i>uniquificador</i>&quot;)
+para hacerlo único, antes de anexar el prefijo R_i. </p>
+
+<p>El motor utiliza argumentos con nombre para llamar a los procedimientos almacenados. Un argumento con nombre comienza
+con el carácter &quot;@&quot; y no puede tener una longitud mayor que <b>MaxIdentifierLength</b>.
+De esta manera, los nombres de propiedad, que también son nombres de columna, no pueden tener una longitud mayor que  <b>MaxIdentifierLength</b>-1.</p>
+
+<p>Los valores de <b>MaxIdentifierLength</b> son: 
+
+<ul>
+  <li>30 caracteres para SQL Server 6.5</li>
+  <li>128 caracteres para SQL Server 7.0</li>
+</ul>
+<!------------------------------------------------------>
+<!--                     TOPIC 4.1                   -->
+<!--                                                  -->
+
+<p>&nbsp;</p>
+
+<h4><b>5. Definiciones de tablas</b> </h4>
+
+<p></font><font face="Verdana" color="#000000" SIZE="2">Las tablas siguientes no se incluyen
+en el archivo de ayuda de Repository:</font><font face="Verdana" size="2"></p>
+
+<blockquote>
+  <ul>
+    <li><strong><font face="Verdana" color="#000000" SIZE="2">RTblSumInfo</font></strong></li>
+    <li><strong><font face="Verdana" color="#000000" SIZE="2">RTblNamedObj</font></strong></li>
+    <li><strong><font face="Verdana" color="#000000" SIZE="2">RTblVersionAdminInfo</font></strong></li>
+  </ul>
+</blockquote>
+
+<p></font><font face="Verdana" color="#000000" SIZE="2">Estas tablas se explican junto con los nombres de columna y los tipos de datos.</font><font face="Verdana" size="2"></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Verdana" color="#000000" SIZE="2"><b>RTblSumInfo</b> </font></p>
+
+<p></font><font face="Verdana" color="#000000" SIZE="2"><b>RTblSumInfo</b> es una tabla específica de interfaz; sus columnas corresponden a las propiedades expuestas mediante la interfaz <b>ISummaryInformation</b>. 
+De manera predeterminada, ninguna clase del Modelo de información de tipos de Repository implementa <b>ISummaryInformation</b>.
+Por lo tanto la base de datos de Repository no incluye de manera predeterminada la tabla <b>RTblSumInfo</b>.
+Repository omite la tabla de la base de datos para ahorrar espacio. Sin embargo, tan pronto 
+como inserte en Repository cualquier clase que implemente <b>ISummaryInformation</b>,
+Repository creará la tabla.</font><font face="Verdana" size="2"></p>
+
+<table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="600">
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Nombre de columna</b></font></td>
+    <td WIDTH="19%" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Tipo de dato</b></font></td>
+    <td WIDTH="59%" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Descripción</b></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">IntID</font></td>
+    <td WIDTH="19%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTIntID</font></td>
+    <td WIDTH="59%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador interno de la clase.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP" HEIGHT="32"><font FACE="Verdana" SIZE="1">Z_BranchID_Z</font></td>
+    <td WIDTH="19%" VALIGN="TOP" HEIGHT="32"><font FACE="Verdana" SIZE="1">RTBrID</font></td>
+    <td WIDTH="59%" VALIGN="TOP" HEIGHT="32"></font><font FACE="Verdana" SIZE="1">Indica la bifurcación del gráfico de versión que contiene el intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_VS_Z</font></td>
+    <td WIDTH="19%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTVerID</font></td>
+    <td WIDTH="59%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador de versión en bifurcación que indica el límite inferior del intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_VE_Z</font></td>
+    <td WIDTH="19%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTVerID</font></td>
+    <td WIDTH="59%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador de versión en bifurcación que indica el límite superior del intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila. </font></td>
+  </tr>
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Comments</font></td>
+    <td WIDTH="19%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTLongString</font></td>
+    <td WIDTH="59%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Campo que se utiliza para comentarios.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="22%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">ShortDesc</font></td>
+    <td WIDTH="19%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTLongString</font></td>
+    <td WIDTH="59%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Descripción del objeto.</font></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b><font color="#000000" size="2" face="Verdana">RTblNamedObj</font></b></p>
+
+<p><font color="#000000" size="2" face="Verdana"><b>RTblNamedObj</b> es una tabla específica de 
+interfaz; sus columnas corresponden a las propiedades expuestas mediante la interfaz <b>INamedObject</b>. 
+De manera predeterminada, ninguna clase del Modelo de información de tipos de Repository implementa <b>INamedObject</b>.
+Por lo tanto la base de datos de Repository no incluye de manera predeterminada la tabla <b>RTblNamedObj</b>.
+Repository omite la tabla de la base de datos para ahorrar espacio. Sin embargo, tan pronto 
+como inserte en Repository cualquier clase que implemente <b>INamedObject</b>,
+Repository creará la tabla.</font><font face="Verdana" size="2"></p>
+
+<table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="600">
+  <tr>
+    <td WIDTH="21%" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Nombre de columna</b></font></td>
+    <td WIDTH="20%" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Tipo de datos</b></font></td>
+    <td WIDTH="60%" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Descripción</b></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="21%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">IntID</font></td>
+    <td WIDTH="20%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTIntID</font></td>
+    <td WIDTH="60%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador interno de la clase.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="21%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_BranchID_Z</font></td>
+    <td WIDTH="20%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTBrID</font></td>
+    <td WIDTH="60%" VALIGN="TOP"></font><font FACE="Verdana" SIZE="1">Indica la bifurcación del gráfico de versión que contiene el intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="21%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_VS_Z</font></td>
+    <td WIDTH="20%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTVerID</font></td>
+    <td WIDTH="60%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Número de versión en bifurcación que indica el límite inferior del intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="21%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_VE_Z</font></td>
+    <td WIDTH="20%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTVerID</font></td>
+    <td WIDTH="60%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Número de versión en bifurcación que indica el límite superior del intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila. </font></td>
+  </tr>
+  <tr>
+    <td WIDTH="21%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Name</font></td>
+    <td WIDTH="20%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTLongString</font></td>
+    <td WIDTH="60%" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Nombre del objeto.</font></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+<font SIZE="2" COLOR="#000000"><b>
+
+<p>RTblVersionAdminInfo</b> </font></p>
+
+<p><font color="#000000" size="2" face="Verdana"><b>RTblVersionAdminInfo</b></font><font
+face="Verdana" size="2"><font color="#000000"> </font><font SIZE="2" COLOR="#000000">es una tabla específica de 
+interfaz; sus columnas corresponden a las propiedades expuestas mediante la interfaz <b>IVersionAdminInfo</b>. 
+De manera predeterminada, ninguna clase del Modelo de información de tipos de Repository implementa <b>IVersionAdminInfo</b>.
+Por lo tanto la base de datos de Repository no incluye de manera predeterminada la tabla <b>RTblVersionAdminInfo</b>.
+Repository omite la tabla de la base de datos para ahorrar espacio. Sin embargo, tan pronto 
+como inserte en Repository cualquier clase que implemente <b>IVersionAdminInfo</b>,
+Repository creará la tabla.</font></p>
+
+<table BORDER="1" CELLSPACING="1" CELLPADDING="9" WIDTH="600">
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Nombre de columna</b></font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Tipo de dato</b></font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1"><b>Descripción</b></font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">IntID</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTIntID</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador interno de la clase.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_BranchID_Z</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTBrID</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Indica la bifurcación del gráfico de versión que contiene el intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_VS_Z</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTVerID</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador de versión en bifurcación que indica el límite inferior del intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila. </font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Z_VE_Z</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTVerID</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Identificador de versión en bifurcación que indica el límite superior del intervalo de elementos a los que se van a aplicar los valores de propiedad de esta fila. </font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">VersionCreateTime</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Date/Time</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Hora en que se creó la versión.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">VersionModifyTime</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Date/Time</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Hora en que se modificó la versión.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">CreateByUser</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTLongString</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Usuario que creó la versión.</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="TOP"><font FACE="Verdana" SIZE="1">ModifyByUser</font></td>
+    <td WIDTH="96" VALIGN="TOP"><font FACE="Verdana" SIZE="1">RTLongString</font></td>
+    <td WIDTH="369" VALIGN="TOP"><font FACE="Verdana" SIZE="1">Usuario que modificó la versión.</font></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<h4><b>6. Otras limitaciones</b> </h4>
+
+<ul>
+  <li>El Asistente para migración (MigRepV2.exe), el Explorador de depósito (Repbrows.exe) y el Administrador de componentes visuales (VCM) no son compatibles con archivos DSN (Nombres de orígenes de datos). Estas herramientas sólo funcionan con un DSN de tipo Access o SQL Server.</li>
+</ul>
+
+<ul>
+  <li>En el Asistente para migración, si trabaja con un DSN de tipo SQL Server, se le pedirá que escriba un nombre y una contraseña a menos que el DSN está configurado para utilizar la opción de autenticación de Windows NT (en el Administrador de orígenes de datos ODBC).</li>
+</ul>
+
+<ul>
+  <li>En el tema &quot;<em>Ejemplos de combinación de versiones</em>,&quot; hay una imprecisión en el segundo gráfico. Las propiedades de la versión V8 podrían cambiar tras la combinación, de
+(Grande, rojo, null) a (Medio, rojo, null).</li>
+</ul>
+
+<ul>
+  <li>La documentación de la lista de <b>CollectionDefFlags</b> no mencionaba el siguiente indicador:<p>COLLECTION_NEWORGVERSIONSDONOTPARTICIPATE = 64</p>
+    <p>Este indicador está relacionado con otro indicador de la misma enumeración:</p>
+    <p>COLLECTION_NEWORGVERSIONSPARTICIPATE = 32</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Los dos indicadores tienen significados opuestos. Por lo tanto, no se pueden activar al mismo tiempo. Sin embargo, puesto que la configuración predeterminada de cada uno de ellos es <i>no establecido</i>, es posible que ambos indicadores estén no activados al mismo tiempo. Si ambos indicadores están no activados, el depósito funciona como si estuviese activado el indicador COLLECTION_NEWORGVERSIONSPARTICIPATE. Es decir, durante la creación de una nueva versión de un objeto de depósito, Microsoft Repository no copia colecciones origen nuevas desde una versión creada anteriormente a una versión posterior.</p>
+</blockquote>
+
+<ul>
+  <li>Si en <b>SQLSize</b> se establece un valor mayor que 65535, el motor divide el número entero por 65536 y establece como <b>SQLSize</b> el valor del resto de la división, pero no se devuelve ningún error.</font></font><font face="Verdana" SIZE="2" COLOR="#000000"
+    link="#0000FF" vlink="#660066"></li>
+</ul>
+
+<ul>
+  <li>En el tema de ayuda &quot;Algoritmo de migración<i>&quot;</i> hay referencias a dos tablas, <b>RTblRelColPairs</b> y <b>RTblTimestamp</b>. En la base de datos de Repository 2.0,
+la primera tabla no existe, y la segunda tabla se ha reemplazado con  <b>RTblVersionAdminInfo</b>.</font><font
+    face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000000" link="#0000FF"
+    vlink="#660066"><font face="Verdana" size="2"></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<h4><strong><a name="Topic_41"></a>Para obtener más información</strong></h4>
+
+<p>Puede dirigirse a los siguientes orígenes para obtener más información sobre Microsoft Repository: 
+
+<ul>
+  <li>Compruebe las noticias más recientes del sitio Web de Microsoft Repository (<a
+    href="http://www.microsoft.com/repository">http://www.microsoft.com/repository</a>). También puede descargar la documentación de Repository desde este sitio. </li>
+  <li>En la documentación de Microsoft Visual Studio 6.0, encontrará <i>Guía del programador de Repository para Visual Basic</i>, <i>Referencia del complemento Repository</i>, <i>Explorador de Repository</i> y <i>Convertir bases de datos de Repository 1.0</i>. Para localizar estos documentos comience en la parte superior y siga esta ruta de acceso: <blockquote>
+      <blockquote>
+        <p></font><font face="Verdana" SIZE="2" color="#000000"><em>MSDN Library de Visual Studio 6.0<br>
+        &nbsp;&nbsp;&nbsp; Documentación de Visual Studio<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Herramientas de componentes, diseño y anális<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Documentos de Microsoft Repository 2.0 </em></font><font face="Verdana" size="2"></p>
+      </blockquote>
+    </blockquote>
+  </li>
+  <li>En la documentación de Microsoft Visual Basic 6.0, encontrará la <i>Guía del programador de Repository para Visual Basic</i> y <i>Referencia del complemento Repository</i>. Para localizar estos documentos comience en la parte superior y siga esta ruta: <font
+    SIZE="2"><blockquote>
+      <blockquote>
+        <p><font face="Verdana" SIZE="2" color="#000000"><em>MSDN Library de Visual Studio 6.0<br>
+        &nbsp;&nbsp;&nbsp; Documentación de Visual Basic<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Uso de Repository con Visual Basic</em></font></p>
+        </font>
+      </blockquote>
+    </blockquote>
+  </li>
+</ul>
+<!--                                                                         -->
+<!--                             END CONTENTS                                -->
+<!----------------------------------------------------------------------------->
+</font></font>
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+[Windows 95 Params]														
+	WndTitle   = Instalación de Microsoft Visual Basic 6.0													
+	WndMess    = Iniciando la instalación de Visual Basic 6.0, espere unos instantes...													
+	TmpDirSize = 2000													
+	TmpDirName = tmp													
+
+	CmdLine    = acmsetup /Z bboard.dll /T VB98PRO.STF /S %s %s													
+
+	DrvModName = ACMSETUP													
+	DrvWinClass = Stuff-Shell													
+														
+[Windows 95 Files]														
+	setup\acmsetup.exe = acmsetup.exe 													
+	setup\acmsetup.hlp = acmsetup.hlp 													
+	setup\mssetup.dll = mssetup.dll 													
+
+	setup\bboard.dll = bboard.dll													
+
+	setup\pholder.dll = pholder.dll													
+	setup\vssetup.ttf = vssetup.ttf													
+
+	setup\VB98PRO.DLL = VB98PRO.DLL													
+	setup\COMMON98.DLL = COMMON98.DLL													
+														
+	EULA.TXT = EULA.TXT													
+														
+	setup\VB98PRO.INF = VB98PRO.INF													
+	setup\VB98PRO.STF = VB98PRO.STF													
+														
+	setup\odbcstf.dll = odbcstf.dll													
+	setup\odbckey.inf = odbckey.inf													
+	os\system\odbccp32.dll = odbccp32.dll													
+	os\system\odbcint.dll = odbcint.dll													
+	os\system\msvcrt40.dll = msvcrt40.dll													
+	os\system\msvcrt.dll = msvcrt.dll													
+
+	setup\wpie15.exe = wpie15.exe													
+
+[NT Intel Params]														
+	WndTitle   = Instalación de Microsoft Visual Basic 6.0													
+	WndMess    = Iniciando la instalación de Visual Basic 6.0, espere unos instantes...													
+	TmpDirSize = 2000													
+	TmpDirName = tmp													
+
+	CmdLine    = acmsetup /Z bboard.dll /T VB98PRO.STF /S %s %s													
+
+	DrvModName = ACMSETUP													
+	DrvWinClass = Stuff-Shell													
+														
+[NT Intel Files]														
+	setup\acmsetup.exe = acmsetup.exe													
+	setup\acmsetup.hlp = acmsetup.hlp													
+	setup\mssetup.dll = mssetup.dll													
+
+	setup\bboard.dll = bboard.dll													
+
+	setup\pholder.dll = pholder.dll													
+	setup\vssetup.ttf = vssetup.ttf													
+
+	setup\VB98PRO.DLL = VB98PRO.DLL													
+	setup\COMMON98.DLL = COMMON98.DLL													
+
+	EULA.TXT = EULA.TXT													
+	setup\VB98PRO.INF = VB98PRO.INF													
+	setup\VB98PRO.STF = VB98PRO.STF													
+														
+	setup\odbcstf.dll = odbcstf.dll													
+	setup\odbckey.inf = odbckey.inf													
+	os\system\odbccp32.dll = odbccp32.dll													
+	os\system\odbcint.dll = odbcint.dll													
+	os\system\msvcrt40.dll = msvcrt40.dll													
+	os\system\msvcrt.dll = msvcrt.dll													
+
+	setup\wpie15.exe = wpie15.exe													
+

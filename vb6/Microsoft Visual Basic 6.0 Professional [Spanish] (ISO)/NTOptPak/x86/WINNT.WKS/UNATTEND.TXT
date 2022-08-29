@@ -1,0 +1,129 @@
+[Version]
+Signature = "$Windows NT$"
+
+[Global]
+; en la instalación de K2, iis.dll manejará esta sección [Global] y configurará el modo de instalación apropiado. 
+; No se preocupe por esta sección.
+;
+; puede especificar el modo de instalación que desee
+; El programa de instalación establecerá los modos de instalación en función de la configuración del equipo destino
+; Nueva (FreshMode), Mantenimiento (MaintanenceMode), Actualización (UpgradeMode)
+;
+; FreshMode = [ Minimal | Typical | Custom ]
+; MaintanenceMode = [ AddRemove | RemoveAll ]
+; UpgradeMode = [ UpgradeOnly | AddExtraComps ]
+
+; Si el modo de instalación del equipo es "Nueva" pero no se especificó la línea "FreshMode=" el valor predeterminado es Typical (Típica).
+
+; Si el modo de instalación del equipo es "Mantenimiento" pero no se especificó la línea "MaintanenceMode=" no habrá un valor predeterminado y recibirá un mensaje de error en el registro. ;(HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\OC Manager\MasterInfs\Errors)
+
+; Si el modo de instalación del equipo es "Actualización" pero no se especificó la línea "UpgradeMode="  el valor predeterminado es UpgradeOnly (Sólo actualización).
+
+FreshMode = Typical
+MaintanenceMode = RemoveAll
+
+[Components]
+;<sub-component name>=[ ON | OFF ]
+; esta sección [components] sólo es válida cuando 
+;FreshMode = Custom
+;MaintanenceMode = AddRemove
+;UpgradeMode = AddExtraComps
+
+; pws
+iis_common = ON
+iis_inetmgr = OFF
+iis_www = ON
+iis_ftp = OFF
+iis_pwmgr = ON
+iis_w3samp = OFF
+iis_doc_common = ON
+iis_doc_ismcore = OFF
+iis_doc_pwmcore = ON
+iis_doc_asp = OFF
+iis_doc_sdk = OFF
+
+; mts
+mts_core=on
+mts_mmc=on
+mts_core_docs=on
+mts_mtsdev=off
+mts_mtsdev_core=off
+mts_mtsdev_core_docs=off
+mts_mtsdev_vbaddin=off
+
+; Componentes IndexServer
+indexsrv_system   = ON
+indexsrv_language = ON
+indexsrv_samples  = ON
+indexsrv_onlinedoc= ON
+indexsrv_language_english_us = OFF
+indexsrv_language_english_uk       = OFF
+indexsrv_language_french_french    = OFF
+indexsrv_language_german_german    = OFF
+indexsrv_language_italian_italian  = OFF
+indexsrv_language_swedish_default  = OFF
+indexsrv_language_spanish_modern   = ON
+indexsrv_language_dutch_dutch      = OFF
+indexsrv_language_japanese_default = OFF
+
+; Extensiones FrontPage
+fp_extensions=ON
+fp_vid_deploy=OFF
+
+
+; DAC
+DAC_ADO_CORE = ON
+DAC_DRV_BRAZOS = ON
+DAC_DRV_SQLSRV = ON
+DAC_DRV_ORACLE = ON
+DAC_ADO_DOC = ON
+DAC_RDS_11 = OFF
+DAC_RDS_CORE ON
+DAC_RDS_DOC ON
+DAC_RDS_SAMPLE = ON
+
+
+; WSH
+wsh_core = ON
+
+
+; Caesars
+iisdbg = ON
+
+
+; Rasics
+COMMONDOC = OFF
+CMAKDOC = OFF
+CPSDOC = OFF
+CIASDOC = OFF
+CMAKPROG = OFF
+CPSAD = OFF
+CPSSRV = OFF
+CIASOCM = OFF
+
+
+; MSMQ necesita el archivo msmqinst.ini
+Msmq_Server_Core = OFF
+Msmq_Admin = OFF
+Msmq_SDK = OFF
+Msmq_Doc = OFF
+
+
+
+[iis]
+; Cada componente principal puede tener sus propios datos privados.
+;Path =c:\install\path
+PathFTPRoot=C:\Inetpub\ftproot
+PathWWWRoot=C:\Inetpub\wwwroot
+PathPROGRoot=C:\program files
+
+
+[mts_core]
+Path="D:\Program Files\Mts"
+;USERID="Interactive User"
+;PASSWORD=""
+
+
+[indexsrv]
+;CiCatalogPath=
+

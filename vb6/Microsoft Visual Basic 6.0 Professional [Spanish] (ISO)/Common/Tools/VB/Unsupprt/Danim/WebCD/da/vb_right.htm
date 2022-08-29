@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD W3 HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>DirectX Media SDK VB Samples</TITLE>
+<LINK REL=STYLESHEET HREF="tutorial.css">
+<SCRIPT LANGUAGE="JScript">
+<!--
+if (window.top.frames.length!=0 && window.top.frames[0].ShowNoButtons!=null)
+    window.top.frames[0].ShowNoButtons();
+//-->
+</SCRIPT>
+<!--STRIP_END-->
+</HEAD>	 
+<BODY BGCOLOR=WHITE LINK="#0033CC" TOPMARGIN=15 LEFTMARGIN=20>
+<!--TOOLBAR_START-->
+<SCRIPT LANGUAGE="javascript">
+<!--
+function turnRed() {
+	what = window.event.srcElement;
+	if (what.tagName == "IMG") {
+		what.src = what.src.substring(0,(what.src.indexOf(".gif"))) + "-red.gif";
+		window.event.cancelBubble = true;
+	}
+}
+
+function turnWhite () {
+	what = window.event.srcElement
+	if (what.tagName == "IMG") {
+		what.src = what.src.substring(0,(what.src.indexOf("-red.gif"))) + ".gif";
+		window.event.cancelBubble = true;
+	}
+}
+//-->
+</SCRIPT>
+<TABLE WIDTH="100%" CELLPADDING=0 CELLSPACING=0 BORDER=0 bordercolor=yellow BGCOLOR=BLACK>
+<TR>
+<TD WIDTH=459 ROWSPAN=2 VALIGN=TOP NOWRAP onmouseover="turnRed()" onmouseout="turnWhite()"><NOBR><FONT FACE="Arial, Helvetica" SIZE=1><A HREF="http://www.microsoft.com/">
+<IMG SRC="http://www.microsoft.com/library/images/gifs/toolbar/home.gif" WIDTH=103 HEIGHT=21 
+ALT="Microsoft Home" BORDER=0></A><A HREF="http://www.microsoft.com/products/default.asp" 
+TARGET="_top"><IMG SRC="http://www.microsoft.com/library/images/gifs/toolbar/prod.gif" WIDTH=81 
+HEIGHT=21 ALT="Products" BORDER=0></A><A 
+HREF="http://www.microsoft.com/search/default.asp" target="_top"><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/toolbar/search.gif" WIDTH=68 
+HEIGHT=21 ALT="Search" 
+BORDER=0></A><A HREF="http://www.microsoft.com/support/" TARGET="_top"><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/toolbar/support.gif" WIDTH=74 
+HEIGHT=21 ALT="Support" 
+BORDER=0></A><A HREF="http://www.microsoft.com/referral/default.asp" TARGET="_top"><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/toolbar/shop.gif" WIDTH=55 HEIGHT=21 
+ALT="Shop" BORDER=0></A><A 
+HREF="http://www.microsoft.com/isapi/goregwiz.asp?target=/regwiz/regwiz.asp"><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/toolbar/write.gif" WIDTH=78 HEIGHT=21 
+ALT="Write Us" BORDER=0></A></FONT></NOBR></TD>
+
+<TD BGCOLOR="#000000" WIDTH="100%" HEIGHT=20><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/homepage/1ptrans.gif" WIDTH=1 
+HEIGHT=1 ALT="" BORDER=0></TD>
+<TD WIDTH=91 ROWSPAN=2 ALIGN=RIGHT VALIGN=TOP>
+<FONT FACE="Arial, Helvetica" SIZE=1><A HREF="http://www.microsoft.com/" TARGET="_top"><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/toolbar/msft.gif" WIDTH=91 
+HEIGHT=21 ALT="Microsoft Home" BORDER=0></A></FONT></TD>
+</TR>
+<TR>
+<TD BGCOLOR="#FFFFFF" WIDTH="100%" HEIGHT=1><IMG 
+SRC="http://www.microsoft.com/library/images/gifs/homepage/1ptrans.gif" WIDTH=1 
+HEIGHT=1 ALT="" BORDER=0></TD>
+</TR>
+</TABLE>
+<!--TOOLBAR_END-->
+
+<FONT CLASS=desc1>
+<CENTER>
+<H1><FONT CLASS=title>Welcome to the DirectAnimation Visual Basic Samples</FONT>
+</H1>
+</CENTER>
+
+<P>
+The DirectAnimation Visual Basic Samples were created with the
+<FONT COLOR=RED>DirectAnimation Windowed Control</FONT>.
+To download the source code for these samples click <A HREF="../../bin/da_vb.exe">here</A>.
+</P>
+
+<P>
+<FONT COLOR=RED><U>Please Note:</U></FONT> There is a buffering problem in Visual Basic
+5.0 that causes flashing if the <FONT COLOR=RED>DirectAnimation Windowless Control</FONT>
+is used instead.  This will be fixed in Visual Basic 6.0.  For now either write your DirectAnimation
+Windowless Control animations in VBScript for Web pages, or in Java for applications.
+</P>
+
+<HR>
+<TABLE>
+<TR><TD WIDTH="100%" HEIGHT=4 COLSPAN=4></TD></TR>
+</TABLE>
+<!--- BEGIN E-MAIL INFO/DISCLAMER---->
+<CENTER>
+<FONT CLASS="link"><A CLASS=cpslug HREF="http://www.microsoft.com/misc/cpyright.htm" TARGET="_top">&#169; 1997 Microsoft Corporation. All rights reserved. Terms of use.</A>
+</FONT></CENTER>
+<CENTER>Best viewed in 16-bit color with Internet Explorer 4.01.
+<BR> Email contact for this page is <FONT CLASS="link"><a href="mailto:dxmbeta@microsoft.com">dxmbeta@microsoft.com</A></FONT>.
+</CENTER>
+<!--- END E-MAIL INFO/DISCLAMER---->
+</FONT>
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+

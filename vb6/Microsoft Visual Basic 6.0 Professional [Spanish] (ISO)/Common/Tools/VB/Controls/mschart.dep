@@ -1,0 +1,131 @@
+
+; Dependency file for setup wizards.
+
+[Version]
+Version=6.0.80.79
+
+; Dependencies for MSChart.ocx
+
+; Default Dependencies ----------------------------------------------
+
+[MSChart.ocx]
+Dest=$(WinSysPath)
+Register=$(DLLSelfRegister)
+Version=6.0.80.79
+Uses1=ComCat.dll
+Uses2=
+CABFileName=MSChart.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChart.inf
+
+[ComCat.dll]
+Dest=$(WinSysPathSysFile)
+Register=$(DLLSelfRegister)
+Uses1=
+
+; Localized Dependencies --------------------------------------------
+
+; ** German (DE) ***
+; (0007 = German)
+;
+[MSChart.ocx <0007>]
+Uses1=MSChtDE.dll
+Uses2=
+
+[MSChtDE.dll <0007>]
+Uses1=
+CABFileName=MSChtDE.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtDE.inf
+
+; ** French (FR) ***
+; (000C = French)
+;
+[MSChart.ocx <000C>]
+Uses1=MSChtFR.dll
+Uses2=
+
+[MSChtFR.dll <000C>]
+Uses1=
+CABFileName=MSChtFR.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtFR.inf
+
+; ** Italian (IT) ***
+; (0010 = Italian)
+;
+[MSChart.ocx <0010>]
+Uses1=MSChtIT.dll
+Uses2=
+
+[MSChtIT.dll <0010>]
+Uses1=
+CABFileName=MSChtIT.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtIT.inf
+
+; ** Spanish (ES) ***
+; (000A = Spanish)
+;
+[MSChart.ocx <000A>]
+Uses1=MSChtES.dll
+Uses2=
+
+[MSChtES.dll <000A>]
+Uses1=
+CABFileName=MSChtES.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtES.inf
+
+; ** Japanese (JP) ***
+; (0011 = Japanese)
+;
+[MSChart.ocx <0011>]
+Uses1=MSChtJP.dll
+Uses2=
+
+[MSChtJP.dll <0011>]
+Uses1=
+CABFileName=MSChtJP.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtJP.inf
+
+; ** Korean (KO) ***
+; (0012 = Korean)
+;
+[MSChart.ocx <0012>]
+Uses1=MSChtKO.dll
+Uses2=
+
+[MSChtKO.dll <0012>]
+Uses1=
+CABFileName=MSChtKO.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtKO.inf
+
+; ** Chinese Traditional (CHT) ***
+; (0404 = Chinese Traditional)
+;
+[MSChart.ocx <0404>]
+Uses1=MSChtCHT.dll
+Uses2=
+
+[MSChtCHT.dll <0404>]
+Uses1=
+CABFileName=MSChtCHT.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtCHT.inf
+
+; ** Chinese Simplified (CHS) ***
+; (0804 = Chinese Simplified)
+;
+[MSChart.ocx <0804>]
+Uses1=MSChtCHS.dll
+Uses2=
+
+[MSChtCHS.dll <0804>]
+Uses1=
+CABFileName=MSChtCHS.cab
+CABDefaultURL=http://activex.microsoft.com/controls/vb5
+CABINFFile=MSChtCHS.inf
+

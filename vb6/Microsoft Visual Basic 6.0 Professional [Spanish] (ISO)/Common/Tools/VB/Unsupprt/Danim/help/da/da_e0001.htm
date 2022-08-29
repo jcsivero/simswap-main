@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD><TITLE>Guide to Samples</TITLE>
+<STYLE>
+<!--
+.tctop {color: blue}
+.cpslug {color: blue; text-decoration: none}
+-->
+</STYLE>
+<META NAME="DESCRIPTION" CONTENT="Guide to Samples">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso8859-1">
+<META NAME="MS.LOCALE" CONTENT="EN-US">
+<META NAME="ROBOTS" CONTENT="all">
+<script Language="Javascript">
+var samplewin;
+
+function CheckWindow(href) {
+//    if (samplewin == null) {
+//        samplewin = window.open(href, "SampleWindow", "scrollbars=1,status=1,resizable=1,width=500,height=500,top=100,left=100");
+//    } else {
+        samplewin = window.open(href, "SampleWindow", "scrollbars=1,status=1,resizable=1,width=500,height=500,top=100,left=100");
+//        samplewin.focus();
+//    }
+    window.event.returnValue = false;
+}
+
+</script>
+<!-- SNIFF_START -->
+<SCRIPT LANGUAGE="JAVASCRIPT">
+//<!--
+var g_isIE = false, g_isNav = false, g_iMaj = 0, g_sPlat = "";
+// -->
+</SCRIPT>
+<SCRIPT SRC="ver.js"></SCRIPT>
+
+
+<SCRIPT DEFER SRC="common.js"></SCRIPT>
+<SCRIPT DEFER>
+//<!--
+function InitPage()
+{
+	if (g_isIE && g_iMaj >= 4)	
+	{
+
+		SetTOC();
+	}
+}
+//-->
+</SCRIPT>
+
+<!-- STYLE_START -->
+<SCRIPT LANGUAGE="JAVASCRIPT">
+//<!--
+   var sVR = ''	// Set root for the style sheet
+   var sCSS = '<LINK REL="stylesheet" HREF="' + sVR;
+
+   if(g_isIE)
+   {
+	   if (g_iMaj >= 4) // For MSIE 4.0 or later
+	   {
+		   sCSS += 'basicSDKIE4';
+		   if (g_sPlat == "Win") // Windows only for now
+		   {
+			   document.createStyleSheet(sVR + 'advSDKIE4.css');
+		   }
+	   }
+	   else // For MSIE 3.0 or earlier
+	   {
+		   sCSS += 'basicSDKIE3';
+	   }
+   }
+   else if (g_isNav) // For all Nav versions
+   {
+	   sCSS += 'basicSDKNAV';
+   }
+   else
+   {
+	   sCSS += 'basicSDKIE3'; // default to IE3 sheet
+   }
+
+   sCSS += (sCSS == '' ? '' : '.css" TYPE="text/css">');
+
+   document.write(sCSS);
+//-->
+</SCRIPT>
+<!-- STYLE_END -->
+
+</HEAD>
+
+<BODY onload="InitPage()" TOPMARGIN=0 LEFTMARGIN=0 BGPROPERTIES="FIXED" BGCOLOR="#FFFFFF" LINK="#000000" VLINK="#808080" ALINK="#000000">
+<A NAME="pagetop"></A><A NAME="DirectAnimation_Examples"></A>
+<OBJECT ID="DAControl" 
+  STYLE="position:absolute; left:0; top:11;width:702;height:90"
+  CLASSID="CLSID:B6FFC24C-7E13-11D0-9B47-00C04FC2F51D">
+</OBJECT>
+<!--STYLE="width:702;height:110"-->
+<SCRIPT LANGUAGE="JScript">
+<!--
+  // The DirectAnimation library
+  m = DAControl.PixelLibrary;
+
+  /* -- Insert your code here --*/ 
+
+  mediaBase = "art\\";
+  glowBase = m.importImage(mediaBase + "glow.gif");
+  xImage = m.importImage(mediaBase + "newtransx.gif");
+  xImage = xImage.Transform(m.Translate2(-303,0));
+  //header1 = m.importImage(mediaBase + "header1.gif");
+  //header1 = header1.Transform(m.Translate2(-301,0));
+
+  //header2 = m.importImage(mediaBase + "hdrd3drm.gif");
+  //header2 = header2.Transform(m.Translate2(-143,0));
+
+  //header3 = m.importImage(mediaBase + "header3.gif");
+  //header3 = header3.Transform(m.Translate2(157,-18));
+
+  //background = m.Overlay(header1, m.Overlay( header2, header3));
+
+  glowPath1 = m.Polyline( new Array( 295,26, 305,26, 305,50, 310,57, 519,57, 
+    536,40, 536,17, 675,17, 675,23 ) );
+
+  glowPath2 = m.PolyLine( new Array( 44,41, 44,25, 52,16, 84,16, 106,16 ) );
+
+  glowPath3 = m.PolyLine( new Array( 57,55, 69,55, 78,65, 92,65, 99,58,
+    99,82, 95,85, 95,93, 132,93, 132,78,
+    303,78, 315,66, 549,66, 549,17, 675,17,
+    675,23 ) );
+
+  glowPath4 = m.PolyLine( new Array( 29,55, 19,55, 19,31, 38,30, 38,21,
+    46,16, 106,16 ) );
+
+  glowPath5 = m.PolyLine( new Array( 45,62, 45,81, 37,81, 41,85, 46,85,   
+  51,91, 68,91, 66,81, 90,81, 90,65, 94,65, 105,47 ) );
+
+  glow1 = glowBase.Transform( moveGlow( glowPath1, 5 ) );
+  glow2 = glowBase.Transform( moveGlow( glowPath2, 2 ) );
+  glow3 = glowBase.Transform( moveGlow( glowPath3, 8 ) );
+  glow4 = glowBase.Transform( moveGlow( glowPath4, 2.5 ) );
+  glow5 = glowBase.Transform( moveGlow( glowPath5, 2 ) );
+
+  finalImg = m.Overlay(xImage, m.Overlay( glow5, m.Overlay( glow4, 
+    m.Overlay( glow3, m.Overlay( glow2, glow1)))));
+
+
+  // set the model, an image, as the model to be displayed
+  DAControl.Image = finalImg;//m.Overlay(finalImg, background);
+  // set the background in case of a non-windowless browser (like IE3)
+  DAControl.BackgroundImage = m.SolidColorImage(m.Blue);     
+     
+  // start the animation       
+  DAControl.Start()
+
+
+  function moveGlow(path, speed)  {
+    imDimX = 702;
+    imDimY = 120;
+
+    coordsXf = m.Translate2(-imDimX/2, -imDimY/2);
+    path = path.Transform(coordsXf);
+    return xf = m.FollowPath(path, speed).Repeat(3);
+  }
+
+//-->
+</SCRIPT>
+<TABLE BORDER=0 CELLSPACING="0" CELLPADDING="0" WIDTH="*">
+<TR>
+<TD ROWSPAN="3" VALIGN="TOP" WIDTH="*">
+<IMG SRC="art/header1.gif" WIDTH="107" HEIGHT="110" BORDER=0 ALT="DirectAnimation Animated Header --Guide to Samples"></TD>
+<TD ROWSPAN="2" VALIGN="TOP" WIDTH="217">
+<IMG SRC="art/hdrdanim.gif" WIDTH="210" HEIGHT="110" BORDER=0 ALT="DirectAnimation Animated Header --Guide to Samples"></TD><TD VALIGN="TOP" WIDTH="383"><IMG SRC="art/header3.gif" WIDTH="383" HEIGHT="95" BORDER=0 ALT="*">
+</TD>
+<TD VALIGN="TOP" WIDTH="100%">
+<IMG SRC="art/spacer1.gif" WIDTH="100%" HEIGHT="94" BORDER=0 ALT="Microsoft DirectAnimation SDK">
+</TD>
+</TR><TR><TD VALIGN="TOP"><PRE><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="1"><IMG ID=TOC_ SRC="art/yelbtn.gif" WIDTH="11" HEIGHT="11" ALIGN="MIDDLE" BORDER=0 ALT="*"><A STYLE="color:black;font-weight:bold" ID=TOC HREF="contents.htm">Contents</A>   <IMG SRC="art/yelbtn.gif" WIDTH="11" HEIGHT="11" ALIGN="MIDDLE" BORDER=0 ALT="*"><A STYLE="color:black;font-weight:bold" HREF="index.htm">Index</A>  <IMG SRC="art/yelbtn.gif" WIDTH="11" HEIGHT="11" ALIGN="MIDDLE" BORDER=0 ALT="*"><A STYLE="color:black;font-weight:bold" HREF="default.htm">Topic Contents</A>
+</FONT></PRE></TD></TR>
+<TR><TD COLSPAN="2" VALIGN="TOP"><PRE><FONT FACE="Verdana,Arial,Helvetica" SIZE="1"><IMG SRC="art/yelbtn.gif" WIDTH="11" HEIGHT="11" ALIGN="MIDDLE" BORDER=0 ALT="*"><B>Previous Topic:</B> <A STYLE="color:black" HREF="DA_E0000.htm">Getting Started</A>
+<IMG SRC="art/yelbtn.gif" WIDTH="11" HEIGHT="11" ALIGN="MIDDLE" BORDER=0 ALT="*"><B>Next Topic:</B> <A  STYLE="color:black" HREF="DA_E0002.htm">How to Create a JScript Animation</A>
+</FONT></PRE></TD></TR></TABLE><BR CLEAR=ALL>
+<FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><BLOCKQUOTE STYLE="margin:15pt">
+<H2>Guide to Samples</H2>
+<BR CLEAR=ALL>
+<P>This article contains descriptions of all the templates, exercises, and showcase samples, plus step-by-step procedures describing how to perform basic Microsoft&#174; DirectAnimation&#153; tasks.
+
+
+<P>To go directly to the main sample page for each of the five languages and the DirectAnimation controls, select one of the following:
+<UL>
+<LI><A CLASS=tctop HREF="../../webcd/da/vbscript_main.htm" TARGET="_top">VBScript Samples Main Page</A>
+<LI><A CLASS=tctop HREF="../../webcd/da/control_main.htm" TARGET="_top">Control Samples Main Page</A>
+<LI><A CLASS=tctop HREF="../../webcd/da/vb_right.htm" TARGET="_top">Visual Basic Samples Main Page</A>
+</UL>
+<P>On the sample main pages you will see a list of all the samples available of that type. To return to the DirectAnimation documentation, choose the Docs button below the left-hand table of contents.
+
+
+<P>You can also access individual DirectAnimation samples from this <I>Guide to Samples</I> topic by clicking the name of the sample.
+
+
+ This will display the sample, but will not take you out of the DirectAnimation documentation and will not display a table of contents listing all the language samples.
+
+
+
+<P>See the following sections for descriptions of the samples and step-by-step instructions for building animations. The sample paths refer to the default sample directories create when you install the DirectX Media SDK.  You can also access the samples on this Web site by clicking on the links.
+<P>When you open a sample it creates a new browser window. Only one sample window will be open at one time. If you minimize the sample window or place the sample window in the background, you have to click the sample window to bring it on top again. You would need to do this, for example, to see the sample window when you open another sample. 
+
+<UL><LI><A CLASS=tctop HREF="DA_E0001.htm#Samples_Overview">Samples Overview</A>
+<LI><A CLASS=tctop HREF="DA_E0001.htm#VBScript_Samples">VBScript Samples</A>
+<LI><A CLASS=tctop HREF="DA_E0001.htm#Control_Samples">Control Samples</A>
+<LI><A CLASS=tctop HREF="DA_E0002.htm">How to Create a JScript Animation</A>
+<LI><A CLASS=tctop HREF="DA_E0003.htm">How to Create a VBScript Animation</A>
+<LI><A CLASS=tctop HREF="DA_E0004.htm">How to Build a DirectAnimation Java Applet or Application</A>
+<LI><A CLASS=tctop HREF="DA_E0005.htm">How to Write a DirectAnimation Java Applet</A>
+<LI><A CLASS=tctop HREF="DA_E0006.htm">How to Build the DirectAnimation C++ Samples that Render to DirectDraw Surfaces</A>
+<LI><A CLASS=tctop HREF="DA_E0007.htm">How to Build the DirectAnimation C++ Samples that Use the Windowed Control</A>
+</UL>
+<H3><A NAME="Samples_Overview">Samples Overview</A></H3>
+<P>DirectAnimation comes with a wide variety of samples that show you how to use DirectAnimation from different languages. You can cut and paste portions or all of these samples for your own animations. The samples come with a pool of media files, including MIDI, 3-D model, image, video, and sound files. These media files are used by the SDK samples, and are available for use in the DirectAnimation content only. You are not allowed to use these media files in any other fashion.
+ 
+
+
+
+<P>For each language, there are three categories of samples: 
+
+
+<UL><LI>Exercises: Illustrate basic use of DirectAnimation at an introductory level. 
+<LI>Templates: Provide code that implements common DirectAnimation tasks, such as how to asynchronously download media, use the pixel construction mode, animate HTML and other controls, and sequence animation behaviors along a timeline.
+<LI>Showcase samples: Demonstrate the breadth of features in the system. Some of these samples have real-life applications, such as advertising or education. 
+</UL>
+<P>The DirectAnimation SDK also contains a set of samples illustrating the DirectAnimation controls.
+
+
+<P>In addition, the DirectAnimation SDK provides tutorials. Some of the Java showcase samples and most of the Java templates have tutorials that show step-by-step details of their construction. Samples that have associated tutorials include a button labeled <B>Info</B> on the sample's main HTML page. This button launches a new instance of the browser, so that you can see the narration side-by-side with the running animation. 
+
+<P>All the examples discussed are in one of the subdirectories in Samples\DA.
+
+
+<H3><A NAME="VBScript_Samples">VBScript Samples</A></H3>
+<P>This section describes the VBScript Samples included with DirectAnimation. Click any link to display the sample.
+
+<P>This section describes the following types of samples:
+
+<UL><LI><A CLASS=tctop HREF="DA_E0001.htm#VBScript_Templates">VBScript Templates</A>
+<LI><A CLASS=tctop HREF="DA_E0001.htm#VBScript_Showcase_Samples">VBScript Showcase Samples</A>
+</UL>
+<H4><A NAME="VBScript_Templates">VBScript Templates</A></H4>
+<P>The VBScript template samples are in the Samples\DA\VBScript\Templates folder.
+
+
+ The following table lists the available VBScript templates and the concepts that they illustrate (click any link to display the sample):
+
+<TABLE BORDER=0>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><B>VBScript template name</B></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><B>Description
+
+
+</B></FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/HelloWorldVBS.html" TARGET="_top">HelloWorldVBS.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="HelloWorld_VBScript_">HelloWorld VBScript sample</A></B> demonstrates basic text animation as a windowless control.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/Basic.html" TARGET="_top">Basic.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Basic_VBScript_sampl">Basic VBScript sample</A></B> demonstrates a simple animation (rotating oval) using the core DirectAnimation library. This is useful as a starting point for writing new content.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/BasicDS.html" TARGET="_top">BasicDS.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="BasicDS_VBScript_sam">BasicDS VBScript sample</A></B> is the same animation as Basic but written using the drawing surface API, which has a slightly different style.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/Movie.html" TARGET="_top">Movie.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Movie_VBScript_sampl">Movie VBScript sample</A></B> demonstrates how to play a movie.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/AudioMixing.html" TARGET="_top">AudioMixing.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="AudioMixing_VBScript">AudioMixing VBScript sample</A></B> demonstrates how to mix audio. The volume and panning of three sounds are controlled by the positions of the scroll bars.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/ButtonSwitch.html" TARGET="_top">ButtonSwitch</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="ButtonSwitch_VBScrip">ButtonSwitch VBScript sample</A></B> demonstrates how to use modifiable behaviors and buttons.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/ScrollSwitch.html" TARGET="_top">ScrollSwitch</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="ScrollSwitch_VBScrip">ScrollSwitch VBScript sample</A></B> demonstrates how to use modifiable behaviors and scroll bars.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/SplineLogo.html" TARGET="_top">SplineLogo.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="SplineLogo_VBScript_">SplineLogo VBScript sample</A></B> demonstrates a spline that is used both as a boundary of a shape and as an animation path.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/Callback.html" TARGET="_top">Callback.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Callback_VBScript_sa">Callback VBScript sample</A></B> demonstrates how to use a scripting callback
+
+
+ with two buttons and a piece of HTML text. Pressing the buttons animates the buttons in 3-D, emits a sound, and moves the HTML text in direction the button indicates.
+
+
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Templates/AnimatedProperties.html" TARGET="_top">AnimatedProperties.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="AnimatedProperties_V">AnimatedProperties VBScript sample</A></B> demonstrates animated strings, numbers, and script callbacks.
+
+</FONT></TD>
+</TR>
+</TABLE>
+<H4><A NAME="VBScript_Showcase_Samples">VBScript Showcase Samples</A></H4>
+<P>The VBScript showcase samples are in the Samples\DA\VBScript\Showcase.
+
+
+ The following table lists the available VBScript showcase samples and the concepts that they illustrate (click any link to display the sample):
+
+<TABLE BORDER=0>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><B>VBScript showcase name</B></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><B>Description
+
+
+</B></FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/Runners.html" TARGET="_top">Runners.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Runners_VBScript_sam">Runners VBScript sample</A></B> demonstrates instantiating and sequencing two structured graphics models.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/Coffee.html" TARGET="_top">Coffee.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Coffee_VBScript_samp">Coffee VBScript sample</A></B> demonstrates how to use montages (2.5-D images).
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/Pick3.html" TARGET="_top">Pick3.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Pick3_VBScript_sampl">Pick3 VBScript sample</A></B> demonstrates animated and interactive 3-D .x models rendered as windowless controls over the HTML page.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/Clock.html" TARGET="_top">Clock.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Clock_VBScript_sampl">Clock VBScript sample</A></B> demonstrates time-accurate animation of a clock with a radially filled background.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/Curves.html" TARGET="_top">Curves.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Curves_VBScript_samp">Curves VBScript sample</A></B> demonstrates time-varying cubic B-spline curves that are used to clip an image whose opacity is also time-varying. The end result is a windowless control on top of HTML text.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/MsCubes.html" TARGET="_top">MsCubes.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="MsCubes_VBScript_sam">MsCubes VBScript sample</A></B> constructs 3-D animate cubes with motion GIF texturing. A mouse click
+
+
+ stops and starts one aspect of the animation.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/VBScript/Showcase/DancingTrapzoids.html" TARGET="_top">DancingTrapzoids.html</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="DancingTrapzoids_VBS">DancingTrapzoids VBScript sample</A></B> shows rectangles with time-varying colors that chase each other along a trajectory.
+</FONT></TD>
+</TR>
+</TABLE>
+<H3><A NAME="Control_Samples">Control Samples</A></H3>
+<P>All of the control samples are contained in the Samples\DA\Controls folder.
+
+
+ The following table shows the available controls samples (click any link to display the sample):
+
+<TABLE BORDER=0>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><B>Control sample</B></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><B>Description
+</B></FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/AniFilt.htm" TARGET="_top">AniFilt.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="AniFilt_DirectAnimat">AniFilt DirectAnimation control sample</A></B> demonstrates how to use dynamic filtering for a cut-out effect on text.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Buttons.htm" TARGET="_top">Buttons.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Buttons_DirectAnimat">Buttons DirectAnimation control sample</A></B> demonstrates three-state buttons using sprites.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Clock.htm" TARGET="_top">Clock.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Clock_DirectAnimatio">Clock DirectAnimation control sample</A></B> demonstrates time-accurate animation of a clock with a radially filled background.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Complex.htm" TARGET="_top">Complex.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Complex_DirectAnimat">Complex DirectAnimation control sample</A></B> demonstrates structured graphics.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Count.htm" TARGET="_top">Count.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Count_DirectAnimatio">Count DirectAnimation control sample</A></B> demonstrates using structured graphics and sequencing to control multimedia event timing.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Filter.htm" TARGET="_top">Filter.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Filter_DirectAnimati">Filter DirectAnimation control sample</A></B> demonstrates using filters, including filter information. 
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Globe.htm" TARGET="_top">Globe.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Globe_DirectAnimatio">Globe DirectAnimation control sample</A></B> demonstrates mouse interaction with sprites.
+
+
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Mega.htm" TARGET="_top">Mega.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Mega_DirectAnimation">Mega DirectAnimation control sample</A></B> demonstrates a splash page using structured graphics.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Path.htm" TARGET="_top">Path.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Path_DirectAnimation">Path DirectAnimation control sample</A></B> demonstrates path controls that move objects around a page.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/SG-DrawingSurface.htm" TARGET="_top">SG-DrawingSurface.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="SG_DrawingSurface_Di">SG-DrawingSurface DirectAnimation control sample</A></B> demonstrates using the DirectAnimation library for <A CLASS=tctop HREF="DA_E0028.htm#Drawing_Surface">Drawing Surface</A> operations.
+
+
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/SG-Preserve.htm" TARGET="_top">SG-Preserve.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="SG_Preserve_DirectAn">SG-Preserve DirectAnimation control sample</A></B> demonstrates how to preserve an image's aspect ratio as the window is resized.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/SpinIE.htm" TARGET="_top">SpinIE.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="SpinIE_DirectAnimati">SpinIE DirectAnimation control sample</A></B> demonstrates spinning the letter E in 3-D.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Textmask.htm" TARGET="_top">Textmask.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="TextMask_DirectAnima">TextMask DirectAnimation control sample</A></B> demonstrates how to use text for clipping animate structured graphics on an image background.
+</FONT></TD>
+</TR>
+<TR><TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2"><A CLASS=tctop onclick=CheckWindow(this.href)  HREF="../../samples/da/Controls/Yoyo.htm" TARGET="_top">Yoyo.htm</A></FONT></TD>
+<TD ALIGN=LEFT VALIGN=TOP><FONT FACE="VERDANA,ARIAL,HELVETICA" SIZE="2">The <B><A NAME="Yoyo_DirectAnimation">Yoyo DirectAnimation control sample</A></B> demonstrates mouse interaction with a sprite.
+</FONT></TD>
+</TR>
+</TABLE>
+
+
+
+
+
+<P><P><FONT FACE="MS SANS SERIF" SIZE="1" COLOR="BLACK">
+<A CLASS=cpslug HREF="http://www.microsoft.com/misc/cpyright.htm" TARGET="_top">&#169; 1998 Microsoft Corporation. All rights reserved. Terms of use.</A>
+</FONT>
+<BR CLEAR=ALL><P>
+<FONT FACE="Verdana,Arial,Helvetica" SIZE="1"><A HREF="#pagetop"><IMG SRC="art/yelbtn.gif" WIDTH="11" HEIGHT="11" ALIGN="MIDDLE" BORDER=0 ALT="*">Top of Page</A></FONT>
+</BLOCKQUOTE><P>
+</FONT><P>
+</BODY></HTML>

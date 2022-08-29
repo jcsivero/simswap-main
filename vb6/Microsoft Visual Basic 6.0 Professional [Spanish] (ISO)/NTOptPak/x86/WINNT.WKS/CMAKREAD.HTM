@@ -1,0 +1,181 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<!-- REM (C) Copyright 1998 Microsoft Corporation. Reservados todos los derechos. 
+     ESTE CÓDIGO E INFORMACIÓN SE PROPORCIONA "TAL CUAL", SIN GARANTÍA
+     DE NINGUNA CLASE, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITÁNDOSE
+     A LAS GARANTÍAS IMPLÍCITAS DE COMERCIALIDAD Y APTITUD PARA UN 
+     PROPÓSITO DETERMINADO. -->
+
+<head><title>Archivo Léame del Kit de administración del Administrador de conexión </title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Comprueba si el explorador es de Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Comprueba si es IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Comprueba si el explorador es Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<META NAME="DESCRIPTION" CONTENT="Complementa la información incluida en la documentación principal">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">	
+
+<a name ="top"></a>
+<a name="E10E28"><h1>Archivo Léame del Kit de administración del Administrador de conexión</h1></a>
+
+<ul>
+<li><a href="#E10E34" name="LOCE10E34" >Problemas conocidos del Kit de administración del Administrador de conexión </a>
+<li><a href="#E10E33" name="LOCE10E33" >Problemas conocidos del Administrador de conexión</a>
+<li><a href="#E10E32" name="LOCE10E32" >Para obtener más información</a>
+</ul>
+
+<p>Antes de instalar este producto, revise todo este documento y lea la <em>Guía del Kit de administración del Administrador de conexión</em>. El documento contiene información crítica acerca de la instalación y uso apropiados del producto.</p>
+
+<p><strong><span style="color: #FF0000"><font color="#000FF">Importante</font></span></strong>&nbsp;&nbsp;&nbsp;Este archivo léame contiene información importante de última hora acerca de este producto.</p>
+
+<a name="E10E34"><big>Problemas conocidos del Kit de administración del Administrador de conexión </big><!-- </p> --><br></a>
+
+<ul>
+<li>En esta versión no se aceptan las características de Windows 3.1x para el Administrador de conexión.
+En una versión futura habrá disponible una versión del Administrador de conexión para Windows 3.1x.</li>
+
+<li>Los perfiles de servicio creados con la versión beta&nbsp;2 o anterior del asistente no son compatibles con esta versión del asistente. No puede modificar perfiles con el asistente ni crear nuevos perfiles basados en dichos perfiles.</li>
+
+<li>No se aceptan nombres largos de archivo.</li>
+
+<li>El perfil del servicio no puede instalar el Administrador de conexión en un subdirectorio cuya ruta de acceso tenga más de 256 caracteres.</li>
+
+<li>Si necesita ejecutar un programa inmediatamente después de que sus usuarios ejecuten su ejecutable de perfil del servicio (por ejemplo, si tiene un archivo léame que desea mostrar automáticamente o si ha incluido un programa en el perfil del servicio que copia la configuración de Acceso telefónico a redes a su archivo .cmp para preservar la configuración de conexión), esta funcionalidad está ahora disponible.
+
+<p>Para ello, cree el perfil del servicio y agregue el nombre del programa que desee ejecutar, así como las opciones o conmutadores de línea de comandos, a la sección <strong>[RunPostSetupCommandsSection]</strong> del archivo .inf asociado al perfil del servicio. (Si desea aplicar este cambio a todos los demás perfiles de servicio que cree, haga el mismo cambio en el archivo template.inf de \Archivos de programa\CMAK\cm32\enu.)</p>
+
+<p>Por ejemplo, si el programa es Miprograma.exe, la sección [RunPostSetupCommandsSection] tendría esta apariencia:</p>
+<p>
+[RunPostSetupCommandsSection]
+<br>Miprograma.exe /<i>opciones?</i> /<i>conmutadores</i>
+<br></p>
+
+</li>
+
+<li>Cuando cree perfiles habilitados para PPTP o que no reconozcan el explorador en un equipo con 32 MB de RAM o menos, el asistente puede funcionar extraordinariamente despacio o incluso parecer que se ha detenido. Para mejorar el rendimiento, pruebe a crear el perfil en una máquina con más de 32 MB de RAM.</li>
+
+<li>Cuando cree un perfil del servicio mediante el Kit de administración del Administrador de conexión, no utilice caracteres escritos con un juego de caracteres de doble byte (DBCS).
+Para escribir caracteres en una versión DBCS de Windows 95 o Windows NT, utilice un Input Method Editor (IME, Editor de método de entrada) configurado para producir números del juego de caracteres de byte único (SBCS).
+El japonés y el hangeul son algunos ejemplos de versiones de DBCS.</li>
+
+<li>Por el momento, Microsoft Dial-Up Networking 1.2 (y, por tanto, la funcionalidad PPTP para Windows 95) sólo está disponible en inglés. Los perfiles de servicio de otros idiomas no pueden incluir la actualización de Microsoft Dial-Up Networking 1.2.</li>
+</ul>
+
+<a name="E10E33"><p class="bigfix">&nbsp;</p>
+<big>Problemas conocidos del Administrador de conexión</big><!-- </p> --><br></a>
+
+<ul>
+<li>El Administrador de conexión no acepta los parámetros IdleThreshold e IdleTimeout en Windows NT. Por tanto, puede que no funcione correctamente el valor "Desconectar si está inactivo más de" en el Administrador de conexión.</li>
+<li>El Administrador de conexión requiere ciertos archivos suministrados por Internet Explorer 3.0 o posterior. Si quita Internet Explorer, el Administrador de conexión dejará de funcionar.</li>
+<li>No instale dos instancias del Administrador de conexión de Microsoft en dos carpetas diferentes del mismo equipo. Esto hará que se anule la asociación entre los perfiles de servicio originales y el Administrador de conexión. Para evitarlo, instale ambas versiones en la misma carpeta.</li>
+<li>En Windows 95, si intenta establecer una conexión de Acceso telefónico a redes con su ISP, puede ver un mensaje de error en el cuadro de diálogo del Administrador de conexión de Microsoft que indique que necesita escribir un número de teléfono. Si esto sucede, haga clic en Configuración. Cuando aparezca el cuadro de diálogo Información de ubicación, siga las instrucciones y, después, haga clic en Aceptar.</li>
+
+<li>En Windows NT, si intenta establecer más de una conexión, puede que vea el mensaje, "El módem no está configurado correctamente...".
+Esto sucede algunas veces si intenta marcar demasiado deprisa o si inicia el Administrador de conexión de Microsoft cuando ya se ha establecido una conexión mediante Acceso telefónico a redes. No tenga en cuenta el mensaje. Utilice una conexión cada vez.</li>
+
+<li>En Windows NT, podría tener problemas con Servicios de acceso remoto (RAS), instalado automáticamente por el perfil de servicio del Administrador de conexión. Compruebe que RAS está configurado para utilizar un tipo de inicio manual y que tiene privilegios para iniciar RAS. 
+Para ello, 
+<ol> 
+ <li>Haga clic en Inicio, Configuración, Panel de control y doble clic en Servicios.</li> 
+  <li>En la lista Servicios, haga doble clic en Servicio de acceso remoto. </li>
+  <li>En el cuadro de diálogo Servicios, haga clic en Manual y, después, haga clic
+en Aceptar.</li>
+</ol>  </Li>
+<li>En Windows NT, si cambia el valor "Desconectar si está inactivo más de", la modificación no surtirá efecto hasta que salga del Administrador de conexión de Microsoft y lo reinicie.</Li>
+
+<li>Si escribe o modifica el número de teléfono en la ficha Marcando del cuadro de diálogo Configuración de conexión, compruebe que utiliza el formato adecuado en el número de teléfono. De lo contrario, el Administrador de conexión no utilizará las Propiedades de marcado que ha configurado para marcar el número de teléfono.
+<br>
+<br>El formato correcto es el siguiente:<br>
++[código de país] (código de área) número de teléfono
+<br>
+Por ejemplo, si su código de país es 1, su código de área es 800 y su número de teléfono es 555-1212, debe escribir el número de teléfono como se indica a continuación, comprobando que incluye el signo '+' , los espacios en blanco y los paréntesis:
+<br>
++1 (800) 5551212
+<br>
+Si no utiliza este formato, asegúrese de que escribe el número tal y como debe marcarse.
+</Li>
+
+<li>Si está utilizando Acceso telefónico a redes 1.2 de Microsoft y aparece el mensaje siguiente, haga caso omiso de él:
+<br>
+  Este cliente DHCP no pudo obtener una dirección IP de red
+  del servidor DHCP. ¿Desea ver los mensajes DHCP que se produzcan?
+<br>
+</Li>
+
+<li>El Administrador de conexión de Microsoft no funciona en Windows&nbsp;NT 4.0 con algunos adaptadores ISDN internos de red, incluyendo el módem ISDN Diamond Supra NetCommander.</Li>
+
+<li>El Administrador de conexión permite el uso de ISDN (RDSI) de canal único. Puede configurar manualmente el Administrador de conexión para utilizar ISDN de dos canales.
+<br>
+<br>Si está ejecutando Windows 95, siga el procedimiento descrito a continuación para configurar ISDN de dos canales:
+<ol>  
+  <li> Haga clic en Inicio, Programas, Accesorios, Acceso telefónico a redes.</li>
+  <li> Haga clic con el botón secundario del <i>mouse</i> (ratón) en el icono de la conexión para su ISP y, después, haga clic en Propiedades.</li>
+  <li> Haga clic en la ficha Enlace multiple.</li>
+  <li> Haga clic en Usar dispositivos adicionales y, después, haga clic en Agregar.</li>
+  <li> En el cuadro de diálogo Modificar dispositivo adicional, seleccione el dispositivo para el canal ISDN adicional y escriba el número de teléfono de dicho dispositivo.</li>
+</ol>
+<br>Si desea utilizar dos canales para el icono de la conexión de reserva, repita los pasos anteriores para dicho icono.
+<br>
+<br>Cuando haya utilizado esta técnica para configurar un icono de conexión de dos canales para usarlo con el Administrador de conexión, si cambia el número de teléfono principal o el secundario, también tendrá que modificar el número de teléfono multivínculo que escribió en el paso 5. 
+<br>
+<br>Si está ejecutando Windows NT, consulte la documentación de Windows NT para obtener información acerca de la configuración de conexiones ISDN de dos canales.
+</li>
+
+
+<li>El Administrador de conexión instalará automáticamente el protocolo TCP/IP, pero no otros protocolos. Si utiliza un icono de conexión que requiera un protocolo distinto a TCP/IP, compruebe que lo instala antes de intentar conectar con su ISP. Para ello:
+<ol>
+  <li>Haga clic en Inicio, Configuración, Panel de control 
+  y, después, haga doble clic en Red.</li> 
+  <li>Haga clic en la ficha Servicios, Servicio de acceso remoto, Propiedades.</li>
+  <li>Haga clic en el módem o en el adaptador VPN y, después, haga clic en Red.</li>
+  <li>En la lista de protocolos de conexión, haga clic en el protocolo que 
+  utilice su perfil de servicio.</li>
+</ol>
+</li>
+
+<li>Si está ejecutando Windows NT y utiliza el Administrador de conexión para establecer una conexión de Acceso telefónico a redes, el Administrador de conexión no permite que emerja una ventana de terminal después de marcar. (No obstante, sí se permite que aparezca una ventana de terminal antes de marcar.) Si su ISP requiere que su conexión haga que emerja una ventana de terminal tras realizar la conexión, póngase en contacto con su ISP y pídale una secuencia de comandos de 
+marcado que cree la ventana de terminal.</li>
+<li>Los usuarios de Windows 95 pueden tener problemas al ver los datos en pantalla que muestra el Administrador de conexión, como resultado de la instalación de un perfil de servicio que utiliza un idioma distinto del configurado en el sistema operativo.</li>
+<li>No se aceptan los números escritos con un juego de caracteres de doble byte (DBCS). Para escribir números en una versión DBCS de Windows&nbsp;95 o Windows&nbsp;NT, utilice un Input Method Editor (IME, Editor de método de entrada) para producir números del juego de caracteres de byte único (SBCS). El japonés y el hangeul son algunos ejemplos de versiones de DBCS.</li>
+</ul>
+
+<a name="E10E32"><p><strong>Para obtener más información</strong></p></a>
+
+<p>Para obtener ayuda acerca de cómo utilizar el Kit de administración del Administrador de conexión, lea la documentación del <em>Kit de administración del Administrador de conexión de Microsoft</em>. 
+
+<p align="right"><a href="#top" >Volver al principio</a></p>
+
+<hr>
+
+<h1><a name="CopyrightInformation">Información de copyright</a></h1>
+
+<p>&#169; 1998 Microsoft Corporation</p>
+<p>Estos materiales se proporcionan &#147;tal cual&#148; y con fines informativos únicamente.</p>
+<p>Ni Microsoft ni sus proveedores otorgan ninguna garantía, expresa o implícita, con respecto al contenido de estos materiales o a la exactitud de la información contenida en los mismos, incluyendo, pero sin limitarse a, las garantías implícitas de comerciabilidad e idoneidad para un fin determinado. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable.</p>
+<p>Ni Microsoft ni sus proveedores serán responsables de los posibles daños consecuenciales, incidentales, directos, indirectos o especiales que puedan producirse, ni de posibles pérdidas o lucro cesante. Debido a que algunos estados o jurisdicciones no permiten la exclusión de garantías implícitas, la limitación anterior puede no serle aplicable. En todo caso, la responsabilidad total de Microsoft y de sus proveedores por cualquier circunstancia que pudiera derivarse de estos materiales, ya sea contractual, por agravios o de otra naturaleza, no superará el precio recomendado de venta al público de estos materiales.</p>
+<hr>
+
+
+</font>
+</body>
+</html>
+
+

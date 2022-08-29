@@ -1,0 +1,207 @@
+#include "setupres.h"
+
+STRINGTABLE DISCARDABLE
+BEGIN
+
+//
+//Common with bootstrapper
+//
+#include "commonrc.rc"
+
+//
+// Global Font settings for Setup1 project.  To override,
+// set font properties in code after Form_Load.
+//
+resFONTNAME "MS Sans Serif"	// Don't translate this
+resFONTSIZE "8"	// Don't translate this
+resFONTBOLD "False"	// Don't translate this
+resFONTNAMEBACKUP1 "Arial"	// Don't translate this
+resFONTNAMEBACKUP2 "System"	// Don't translate this
+
+//
+//Global
+//
+resSETMSG "Mensaje de instalación"
+
+//
+//frmBegin
+//
+resSPECDEST "Haga clic en este botón para instalar el software de |1 en el directorio de destino especificado."
+resSPECNODEST "Haga clic en este botón para instalar el software de |1 en su equipo."
+
+//
+//frmWelcome
+//
+resWELCOME "Bienvenidos al Programa de instalación de |1."
+
+//
+//frmPath
+//
+resSRCPROMPT "Especifique la unidad o la ruta que contiene los archivos de origen de |1."
+resDESTPROMPT "Especifique o seleccione un directorio de destino."
+resDESTDIR "El directorio de destino:"
+resCREATE "no existe. ¿Desea crearlo?"
+resCHANGEDIR "Cambiar directorio"
+resINSTFROM "Instalar desde"
+
+//
+//Setup1.Bas
+//
+resCALCSPACE "Error al calcular el espacio de disco necesario."
+resDRVREAD "No se puede leer la unidad de disco "
+resDRVCHK "Compruebe que la unidad está cerrada y que el disco está formateado y no tiene errores."
+resCANTOPEN "No se puede abrir el archivo:"
+resCANTREAD "No se puede leer del archivo:"
+resCANTWRITE "No se puede escribir en el archivo:"
+resCHKSPACE "Compruebe que la unidad de destino tiene espacio suficiente."
+resMAKEDIR "No se puede crear el directorio:"
+resASKEXIT "¿Realmente desea salir?"
+resINTERRUPTED "La instalación de |1 se interrumpió antes de que se instalara completamente el nuevo software."
+resCANRUN "Puede ejecutar la instalación completa de |1 posteriormente para terminar la instalación."
+resINCOMPLETE "La instalación aún no ha finalizado."
+resQUITNOW "Si sale ahora, este producto no se instalará correctamente."
+resQUITSETUP "¿Desea salir de la instalación de este producto?"
+resSUCCESS "La instalación de |1 ha finalizado correctamente."
+resERROR "La instalación de |1 no ha finalizado correctamente."
+resALLOCUNIT "Error al determinar la unidad de asignación para la unidad de disco "
+resSAMEASSRC "está en el directorio 'Setup' de archivos de origen. Escriba un directorio distinto."
+resNOCREATE "No se puede crear el archivo:"
+resNOTPROTECT "Compruebe que la unidad de destino no está protegida contra escritura."
+resINSERT "Inserte el disco con la etiqueta:"
+resDISK "'Disco "
+resINTO "' en la unidad"
+resSECTNAME "Sección:  "
+resINVLINE "Hay una línea no válida en el archivo de información de instalación."
+resDIRSPECIFIED "El directorio especificado:"
+resDIRINVALID "no es válido, no está completo o está protegido contra escritura. Escriba una ruta completa con la letra de la unidad, por ejemplo 'C:\APPS'."
+resNOTEXIST "El directorio no existe."
+resDIRINVNAME "El nombre de directorio no es válido"
+resWRITEPROT "El archivo de destino está protegido contra escritura."
+resINUSE "El archivo de destino está en uso. Asegúrese de que todas las demás aplicaciones están cerradas."
+resOUTOFSPACE "Espacio insuficiente en la unidad de destino "
+resACCESSVIOLATION "Infracción de acceso al copiar el archivo."
+resSHARINGVIOLATION "Infracción de recurso compartido al copiar el archivo."
+resOUTOFMEMORY "Memoria insuficiente para copiar el archivo."
+resCANNOTCREATE "No se puede crear el archivo temporal."
+resCANNOTDELETE "No se puede eliminar el archivo de destino existente."
+resCANNOTRENAME "No se puede cambiar el nombre del archivo temporal."
+resCANNOTREADSRC "No se puede leer el archivo de origen."
+resCANNOTREADDST "No se pueden leer los atributos del archivo destino."
+resBUFFTOOSMALL "Error interno de copia."
+resNOINSTALL "  No se puede instalar el archivo."
+resCHKCONNECT "Compruebe la conexión con la unidad"
+resWARNIGNORE "Si pasa por alto un error de copia, el archivo no se copiará. Puede que la aplicación no funcione correctamente. ¿Desea pasar por alto el error?"
+resTEMPDRIVE "La unidad especificada por la variable de entorno 'TMP' o 'TEMP' no está lista."
+resERR_VSHARE "Debe agregar la línea 'device=vshare.386' a la sección [386Enh] del archivo SYSTEM.INI para asegurar el correcto funcionamiento de su software nuevo."
+resCANTREADUNC "No se puede leer la ruta de red '|1'."
+resCHECKUNC "Compruebe que la ruta es correcta y que tiene permiso de acceso a la misma."
+resCANTFINDAPPREMOVALLOG "No se puede encontrar el archivo de registro de operaciones '|1' para quitar la aplicación. No se puede continuar."
+resBADCOMMANDLINE "Los parámetros de la línea de comandos no son válidos. No se puede continuar."
+resCANTFINDAPPREMOVALEXE "No se encuentra el ejecutable '|1' para quitar la aplicación. No se puede continuar."
+resAPPREMOVALICONNAME "Quitar |1"
+resCANTREGISTERAPPREMOVER "Error al registrar el ejecutable para quitar la aplicación en Windows"
+resCANTCREATEAPPREMOVALICON "Error al crear un icono del Administrador de programas para el programa para quitar la aplicación"
+resOVERWRITEPRIVATE "El programa de instalación va a reemplazar unos archivos ya existentes. Esto puede causar la pérdida de datos para alguna aplicación existente."
+resOVERWRITEPRIVATE2 "Si instala sobre una instalación existente sin quitarla primero puede dañar dicha instalación o puede hacer que fallen los intentos futuros de quitarla."
+resCANCELSETUP "¿Desea cancelar la instalación?"
+resCHOOSENEWDEST "Ejecute Instalar de nuevo y seleccione una nueva ubicación para los archivos de la aplicación."
+resVERIFYCONTINUE "¿Realmente desea continuar?"
+resERR_REG "Error al intentar actualizar la base de datos de registro de Windows."
+resMICROSOFTSHARED "Microsoft Shared\\"
+resCANTCREATEPROGRAMGROUP "Error al crear el grupo de programas '|1'"
+resCANTCREATEPROGRAMICON "Error al crear un icono de programa para '|1'"
+resCANTCOPYLOG "Error al copiar '|1' al directorio de la aplicación"
+resCANTFINDREGFILE "No se pudo registrar el archivo '|1' porque no se encontró."
+resCANTRUNPROGRAM "Windows no pudo ejecutar el programa '|1'. Posiblemente su sistema no tiene suficiente memoria o puede que no se haya encontrado el programa."
+resREMOTELINENOTFOUND "Error: 'SETUP.LST' no contiene información sobre cómo registrar el componente remoto '|1'. Esta información debe estar en una clave '|2' en SETUP.LST"
+resPROGRAMMANAGER "Administrador de programas"
+resUNEXPECTEDRPCREGDAT "Error inesperado al crear '|1':"
+resCANTCOPYPATHTOOLONG "No se puede copiar el archivo; la ruta de destino es demasiado larga."
+resCANTCREATEICONPATHTOOLONG "No se puede crear el icono para desinstalar; la ruta de destino es demasiado larga."
+resICONMISSING "No se especificó en SETUP.LST ningún icono para |1. ¿Desea continuar sin crear este icono? Haga clic en 'Sí' para continuar. Haga clic en 'No' para salir de la instalación."
+
+//
+//Setup1.Frm
+//
+resBADDEFDIR "El programa de instalación no pudo determinar un directorio de destino predeterminado. Tendrá que especificar un directorio de destino."
+resDISKSPACE "El programa de instalación está comprobando el espacio necesario en disco..."
+resPROGMAN "El programa de instalación está creando los iconos de programa..."
+resUPDATING "El programa de instalación está actualizando el sistema..."
+resNOEXE "No se puede determinar el nombre del archivo ejecutable de la aplicación."
+resSETUP "Instalación de |1"
+resNOSETUPLST "El archivo SETUP.LST está dañado o no se pudo encontrar."
+resUNEXPECTED "Error inesperado de instalación."
+resNOFOLDERFORICON "Error de personalización de instalación: es necesario crear un icono para |1, pero no se ha creado ninguna carpeta o grupo del Administrador de programas para este propósito."
+resSTILLWITHINACTION "Error de instalación: falta 'CommitAction()' o 'AbortAction()'."
+resREMAUTGROUPNAME "Administración de automatización remota"
+resAUTMGR32ICON "Administrador de automatización"
+resRACMGR32ICON "Administrador de conexiones"
+resNT4WithoutSP2 "Advertencia: se recomienda instalar el Service Pack 2 de Windows NT 4.0. Puede que esta aplicación no funcione correctamente sin él."
+resINSTALLADO "Instalando componentes de acceso a datos..."
+resREBOOT "Debe reiniciar el sistema para actualizar la configuración del sistema.\n\n¿Desea reiniciar el sistema ahora?"
+resREBOOTNO "Puede que la aplicación no funcione correctamente hasta que haya reiniciado el sistema."
+//
+//Common.Bas
+//
+resDISKSPCERR "Error al determinar el espacio libre en la unidad "
+
+//
+//Forms/Controls Strings
+//
+//resBTNINSTALL "&Install"
+resFRMDIRECTORY "Directorio:"
+resBTNCHGDIR "&Cambiar directorio"
+resBTNEXIT "&Salir"
+resLBLBEGIN "Inicie la instalación; para ello, haga clic en el botón que aparece abajo."
+resBTNCANCEL "Cancelar"
+resLBLDESTFILE "Archivo de destino:"
+resBTNINSTALLNOW "&Instalar ahora"
+resBTNCHGDRV "&Cambiar unidad"
+resLBLDRIVE "Unidad"
+resLBLAVAIL "Espacio disponible"
+resLBLNEEDED "Espacio necesario"
+resLBLREQUIRED "Espacio requerido"
+resLBLNOSPACE "No hay espacio suficiente en disco en una o varias unidades."
+resBTNOK "Aceptar"
+resLBLDRIVES "&Unidades:"
+resLBLDIRS "&Directorios:"
+resLBLPATH "&Ruta:"
+resLBLRUNNING "El programa de instalación no puede instalar los archivos del sistema o actualizar los archivos compartidos si están en uso. Antes de continuar, le recomendamos que cierre cualquier aplicación que se esté ejecutando."
+resBTNTOOLTIPBEGIN "Haga clic aquí para iniciar la instalación"
+//
+// Group.Frm
+//
+resGROUPFRM "|1 - Elegir grupo de programas"
+resGROUPLBLMAIN "El programa de instalación agregará los elementos al grupo mostrado en el cuadro Grupo de programa. Puede escribir un nombre de grupo nuevo o seleccionar uno de la lista Grupos existentes."
+resGROUPLBLGROUP "Gru&po de programas:"
+resGROUPLBLGROUPS "Grupos e&xistentes:"
+resGROUPBTNCONTINUE "&Continuar"
+resGROUPINVALIDGROUPNAME "Un nombre de grupo de programas debe tener menos de  |1 caracteres y no puede contener ninguno de los siguientes caracteres: |2"
+resGROUPINVALIDCHARS """][,)("
+//
+//ServerDt.Frm
+//
+resNETWORKADDRESS "&Dirección de red"
+resNETWORKPROTOCOL "&Protocolo de red"
+resOK "&Continuar"
+resCANCEL "&Salir"
+resREMOTESERVERDETAILSTITLE "Configuración de componentes ActiveX remotos"
+resREMOTESERVERDETAILSLBL "Complete la información de configuración solicitada sobre el siguiente componente remoto:"
+resNOTEPROTOSEQNOTSUPPORTED "La secuencia de protocolo |1 (|2) no es compatible o no está disponible en esta máquina"
+resNOTEPROTOSEQINVALID "La secuencia de protocolo '|1' ('|2') no es válida"
+resPROTOSEQUNEXPECTEDERR "Error inesperado al determinar las secuencias de protocolo disponibles en este equipo"
+resNOPROTOCOLSINSETUPLST "Error de instalación: error al intentar leer protocolos desde el archivo SETUP.LST."
+resNOPROTOCOLSSUPPORTED1 "Ninguno de los protocolos que necesita esta aplicación parecen estar disponibles o instalados en este equipo."
+resNOPROTOCOLSSUPPORTED2 "Para poder ejecutar correctamente el programa de instalación deberá instalar primero una de las siguientes secuencias de protocolo de red: "
+resSELECTEDPROTONOTSUPPORTED "Esta aplicación no podrá tener acceso al componente remoto '|1' hasta que el protocolo '|2' esté instalado."
+
+resOVERWRITEFORM "Conflicto de versiones"
+resOVERWRITEINFO "Se está copiando un archivo más antiguo que el que hay actualmente en el sistema. Se recomienda que conserve el archivo."
+resOVERWRITEFILE "Nombre de archivo:	'|1'"
+resOVERWRITEDESC "Descripción:	'|1'"
+resOVERWRITEVER "Su versión:	'|1'"
+resOVERWRITEKEEP "¿Desea conservar este archivo?"
+resOVERNOTOALL "No a &todo"
+resOVERYES "&Sí"
+resOVERNO "&No"
+END

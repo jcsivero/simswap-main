@@ -1,0 +1,748 @@
+[version]
+signature="$Windows NT$"
+
+[Optional Components]
+UsageAnalyst
+
+[UsageAnalyst]
+Parent = SSE
+Needs = iis_www,DAL_DRV_BRAZOS
+OptionDesc = %UA_DESC%
+Tip = %UA_TIP%
+IconIndex = *
+bitmap = UAICO
+UserInfoKey = %USER_INFO_KEY%,%USER_VALNAME%,%ORG_VALNAME%
+Uninstall=ua_uninst
+AddReg=ua_appreg
+CopyFiles=ua_bin,ua_db,ua_dll,ua_ocx,ua_mfa_detail,ua_mfa_summary,ua_appdocs,ua_docdocs,ua_webdocs,SSE_Docs
+CreateDirs=%33000%\%UADIR%\Cache,%33000%\%UADIR%\Schedule,%33000%\%UADIR%\Reports,%33000%\%UADIR%\Message
+RegisterDLLs=dao350.dll,comdlg32.ocx,tabctl32.ocx,rictx32.ocx,msflxgrd.ocx,%33000%\%UADIR%\graphs32.ocx,msinet.ocx,mswinsck.ocx,msmask32.ocx
+DefPath = "%24%\%PROGRAMF%"
+DefProgramGroup_IIS = "%IISPROG_GRP%"
+DefProgramGroup_OptPack = "%OPTPACKPROG_GRP%"
+;AddShortcuts=UA_Shortcuts
+;AddShortcuts_IIS=UA_Shortcuts
+AddShortcuts_OptPack=UA_Shortcuts
+AddVroots=UA_VRoots
+
+[ua_uninst]
+DelReg=ua_reguninst,ua_appreg
+DelFiles=ua_bin,ua_db,ua_mfa_ad,ua_mfa_audit,ua_mfa_detail,ua_mfa_summary,ua_appdocs,ua_docdocs,ua_webdocs
+DelDirs=ua_bin,ua_webdocs,ua_docdocs,ua_appdocs
+;DelShortcuts = UA_Shortcuts
+;DelShortcuts_IIS=UA_Shortcuts
+DelShortcuts_OptPack=UA_Shortcuts
+DelVroots=UA_VRoots
+
+[UA_Shortcuts]
+"%UA_SUBPROG_GRP%", "%UA_IMPORT_ITEM%", "%33000%\%UADIR%\import.exe", "%33000%\%UADIR%"
+"%UA_SUBPROG_GRP%", "%UA_ANALYSIS_ITEM%", "%33000%\%UADIR%\analysisgui.exe", "%33000%\%UADIR%"
+"%UA_SUBPROG_GRP%", "%UA_DOCS_ITEM%", "%18%\%UADIR%\default.htm", "%33000%\%UADIR%"
+"%UA_SUBPROG_GRP%", "%MAIN_DOCSLINK%", "%33000%\%UADIR%\SSADocs.url", "%33000%\%UADIR%", "%SystemRoot%\system32\url.dll", 0
+"%SSE_SUBPROG_GRP%", "%SITESERVERLINK%", "%33000%\%UADIR%\SiteServ.url", "%33000%\%UADIR%", "%SystemRoot%\system32\url.dll", 0
+
+[UA_VRoots]
+"IISHELP/SSE/UA Express"="%18%\%UAHELPDIR%"
+
+[DestinationDirs]
+ua_bin			= 33000,%UADIR%
+ua_db			= 33000,%UADIR%
+ua_dll			= 11
+ua_ocx			= 11
+ua_mfa_ad 		= 33000,%UADIR%\Catalog\Advertising
+ua_mfa_audit 		= 33000,%UADIR%\Catalog\Audit
+ua_mfa_detail 		= 33000,%UADIR%\Catalog\Detail
+ua_mfa_summary		= 33000,%UADIR%\Catalog\Summary
+ua_appdocs		= 18,%UAHELPDIR%
+ua_docdocs		= 18,%UAHELPDIR%\Docs
+ua_webdocs		= 18,%UAHELPDIR%\Docs\Webdocs
+SSE_Docs                = 18,%SSE_DOC_DIR%
+
+[ua_reguninst]
+HKLM,"%ROOT_REG%"
+
+[ua_appreg]
+;MFA Reg Settings
+HKLM,Software\Classes\.mfa,,,"mfafile"
+HKLM,Software\Classes\.mfa,Content Type,,"Application/Report Writer"
+HKLM,Software\Classes\mfafile,,,"Report definition file"
+HKLM,Software\Classes\mfafile,EditFlags,,"00,00,00,00"
+HKLM,Software\Classes\mfafile\Shell\open\command,,,""%33000%\%UADIR%\AnalysisGUI.exe" analysis="%1""
+
+HKLM,Software\Classes\mfafile\DefaultIcon,,,"%33000%\%UADIR%\Analysis.Exe,0"
+HKLM,"%USER_INFO_KEY%",%USER_VALNAME%,,""
+HKLM,"%USER_INFO_KEY%",%ORG_VALNAME%,,""
+HKLM,"%USER_INFO_KEY%",%VERSION%,,%UA2_IIS_VER_STRING%
+
+;MFT Reg Settings
+HKLM,Software\Classes\.mft,,,"mftfile"
+HKLM,Software\Classes\.mft,Content Type,,"Application/Report Writer"
+HKLM,Software\Classes\mftfile,,,"Report template file"
+HKLM,Software\Classes\mftfile,EditFlags,,"00,00,00,00"
+HKLM,Software\Classes\mftfile\DefaultIcon,,,"%33000%\%UADIR%\Analysis.Exe,0"
+;Database
+HKLM,Software\Microsoft\UA Express\Database,Filename,,"%33000%\%UADIR%\MSUsage.mdb"
+HKLM,Software\Microsoft\UA Express\Database,Records,,"35517.48,310228"
+;Executables
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Import.exe,,,"%33000%\%UADIR%\Import.exe"
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Analysis.exe,,,"%33000%\%UADIR%\Analysis.exe"
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Metadata.exe,,,"%33000%\%UADIR%\Metadata.exe"
+
+[strings]
+;Don't Localize the following:
+ROOT_REG = "Software\Microsoft\UA Express"	;;;; DO NOT LOCALIZE THIS !! ;;;;
+USER_INFO_KEY = "Software\Microsoft\UA Express\Install"    ;;DO NOT LOCALIZE
+USER_VALNAME = "Name"                          ;;;; DO NOT LOCALIZE THIS !! ;;;;
+ORG_VALNAME = "Organization"                   ;;;; DO NOT LOCALIZE THIS !! ;;;;
+VERSION = "CurrentVersion"                   ;;;; DO NOT LOCALIZE THIS !! ;;;;
+UA2_IIS_VER_STRING = "2.0 IIS"            ;;;; DO NOT LOCALIZE THIS !! ;;;;
+
+;; These may be localized, BUT must match the corresponding strings in SA2IIS.INF *exactly* 
+SSE_DESC = "Microsoft Site Server Express 2.0"
+SSE_TIP = "Offers a subset of the functionality found in Microsoft Site Server, including site analysis, usage analysis and publishing capabilities."
+SSE_SUBPROG_GRP = "Microsoft Site Server Express 2.0"
+SITESERVERLINK = "Upgrade to Microsoft Site Server"
+MAIN_DOCSLINK = "Documentation"
+IISPROG_GRP = "Microsoft Internet Information Server"
+OPTPACKPROG_GRP = "Windows NT 4.0 Option Pack"
+PROGRAMF = "Program Files"
+UA_SUBPROG_GRP = "Microsoft Site Server Express 2.0" ;; must match SA_SUBPROG_GRP in sa2iis.inf exactly
+
+;; These may be localized
+DISKDESCRIPT = "Microsoft Site Server Express - Usage Analysis"
+UA_DESC = "Analysis - Usage"
+UA_TIP = "Provides advanced usage analysis software that enables you to maximize your Internet marketing investment."
+UADIR = "UA Express"
+UAHELPDIR = "UA Express"
+UA_IMPORT_ITEM = "Usage Import"
+UA_ANALYSIS_ITEM = "Report Writer"
+UA_DOCS_ITEM = "Usage Start Page"
+SSE_DOC_DIR = "SSE"
+
+[sse_docs]
+testsse.htm,,,0x20
+sitebanr.gif,,,0x20
+ssewelcome.htm,,,0x20
+legal.htm,legal.htm3,,0x20 
+
+[ua_appdocs]
+pro.gif,pro.gif1,,0x20 
+gnicimpo.gif,gnicimpo.gif1,,0x20 
+navys.gif,navys.gif1,,0x20 
+default.htm,default.htm1,,0x20 
+readme.htm,,,0x20
+pss.htm,,,0x20
+whfigs1.gif,whfigs1.gif1,,0x20 
+gnicnote.gif,gnicnote.gif1,,0x20 
+gnnlogo.gif,gnnlogo.gif1,,0x20 
+imbk2.gif,,,0x20
+legal.htm,legal.htm1,,0x20 
+msbt.gif,,,0x20
+bestwith.gif,,,0x20
+upgrade.htm,,,0x20
+
+[ua_bin]
+siteserv.url 
+analysis.exe,,,0x20
+ssadocs.url,,,0x20 
+analysisgui.exe,,,0x20
+compactdb.exe,,,0x20
+repairdb.exe,,,0x20
+import.exe,,,0x20
+
+[ua_db]
+template.zip,,,0x20 
+msusage.mdb,,,0x20 
+
+[ua_dll]
+gswdll32.dll,,,0x20
+rdocurs.dll,,,0x20
+resolve3.dll,,,0x20
+vb5db.dll,,,0x20
+imfschedule.dll,,,0x20
+gsjpg32.dll,,,0x20
+dao350.dll,,,0x20
+msrdo32.dll,,,0x20
+gswag32.dll,,,0x20
+gsprop32.dll,,,0x20
+
+[ua_docdocs]
+default.htm,default.htm2,,0x20 
+
+[ua_mfa_detail]
+bandwidth detail.mfa,,,0x20
+hit detail.mfa,,,0x20
+referrer detail.mfa,,,0x20
+organization detail.mfa,,,0x20
+request detail.mfa,,,0x20
+user detail.mfa,,,0x20
+visit detail.mfa,,,0x20
+geography detail.mfa,,,0x20
+browser detail.mfa,,,0x20
+
+[ua_mfa_summary]
+hit summary.mfa,,,0x20
+executive summary (extended logs).mfa,,,0x20
+referrer summary.mfa,,,0x20
+path summary.mfa,,,0x20
+executive summary.mfa,,,0x20
+browser summary.mfa,,,0x20
+bandwidth summary.mfa,,,0x20
+visit summary.mfa,,,0x20
+geography summary.mfa,,,0x20
+request summary.mfa,,,0x20
+user summary.mfa,,,0x20
+organization summary.mfa,,,0x20
+
+[ua_ocx]
+comctl32.ocx,,,0x20
+msflxgrd.ocx,,,0x20
+msinet.ocx,,,0x20
+msmask32.ocx,,,0x20
+mswinsck.ocx,,,0x20
+richtx32.ocx,,,0x20
+tabctl32.ocx,,,0x20
+comdlg32.ocx,,,0x20
+gsw32.exe,,,0x20
+graphs32.ocx,,,0x20
+
+[ua_webdocs]
+uan00110.gif,,,0x20
+uan00111.gif,,,0x20
+uan00109.gif,,,0x20
+uan00106.gif,,,0x20
+uan00107.gif,,,0x20
+uan00090.gif,,,0x20
+uan00116.gif,,,0x20
+uan00117.gif,,,0x20
+uan00118.gif,,,0x20
+uan00108.gif,,,0x20
+uan00003.gif,,,0x20
+uan00003.htm,,,0x20
+uan00004.gif,,,0x20
+uan00005.gif,,,0x20
+uan00006.gif,,,0x20
+uan00007.gif,,,0x20
+uan00008.gif,,,0x20
+uan00008.htm,,,0x20
+uan00009.gif,,,0x20
+uan00009.htm,,,0x20
+uan00010.gif,,,0x20
+uan00010.htm,,,0x20
+uan00011.gif,,,0x20
+uan00011.htm,,,0x20
+uan00012.gif,,,0x20
+uan00012.htm,,,0x20
+uan00013.gif,,,0x20
+uan00013.htm,,,0x20
+uan00014.gif,,,0x20
+uan00014.htm,,,0x20
+uan00015.gif,,,0x20
+uan00015.htm,,,0x20
+uan00016.gif,,,0x20
+uan00016.htm,,,0x20
+uan00017.gif,,,0x20
+uan00017.htm,,,0x20
+uan00018.gif,,,0x20
+uan00018.htm,,,0x20
+uan00019.gif,,,0x20
+uan00019.htm,,,0x20
+uan00020.gif,,,0x20
+uan00020.htm,,,0x20
+uan00021.gif,,,0x20
+uan00021.htm,,,0x20
+uan00022.gif,,,0x20
+uan00022.htm,,,0x20
+uan00023.gif,,,0x20
+uan00023.htm,,,0x20
+uan00024.gif,,,0x20
+uan00024.htm,,,0x20
+uan00025.gif,,,0x20
+uan00025.htm,,,0x20
+uan00026.gif,,,0x20
+uan00026.htm,,,0x20
+uan00027.gif,,,0x20
+uan00028.gif,,,0x20
+uan00029.gif,,,0x20
+uan00030.gif,,,0x20
+uan00031.gif,,,0x20
+uan00032.gif,,,0x20
+uan00033.gif,,,0x20
+uan00034.gif,,,0x20
+uan00035.gif,,,0x20
+uan00036.gif,,,0x20
+uan00036.htm,,,0x20
+uan00037.gif,,,0x20
+uan00037.htm,,,0x20
+uan00038.gif,,,0x20
+uan00038.htm,,,0x20
+uan00039.gif,,,0x20
+uan00040.gif,,,0x20
+uan00041.gif,,,0x20
+uan00041.htm,,,0x20
+uan00042.gif,,,0x20
+uan00042.htm,,,0x20
+uan00043.gif,,,0x20
+uan00043.htm,,,0x20
+uan00044.gif,,,0x20
+uan00044.htm,,,0x20
+uan00045.gif,,,0x20
+uan00045.htm,,,0x20
+uan00046.gif,,,0x20
+uan00047.gif,,,0x20
+uan00047.htm,,,0x20
+uan00048.gif,,,0x20
+uan00048.htm,,,0x20
+uan00049.gif,,,0x20
+uan00049.htm,,,0x20
+uan00050.gif,,,0x20
+uan00050.htm,,,0x20
+uan00051.gif,,,0x20
+uan00051.htm,,,0x20
+uan00052.gif,,,0x20
+uan00052.htm,,,0x20
+uan00053.gif,,,0x20
+uan00053.htm,,,0x20
+uan00054.gif,,,0x20
+uan00054.htm,,,0x20
+uan00055.gif,,,0x20
+uan00055.htm,,,0x20
+uan00056.gif,,,0x20
+uan00056.htm,,,0x20
+uan00057.gif,,,0x20
+uan00057.htm,,,0x20
+uan00058.gif,,,0x20
+uan00058.htm,,,0x20
+uan00059.gif,,,0x20
+uan00059.htm,,,0x20
+uan00060.gif,,,0x20
+uan00060.htm,,,0x20
+uan00061.gif,,,0x20
+uan00061.htm,,,0x20
+uan00062.gif,,,0x20
+uan00062.htm,,,0x20
+uan00063.gif,,,0x20
+uan00063.htm,,,0x20
+uan00064.gif,,,0x20
+uan00064.htm,,,0x20
+uan00065.gif,,,0x20
+uan00065.htm,,,0x20
+uan00066.gif,,,0x20
+uan00066.htm,,,0x20
+uan00067.gif,,,0x20
+uan00067.htm,,,0x20
+uan00068.gif,,,0x20
+uan00068.htm,,,0x20
+uan00069.gif,,,0x20
+uan00070.gif,,,0x20
+uan00071.gif,,,0x20
+uan00072.gif,,,0x20
+uan00073.gif,,,0x20
+uan00074.gif,,,0x20
+uan00075.gif,,,0x20
+uan00076.gif,,,0x20
+uan00077.gif,,,0x20
+uan00078.gif,,,0x20
+uan00079.gif,,,0x20
+uan00080.gif,,,0x20
+uan00081.gif,,,0x20
+uan00082.gif,,,0x20
+uan00083.gif,,,0x20
+uan00084.gif,,,0x20
+uan00085.gif,,,0x20
+uan00086.gif,,,0x20
+uan00087.gif,,,0x20
+uan00088.gif,,,0x20
+uan00089.gif,,,0x20
+uan00148.gif,,,0x20
+uan00149.gif,,,0x20
+uan00150.gif,,,0x20
+uan00151.gif,,,0x20
+uan00152.gif,,,0x20
+uan00153.gif,,,0x20
+uan00154.gif,,,0x20
+whfigs1.gif,whfigs1.gif2,,0x20 
+whfigs3.gif,,,0x20
+uatop.htm,,,0x20
+uan00000.gif,,,0x20
+uan00001.gif,,,0x20
+uan00001.htm,,,0x20
+uan00002.gif,,,0x20
+uan00146.gif,,,0x20
+uan00147.gif,,,0x20
+uan00136.gif,,,0x20
+uan00137.gif,,,0x20
+uan00138.gif,,,0x20
+uan00139.gif,,,0x20
+uan00140.gif,,,0x20
+uan00141.gif,,,0x20
+uan00142.gif,,,0x20
+uan00143.gif,,,0x20
+uan00144.gif,,,0x20
+uan00145.gif,,,0x20
+uan00134.gif,,,0x20
+uan00135.gif,,,0x20
+uan00133.gif,,,0x20
+uan00119.gif,,,0x20
+uan00120.gif,,,0x20
+uan00121.gif,,,0x20
+uan00122.gif,,,0x20
+uan00123.gif,,,0x20
+uan00124.gif,,,0x20
+uan00125.gif,,,0x20
+uan00126.gif,,,0x20
+uan00127.gif,,,0x20
+uan00128.gif,,,0x20
+uan00129.gif,,,0x20
+uan00130.gif,,,0x20
+uan00131.gif,,,0x20
+uan00132.gif,,,0x20
+uan00091.gif,,,0x20
+uan00092.gif,,,0x20
+uan00093.gif,,,0x20
+uan00094.gif,,,0x20
+uan00095.gif,,,0x20
+uan00096.gif,,,0x20
+uan00097.gif,,,0x20
+uan00098.gif,,,0x20
+uan00099.gif,,,0x20
+uan00112.gif,,,0x20
+uan00113.gif,,,0x20
+uan00114.gif,,,0x20
+uan00115.gif,,,0x20
+uan00104.gif,,,0x20
+uan00105.gif,,,0x20
+default.htm,default.htm3,,0x20 
+gnicimpo.gif,gnicimpo.gif2,,0x20 
+gnicnote.gif,gnicnote.gif2,,0x20 
+gnnlogo.gif,gnnlogo.gif2,,0x20 
+htindex.htm,,,0x20
+httoc.htm,,,0x20
+legal.htm,legal.htm2,,0x20 
+navys.gif,navys.gif2,,0x20 
+pro.gif,pro.gif2,,0x20 
+uan.htm,,,0x20
+uan00100.gif,,,0x20
+uan00101.gif,,,0x20
+uan00102.gif,,,0x20
+uan00103.gif,,,0x20
+;*** BEGIN **********************************************************
+;**                                                                **
+;** Automatically generated on: Fri Nov 07 15:37:40 1997           **
+;**                                                                **
+;** Diamond Version: (32) 1.00.0540 (02/01/96)                     **
+;**                                                                **
+;*** BEGIN **********************************************************
+;LAYOUT.INF
+;Disk Layout file for Microsoft Usage Analyst Setup
+;Copyright (c) 1993-1997 Microsoft Corporation
+
+[version]
+signature="$Windows NT$"
+SetupClass=BASE
+
+
+[SourceDisksNames]
+; Cabinet file names and associated disks
+; <cab#> = <disk#>,<cabinet filename>, ID (Unused, must be 0)
+0="Microsoft IIS CD-ROM","",0
+1="Microsoft IIS CD-ROM","uabin.cab",0
+2="Microsoft IIS CD-ROM","uadoc.cab",0
+3="Microsoft IIS CD-ROM","uasup.cab",0
+[SourceDisksFiles]
+;<file> = <cabinet number>,<subdir>,<size>
+;Note: File is not in a cabinet if cab# is 0
+
+analysisgui.exe=1,,2613248
+compactdb.exe=1,,257536
+repairdb.exe=1,,299520
+import.exe=1,,2946048
+analysis.exe=1,,2378240
+ssadocs.url=1,,71
+siteserv.url=1,,61
+legal.htm3=2,,2610
+sitebanr.gif=2,,2306
+ssewelcome.htm=2,,1591
+testsse.htm=2,,561
+gnicnote.gif1=2,,410
+gnnlogo.gif1=2,,1151
+imbk2.gif=2,,20860
+legal.htm1=2,,2610
+msbt.gif=2,,1151
+navys.gif1=2,,936
+upgrade.htm=2,,5899
+bestwith.gif=2,,944
+default.htm1=2,,3221
+gnicimpo.gif1=2,,536
+whfigs1.gif1=2,,2800
+readme.htm=2,,14536
+pss.htm=2,,8991
+pro.gif1=2,,832
+default.htm2=2,,2240
+uan00108.gif=2,,918
+uan00110.gif=2,,5111
+uan00111.gif=2,,4119
+uan00109.gif=2,,5265
+uan00106.gif=2,,4039
+uan00107.gif=2,,14538
+uan00090.gif=2,,6828
+uan00116.gif=2,,7672
+uan00117.gif=2,,8669
+uan00118.gif=2,,7132
+uan00119.gif=2,,4914
+uan00120.gif=2,,6205
+uan00121.gif=2,,889
+uan00122.gif=2,,890
+uan00123.gif=2,,860
+uan00124.gif=2,,899
+uan00125.gif=2,,881
+uan00126.gif=2,,898
+uan00127.gif=2,,879
+uan00128.gif=2,,849
+uan00129.gif=2,,889
+uan00130.gif=2,,5838
+uan00131.gif=2,,4967
+uan00132.gif=2,,7267
+uan00091.gif=2,,7290
+uan00092.gif=2,,8529
+uan00093.gif=2,,7243
+uan00094.gif=2,,5923
+uan00095.gif=2,,5271
+uan00096.gif=2,,4105
+uan00097.gif=2,,6889
+uan00098.gif=2,,4664
+uan00099.gif=2,,4640
+uan00112.gif=2,,4070
+uan00113.gif=2,,2817
+uan00114.gif=2,,4829
+uan00115.gif=2,,2258
+uan00104.gif=2,,1047
+uan00105.gif=2,,961
+default.htm3=2,,1203
+gnicimpo.gif2=2,,536
+gnicnote.gif2=2,,410
+gnnlogo.gif2=2,,1151
+htindex.htm=2,,36710
+httoc.htm=2,,9098
+legal.htm2=2,,2610
+navys.gif2=2,,936
+pro.gif2=2,,832
+uan.htm=2,,2489
+uan00100.gif=2,,8147
+uan00101.gif=2,,5593
+uan00102.gif=2,,2280
+uan00103.gif=2,,986
+uan00003.gif=2,,3663
+uan00003.htm=2,,10808
+uan00004.gif=2,,2859
+uan00005.gif=2,,4754
+uan00006.gif=2,,6463
+uan00007.gif=2,,5178
+uan00008.gif=2,,4862
+uan00008.htm=2,,1681
+uan00009.gif=2,,4859
+uan00009.htm=2,,1709
+uan00010.gif=2,,7691
+uan00010.htm=2,,4039
+uan00011.gif=2,,6013
+uan00011.htm=2,,3944
+uan00012.gif=2,,6831
+uan00012.htm=2,,2429
+uan00013.gif=2,,6576
+uan00013.htm=2,,4383
+uan00014.gif=2,,1831
+uan00014.htm=2,,3663
+uan00015.gif=2,,6946
+uan00015.htm=2,,2223
+uan00016.gif=2,,5682
+uan00016.htm=2,,3781
+uan00017.gif=2,,5330
+uan00017.htm=2,,7578
+uan00018.gif=2,,4709
+uan00018.htm=2,,20751
+uan00019.gif=2,,5180
+uan00019.htm=2,,33066
+uan00020.gif=2,,6584
+uan00020.htm=2,,17281
+uan00021.gif=2,,6453
+uan00021.htm=2,,11233
+uan00022.gif=2,,6571
+uan00022.htm=2,,9175
+uan00023.gif=2,,5901
+uan00023.htm=2,,2158
+uan00024.gif=2,,5488
+uan00024.htm=2,,15621
+uan00025.gif=2,,6538
+uan00025.htm=2,,82015
+uan00026.gif=2,,7667
+uan00026.htm=2,,8229
+uan00027.gif=2,,7475
+uan00028.gif=2,,2000
+uan00029.gif=2,,2232
+uan00030.gif=2,,7969
+uan00031.gif=2,,6916
+uan00032.gif=2,,7750
+uan00033.gif=2,,7260
+uan00034.gif=2,,6122
+uan00035.gif=2,,6187
+uan00036.gif=2,,8695
+uan00036.htm=2,,3801
+uan00037.gif=2,,5917
+uan00037.htm=2,,5011
+uan00038.gif=2,,8355
+uan00038.htm=2,,3128
+uan00039.gif=2,,6152
+uan00040.gif=2,,11266
+uan00041.gif=2,,3971
+uan00041.htm=2,,5720
+uan00042.gif=2,,3663
+uan00042.htm=2,,1952
+uan00043.gif=2,,10468
+uan00043.htm=2,,2285
+uan00044.gif=2,,4663
+uan00044.htm=2,,3579
+uan00045.gif=2,,6816
+uan00045.htm=2,,4412
+uan00046.gif=2,,10560
+uan00047.gif=2,,5470
+uan00047.htm=2,,1835
+uan00048.gif=2,,6356
+uan00048.htm=2,,2064
+uan00049.gif=2,,5131
+uan00049.htm=2,,4570
+uan00050.gif=2,,2896
+uan00050.htm=2,,1954
+uan00051.gif=2,,2632
+uan00051.htm=2,,2387
+uan00052.gif=2,,4094
+uan00052.htm=2,,2085
+uan00053.gif=2,,4651
+uan00053.htm=2,,1797
+uan00054.gif=2,,3229
+uan00054.htm=2,,7092
+uan00055.gif=2,,5299
+uan00055.htm=2,,2120
+uan00056.gif=2,,5601
+uan00056.htm=2,,2980
+uan00057.gif=2,,5844
+uan00057.htm=2,,2094
+uan00058.gif=2,,7759
+uan00058.htm=2,,2435
+uan00059.gif=2,,6122
+uan00059.htm=2,,8680
+uan00060.gif=2,,7225
+uan00060.htm=2,,2953
+uan00061.gif=2,,9213
+uan00061.htm=2,,8982
+uan00062.gif=2,,4512
+uan00062.htm=2,,3850
+uan00063.gif=2,,4760
+uan00063.htm=2,,31820
+uan00064.gif=2,,25029
+uan00064.htm=2,,13640
+uan00065.gif=2,,5507
+uan00065.htm=2,,8591
+uan00066.gif=2,,7359
+uan00066.htm=2,,5064
+uan00067.gif=2,,4582
+uan00067.htm=2,,7154
+uan00068.gif=2,,5176
+uan00068.htm=2,,5681
+uan00069.gif=2,,7415
+uan00070.gif=2,,9166
+uan00071.gif=2,,7879
+uan00072.gif=2,,6045
+uan00073.gif=2,,7108
+uan00074.gif=2,,7197
+uan00075.gif=2,,5624
+uan00076.gif=2,,6834
+uan00077.gif=2,,6115
+uan00078.gif=2,,3160
+uan00079.gif=2,,6665
+uan00080.gif=2,,5979
+uan00081.gif=2,,5813
+uan00082.gif=2,,8069
+uan00083.gif=2,,5055
+uan00084.gif=2,,9570
+uan00085.gif=2,,11553
+uan00086.gif=2,,6721
+uan00087.gif=2,,5429
+uan00088.gif=2,,6816
+uan00089.gif=2,,5961
+uan00148.gif=2,,6643
+uan00149.gif=2,,10246
+uan00150.gif=2,,10516
+uan00151.gif=2,,11859
+uan00152.gif=2,,7857
+uan00153.gif=2,,10209
+uan00154.gif=2,,10369
+whfigs1.gif2=2,,1976
+whfigs3.gif=2,,1976
+uatop.htm=2,,2450
+uan00000.gif=2,,6199
+uan00001.gif=2,,6199
+uan00001.htm=2,,2636
+uan00002.gif=2,,3971
+uan00146.gif=2,,5635
+uan00147.gif=2,,5382
+uan00136.gif=2,,12184
+uan00137.gif=2,,5807
+uan00138.gif=2,,5140
+uan00139.gif=2,,4919
+uan00140.gif=2,,5045
+uan00141.gif=2,,5712
+uan00142.gif=2,,7161
+uan00143.gif=2,,6845
+uan00144.gif=2,,5233
+uan00145.gif=2,,4892
+uan00134.gif=2,,5036
+uan00135.gif=2,,10226
+uan00133.gif=2,,5464
+msusage.mdb=3,,2254848
+template.zip=3,,678776
+gswag32.dll=3,,263120
+gsjpg32.dll=3,,107008
+dao350.dll=3,,582144
+imfschedule.dll=3,,21504
+msrdo32.dll=3,,312832
+rdocurs.dll=3,,97552
+resolve3.dll=3,,50176
+vb5db.dll=3,,78608
+gswdll32.dll=3,,104384
+gsprop32.dll=3,,642560
+request detail.mfa=3,,11777
+user detail.mfa=3,,15458
+visit detail.mfa=3,,23691
+bandwidth detail.mfa=3,,15402
+browser detail.mfa=3,,12786
+hit detail.mfa=3,,14562
+referrer detail.mfa=3,,6977
+organization detail.mfa=3,,14286
+geography detail.mfa=3,,16100
+executive summary (extended logs).mfa=3,,17172
+referrer summary.mfa=3,,3440
+path summary.mfa=3,,5475
+executive summary.mfa=3,,12569
+browser summary.mfa=3,,3531
+bandwidth summary.mfa=3,,7636
+visit summary.mfa=3,,9814
+geography summary.mfa=3,,8718
+hit summary.mfa=3,,7076
+organization summary.mfa=3,,6969
+user summary.mfa=3,,5403
+request summary.mfa=3,,3959
+gsw32.exe=3,,468928
+comctl32.ocx=3,,597264
+comdlg32.ocx=3,,128784
+msflxgrd.ocx=3,,200976
+msinet.ocx=3,,106256
+msmask32.ocx=3,,165136
+mswinsck.ocx=3,,101648
+richtx32.ocx=3,,195856
+tabctl32.ocx=3,,191248
+graphs32.ocx=3,,622536
+;*** END ************************************************************
+;**                                                                **
+;** Automatically generated on: Fri Nov 07 15:37:40 1997           **
+;**                                                                **
+;*** END ************************************************************

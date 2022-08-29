@@ -1,0 +1,179 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<!-- REM (C) Copyright 1996-1997 Microsoft Corporation.  All Rights Reserved. 
+     THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+     ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+     THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+     PARTICULAR PURPOSE. -->
+
+<head><title>Microsoft&reg; Usage Import and Report Writer Readme File</title>
+
+<script language="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Check to see if browser is Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Check to see if it is IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Check to see if browser is Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<meta name="DESCRIPTION" content="Supplements information found in the main documentation"> 
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">	
+
+<a name="top"><h1>Microsoft<sup>&reg;</sup> Site Server Express<br></a>
+Usage Import and Report Writer Release Notes</h1>
+
+<ul>
+<li><a href="#E10E4" name="LOCE10E4" >Program Elements Installed</a></li>
+<li><a href="#E10E9" name="LOCE10E9" >System Requirements</a></li>
+<li><a href="#E10E5" name="LOCE10E5" >Getting Started</a></li>
+<li><a href="#E10E6" name="LOCE10E6" >Known Issues</a></li>
+</ul>
+
+<p>This Readme contains important information about the product. <p>
+
+<p><a name="E10E4"><strong>Program Elements Installed</strong></a></p>
+
+<p>You can install the following Usage Import and Report Writer files on your computer:</p>
+
+<ul>
+<li>Import.exe: Usage Import.</li>
+<li>Analysis.exe: the command line Report Writer module.</li>
+<li>AnalysisGui.exe: the graphical interface Report Writer module.</li>
+<li>MSUsage.mdb:  a Microsoft&reg; Access-compatible database that will be used to hold information from your log files.</li>
+<li>Template.zip: a zipped template for new files with the format of MSUsage.mdb. Unzip this template when you want to create new databases.</li>
+</ul>
+
+<p>Unless you specify otherwise in your setup, the Windows default directory is \Program 
+Files\UAExpress, and the group that is created is Microsoft Site Server Express under the Windows NT 4.0 Option Pack program group.</p>
+
+<p>The following folders are created in the main program directory:</p>
+
+<ul>
+<li>Cache </li>
+<li>Catalog</li>
+<li>Message </li>
+<li>Reports </li>
+<li>Schedule </li>
+</ul>
+
+<p>The Catalog folder contains the standard report definition files (*.mfa).  It is also the default folder for storing any new report definition files that you create.</p>
+
+<p class="bigfix">&nbsp;</p>
+<a name="E10E9"><big>System Requirements</big></a><!-- </p> --><br>
+
+<ul>
+<li>Microsoft&reg; Windows NT&reg;</li>
+<li>Pentium processor</li>
+<li>32 MB of memory is recommended (16 MB minimum)</li>
+<li>15 MB disk space for program files, plus space for your log files</li>
+</ul>
+
+<p class="bigfix">&nbsp;</p>
+<big>Optional:</big><!-- </p> --><br>
+
+<ul>
+<li>Internet connection to look up HTML titles, resolve IP addresses, and run Whois queries</li>
+<li>Microsoft Word version 7 or later to produce Word reports</li>
+<li>Microsoft Excel version 7 or later to produce spreadsheet reports</li>
+<li>HTML 2 Browser (tables) or later  to display HTML reports</li>
+</ul>
+
+<p class="bigfix">&nbsp;</p>
+<big>Databases supported:</big><!-- </p> --><br>
+
+<ul>
+<li>Microsoft&reg; Access</li>
+</ul>
+
+<p><strong>Note</strong>&nbsp;&nbsp;&nbsp;Microsoft&reg; Access is not required for Access-compatible versions of Usage Import or Report Writer.<!-- </p> --><br>
+
+<p class="bigfix"><a name="E10E5">&nbsp;</a></p>
+<big>Getting Started</big><!-- </p> --><br>
+
+<p><strong>Importing a Log File</strong></p>
+
+<ol>
+<li>Obtain a copy of your Internet server log file.</li>
+<li>Start Usage Import.</li>
+<li>Configure an Internet site using the Server manager (from the <strong>File</strong> menu or from the toolbar).</li>
+<li>Create a Log data source with the appropriate log file type by right-clicking the Log data sources icon, and then clicking <strong>New</strong>.</li>
+<li>Specify a server of the appropriate type (FTP or WWW) by right-clicking the scroll icon, and then clicking <strong>New</strong>.</li>
+<li>Configure a site by right-clicking the newly created server icon, and then clicking <strong>New</strong>.</li>
+<li>Open the Log file manager (from the <strong>File</strong> menu or from the toolbar) and type in the path to your log file that you obtained above, or identify it using the <strong>Browse</strong> button. </li>
+<li>Press the green <strong>Start import</strong> button on the toolbar to begin the import.</li>
+</ol>
+
+<p><strong>Note</strong>&nbsp;&nbsp;&nbsp;The first time you import a log file, the program will walk you through these steps.</p>
+
+<p><strong>Creating a Report</strong></p>
+
+<ol>
+<li>Start Report Writer.</li>
+<li>Click the <strong>Create an analysis report from the catalog</strong> option.</li>
+<li>Select a report to run, such as Executive Summary.</li>
+<li>Click <strong>Finish</strong> on the first option panel. You can explore the full range of options available in this sequence of panels later on.</li>
+<li>From the schematic representation of your report content, click the green <strong>Create report document</strong> button.  (Default is an HTML report which will be opened with your browser.)</li>
+</ol>
+
+<p>You have now successfully completed a session with Usage Import and Report Writer.</p>
+
+<p><strong>Extended Logging</strong></p>
+
+<p>To install <em>mss_log.dll</em> <a href="http://backoffice.microsoft.com/downloads/sa/mss_log.dll">download</a>:
+
+<p>Please copy the accompanying <em>mss_log.dll</em> shared library to a directory
+where you keep other ISAPI filters (this can be any directory).
+<ol>
+
+	<li> Launch Internet Service Manager. 
+	<li> Under Internet Information Server, right click on the server name that you
+   would like to install the filter on and click Properties.	
+	<li> Choose Edit for WWW Service.
+	<li> On the ISAPI Filters tab, click Add, and follow the instructions to install a new filter.
+	<li> On the Web Site tab, click Active log format, and choose Microsoft IIS Log File Format. 
+	<li> Close the Property dialog box.
+	<li> Close Internet Service Manager.
+</ol>
+
+<a name="1019820"></a>
+
+<p><a name="1019767"><strong>Note&nbsp;&nbsp;&nbsp;</strong></a>Once you've installed <em>mss_log.dll</em>, the format of the log file is changed. If you've previously used any log conversion utility that was written to use the original IIS log files (including <em>convlog.exe</em>, which comes with IIS), it will <em>not</em> work on the new log files.<!--</p>--><br>
+
+<p><a name="E10E6"><strong>Known Issues</strong></a></p>
+
+<p>The scheduled import of log files from a remote server share (e.g. \\server\share\) requires that the scheduler start with a trusted user of the remote system including user name and password.</p>
+
+<p>Microsoft Site Server 2.0 is the upgrade from Site Server Express (included in the Windows NT 4.0 Option Pack). In the event that you install Site Server 2.0 on the same system as Site Server Express, then later remove Site Server 2.0, you will need to reinstall Site Server Express to resume using the product.</p>
+
+<p><strong> Attention International users:</strong></p>
+
+<p>No matter what operating system you are using, the regional settings on your system must match the regional settings used to create the log file you are importing. Failure to do this can result in request dates in the log file being interpreted incorrectly. To set your regional settings, select <strong>Settings</strong> from the <strong>Start</strong> menu. Choose <strong>Control Panel</strong>, then click <strong>Regional Settings</strong>.</p>
+
+<p>We recommend that you install Usage Import and Report Writer into a directory with an alphanumeric name. If you install them into a non-alphanumeric (DBCS) directory, you will not be able to run automated batch jobs using the scheduler. However, the batch files produced by the scheduler will function properly when executed at the command prompt. The HTML version of the online documentation may also fail to work if the product is installed into a DBCS directory.</p>
+
+<p>You should also use alphanumeric names for the reports you generate using Report Writer. If your reports have non-alphanumeric (DBCS) characters in the file name, the graphics will not display in the browser when you view the report.</p>
+<p><strong>Clear Calculation Cache</strong></p>
+
+<p>The calculation cache speeds up report generation by re-using previous calculations when the contents of the database haven't changed. Each time new data is imported (via Usage Import) the calculation cache is cleared automatically. Invoking options under the Tools menu (Resolve IP Addresses, Lookup HTML Titles or Whois Queries) does not automatically clear the calculation cache, so you must clear it manually in order to see the effect of these actions in subsequent reports. To clear the calculation cache, open the Report Writer, select Tools, then Options, then the Calculation Cache tab. Click on the Clear Cache Now button to clear the cache.</p>
+
+
+<hr class="iis" size="1">
+<p align="center"><em><a href="/iishelp/common/colegal.htm">&copy; 1997 by Microsoft Corporation. All rights reserved.</a></em></p>
+
+</font>
+</body>
+</html>

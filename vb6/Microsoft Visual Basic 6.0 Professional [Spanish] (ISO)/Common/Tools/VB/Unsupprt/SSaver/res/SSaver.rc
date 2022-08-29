@@ -1,0 +1,8 @@
+#include "resource.h"
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "Donut16.bmp"
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END

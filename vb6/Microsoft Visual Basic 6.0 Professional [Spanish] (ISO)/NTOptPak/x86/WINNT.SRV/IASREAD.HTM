@@ -1,0 +1,112 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<!-- REM (C) Copyright 1998 Microsoft Corporation. Reservados todos los derechos. 
+     ESTE CÓDIGO E INFORMACIÓN SE PROPORCIONA "COMO ES" SIN GARANTÍA
+     DE NINGUNA CLASE, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITÁNDOSE
+     A LAS GARANTÍAS IMPLÍCITAS DE COMERCIALIDAD Y APTITUD PARA UN 
+     PROPÓSITO DETERMINADO. -->
+
+<head><title>Archivo Léame de los Servicios de autenticación Internet</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+	TempString = navigator.appVersion
+	if (navigator.appName == "Microsoft Internet Explorer"){	
+// Comprueba si el explorador es de Microsoft
+		if (TempString.indexOf ("4.") >= 0){
+// Comprueba si es IE 4
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+		}
+		else {
+			document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+		}
+	}
+	else if (navigator.appName == "Netscape") {						
+// Comprueba si el explorador es de Netscape
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/coua.css">');
+	}
+	else
+		document.writeln('<link rel="stylesheet" type="text/css" href="/iishelp/common/cocss.css">');
+</script> 
+
+<META NAME="DESCRIPTION" CONTENT="Complementa la información incluida en la documentación principal">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000"><font face="Verdana,Arial,Helvetica">	
+
+<a name="top"><h1>Léame de los Servicios de autenticación Internet</h1></a>
+
+<p>Antes de instalar este producto, lea este documento en su totalidad y lea el <em>Manual del administrador del Servidor de autenticación de Internet de Microsoft (IAS)</em>. El documento contiene información crítica para asegurar la correcta instalación y uso del producto.</p>
+
+<p><strong><span style="color: #0000FF"><font color="#0000FF">Importante</font></span></strong>&nbsp;&nbsp;&nbsp;Este archivo léame contiene información importante de última hora acerca de este producto.</p> 
+
+<p><strong>Importante para los clientes de la beta 3:</strong></p>
+
+<ul>
+<li>La información de configuración, almacenada en Adminui.mdb, se quedará como está. Esta versión utiliza un nuevo archivo _Adminui.mdb. Para garantizar la seguridad de los datos actuales, copie Adminui.mdb a otra ubicación. </li>
+<li>Antes de instalar esta versión de IAS en un equipo que ejecute la versión Beta 3, debe detener los Servicios de autenticación Internet y desinstalarlos. (Si tiene que volver a instalar la versión final de IAS en algún momento, también tendrá que detener IAS y desinstalarlo primero.) 
+</ul>
+
+<p><strong>Problemas conocidos de Servicios de autenticación Internet </strong></p>
+
+<ul>
+<li>En el programa de instalación, Servicio de autenticación Internet se muestra como un subcomponente de Servicios de conexión de Internet para Servicios de acceso remoto bajo Windows&nbsp;NT4.0 Option Pack. Tendrá que activar la casilla de verificación de Servicio de autenticación Internet para instalar este servicio.</li>
+
+<li>Si es la primera vez que instala IAS, no se iniciará IAS hasta que lo configure mediante la herramienta de administración Propiedades del Servicio de autenticación Internet. <br><br>
+<strong>Para configurar el Servicio de autenticación Internet:</strong>
+<ol>
+<li>Haga clic en Inicio, Programas, Windows NT 4.0 Options Pack, Microsoft Internet Information Server y Administrador de servicios de Internet. Aparecerá Microsoft Management Console (MMC).</li>
+
+<li>En el panel izquierdo de MMC, haga doble clic en Internet Information Server y, después, haga doble clic en el nombre de la máquina local. Bajo esta máquina se muestra el servicio RADIUS. </li>
+<li> Haga clic con el botón secundario del <I>mouse</I> (ratón) en RADIUS y, después, haga clic en Propiedades.</li>
+
+<li>Configure el servidor y haga clic en Aceptar o en Aplicar para guardar los cambios.    
+	</ol></li>
+ 
+
+<li>Algunos servidores de acceso a redes no aceptan contraseñas mayores de 16 bytes cuando utilizan el Protocolo de autenticación de contraseñas (PAP) del cliente. Microsoft no puede garantizar que las contraseñas mayores de 16 se autentiquen correctamente con todo el equipamiento de acceso.</li>
+
+<li>La administración remota de IAS no funcionará si las rutas de instalación de IAS son diferentes en el servidor local y en el servidor remoto. Si va a utilizar la administración remota en su red, compruebe que todos los servidores de IAS tienen las mismas rutas de instalación para IAS.</li>
+
+<li>IAS aceptará el Protocolo de autenticación de contraseña (PAP) o Microsoft CHAP (similar a Challenge Handshake Authentication Protocol (CHAP, Protocolo de autenticación de Desafío)). En una versión futura se incluirá también compatibilidad con CHAP.
+
+<li>Si desinstala Microsoft(r) Access 97 o Visual Basic(r) de un equipo que ejecuta Servicios de autenticación Internet, debe volver a instalarlo una vez completada la desinstalación. </li>
+
+<li><strong>Para desinstalar IAS:</strong>
+<ol>
+	<li>Haga clic en Inicio, Programas, Windows&nbsp;NT 4.0 Options Pack, Microsoft Internet Information Server, Administrador de servicios Internet. Aparecerá Microsoft Management Console (MMC).</li>
+
+<li>En el panel izquierdo de MMC, haga doble clic en IIS y, después, haga doble clic en el nombre de la máquina local. Debajo de esa máquina aparecerá el servicio RADIUS.</li> 
+<li>Haga clic con el botón secundario del <i>mouse</i> (ratón) en RADIUS y, después, haga clic en Detener.</li>
+ 
+	<li>Inicie el programa de instalación de Windows&nbsp;NT 4.0 Option Pack y, después, haga clic en Siguiente y en Agregar o quitar.</li>
+	<li>En la lista Componentes, haga clic en Servicios de acceso remoto y, después, haga clic en Mostrar subcomponentes.</li>
+	<li>Seleccione Servicios de autenticación Internet y haga clic en la casilla de verificación para desactivarla.</li>
+	<li>Haga clic en Aceptar y en Siguiente y, después, siga las instrucciones de la pantalla.</li>
+	<li>Cuando el programa de instalación haya terminado de quitar IAS, reinicie el equipo.</li>
+</ol>
+</li>
+
+<li><strong>Para volver a instalar IAS:</strong>
+<ol>
+	<li>Inicie el programa de instalación de Windows&nbsp;NT 4.0 Option Pack y, después, haga clic en Siguiente y en Agregar o quitar. </li>
+	<li>En la lista Componentes, haga clic en Servicios de acceso remoto y, después, haga clic en Mostrar subcomponentes.</li>
+	<li>Haga clic en la casilla de verificación Servicios de autenticación Internet.
+	<li>Haga clic en Aceptar y en Siguiente y, después, siga las instrucciones de la pantalla.</li>
+	<li>Cuando el programa de instalación haya terminado de instalar IAS, reinicie el equipo.</li>
+</ol></li>
+</ul>
+
+
+<p><strong>Para obtener más información</strong></p>
+
+<p>Para obtener información acerca de cómo utilizar Servidor de autenticación de Internet, lea el <em>Manual del administrador de Servidor de autenticación de Internet de Microsoft (IAS)</em>.  </p>
+
+<p><a href="#top">Volver al principio</a></p>
+ 
+<hr class="iis" size="1">
+<p align="center"><em><a href="../../../common/colegal.html">&copy; 1998 Microsoft Corporation. Reservados todos los derechos.</a></em></p>
+
+</font>
+</body>
+</html>
+

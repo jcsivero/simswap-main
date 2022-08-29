@@ -1,0 +1,44 @@
+;													
+;
+;	INF for Microsoft Web Publishing Wizard installation
+;	Copyright (c) 1997 Microsoft Corporation
+;
+;	OCM Stuff
+[Version]
+Signature = "$Windows NT$"
+;
+[Optional Components]
+;
+; Only one subcomponent is allowed, and it must match the component name
+; given in the master OC INF
+;
+WebPost
+;
+; NT x86
+[WebPost]
+;
+; Standard fields
+;
+OptionDesc = %WebPost_desc%
+Tip = %WebPost_tip%
+parent = SSE
+;
+; These fields are specific to per-components INFs for components
+; with stand-alone installation programs.
+;
+; InstallCmd is used if the state changed from uninstalled to installed
+; UninstallCmd is used if the state changed from installed to uninstalled
+; InstalledCmd is used if the state did not change and is installed
+; UninstalledCmd is used if the state did not change and is uninstalled
+;
+InstallCmd = "wpie15-x86.exe /Q:A /R:NG"
+InstalledCmd = "wpie15-x86.exe /Q:A /R:NG"
+UninstallCmd = "RunDll32 ADVPACK.DLL,LaunchINFSection %17%\enuwpie.inf,WebPostUninstall,5"
+UninstalledCmd = "RunDll32 ADVPACK.DLL,LaunchINFSection %17%\enuwpie.inf,WebPostUninstall,5"
+;
+; size in MB so OC Manager can display something meaningful to the user.
+DiskSpaceEstimate = 7
+;
+[strings]
+WebPost_desc		= "Publishing - Web Publishing Wizard 1.52"
+WebPost_tip			= "The Web Publishing Wizard automates the process of uploading content to World Wide Web servers."

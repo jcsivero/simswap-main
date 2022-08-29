@@ -1,0 +1,20 @@
+El Visor de API le permite explorar las declaraciones, constantes y tipos incluidos en un archivo de API de texto o en una base de datos de Jet. Es posible copiar elementos al Portapapeles y, por tanto, copiarlos al código de Visual Basic. 
+
+El Cargador de API incluye el archivo de texto WIN32API.TXT para las interfaces Win32. Se ofrece la opción de convertirlas a bases de datos de Jet por motivos de velocidad: es mucho más rápido mostrar la lista al abrir una base de datos que al abrir un archivo .TXT. Puede convertir los archivos .TXT en archivos de bases de datos de Jet con sólo cargar el archivo .TXT y elegir "Convertir..." en el menú Archivo. 
+
+Después de convertir un archivo .TXT en una base de datos de Jet, siempre debe cargar la base de datos para mejorar el rendimiento. 
+
+Para cargar un archivo de API, seleccione en el menú Archivo el comando Cargar archivo de texto o Cargar archivo de base de datos. También puede cargar un archivo de texto o de base de datos si especifica el archivo deseado en el comando con los modificadores siguientes:
+
+APILOD32.EXE [/T | /D] nombre_archivo 
+
+La lista desplegable que aparece en la parte superior del formulario le permite ver constantes, declaraciones o tipos. Si selecciona una entrada y hace clic en el botón Agregar, podrá agregar un elemento a la lista de elementos seleccionados en la parte inferior del formulario. 
+
+Para copiar al Portapapeles elementos de la lista de elementos seleccionados, elija Copiar. Se copiarán todos los elementos de la lista. Después puede incluirlos en módulos si elige Pegar en el menú Edición del módulo. Para quitar una entrada de la lista de elementos seleccionados, haga clic en el botón Quitar.
+
+Menús
+------
+Archivo/Cargar archivo de texto: carga un archivo de API de texto
+Archivo/Cargar base de datos: carga una base de datos de Jet que se ha creado mediante el comando Convertir texto a base de datos. 
+Archivo/Convertir texto a base de datos: crea una base de datos de Jet con información de la API. La base de datos se cargará mucho más deprisa que el correspondiente archivo de texto.
+Archivo/Salir: cierra el visor de API

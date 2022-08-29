@@ -1,0 +1,207 @@
+#include "setupres.h"
+
+STRINGTABLE DISCARDABLE
+BEGIN
+
+//
+//Common with bootstrapper
+//
+#include "commonrc.rc"
+
+//
+// Global Font settings for Setup1 project.  To override,
+// set font properties in code after Form_Load.
+//
+resFONTNAME "MS Sans Serif"	// Don't translate this
+resFONTSIZE "8"	// Don't translate this
+resFONTBOLD "False"	// Don't translate this
+resFONTNAMEBACKUP1 "Arial"	// Don't translate this
+resFONTNAMEBACKUP2 "Sistema"	// Don't translate this
+
+//
+//Global
+//
+resSETMSG "Messaggio di installazione"
+
+//
+//frmBegin
+//
+resSPECDEST "Fare clic su questo pulsante per installare il software di |1 nella directory di destinazione specificata."
+resSPECNODEST "Fare clic su questo pulsante per installare il software di |1 nel computer in uso."
+
+//
+//frmWelcome
+//
+resWELCOME "Programma di installazione di |1."
+
+//
+//frmPath
+//
+resSRCPROMPT "Immettere l'unità e il percorso per i file di origine di |1."
+resDESTPROMPT "Immettere o selezionare una directory di destinazione."
+resDESTDIR "La directory di destinazione:"
+resCREATE "non esiste. Creare la directory?"
+resCHANGEDIR "Cambia directory"
+resINSTFROM "Installa da"
+
+//
+//Setup1.Bas
+//
+resCALCSPACE "Errore durante il calcolo dello spazio su disco necessario."
+resDRVREAD "Impossibile leggere dall'unità "
+resDRVCHK "Verificare che lo sportello sia chiuso e che il disco sia formattato e privo di difetti."
+resCANTOPEN "Impossibile aprire il file:"
+resCANTREAD "Impossibile leggere dal file:"
+resCANTWRITE "Impossibile scrivere nel file:"
+resCHKSPACE "Verificare che lo spazio su disco nell'unità di destinazione sia sufficiente."
+resMAKEDIR "Impossibile creare la directory:"
+resASKEXIT "Uscire?"
+resINTERRUPTED "Il programma di installazione di |1 è stato interrotto prima del completamento dell'installazione del nuovo software."
+resCANRUN "È possibile eseguire nuovamente il programma di installazione di |1 in un secondo momento per completare l'installazione."
+resINCOMPLETE "Installazione non ancora completata."
+resQUITNOW "Se si esce ora, l'applicazione non verrà installata correttamente."
+resQUITSETUP "Uscire dal programma di installazione?"
+resSUCCESS "Installazione di |1 completata."
+resERROR "L'installazione di |1 non è stata completata."
+resALLOCUNIT "Errore nella determinazione dell'unità di allocazione per l'unità "
+resSAMEASSRC "si trova nella directory dei file di origine del programma di installazione. Immettere una directory diversa."
+resNOCREATE "Impossibile creare il file:"
+resNOTPROTECT "Verificare che l'unità di destinazione non sia protetta dalla scrittura."
+resINSERT "Inserire il disco con etichetta:"
+resDISK "'Disco "
+resINTO "' nell'unità "
+resSECTNAME "Sezione:  "
+resINVLINE "Riga non valida nel file di informazioni dell'installazione."
+resDIRSPECIFIED "La directory specificata:"
+resDIRINVALID "è incompleta, protetta dalla scrittura o non valida. Digitare un percorso completo indicando la lettera di unità, ad esempio 'c:\apps'."
+resNOTEXIST "La directory non esiste."
+resDIRINVNAME "Nome di directory non valido"
+resWRITEPROT "Il file di destinazione è protetto dalla scrittura."
+resINUSE "Il file di destinazione è in uso. Verificare che tutte le altre applicazioni siano chiuse."
+resOUTOFSPACE "Spazio insufficiente nell'unità di destinazione "
+resACCESSVIOLATION "Violazione di accesso durante la copia del file."
+resSHARINGVIOLATION "Errore di condivisione durante la copia del file."
+resOUTOFMEMORY "Memoria esaurita durante la copia del file."
+resCANNOTCREATE "Impossibile creare un file temporaneo."
+resCANNOTDELETE "Impossibile eliminare un file di destinazione esistente."
+resCANNOTRENAME "Impossibile rinominare un file temporaneo."
+resCANNOTREADSRC "Impossibile leggere un file di origine."
+resCANNOTREADDST "Impossibile leggere gli attributi di un file di destinazione."
+resBUFFTOOSMALL "Errore di copia interno."
+resNOINSTALL "  Impossibile installare il file."
+resCHKCONNECT "Controllare la connessione dell'unità "
+resWARNIGNORE "Se si ignora un errore di copia, il file non verrà copiato e l'applicazione potrebbe non funzionare correttamente. Ignorare l'errore?"
+resTEMPDRIVE "L'unità specificata dalla variabile di ambiente 'TMP' o 'TEMP' non è pronta."
+resERR_VSHARE "Per ottenere il corretto funzionamento della nuova applicazione, potrebbe essere necessario aggiungere la riga 'device=vshare.386' nella sezione [386Enh] del file System.ini."
+resCANTREADUNC "Impossibile leggere il percorso di rete '|1'."
+resCHECKUNC "Verificare che il percorso sia corretto e che siano disponibili le autorizzazioni necessarie per accedervi."
+resCANTFINDAPPREMOVALLOG "Impossibile trovare il file registro '|1' per la disinstallazione dell'applicazione. Impossibile continuare."
+resBADCOMMANDLINE "Parametri della riga di comando non validi. Impossibile continuare."
+resCANTFINDAPPREMOVALEXE "Impossibile trovare il file eseguibile '|1' per la disinstallazione dell'applicazione. Impossibile continuare."
+resAPPREMOVALICONNAME "Rimuovi |1"
+resCANTREGISTERAPPREMOVER "Errore durante la registrazione del file eseguibile per la disinstallazione dell'applicazione in Windows"
+resCANTCREATEAPPREMOVALICON "Errore durante la creazione di un'icona per l'utilità di disinstallazione dell'applicazione in Program Manager"
+resOVERWRITEPRIVATE "Uno o più file già esistenti verranno sostituiti. Potrebbe verificarsi una perdita di dati per un'applicazione esistente."
+resOVERWRITEPRIVATE2 "Se si installa un'applicazione su un'applicazione esistente, questa potrebbe venire danneggiata oppure potrebbe non essere più possibile rimuoverla."
+resCANCELSETUP "Annullare l'installazione?"
+resCHOOSENEWDEST "Eseguire nuovamente il programma di installazione e selezionare una nuova posizione per i file dell'applicazione."
+resVERIFYCONTINUE "Si desidera continuare?"
+resERR_REG "Errore durante l'aggiornamento del registro di configurazione di Windows."
+resMICROSOFTSHARED "Microsoft Shared\\"
+resCANTCREATEPROGRAMGROUP "Errore durante la creazione del gruppo di programmi '|1'"
+resCANTCREATEPROGRAMICON "Errore durante la creazione di un'icona di programma per '|1'"
+resCANTCOPYLOG "Errore durante il tentativo di copia di '|1' nella directory dell'applicazione"
+resCANTFINDREGFILE "Impossibile trovare e quindi registrare il file '|1'."
+resCANTRUNPROGRAM "Impossibile eseguire il programma '|1'. La memoria disponibile nel sistema potrebbe non essere sufficiente o il programma potrebbe non essere stato trovato."
+resREMOTELINENOTFOUND "Errore: Setup.lst non contiene informazioni sulla registrazione del componente remoto '|1'. Le informazioni dovrebbero essere disponibili in una chiave '|2' di Setup.lst"
+resPROGRAMMANAGER "Program Manager"
+resUNEXPECTEDRPCREGDAT "Errore imprevisto durante la creazione di '|1':"
+resCANTCOPYPATHTOOLONG "Impossibile copiare il file. Percorso di destinazione troppo lungo."
+resCANTCREATEICONPATHTOOLONG "Impossibile creare l'icona del programma di disinstallazione. Percorso di destinazione troppo lungo."
+resICONMISSING "Nessuna icona specificata nel file Setup.lst per |1. Continuare senza creare l'icona? Fare clic su Sì per continuare oppure su No per uscire dal programma di installazione."
+
+//
+//Setup1.Frm
+//
+resBADDEFDIR "Impossibile determinare una directory di destinazione predefinita valida. Sarà necessario specificare una directory di destinazione."
+resDISKSPACE "Controllo dello spazio disponibile su disco in corso..."
+resPROGMAN "Creazione delle icone dei programmi in corso..."
+resUPDATING "Aggiornamento del sistema in corso..."
+resNOEXE "Impossibile determinare il nome del file eseguibile dell'applicazione."
+resSETUP "Programma di installazione di |1"
+resNOSETUPLST "Il file Setup.lst non è stato trovato o è danneggiato."
+resUNEXPECTED "Errore imprevisto del programma di installazione."
+resNOFOLDERFORICON "Errore di personalizzazione dell'applicazione: è necessaria un'icona per |1 ma non sono stati creati gruppi di Program Manager o cartelle a tale scopo."
+resSTILLWITHINACTION "Errore dell'installazione: manca 'CommitAction()' o 'AbortAction()'."
+resREMAUTGROUPNAME "Programmi di gestione dell'automazione remota"
+resAUTMGR32ICON "Automation Manager"
+resRACMGR32ICON "Gestione connessione automazione remota"
+resNT4WithoutSP2 "Avviso: è consigliabile installare Service Pack 2 per Windows NT 4.0. In caso contrario, questa applicazione potrebbe non funzionare."
+resINSTALLADO "Installazione dei componenti per l'accesso ai dati in corso..."
+resREBOOT "È necessario riavviare il sistema per aggiornare le impostazioni.\n\nRiavviare?"
+resREBOOTNO "Se il sistema non viene riavviato, potrebbero verificarsi problemi di funzionamento dell'applicazione."
+//
+//Common.Bas
+//
+resDISKSPCERR "Errore nella determinazione dello spazio su disco disponibile per l'unità "
+
+//
+//Forms/Controls Strings
+//
+//resBTNINSTALL "&Install"
+resFRMDIRECTORY "Directory:"
+resBTNCHGDIR "&Cambia directory"
+resBTNEXIT "&Esci dall'installazione"
+resLBLBEGIN "Fare clic sul pulsante qui sotto per iniziare l'installazione."
+resBTNCANCEL "Annulla"
+resLBLDESTFILE "File di destinazione:"
+resBTNINSTALLNOW "&Installa ora"
+resBTNCHGDRV "&Cambia unità"
+resLBLDRIVE "Unità"
+resLBLAVAIL "Spazio disponibile"
+resLBLNEEDED "Spazio necessario"
+resLBLREQUIRED "Spazio richiesto"
+resLBLNOSPACE "Spazio su disco insufficiente in una o più unità."
+resBTNOK "OK"
+resLBLDRIVES "&Unità:"
+resLBLDIRS "&Directory:"
+resLBLPATH "&Percorso:"
+resLBLRUNNING "Impossibile installare i file di sistema o aggiornare i file condivisi se questi sono in uso. Prima di continuare, è consigliabile chiudere le eventuali applicazioni in esecuzione."
+resBTNTOOLTIPBEGIN "Fare clic qui per iniziare l'installazione"
+//
+// Group.Frm
+//
+resGROUPFRM "|1 - Seleziona gruppo di programmi"
+resGROUPLBLMAIN "Verranno inseriti nuovi elementi nel gruppo visualizzato nella casella Gruppo di programmi. È possibile digitare un nuovo nome per il gruppo o selezionarne uno nell'elenco Gruppi esistenti."
+resGROUPLBLGROUP "&Gruppo di programmi:"
+resGROUPLBLGROUPS "Gruppi &esistenti:"
+resGROUPBTNCONTINUE "&Continua"
+resGROUPINVALIDGROUPNAME "La lunghezza dei nomi dei gruppi di programmi deve essere inferiore a |1 caratteri. Tali nomi non possono includere i seguenti caratteri: |2"
+resGROUPINVALIDCHARS """][,)("
+//
+//ServerDt.Frm
+//
+resNETWORKADDRESS "&Indirizzo di rete"
+resNETWORKPROTOCOL "&Protocollo di rete"
+resOK "&Continua"
+resCANCEL "&Esci dall'installazione"
+resREMOTESERVERDETAILSTITLE "Configurazione componente ActiveX remoto"
+resREMOTESERVERDETAILSLBL "Inserire le informazioni di configurazione richieste per il seguente componente remoto:"
+resNOTEPROTOSEQNOTSUPPORTED "La sequenza di protocollo |1 (|2) non è supportata o disponibile in questo computer"
+resNOTEPROTOSEQINVALID "La sequenza di protocollo '|1' ('|2') non è valida"
+resPROTOSEQUNEXPECTEDERR "Errore imprevisto durante la determinazione delle sequenze di protocollo disponibili in questo computer"
+resNOPROTOCOLSINSETUPLST "Errore dell'installazione: si è verificato un errore durante la lettura dei protocolli dal file Setup.lst."
+resNOPROTOCOLSSUPPORTED1 "Nessuno dei protocolli necessari per l'applicazione sembra essere disponibile o installato in questo computer."
+resNOPROTOCOLSSUPPORTED2 "Per eseguire correttamente l'installazione, è innanzitutto necessario installare una delle seguenti sequenze di protocolli di rete: "
+resSELECTEDPROTONOTSUPPORTED "L'applicazione non è in grado di accedere al componente remoto '|1' se non viene installato il protocollo '|2'."
+
+resOVERWRITEFORM "Conflitto di versione"
+resOVERWRITEINFO "La versione di uno dei file che stanno per essere copiati è meno recente della versione presente nel sistema. È consigliabile evitare di sostituire il file esistente."
+resOVERWRITEFILE "Nome file:	'|1'"
+resOVERWRITEDESC "Descrizione:	'|1'"
+resOVERWRITEVER "Versione:	'|1'"
+resOVERWRITEKEEP "Mantenere il file?"
+resOVERNOTOALL "No a &Tutti"
+resOVERYES "&Sì"
+resOVERNO "&No"
+END
