@@ -24,8 +24,12 @@ You can try to mount your own google drive to store files if you want.
 
 """
 
-#!git clone https://github.com/neuralchen/SimSwap
+#(repositorio original)
+#!git clone https://github.com/neuralchen/SimSwap 
 #!cd SimSwap && git pull
+#(mi repositorio con  GUI 512, opciones y preparado para 512)
+#!git clone https://github.com/alu0100585704/simswap-main.git 
+#!cd simswap-main && git pull
 
 #!pip install insightface==0.2.1 onnxruntime moviepy
 #!pip install googledrivedownloader
@@ -35,6 +39,8 @@ You can try to mount your own google drive to store files if you want.
 
 import os
 #os.chdir("SimSwap")
+#os.chdir("simswap-main")
+
 #!ls
 
 #from google_drive_downloader import GoogleDriveDownloader
@@ -48,6 +54,8 @@ import os
 #!wget -P ./arcface_model https://github.com/neuralchen/SimSwap/releases/download/1.0/arcface_checkpoint.tar
 #!wget https://github.com/neuralchen/SimSwap/releases/download/1.0/checkpoints.zip
 #!unzip ./checkpoints.zip  -d ./checkpoints
+#!wget https://github.com/neuralchen/SimSwap/releases/download/512_beta/512.zip
+#!unzip ./512.zip  -d ./checkpoints
 #!wget -P ./parsing_model/checkpoint https://github.com/neuralchen/SimSwap/releases/download/1.0/79999_iter.pth
 
 ## You can upload filed manually
