@@ -111,7 +111,9 @@ opt.temp_path = './tmp'
 opt.Arc_path = './arcface_model/arcface_checkpoint.tar'
 opt.isTrain = False
 opt.use_mask = True  ## new feature up-to-date
-opt.crop_size = 224
+opt.no_simswaplogo = True
+
+opt.crop_size = 512
 
 pic_a_path = input("Imagen origen por defecto: " + opt.pic_a_path + "\nIntroduzca ruta con nomnbre de nueva imagen o presiona ENTER para aceptar: ") 
 if len(pic_a_path) > 0:    
@@ -126,21 +128,33 @@ output_path = input("Video destino por defecto: " + opt.output_path + "\nIntrodu
 if len(output_path) > 0:    
     opt.output_path = output_path
 
-crop_size = input("Crop Size por defecto: " + str(opt.crop_size) + "\nIntroduzca nuevo valor(512 por ejemplo) o presiona ENTER para aceptar: ") 
+crop_size = input("Crop Size por defecto: " + str(opt.crop_size) + "\nIntroduzca nuevo valor 224 o presiona ENTER para continuar con"  + str(opt.crop_size) +": ") 
 if len(crop_size) > 0:    
     opt.crop_size = int(crop_size)
 
 
-if len(input("Quitar marca de agua S/N")) > 0:    
-    opt.no_simswaplogo = True
+if len(input("Introduzca cualquier valor para Poner marca de agua o presiona ENTER para continuar sin marca de agua: ")) > 0:    
+    opt.no_simswaplogo = False
 
+if len(input("Introduzca cualquier valor para desactivar máscaras o presiona ENTER para continuar con Máscara activada: ")) > 0:    
+    opt.use_mask = False
+
+crop_size = opt.crop_size
 
 torch.nn.Module.dump_patches = True
+if crop_size == 512:
+   opt.which_epoch = 550000
+   opt.name = '512'
+   mode = 'ffhq'
+else:
+   mode = 'None'
+
 model = create_model(opt)
 model.eval()
 
 app = Face_detect_crop(name='antelope', root='./insightface_func/models')
-app.prepare(ctx_id= 0, det_thresh=0.6, det_size=(640,640))
+app.prepare(ctx_id= 0, det_thresh=0.6, det_size=(640,640),mode=mode)
+
 
 with torch.no_grad():
     pic_a = opt.pic_a_path
@@ -161,5 +175,5 @@ with torch.no_grad():
     latend_id = latend_id/np.linalg.norm(latend_id,axis=1,keepdims=True)
     latend_id = latend_id.to('cuda')
 
-    video_swap(opt.video_path, latend_id, model, app, opt.output_path, temp_results_dir=opt.temp_path, use_mask=opt.use_mask)
-
+    video_swap(opt.video_path, latend_id, model, app, opt.output_path, temp_results_dir=opt.temp_path, use_mask=opt.use_mask,no_simswaplogo=opt.no_simswaplogo,crop_size=crop_size)
+    
